@@ -371,12 +371,14 @@ var SR = (function() {
   function togglePlay() {
     playing = !playing; updateDock();
     if (playing) {
-      if (curIdx >= cfg.steps.length - 1) {
-        // At the end, restart from beginning
-        curIdx = -1;
+      if (curIdx < 0) {
+        // Not started yet
         goToStep(0);
+      } else if (curIdx >= cfg.steps.length - 1 && !_pausedDuringStep) {
+        // Finished all steps, stay on last step, just toggle the icon
+        playing = false; updateDock();
       } else if (_pausedDuringStep) {
-        // Was paused mid-step, replay current step
+        // Was paused mid-step, replay current step from where we are
         _pausedDuringStep = false;
         goToStep(curIdx);
       } else {
