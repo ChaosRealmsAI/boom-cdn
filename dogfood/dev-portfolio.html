@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kai Nakamura — Systems Engineer</title>
+  <link rel="stylesheet" href="https://boom-cdn.vercel.app/themes/terminal-green.css">
+  <script src="https://boom-cdn.vercel.app/themes/motion.js" defer></script>
+</head>
+<body class="boom b-grain">
+
+  <!-- NAVBAR -->
+  <nav class="b-navbar">
+    <div class="b-container b-between">
+      <span class="b-mono b-accent">kai@nakamura:~$</span>
+      <div class="b-flex b-gap-4">
+        <a href="#skills" class="b-btn b-btn-ghost b-btn-sm">Skills</a>
+        <a href="#projects" class="b-btn b-btn-ghost b-btn-sm">Projects</a>
+        <a href="#experience" class="b-btn b-btn-ghost b-btn-sm">Experience</a>
+        <a href="#contact" class="b-btn b-btn-primary b-btn-sm">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="b-hero b-section" id="home">
+    <div class="b-container b-center b-flex-col b-gap-4">
+      <div class="b-badge b-badge-success">Available for work</div>
+      <h1 class="b-display">
+        <span data-typewriter="Kai Nakamura" data-speed="60" data-cursor="true"></span>
+      </h1>
+      <p class="b-h4 b-muted" data-reveal="slide-up" data-delay="400">
+        Systems Engineer · Rust &amp; WebAssembly · Building infrastructure that doesn't wake you up at 3am.
+      </p>
+      <div class="b-flex b-gap-4" data-reveal="slide-up" data-delay="600">
+        <a href="#projects" class="b-btn b-btn-primary b-btn-lg">View Projects</a>
+        <a href="#contact" class="b-btn b-btn-outline b-btn-lg">Get in Touch</a>
+      </div>
+      <div class="b-flex b-gap-8 b-mt-4" data-reveal="fade" data-delay="800">
+        <div class="b-stat">
+          <span class="b-stat-value" data-count data-target="7" data-suffix="yrs">0</span>
+          <span class="b-muted b-label">Experience</span>
+        </div>
+        <div class="b-stat">
+          <span class="b-stat-value" data-count data-target="42">0</span>
+          <span class="b-muted b-label">OSS Crates</span>
+        </div>
+        <div class="b-stat">
+          <span class="b-stat-value" data-count data-target="99" data-suffix="%">0</span>
+          <span class="b-muted b-label">Uptime SLA</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="b-separator"></div>
+
+  <!-- MARQUEE — tech stack scroll -->
+  <div class="b-marquee b-p-4" data-speed="25">
+    <div class="b-marquee-inner">
+      <span class="b-chip">Rust</span>
+      <span class="b-chip">WebAssembly</span>
+      <span class="b-chip">Tokio</span>
+      <span class="b-chip">Axum</span>
+      <span class="b-chip">PostgreSQL</span>
+      <span class="b-chip">Redis</span>
+      <span class="b-chip">Kubernetes</span>
+      <span class="b-chip">Terraform</span>
+      <span class="b-chip">eBPF</span>
+      <span class="b-chip">Linux</span>
+      <span class="b-chip">gRPC</span>
+      <span class="b-chip">Protobuf</span>
+      <span class="b-chip">OpenTelemetry</span>
+      <span class="b-chip">NATS</span>
+      <span class="b-chip">TypeScript</span>
+      &nbsp;&nbsp;&nbsp;
+      <span class="b-chip">Rust</span>
+      <span class="b-chip">WebAssembly</span>
+      <span class="b-chip">Tokio</span>
+      <span class="b-chip">Axum</span>
+      <span class="b-chip">PostgreSQL</span>
+      <span class="b-chip">Redis</span>
+      <span class="b-chip">Kubernetes</span>
+      <span class="b-chip">Terraform</span>
+      <span class="b-chip">eBPF</span>
+      <span class="b-chip">Linux</span>
+      <span class="b-chip">gRPC</span>
+      <span class="b-chip">Protobuf</span>
+      <span class="b-chip">OpenTelemetry</span>
+      <span class="b-chip">NATS</span>
+      <span class="b-chip">TypeScript</span>
+    </div>
+  </div>
+
+  <div class="b-separator"></div>
+
+  <!-- SKILLS -->
+  <section class="b-section" id="skills" data-reveal="slide-up">
+    <div class="b-container">
+      <div class="b-stack b-gap-2">
+        <span class="b-label b-accent">// 01</span>
+        <h2 class="b-h1">Skills &amp; Tools</h2>
+        <p class="b-body b-muted">The stack I reach for when reliability and performance are non-negotiable.</p>
+      </div>
+
+      <div class="b-grid b-grid-3 b-mt-8 b-gap-4">
+
+        <!-- Systems -->
+        <div class="b-card b-card-accent" data-tilt data-tilt-max="6" data-reveal="slide-up" data-delay="0">
+          <div class="b-card-header">
+            <span class="b-mono b-accent b-label">SYSTEMS</span>
+            <h3 class="b-card-title">Low-level &amp; Infra</h3>
+          </div>
+          <div class="b-chip-group">
+            <span class="b-chip">Rust</span>
+            <span class="b-chip">C</span>
+            <span class="b-chip">eBPF</span>
+            <span class="b-chip">Linux Kernel</span>
+            <span class="b-chip">WebAssembly</span>
+            <span class="b-chip">WASI</span>
+          </div>
+          <div class="b-card-footer">
+            <div class="b-meter">
+              <div class="b-progress" style="width:92%"></div>
+            </div>
+            <span class="b-muted b-label">92% proficiency</span>
+          </div>
+        </div>
+
+        <!-- Backend -->
+        <div class="b-card b-card-accent" data-tilt data-tilt-max="6" data-reveal="slide-up" data-delay="100">
+          <div class="b-card-header">
+            <span class="b-mono b-accent b-label">BACKEND</span>
+            <h3 class="b-card-title">Services &amp; APIs</h3>
+          </div>
+          <div class="b-chip-group">
+            <span class="b-chip">Axum</span>
+            <span class="b-chip">Tokio</span>
+            <span class="b-chip">gRPC</span>
+            <span class="b-chip">PostgreSQL</span>
+            <span class="b-chip">Redis</span>
+            <span class="b-chip">NATS</span>
+          </div>
+          <div class="b-card-footer">
+            <div class="b-meter">
+              <div class="b-progress" style="width:88%"></div>
+            </div>
+            <span class="b-muted b-label">88% proficiency</span>
+          </div>
+        </div>
+
+        <!-- DevOps -->
+        <div class="b-card b-card-accent" data-tilt data-tilt-max="6" data-reveal="slide-up" data-delay="200">
+          <div class="b-card-header">
+            <span class="b-mono b-accent b-label">DEVOPS</span>
+            <h3 class="b-card-title">Platform &amp; Cloud</h3>
+          </div>
+          <div class="b-chip-group">
+            <span class="b-chip">Kubernetes</span>
+            <span class="b-chip">Terraform</span>
+            <span class="b-chip">Prometheus</span>
+            <span class="b-chip">Grafana</span>
+            <span class="b-chip">OpenTelemetry</span>
+            <span class="b-chip">ArgoCD</span>
+          </div>
+          <div class="b-card-footer">
+            <div class="b-meter">
+              <div class="b-progress" style="width:80%"></div>
+            </div>
+            <span class="b-muted b-label">80% proficiency</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="b-separator"></div>
+
+  <!-- PROJECTS -->
+  <section class="b-section" id="projects">
+    <div class="b-container">
+      <div class="b-stack b-gap-2" data-reveal="slide-up">
+        <span class="b-label b-accent">// 02</span>
+        <h2 class="b-h1">Projects</h2>
+        <p class="b-body b-muted">Open-source systems software I've shipped and maintain.</p>
+      </div>
+
+      <div class="b-grid b-grid-3 b-mt-8 b-gap-4">
+
+        <!-- Project 1 -->
+        <div class="b-card" data-reveal="slide-up" data-delay="0">
+          <div class="b-card-header">
+            <div class="b-between">
+              <span class="b-mono b-label b-accent">ferroxide</span>
+              <span class="b-badge b-badge-success">Active</span>
+            </div>
+            <h3 class="b-card-title">Ferroxide</h3>
+            <p class="b-card-desc">A zero-copy HTTP/3 reverse proxy written in Rust. Handles 500k req/s on a single core using io_uring and custom memory arenas.</p>
+          </div>
+          <div class="b-chip-group">
+            <span class="b-chip">Rust</span>
+            <span class="b-chip">io_uring</span>
+            <span class="b-chip">QUIC</span>
+            <span class="b-chip">HTTP/3</span>
+          </div>
+          <div class="b-card-footer b-between">
+            <div class="b-flex b-gap-2">
+              <span class="b-badge">⭐ 2.4k</span>
+              <span class="b-badge">🍴 187</span>
+            </div>
+            <a href="#" class="b-btn b-btn-ghost b-btn-sm">GitHub →</a>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="b-card" data-reveal="slide-up" data-delay="100">
+          <div class="b-card-header">
+            <div class="b-between">
+              <span class="b-mono b-label b-accent">wasm-bridge</span>
+              <span class="b-badge b-badge-info">Stable</span>
+            </div>
+            <h3 class="b-card-title">wasm-bridge</h3>
+            <p class="b-card-desc">Type-safe host↔guest FFI bindings generator for WASI components. Eliminates boilerplate and runtime panics from unsafe pointer juggling.</p>
+          </div>
+          <div class="b-chip-group">
+            <span class="b-chip">Rust</span>
+            <span class="b-chip">WebAssembly</span>
+            <span class="b-chip">WASI</span>
+            <span class="b-chip">proc-macro</span>
+          </div>
+          <div class="b-card-footer b-between">
+            <div class="b-flex b-gap-2">
+              <span class="b-badge">⭐ 891</span>
+              <span class="b-badge">🍴 64</span>
+            </div>
+            <a href="#" class="b-btn b-btn-ghost b-btn-sm">GitHub →</a>
+          </div>
+        </div>
+
+        <!-- Project 3 -->
+        <div class="b-card" data-reveal="slide-up" data-delay="200">
+          <div class="b-card-header">
+            <div class="b-between">
+              <span class="b-mono b-label b-accent">pixeldb</span>
+              <span class="b-badge b-badge-warning">Beta</span>
+            </div>
+            <h3 class="b-card-title">PixelDB</h3>
+            <p class="b-card-desc">Embedded time-series database for edge nodes. LSM-tree storage with Bloom filters, targeting IoT devices with &lt;512KB RAM.</p>
+          </div>
+          <div class="b-chip-group">
+            <span class="b-chip">Rust</span>
+            <span class="b-chip">no_std</span>
+            <span class="b-chip">LSM-tree</span>
+            <span class="b-chip">Embedded</span>
+          </div>
+          <div class="b-card-footer b-between">
+            <div class="b-flex b-gap-2">
+              <span class="b-badge">⭐ 334</span>
+              <span class="b-badge">🍴 29</span>
+            </div>
+            <a href="#" class="b-btn b-btn-ghost b-btn-sm">GitHub →</a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="b-center b-mt-8" data-reveal="fade">
+        <a href="https://github.com/kainakamura" class="b-btn b-btn-outline">View all on GitHub</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="b-separator"></div>
+
+  <!-- EXPERIENCE TIMELINE -->
+  <section class="b-section" id="experience">
+    <div class="b-container">
+      <div class="b-stack b-gap-2" data-reveal="slide-up">
+        <span class="b-label b-accent">// 03</span>
+        <h2 class="b-h1">Experience</h2>
+        <p class="b-body b-muted">Where I've built things that survived production.</p>
+      </div>
+
+      <div class="b-timeline b-mt-8">
+
+        <div class="b-timeline-item" data-reveal="slide-left" data-delay="0">
+          <div class="b-card">
+            <div class="b-card-header">
+              <div class="b-between">
+                <h3 class="b-card-title">Staff Systems Engineer</h3>
+                <span class="b-badge b-badge-success">Current</span>
+              </div>
+              <p class="b-accent b-mono b-label">Meridian Systems · Remote</p>
+              <p class="b-muted b-label">2023 – Present</p>
+            </div>
+            <p class="b-card-desc">Lead the infrastructure platform team (8 engineers). Rewrote the data ingestion pipeline in Rust, cutting p99 latency from 420ms to 18ms. Introduced eBPF-based observability replacing a legacy agent fleet.</p>
+            <div class="b-chip-group">
+              <span class="b-chip">Rust</span>
+              <span class="b-chip">eBPF</span>
+              <span class="b-chip">Kubernetes</span>
+              <span class="b-chip">Kafka</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="b-timeline-item" data-reveal="slide-left" data-delay="100">
+          <div class="b-card">
+            <div class="b-card-header">
+              <h3 class="b-card-title">Senior Backend Engineer</h3>
+              <p class="b-accent b-mono b-label">Helix Protocol · San Francisco</p>
+              <p class="b-muted b-label">2020 – 2023</p>
+            </div>
+            <p class="b-card-desc">Built the matching engine for a DeFi exchange processing $4B daily volume. Designed the CRDT-based order book replication achieving sub-millisecond consistency across 3 regions.</p>
+            <div class="b-chip-group">
+              <span class="b-chip">Rust</span>
+              <span class="b-chip">CRDT</span>
+              <span class="b-chip">gRPC</span>
+              <span class="b-chip">Redis</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="b-timeline-item" data-reveal="slide-left" data-delay="200">
+          <div class="b-card">
+            <div class="b-card-header">
+              <h3 class="b-card-title">Systems Software Engineer</h3>
+              <p class="b-accent b-mono b-label">Cloudex · Tokyo</p>
+              <p class="b-muted b-label">2018 – 2020</p>
+            </div>
+            <p class="b-card-desc">Developed a custom memory allocator for real-time networking software on embedded Linux. Contributed upstream patches to the Tokio runtime's scheduler reducing context-switch overhead by 12%.</p>
+            <div class="b-chip-group">
+              <span class="b-chip">C</span>
+              <span class="b-chip">Rust</span>
+              <span class="b-chip">Linux</span>
+              <span class="b-chip">Embedded</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="b-separator"></div>
+
+  <!-- OPEN SOURCE / TESTIMONIALS -->
+  <section class="b-section">
+    <div class="b-container">
+      <div class="b-stack b-gap-2" data-reveal="slide-up">
+        <span class="b-label b-accent">// 04</span>
+        <h2 class="b-h1">What people say</h2>
+      </div>
+      <div class="b-grid b-grid-2 b-mt-8 b-gap-4">
+
+        <div class="b-testimonial" data-reveal="fade" data-delay="0">
+          <p class="b-body">"Kai's PR reducing allocator contention in our hot path was surgical. Merged same day — the kind of change that makes reviewers want to buy you a coffee."</p>
+          <div class="b-flex b-gap-4 b-mt-4">
+            <div class="b-avatar">TS</div>
+            <div>
+              <p class="b-label">Tomas Svensson</p>
+              <p class="b-muted b-label">Maintainer, tokio-rs</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="b-testimonial" data-reveal="fade" data-delay="150">
+          <p class="b-body">"We hired Kai to audit our network stack. He found three silent data races that had evaded our entire QA process for 18 months. Absolute professional."</p>
+          <div class="b-flex b-gap-4 b-mt-4">
+            <div class="b-avatar">AL</div>
+            <div>
+              <p class="b-label">Amara Levi</p>
+              <p class="b-muted b-label">CTO, Helix Protocol</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="b-separator"></div>
+
+  <!-- CONTACT -->
+  <section class="b-section" id="contact">
+    <div class="b-container">
+      <div class="b-grid b-grid-2 b-gap-8">
+
+        <div class="b-stack b-gap-4" data-reveal="slide-up">
+          <span class="b-label b-accent">// 05</span>
+          <h2 class="b-h1">Get in Touch</h2>
+          <p class="b-body b-muted">I'm open to consulting engagements, advisory roles, and the occasional interesting full-time opportunity. Response time: under 48h.</p>
+          <div class="b-list">
+            <div class="b-list-item">
+              <span class="b-mono b-accent">email</span>
+              <span class="b-body">kai@nakamura.dev</span>
+            </div>
+            <div class="b-list-item">
+              <span class="b-mono b-accent">github</span>
+              <span class="b-body">github.com/kainakamura</span>
+            </div>
+            <div class="b-list-item">
+              <span class="b-mono b-accent">mastodon</span>
+              <span class="b-body">@kai@hachyderm.io</span>
+            </div>
+            <div class="b-list-item">
+              <span class="b-mono b-accent">timezone</span>
+              <span class="b-body">JST / UTC+9</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="b-card" data-reveal="slide-up" data-delay="150">
+          <div class="b-card-header">
+            <h3 class="b-card-title">Send a message</h3>
+            <p class="b-card-desc">No recruiters for CRUD roles please.</p>
+          </div>
+          <form class="b-stack b-gap-4">
+            <div class="b-grid b-grid-2 b-gap-4">
+              <div class="b-field">
+                <label class="b-label" for="name">Name</label>
+                <input class="b-input" id="name" type="text" placeholder="Ada Lovelace">
+              </div>
+              <div class="b-field">
+                <label class="b-label" for="email">Email</label>
+                <input class="b-input" id="email" type="email" placeholder="ada@example.com">
+              </div>
+            </div>
+            <div class="b-field">
+              <label class="b-label" for="subject">Subject</label>
+              <select class="b-select" id="subject">
+                <option>Consulting engagement</option>
+                <option>Open source collaboration</option>
+                <option>Speaking / conference</option>
+                <option>Advisory role</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="b-field">
+              <label class="b-label" for="message">Message</label>
+              <textarea class="b-textarea" id="message" rows="5" placeholder="Tell me about the problem you're trying to solve..."></textarea>
+            </div>
+            <button type="submit" class="b-btn b-btn-primary b-btn-lg" data-magnetic>Send Message</button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="b-footer">
+    <div class="b-container">
+      <div class="b-between b-flex">
+        <div class="b-stack b-gap-2">
+          <span class="b-mono b-accent">kai@nakamura:~$ _</span>
+          <p class="b-muted b-label">Built with boom-cdn · terminal-green theme · No frameworks harmed.</p>
+        </div>
+        <div class="b-flex b-gap-4">
+          <a href="https://github.com/kainakamura" class="b-btn b-btn-ghost b-btn-sm">GitHub</a>
+          <a href="https://hachyderm.io/@kai" class="b-btn b-btn-ghost b-btn-sm">Mastodon</a>
+          <a href="https://crates.io/users/kainakamura" class="b-btn b-btn-ghost b-btn-sm">crates.io</a>
+        </div>
+      </div>
+      <div class="b-separator b-mt-4"></div>
+      <p class="b-muted b-label b-center b-mt-4">© 2026 Kai Nakamura. All rights reserved. Opinions are my own and definitely not my employer's.</p>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vanta Analytics — Dashboard</title>
+  <link rel="stylesheet" href="https://boom-cdn.vercel.app/themes/obsidian-velvet.css" />
+  <script src="https://boom-cdn.vercel.app/themes/motion.js" defer></script>
+  <style>
+    .app-shell {
+      display: flex;
+      min-height: 100vh;
+    }
+    .app-main {
+      flex: 1;
+      min-width: 0;
+      overflow-y: auto;
+    }
+  </style>
+</head>
+<body class="boom">
+
+  <div class="app-shell">
+
+    <!-- Sidebar -->
+    <nav class="b-sidebar">
+      <div class="b-card-header b-between b-p-4">
+        <span class="b-h5 b-accent">Vanta</span>
+        <span class="b-badge b-badge-info">Pro</span>
+      </div>
+
+      <div class="b-stack b-p-4">
+        <span class="b-label b-muted">Main</span>
+        <a href="#" class="b-list-item b-accent">
+          <span>Overview</span>
+        </a>
+        <a href="#" class="b-list-item">
+          <span>Traffic</span>
+        </a>
+        <a href="#" class="b-list-item">
+          <span>Conversions</span>
+        </a>
+        <a href="#" class="b-list-item">
+          <span>Revenue</span>
+        </a>
+      </div>
+
+      <div class="b-stack b-p-4">
+        <span class="b-label b-muted">Reports</span>
+        <a href="#" class="b-list-item">
+          <span>Funnel Analysis</span>
+        </a>
+        <a href="#" class="b-list-item">
+          <span>Cohorts</span>
+        </a>
+        <a href="#" class="b-list-item">
+          <span>Retention</span>
+        </a>
+        <a href="#" class="b-list-item">
+          <span>Attribution</span>
+        </a>
+      </div>
+
+      <div class="b-stack b-p-4">
+        <span class="b-label b-muted">Settings</span>
+        <a href="#" class="b-list-item">
+          <span>Integrations</span>
+        </a>
+        <a href="#" class="b-list-item">
+          <span>Team</span>
+        </a>
+        <a href="#" class="b-list-item">
+          <span>Billing</span>
+        </a>
+      </div>
+
+      <div class="b-p-4">
+        <div class="b-flex b-gap-2">
+          <div class="b-avatar">ZL</div>
+          <div class="b-stack">
+            <span class="b-label">Zach Liu</span>
+            <span class="b-muted b-subtle">Admin</span>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main content -->
+    <div class="app-main b-p-8">
+
+      <!-- Top alert / banner -->
+      <div data-reveal="slide-up" data-delay="0">
+        <div class="b-alert b-alert-info b-between b-mb-4">
+          <span>New attribution model available — <strong>Data-Driven Attribution</strong> is now in beta for all Pro accounts.</span>
+          <button class="b-btn b-btn-sm b-btn-outline">Enable</button>
+        </div>
+      </div>
+
+      <!-- Page heading -->
+      <div data-reveal="slide-up" data-delay="80">
+        <div class="b-between b-mb-4">
+          <div>
+            <h1 class="b-h1">Overview</h1>
+            <p class="b-muted">March 1 – March 18, 2026 &nbsp;·&nbsp; All channels</p>
+          </div>
+          <div class="b-btn-group">
+            <button class="b-btn b-btn-ghost b-btn-sm">7D</button>
+            <button class="b-btn b-btn-primary b-btn-sm">18D</button>
+            <button class="b-btn b-btn-ghost b-btn-sm">30D</button>
+            <button class="b-btn b-btn-ghost b-btn-sm">90D</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stats row -->
+      <div class="b-grid-4 b-gap-4" data-reveal="slide-up" data-delay="120">
+
+        <div class="b-card b-card-accent">
+          <div class="b-stat">
+            <span class="b-label b-muted">Total Sessions</span>
+            <span class="b-stat-value">
+              <span data-count data-target="482310" data-duration="1800"></span>
+            </span>
+            <span class="b-badge b-badge-success">+12.4%</span>
+          </div>
+        </div>
+
+        <div class="b-card">
+          <div class="b-stat">
+            <span class="b-label b-muted">Unique Users</span>
+            <span class="b-stat-value">
+              <span data-count data-target="139857" data-duration="1800"></span>
+            </span>
+            <span class="b-badge b-badge-success">+8.1%</span>
+          </div>
+        </div>
+
+        <div class="b-card">
+          <div class="b-stat">
+            <span class="b-label b-muted">Conversion Rate</span>
+            <span class="b-stat-value">
+              <span data-count data-target="347" data-duration="1800" data-suffix="%">
+              </span>
+            </span>
+            <span class="b-badge b-badge-warning">-0.3%</span>
+          </div>
+        </div>
+
+        <div class="b-card">
+          <div class="b-stat">
+            <span class="b-label b-muted">MRR</span>
+            <span class="b-stat-value">
+              $<span data-count data-target="94200" data-duration="1800"></span>
+            </span>
+            <span class="b-badge b-badge-success">+21.7%</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Acquisition channels + progress -->
+      <div class="b-grid-2 b-gap-4 b-mt-4" data-reveal="slide-up" data-delay="160">
+
+        <div class="b-card">
+          <div class="b-card-header">
+            <span class="b-card-title">Acquisition Channels</span>
+            <span class="b-badge b-badge-info">Live</span>
+          </div>
+          <div class="b-stack b-p-4">
+
+            <div>
+              <div class="b-between b-mb-2">
+                <span class="b-body">Organic Search</span>
+                <span class="b-mono">38%</span>
+              </div>
+              <div class="b-progress">
+                <div class="b-progress-bar" style="width:38%"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="b-between b-mb-2">
+                <span class="b-body">Direct</span>
+                <span class="b-mono">24%</span>
+              </div>
+              <div class="b-progress">
+                <div class="b-progress-bar" style="width:24%"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="b-between b-mb-2">
+                <span class="b-body">Paid Social</span>
+                <span class="b-mono">19%</span>
+              </div>
+              <div class="b-progress">
+                <div class="b-progress-bar" style="width:19%"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="b-between b-mb-2">
+                <span class="b-body">Email</span>
+                <span class="b-mono">12%</span>
+              </div>
+              <div class="b-progress">
+                <div class="b-progress-bar" style="width:12%"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="b-between b-mb-2">
+                <span class="b-body">Referral</span>
+                <span class="b-mono">7%</span>
+              </div>
+              <div class="b-progress">
+                <div class="b-progress-bar" style="width:7%"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="b-card">
+          <div class="b-card-header">
+            <span class="b-card-title">Goal Completion</span>
+            <span class="b-badge">Q1 2026</span>
+          </div>
+          <div class="b-stack b-p-4">
+
+            <div>
+              <div class="b-between b-mb-2">
+                <span class="b-body">Monthly Active Users</span>
+                <span class="b-mono">72 / 100k</span>
+              </div>
+              <div class="b-progress">
+                <div class="b-progress-bar" style="width:72%"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="b-between b-mb-2">
+                <span class="b-body">Revenue Target</span>
+                <span class="b-mono">94 / 120k</span>
+              </div>
+              <div class="b-progress">
+                <div class="b-progress-bar" style="width:78%"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="b-between b-mb-2">
+                <span class="b-body">NPS Score</span>
+                <span class="b-mono">61 / 80</span>
+              </div>
+              <div class="b-progress">
+                <div class="b-progress-bar" style="width:76%"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="b-between b-mb-2">
+                <span class="b-body">Support CSAT</span>
+                <span class="b-mono">4.6 / 5.0</span>
+              </div>
+              <div class="b-progress">
+                <div class="b-progress-bar" style="width:92%"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="b-between b-mb-2">
+                <span class="b-body">Churn Rate Goal</span>
+                <span class="b-mono">2.1% / &lt;2%</span>
+              </div>
+              <div class="b-progress">
+                <div class="b-progress-bar" style="width:88%"></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Top pages table -->
+      <div class="b-mt-4" data-reveal="slide-up" data-delay="200">
+        <div class="b-card">
+          <div class="b-card-header b-between">
+            <span class="b-card-title">Top Pages</span>
+            <div class="b-flex b-gap-2">
+              <span class="b-badge">Last 18 days</span>
+              <button class="b-btn b-btn-sm b-btn-ghost">Export</button>
+            </div>
+          </div>
+          <div class="b-table-wrap">
+            <table class="b-table">
+              <thead>
+                <tr>
+                  <th>Page</th>
+                  <th>Sessions</th>
+                  <th>Unique Views</th>
+                  <th>Avg. Time</th>
+                  <th>Bounce Rate</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="b-mono">/</span></td>
+                  <td>82,441</td>
+                  <td>61,209</td>
+                  <td>2m 14s</td>
+                  <td>34.2%</td>
+                  <td><span class="b-badge b-badge-success">Healthy</span></td>
+                </tr>
+                <tr>
+                  <td><span class="b-mono">/pricing</span></td>
+                  <td>44,882</td>
+                  <td>40,117</td>
+                  <td>3m 42s</td>
+                  <td>22.7%</td>
+                  <td><span class="b-badge b-badge-success">Healthy</span></td>
+                </tr>
+                <tr>
+                  <td><span class="b-mono">/docs/quickstart</span></td>
+                  <td>38,560</td>
+                  <td>35,901</td>
+                  <td>5m 09s</td>
+                  <td>18.4%</td>
+                  <td><span class="b-badge b-badge-info">Trending</span></td>
+                </tr>
+                <tr>
+                  <td><span class="b-mono">/blog/product-update</span></td>
+                  <td>29,340</td>
+                  <td>27,800</td>
+                  <td>4m 55s</td>
+                  <td>28.1%</td>
+                  <td><span class="b-badge b-badge-info">Trending</span></td>
+                </tr>
+                <tr>
+                  <td><span class="b-mono">/signup</span></td>
+                  <td>21,090</td>
+                  <td>20,800</td>
+                  <td>1m 38s</td>
+                  <td>41.9%</td>
+                  <td><span class="b-badge b-badge-warning">Review</span></td>
+                </tr>
+                <tr>
+                  <td><span class="b-mono">/integrations</span></td>
+                  <td>17,220</td>
+                  <td>15,440</td>
+                  <td>3m 22s</td>
+                  <td>26.6%</td>
+                  <td><span class="b-badge b-badge-success">Healthy</span></td>
+                </tr>
+                <tr>
+                  <td><span class="b-mono">/changelog</span></td>
+                  <td>12,710</td>
+                  <td>11,980</td>
+                  <td>2m 48s</td>
+                  <td>32.3%</td>
+                  <td><span class="b-badge b-badge-success">Healthy</span></td>
+                </tr>
+                <tr>
+                  <td><span class="b-mono">/api/reference</span></td>
+                  <td>9,403</td>
+                  <td>8,770</td>
+                  <td>7m 11s</td>
+                  <td>12.1%</td>
+                  <td><span class="b-badge b-badge-error">Degraded</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recent events + team activity -->
+      <div class="b-grid-2 b-gap-4 b-mt-4" data-reveal="slide-up" data-delay="240">
+
+        <!-- Timeline -->
+        <div class="b-card">
+          <div class="b-card-header">
+            <span class="b-card-title">Recent Events</span>
+          </div>
+          <div class="b-p-4">
+            <ul class="b-timeline">
+              <li>
+                <span class="b-badge b-badge-success">Deploy</span>
+                <span class="b-body">v2.14.0 shipped to production</span>
+                <span class="b-muted b-subtle">2 hours ago</span>
+              </li>
+              <li>
+                <span class="b-badge b-badge-info">Alert</span>
+                <span class="b-body">P95 latency spike on /api/events — resolved</span>
+                <span class="b-muted b-subtle">6 hours ago</span>
+              </li>
+              <li>
+                <span class="b-badge b-badge-warning">Review</span>
+                <span class="b-body">Funnel drop on checkout step 3 detected</span>
+                <span class="b-muted b-subtle">Yesterday</span>
+              </li>
+              <li>
+                <span class="b-badge b-badge-success">Goal</span>
+                <span class="b-body">100k sessions milestone reached</span>
+                <span class="b-muted b-subtle">2 days ago</span>
+              </li>
+              <li>
+                <span class="b-badge b-badge-info">Integration</span>
+                <span class="b-body">HubSpot sync enabled for lead scoring</span>
+                <span class="b-muted b-subtle">4 days ago</span>
+              </li>
+              <li>
+                <span class="b-badge b-badge-error">Incident</span>
+                <span class="b-body">Segment webhook delivery failure — recovered</span>
+                <span class="b-muted b-subtle">6 days ago</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Team activity -->
+        <div class="b-card">
+          <div class="b-card-header">
+            <span class="b-card-title">Team Activity</span>
+          </div>
+          <div class="b-stack b-p-4">
+
+            <div class="b-flex b-gap-2 b-between">
+              <div class="b-flex b-gap-2">
+                <div class="b-avatar">AL</div>
+                <div>
+                  <span class="b-label">Aisha Lin</span><br />
+                  <span class="b-muted b-subtle">Created "Q1 Retention" report</span>
+                </div>
+              </div>
+              <span class="b-badge">1h ago</span>
+            </div>
+
+            <div class="b-separator"></div>
+
+            <div class="b-flex b-gap-2 b-between">
+              <div class="b-flex b-gap-2">
+                <div class="b-avatar">MK</div>
+                <div>
+                  <span class="b-label">Marcus Kim</span><br />
+                  <span class="b-muted b-subtle">Edited attribution model settings</span>
+                </div>
+              </div>
+              <span class="b-badge">3h ago</span>
+            </div>
+
+            <div class="b-separator"></div>
+
+            <div class="b-flex b-gap-2 b-between">
+              <div class="b-flex b-gap-2">
+                <div class="b-avatar">SR</div>
+                <div>
+                  <span class="b-label">Sofia Reyes</span><br />
+                  <span class="b-muted b-subtle">Exported cohort CSV for March</span>
+                </div>
+              </div>
+              <span class="b-badge">5h ago</span>
+            </div>
+
+            <div class="b-separator"></div>
+
+            <div class="b-flex b-gap-2 b-between">
+              <div class="b-flex b-gap-2">
+                <div class="b-avatar">JT</div>
+                <div>
+                  <span class="b-label">Jake Torres</span><br />
+                  <span class="b-muted b-subtle">Added Stripe webhook integration</span>
+                </div>
+              </div>
+              <span class="b-badge">Yesterday</span>
+            </div>
+
+            <div class="b-separator"></div>
+
+            <div class="b-flex b-gap-2 b-between">
+              <div class="b-flex b-gap-2">
+                <div class="b-avatar">PW</div>
+                <div>
+                  <span class="b-label">Priya Wu</span><br />
+                  <span class="b-muted b-subtle">Invited 2 new team members</span>
+                </div>
+              </div>
+              <span class="b-badge">2 days ago</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Feature card grid -->
+      <div class="b-mt-4" data-reveal="slide-up" data-delay="280">
+        <div class="b-between b-mb-4">
+          <h2 class="b-h5">Active Campaigns</h2>
+          <button class="b-btn b-btn-outline b-btn-sm">View all</button>
+        </div>
+        <div class="b-grid-4 b-gap-4">
+
+          <div class="b-card" data-tilt data-tilt-max="5">
+            <div class="b-card-header">
+              <span class="b-card-title">Spring Launch</span>
+              <span class="b-badge b-badge-success">Active</span>
+            </div>
+            <div class="b-card-desc b-p-4">
+              <p class="b-muted">Paid Search — Google Ads</p>
+              <div class="b-stat">
+                <span class="b-label b-muted">Spend</span>
+                <span class="b-stat-value">$12,400</span>
+              </div>
+              <div class="b-progress b-mt-2">
+                <div class="b-progress-bar" style="width:62%"></div>
+              </div>
+              <span class="b-muted b-subtle">62% of budget used</span>
+            </div>
+          </div>
+
+          <div class="b-card" data-tilt data-tilt-max="5">
+            <div class="b-card-header">
+              <span class="b-card-title">Onboarding Email</span>
+              <span class="b-badge b-badge-info">Scheduled</span>
+            </div>
+            <div class="b-card-desc b-p-4">
+              <p class="b-muted">Email — Drip sequence</p>
+              <div class="b-stat">
+                <span class="b-label b-muted">Open Rate</span>
+                <span class="b-stat-value">41.2%</span>
+              </div>
+              <div class="b-progress b-mt-2">
+                <div class="b-progress-bar" style="width:41%"></div>
+              </div>
+              <span class="b-muted b-subtle">8 of 12 emails sent</span>
+            </div>
+          </div>
+
+          <div class="b-card" data-tilt data-tilt-max="5">
+            <div class="b-card-header">
+              <span class="b-card-title">Retargeting — IG</span>
+              <span class="b-badge b-badge-warning">Paused</span>
+            </div>
+            <div class="b-card-desc b-p-4">
+              <p class="b-muted">Paid Social — Instagram</p>
+              <div class="b-stat">
+                <span class="b-label b-muted">ROAS</span>
+                <span class="b-stat-value">3.1×</span>
+              </div>
+              <div class="b-progress b-mt-2">
+                <div class="b-progress-bar" style="width:84%"></div>
+              </div>
+              <span class="b-muted b-subtle">84% of budget used</span>
+            </div>
+          </div>
+
+          <div class="b-card" data-tilt data-tilt-max="5">
+            <div class="b-card-header">
+              <span class="b-card-title">Partner Referral</span>
+              <span class="b-badge b-badge-success">Active</span>
+            </div>
+            <div class="b-card-desc b-p-4">
+              <p class="b-muted">Referral — Partner portal</p>
+              <div class="b-stat">
+                <span class="b-label b-muted">New Signups</span>
+                <span class="b-stat-value">1,840</span>
+              </div>
+              <div class="b-progress b-mt-2">
+                <div class="b-progress-bar" style="width:48%"></div>
+              </div>
+              <span class="b-muted b-subtle">48% of goal reached</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Footer -->
+      <div class="b-mt-8 b-center b-muted b-subtle b-p-4">
+        Vanta Analytics &nbsp;·&nbsp; v2.14.0 &nbsp;·&nbsp; &copy; 2026
+      </div>
+
+    </div><!-- /app-main -->
+
+  </div><!-- /app-shell -->
+
+</body>
+</html>
