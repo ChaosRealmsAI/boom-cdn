@@ -82,11 +82,55 @@ SR.init({ steps, animations, audioDir, title, meta, device });
 Methods: `SR.$(id)` `SR.wait(ms)` `SR.showSub(text)` `SR.hideSub()` `SR.playAudio(id)` `SR.glow(el)` `SR.unglow(el)` `SR.showScreen(id)` `SR.highlight(el, ms)` `SR.center(el)`
 Keys: Space=play, ←→=nav, M=mute, R=read-mode, Esc=exit
 
-## Full Docs
+## All Public Endpoints
 
-Complete API documentation: https://boom-cdn.vercel.app/docs.md
-Theme catalog (JSON): https://boom-cdn.vercel.app/themes/catalog.json
-Component source: https://boom-cdn.vercel.app/themes/base.css
+Base: `https://boom-cdn.vercel.app`
+
+### Discovery (AI reads these first)
+| Path | Type | Purpose |
+|------|------|---------|
+| `/llms.txt` | text | This file — AI entry point, progressive disclosure |
+| `/docs.md` | markdown | Full API documentation for all modules |
+| `/themes/catalog.json` | JSON | Machine-readable theme registry (id, css url, accent, group, demo) |
+
+### Themes (pick one, it auto-imports base.css)
+| Path | Description |
+|------|-------------|
+| `/themes/{id}.css` | Theme file — colors, fonts, radius. IDs: neo-tokyo, obsidian-velvet, matte-carbon, terminal-green, ocean-depth, copper-industrial, emerald-dynasty, aurora-gradient, frost-glass, golden-luxury, ink-editorial, forest-zen, champagne-silk, soft-pastel, swiss-minimal, candy-pop, zen-ink, brutalist |
+| `/themes/base.css` | Component framework — 50+ classes, layout, typography, utilities. Do NOT link directly — theme files import it automatically |
+| `/themes/motion.js` | Motion engine — scroll reveal, typewriter, counter, marquee, parallax, tilt, magnetic. Optional, add via `<script defer>` |
+
+### Engine (walkthrough narrator)
+| Path | Description |
+|------|-------------|
+| `/engine/engine.css` | Walkthrough styles — step bar, subtitle, highlight overlay |
+| `/engine/engine.js` | Walkthrough runtime — SR.init(), SR.glow(), SR.playAudio() etc |
+
+### Presenter (slide deck)
+| Path | Description |
+|------|-------------|
+| `/presenter/presenter.css` | Slide presenter styles |
+| `/presenter/presenter.js` | Slide presenter runtime |
+| `/presenter/comments.css` | Comment overlay styles (optional) |
+| `/presenter/comments.js` | Comment overlay runtime (optional) |
+
+### Viewer (templates — curl and customize)
+| Path | Description |
+|------|-------------|
+| `/viewer/keyframe-viewer.css` | Keyframe viewer styles |
+| `/viewer/keyframe-viewer.js` | Keyframe viewer runtime |
+| `/viewer/keyframe-viewer.html` | Keyframe viewer template — clone and edit |
+| `/viewer/manifesto-viewer.html` | Manifesto renderer — put manifesto.json in same dir |
+| `/viewer/version-index.html` | Version navigation page template |
+
+### Demos (reference implementations)
+| Path | Description |
+|------|-------------|
+| `/demo/index.html` | Theme switcher — live preview all 18 themes |
+| `/demo/{theme-id}.html` | Per-theme showcase (8 themes have demos) |
+| `/dogfood/saas-landing.html` | SaaS landing page (frost-glass theme) |
+| `/dogfood/dev-portfolio.html` | Developer portfolio (terminal-green theme) |
+| `/dogfood/dashboard.html` | Analytics dashboard (obsidian-velvet theme) |
 
 ## Common Pitfalls
 
