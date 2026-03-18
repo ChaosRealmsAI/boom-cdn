@@ -2,7 +2,7 @@
    Keyframe Viewer — 公共 CSS
    导入方式：
    <style>:root { --accent: #58a6ff; ... }</style>
-   <link rel="stylesheet" href="/Users/Zhuanz/.claude/skills/shared-framework/keyframe-viewer.css">
+   <link rel="stylesheet" href="https://boom-cdn.vercel.app/viewer/keyframe-viewer.css">
    <style>/* 页面专用 CSS */</style>
    ======================================================== */
 

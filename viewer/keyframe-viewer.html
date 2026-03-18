@@ -1,0 +1,45 @@
+<!-- ========================================================
+     Keyframe Viewer — 公共 HTML 骨架
+     用于：原型图、流程图等所有逐帧讲解式页面
+     使用方式：复制本骨架，填 3 个区域
+     ======================================================== -->
+<!-- 注意：最终输出是单文件，CSS/JS 要内嵌，不能引用外部文件 -->
+
+<!-- ===== 固定骨架 ===== -->
+<div class="topbar">
+  <div class="topbar-title"><!-- ① 项目名 --> — <!-- ② 页面类型 --> · 逐帧讲解</div>
+  <div class="topbar-nav">
+    <button id="prevFrameBtn">← 上一步</button>
+    <span class="counter" id="counter"></span>
+    <button id="nextBtn" class="primary">下一步 →</button>
+  </div>
+</div>
+<div class="progress"><div class="progress-fill" id="progressFill"></div></div>
+
+<div class="main">
+  <!-- 左侧：画面区 -->
+  <div class="view-panel">
+    <!-- ===== 填空区 A：画面内容 =====
+         原型图模式：放 .term 壳 + .slide 们
+         流程图模式：放 mermaid 容器（无壳）
+    -->
+
+    <!-- 高亮框（固定） -->
+    <div class="highlight-ring" id="hlRing"></div>
+    <div class="highlight-label" id="hlLabel"></div>
+  </div>
+
+  <!-- 右侧：说明面板（固定） -->
+  <div class="desc-panel">
+    <div class="desc-header">
+      <span class="tag" id="descTag"></span>
+      <h2 id="descTitle"></h2>
+      <div class="frame-info" id="descInfo"></div>
+    </div>
+    <div class="notes" id="notesList"></div>
+    <div class="desc-footer">
+      <div class="step-dots" id="stepDots"></div>
+      <span style="font-size:11px;color:var(--text-muted)" id="navHint">Space / → 下一步</span>
+    </div>
+  </div>
+</div>

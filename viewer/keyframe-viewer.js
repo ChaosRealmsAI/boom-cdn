@@ -2,7 +2,7 @@
    Keyframe Viewer — 公共 JS
    导入方式：
    <script> const frames = [...]; </script>
-   <script src="/Users/Zhuanz/.claude/skills/shared-framework/keyframe-viewer.js"></script>
+   <script src="https://boom-cdn.vercel.app/viewer/keyframe-viewer.js"></script>
 
    前置要求：
    - 全局变量 frames 已定义
