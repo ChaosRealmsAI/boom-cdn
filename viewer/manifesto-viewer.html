@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>项目宪法 · Manifesto</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:#0d1117;color:#e6e6e6;font-family:'Menlo','SF Mono','Consolas',monospace;min-height:100vh;overflow-x:hidden}
+
+/* Topbar */
+.topbar{position:sticky;top:0;z-index:100;display:flex;justify-content:center;align-items:center;padding:16px 24px;background:rgba(13,17,23,.92);backdrop-filter:blur(12px);border-bottom:1px solid #30363d}
+.topbar-title{font-size:15px;color:#8b949e;letter-spacing:.5px}
+.topbar-title span{color:#58a6ff;font-weight:700}
+.topbar-sub{font-size:11px;color:#484f58;margin-left:12px;letter-spacing:1px;text-transform:uppercase}
+
+/* Canvas */
+.canvas{position:relative;width:100%;max-width:1200px;margin:0 auto;padding:40px 24px 80px}
+
+/* Legend */
+.legend{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-bottom:36px;padding:16px;background:#161b22;border-radius:10px;border:1px solid #21262d}
+.legend-item{display:flex;align-items:center;gap:8px;font-size:11px;color:#8b949e}
+.legend-dot{width:10px;height:10px;border-radius:3px}
+.legend-hint{font-size:11px;color:#484f58;text-align:center;margin-bottom:24px;letter-spacing:.3px}
+
+/* Layer */
+.layer{position:relative;z-index:1;margin-bottom:48px}
+.layer:last-child{margin-bottom:0}
+.layer-label{display:flex;align-items:center;gap:12px;margin-bottom:20px;padding-left:4px}
+.layer-badge{font-size:10px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:4px 12px;border-radius:4px;white-space:nowrap}
+.layer-line{flex:1;height:1px;opacity:.3}
+.layer-count{font-size:11px;color:#484f58;letter-spacing:.5px}
+
+/* Layer colors */
+.layer--principles .layer-badge{color:#d29922;background:#d2992218;border:1px solid #d2992244}
+.layer--principles .layer-line{background:linear-gradient(90deg,#d29922,transparent)}
+.layer--philosophy .layer-badge{color:#a371f7;background:#a371f718;border:1px solid #a371f744}
+.layer--philosophy .layer-line{background:linear-gradient(90deg,#a371f7,transparent)}
+.layer--guidelines .layer-badge{color:#58a6ff;background:#58a6ff18;border:1px solid #58a6ff44}
+.layer--guidelines .layer-line{background:linear-gradient(90deg,#58a6ff,transparent)}
+.layer--redlines .layer-badge{color:#3fb950;background:#3fb95018;border:1px solid #3fb95044}
+.layer--redlines .layer-line{background:linear-gradient(90deg,#3fb950,transparent)}
+
+/* Cards */
+.cards{display:flex;flex-wrap:wrap;gap:16px;justify-content:center}
+.card{position:relative;background:#161b22;border:1px solid #30363d;border-radius:10px;cursor:pointer;transition:all .25s;overflow:hidden;flex-shrink:0}
+.card:hover{border-color:#484f58;transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.4)}
+.card.expanded{border-color:#58a6ff44}
+
+/* Card sizes per layer */
+.layer--principles .card{width:520px;max-width:100%}
+.layer--philosophy .card{width:360px;max-width:100%}
+.layer--guidelines .card{width:320px;max-width:100%}
+.layer--redlines .card{width:280px;max-width:100%}
+
+/* Card accent borders */
+.layer--principles .card{border-left:3px solid #d2992244}
+.layer--principles .card:hover,.layer--principles .card.expanded{border-left-color:#d29922}
+.layer--philosophy .card{border-left:3px solid #a371f744}
+.layer--philosophy .card:hover,.layer--philosophy .card.expanded{border-left-color:#a371f7}
+.layer--guidelines .card{border-left:3px solid #58a6ff44}
+.layer--guidelines .card:hover,.layer--guidelines .card.expanded{border-left-color:#58a6ff}
+.layer--redlines .card{border-left:3px solid #3fb95044}
+.layer--redlines .card:hover,.layer--redlines .card.expanded{border-left-color:#3fb950}
+
+/* Card icon colors */
+.layer--principles .card-icon{background:#d2992220;color:#d29922}
+.layer--philosophy .card-icon{background:#a371f720;color:#a371f7}
+.layer--guidelines .card-icon{background:#58a6ff20;color:#58a6ff}
+.layer--redlines .card-icon{background:#3fb95020;color:#3fb950}
+
+/* Card header */
+.card-header{display:flex;align-items:flex-start;gap:12px;padding:16px 18px}
+.card-icon{width:36px;height:36px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
+.card-title-area{flex:1;min-width:0}
+.card-id{font-size:10px;font-weight:600;letter-spacing:1px;margin-bottom:4px;opacity:.6}
+.card-title{font-size:13px;font-weight:600;color:#f0f6fc;line-height:1.5}
+.card-expand{width:20px;height:20px;display:flex;align-items:center;justify-content:center;color:#484f58;font-size:12px;transition:transform .25s;flex-shrink:0;margin-top:2px}
+.card.expanded .card-expand{transform:rotate(180deg);color:#58a6ff}
+
+/* Card body */
+.card-body{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.card.expanded .card-body{max-height:600px}
+.card-body-inner{padding:0 18px 16px;border-top:1px solid #21262d;padding-top:14px}
+.card-desc{font-size:12px;color:#8b949e;line-height:1.7;margin-bottom:12px}
+.card-desc strong{color:#c9d1d9}
+
+/* Tags */
+.card-tags{display:flex;flex-wrap:wrap;gap:6px}
+.card-tag{font-size:10px;padding:3px 10px;border-radius:12px;letter-spacing:.3px}
+.tag-violation{color:#f85149;background:#f8514912;border:1px solid #f8514933}
+.tag-bdd{color:#58a6ff;background:#58a6ff12;border:1px solid #58a6ff33}
+.tag-source{color:#d29922;background:#d2992212;border:1px solid #d2992233}
+
+/* Connector */
+.layer-connector{display:flex;justify-content:center;align-items:center;height:48px;margin:-24px 0 -24px;position:relative;z-index:2}
+.flow-arrow{display:flex;flex-direction:column;align-items:center}
+.flow-arrow-line{width:2px;height:32px;background:linear-gradient(to bottom,#30363d,#484f58)}
+.flow-arrow-head{width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;border-top:8px solid #484f58}
+.flow-label{position:absolute;right:calc(50% - 120px);top:50%;transform:translateY(-50%);font-size:10px;color:#484f58;letter-spacing:.5px;white-space:nowrap}
+
+/* Footer */
+.footer{text-align:center;padding:40px 24px;color:#484f58;font-size:11px;letter-spacing:.5px;border-top:1px solid #21262d;margin-top:40px}
+
+/* Loading */
+.loading{text-align:center;padding:80px;color:#484f58;font-size:13px}
+
+/* Pulse for principles */
+@keyframes accentPulse{0%,100%{box-shadow:0 0 0 0 rgba(210,153,34,0)}50%{box-shadow:0 0 20px 2px rgba(210,153,34,.08)}}
+.layer--principles .card{animation:accentPulse 4s ease-in-out infinite}
+
+@media(max-width:768px){
+  .cards{flex-direction:column;align-items:stretch}
+  .card{width:100%!important;max-width:100%}
+  .canvas{padding:24px 16px 60px}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-title" id="topTitle"><span>Loading</span> — 项目宪法 · Manifesto</div>
+</div>
+
+<div class="canvas" id="canvas">
+  <div class="loading" id="loading">加载 manifesto.json ...</div>
+</div>
+
+<div class="footer">项目宪法 · Manifesto Viewer</div>
+
+<script>
+// ===== 固定层定义 =====
+var LAYERS = [
+  { key:'principles', label:'第一性原理', icon:'&#9670;', idPrefix:'P', tagLabel:'FIRST PRINCIPLE', color:'#d29922', connector:'推导出' },
+  { key:'philosophy', label:'产品理念',   icon:'&#9671;', idPrefix:'PH', tagLabel:'PHILOSOPHY', color:'#a371f7', connector:'指导' },
+  { key:'guidelines', label:'设计原则',   icon:'&#9673;', idPrefix:'G', tagLabel:'GUIDELINE', color:'#58a6ff', connector:'约束为' },
+  { key:'redlines',   label:'具体规则 / 红线', icon:'&#9679;', idPrefix:'RL', tagLabel:'REDLINE', color:'#3fb950', connector:null },
+];
+
+function toggleCard(el) {
+  el.classList.toggle('expanded');
+}
+
+function renderManifesto(data) {
+  // Update title
+  var name = data.name || data.feature || 'Project';
+  var version = data.version || '';
+  document.getElementById('topTitle').innerHTML = '<span>' + name + '</span> — 项目宪法 · Manifesto' + (version ? '<span class="topbar-sub">v' + version + '</span>' : '');
+  document.title = name + ' — 项目宪法';
+
+  var canvas = document.getElementById('canvas');
+  canvas.innerHTML = '';
+
+  // Legend
+  var legend = document.createElement('div');
+  legend.className = 'legend';
+  LAYERS.forEach(function(l) {
+    legend.innerHTML += '<div class="legend-item"><div class="legend-dot" style="background:' + l.color + '"></div>' + l.label + '</div>';
+  });
+  canvas.appendChild(legend);
+
+  var hint = document.createElement('div');
+  hint.className = 'legend-hint';
+  hint.textContent = '点击任意卡片展开详情 · Escape 折叠全部';
+  canvas.appendChild(hint);
+
+  // Render layers
+  var layers = data.layers || {};
+  LAYERS.forEach(function(layerDef, li) {
+    var items = layers[layerDef.key] || [];
+    if (items.length === 0) return;
+
+    // Layer
+    var layer = document.createElement('div');
+    layer.className = 'layer layer--' + layerDef.key;
+
+    // Label
+    layer.innerHTML = '<div class="layer-label"><span class="layer-badge">' + layerDef.label + '</span><div class="layer-line"></div><span class="layer-count">' + items.length + ' 条</span></div>';
+
+    // Cards
+    var cardsDiv = document.createElement('div');
+    cardsDiv.className = 'cards';
+
+    items.forEach(function(item, i) {
+      var id = item.id || (layerDef.idPrefix + (i + 1));
+      var card = document.createElement('div');
+      card.className = 'card';
+      card.setAttribute('data-id', id);
+      card.onclick = function() { toggleCard(this); };
+
+      // Header
+      var header = '<div class="card-header">';
+      header += '<div class="card-icon">' + layerDef.icon + '</div>';
+      header += '<div class="card-title-area">';
+      header += '<div class="card-id">' + id + ' · ' + layerDef.tagLabel + '</div>';
+      header += '<div class="card-title">' + (item.text || '') + '</div>';
+      header += '</div>';
+      header += '<div class="card-expand">&#9662;</div>';
+      header += '</div>';
+
+      // Body
+      var body = '<div class="card-body"><div class="card-body-inner">';
+      body += '<div class="card-desc">' + (item.why || item.description || '') + '</div>';
+
+      // Tags
+      body += '<div class="card-tags">';
+      if (item.derives_from) body += '<span class="card-tag tag-source">来自 ' + item.derives_from + '</span>';
+      if (item.violation) body += '<span class="card-tag tag-violation">' + item.violation + '</span>';
+      if (item.bdd_refs && item.bdd_refs.length) body += '<span class="card-tag tag-bdd">BDD: ' + item.bdd_refs.join(', ') + '</span>';
+      if (item.check) body += '<span class="card-tag tag-bdd">验证: ' + item.check + '</span>';
+      if (item.value) body += '<span class="card-tag tag-source">值: ' + item.value + '</span>';
+      body += '</div>';
+
+      body += '</div></div>';
+
+      card.innerHTML = header + body;
+      cardsDiv.appendChild(card);
+    });
+
+    layer.appendChild(cardsDiv);
+    canvas.appendChild(layer);
+
+    // Connector arrow (except after last layer)
+    if (layerDef.connector) {
+      var conn = document.createElement('div');
+      conn.className = 'layer-connector';
+      conn.innerHTML = '<div class="flow-arrow"><div class="flow-arrow-line"></div><div class="flow-arrow-head"></div><span class="flow-label">' + layerDef.connector + '</span></div>';
+      canvas.appendChild(conn);
+    }
+  });
+}
+
+// Load JSON
+var jsonPath = 'manifesto.json';
+// Check URL param
+var params = new URLSearchParams(window.location.search);
+if (params.get('src')) jsonPath = params.get('src');
+
+fetch(jsonPath)
+  .then(function(r) { return r.json(); })
+  .then(function(data) { renderManifesto(data); })
+  .catch(function(err) {
+    document.getElementById('loading').textContent = '加载失败: ' + err.message + ' (确保 manifesto.json 在同目录)';
+  });
+
+// Escape to collapse all
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape') {
+    document.querySelectorAll('.card.expanded').forEach(function(c) { c.classList.remove('expanded'); });
+  }
+});
+</script>
+</body>
+</html>

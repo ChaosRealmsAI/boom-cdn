@@ -1,0 +1,89 @@
+/* ========================================================
+   Keyframe Viewer — 公共 CSS
+   导入方式：
+   <style>:root { --accent: #58a6ff; ... }</style>
+   <link rel="stylesheet" href="/Users/Zhuanz/.claude/skills/shared-framework/keyframe-viewer.css">
+   <style>/* 页面专用 CSS */</style>
+   ======================================================== */
+
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg,#111);color:var(--text,#e6e6e6);font-family:var(--font,'Menlo','SF Mono','Consolas',monospace);height:100vh;display:flex;flex-direction:column;overflow:hidden;user-select:none}
+
+/* Topbar */
+.topbar{display:flex;justify-content:space-between;align-items:center;padding:10px 24px;background:var(--bg-panel,#1a1a1a);border-bottom:1px solid var(--border,#333);flex-shrink:0}
+.topbar-title{font-size:13px;color:var(--text-dim,#888)}
+.topbar-nav{display:flex;gap:8px;align-items:center}
+.topbar-nav button{background:#222;border:1px solid #444;color:var(--text-mid,#ccc);padding:4px 14px;border-radius:4px;cursor:pointer;font-family:inherit;font-size:12px;transition:all .15s}
+.topbar-nav button:hover:not(:disabled){background:#333;border-color:#666}
+.topbar-nav button:disabled{opacity:.3;cursor:default}
+.topbar-nav button.primary{background:var(--accent-btn,#1f6feb);border-color:var(--accent-btn,#1f6feb);color:#fff}
+.topbar-nav button.primary:hover:not(:disabled){background:var(--accent-btn-hover,#388bfd)}
+.counter{color:#666;font-size:12px;min-width:80px;text-align:center}
+
+/* Progress bar */
+.progress{height:3px;background:#222;flex-shrink:0}
+.progress-fill{height:100%;background:var(--accent,#58a6ff);transition:width .3s ease}
+
+/* Main split */
+.main{flex:1;display:flex;overflow:hidden}
+
+/* Left panel */
+.view-panel{flex:1;display:flex;justify-content:center;align-items:center;padding:20px;background:#0a0a0a;position:relative}
+
+/* Right desc panel */
+.desc-panel{width:360px;background:var(--bg-panel,#1a1a1a);border-left:1px solid var(--border,#333);display:flex;flex-direction:column;flex-shrink:0}
+.desc-header{padding:20px 24px 12px;border-bottom:1px solid var(--border-light,#272727)}
+.desc-header h2{font-size:15px;color:var(--accent,#58a6ff);font-weight:600;margin-bottom:4px}
+.desc-header .tag{display:inline-block;background:var(--accent-10,#1f6feb22);color:var(--accent,#58a6ff);font-size:10px;padding:2px 8px;border-radius:3px}
+.desc-header .frame-info{color:var(--text-muted,#484f58);font-size:11px;margin-top:8px}
+
+/* Notes */
+.notes{flex:1;overflow-y:auto;padding:8px 0}
+.note{padding:12px 24px;border-left:3px solid transparent;transition:all .2s;cursor:pointer}
+.note:hover{background:#ffffff05}
+.note.active{background:var(--accent-0a,#1f6feb0a);border-left-color:var(--accent,#58a6ff)}
+.note.done{opacity:.5}
+.note-idx{font-size:10px;color:var(--text-muted,#484f58);margin-bottom:4px;font-weight:600;letter-spacing:.5px}
+.note.active .note-idx{color:var(--accent,#58a6ff)}
+.note-title{font-size:13px;color:var(--text-mid,#ccc);font-weight:500;margin-bottom:4px}
+.note.active .note-title{color:#f0f6fc}
+.note-body{font-size:12px;color:var(--text-dim,#888);line-height:1.6;display:none}
+.note.active .note-body{display:block;color:#aaa}
+.note-body code{background:#222;padding:1px 5px;border-radius:3px;font-size:11px;color:#7ee787}
+.note-body kbd{display:inline-block;background:#333;border:1px solid #555;border-radius:3px;padding:0 5px;font-size:10px;color:var(--text-mid,#ccc);font-family:inherit;line-height:1.6}
+
+/* Footer */
+.desc-footer{padding:12px 24px;border-top:1px solid var(--border-light,#272727);display:flex;justify-content:space-between;align-items:center}
+.step-dots{display:flex;gap:5px}
+.step-dot{width:6px;height:6px;border-radius:50%;background:#333;transition:background .2s}
+.step-dot.active{background:var(--accent,#58a6ff)}
+.step-dot.done{background:var(--text-muted,#484f58)}
+
+/* Highlight ring + label */
+.highlight-ring{position:absolute;border:2px solid var(--accent,#58a6ff);border-radius:6px;pointer-events:none;z-index:50;transition:all .4s cubic-bezier(.16,1,.3,1);box-shadow:0 0 16px var(--accent-glow,rgba(88,166,255,.4)),inset 0 0 16px var(--accent-glow-inset,rgba(88,166,255,.08));opacity:0}
+.highlight-ring.visible{opacity:1}
+.highlight-label{position:absolute;z-index:51;pointer-events:none;transition:all .4s cubic-bezier(.16,1,.3,1);opacity:0;font-size:11px;color:var(--accent,#58a6ff);background:#0d1117ee;padding:3px 10px;border-radius:4px;border:1px solid var(--accent-10,#1f6feb22);white-space:nowrap}
+.highlight-label.visible{opacity:1}
+
+/* === 原型图专用：产品壳 === */
+.term{width:680px;background:var(--bg-shell,#0d1117);border-radius:10px;box-shadow:0 8px 40px rgba(0,0,0,.6);border:1px solid var(--border-shell,#30363d);overflow:hidden;position:relative}
+.term-bar{background:var(--bg-shell-bar,#161b22);padding:10px 16px;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--border-shell,#30363d)}
+.dot{width:12px;height:12px;border-radius:50%}
+.dot-r{background:#ff5f57}.dot-y{background:#febc2e}.dot-g{background:#28c840}
+.term-bar-title{flex:1;text-align:center;color:#8b949e;font-size:12px}
+.term-body{height:440px;position:relative;overflow:hidden}
+.slide{display:none;width:100%;height:100%;position:absolute;top:0;left:0;flex-direction:column;justify-content:center;align-items:center;padding:24px}
+.slide.active{display:flex}
+
+/* === 流程图专用：mermaid 容器 === */
+.mermaid-wrap{width:100%;height:100%;overflow:hidden;position:relative;cursor:grab}
+.mermaid-wrap.grabbing{cursor:grabbing}
+.mermaid-inner{transform-origin:0 0;transition:transform .15s ease;position:absolute;top:0;left:0}
+.mermaid-wrap svg{display:block}
+.zoom-controls{position:absolute;bottom:12px;left:12px;display:flex;gap:4px;z-index:10}
+.zoom-controls button{width:28px;height:28px;border-radius:4px;border:1px solid #444;background:#222;color:#ccc;font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;font-family:inherit;transition:background .15s}
+.zoom-controls button:hover{background:#333}
+.zoom-level{color:#666;font-size:10px;line-height:28px;padding:0 6px}
+.node-future rect,.node-future polygon,.node-future circle,.node-future span{opacity:.25!important}
+.node-current rect,.node-current polygon,.node-current circle{opacity:1!important;filter:drop-shadow(0 0 8px var(--accent-glow,rgba(88,166,255,.7)))!important}
+.node-visited rect,.node-visited polygon,.node-visited circle{opacity:1!important;filter:none!important}

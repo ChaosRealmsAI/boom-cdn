@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>boom-shared — 公共组件 CDN</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:system-ui,-apple-system,sans-serif;background:#0d1117;color:#e6edf3;padding:2rem}
+h1{font-size:1.5rem;margin-bottom:0.5rem}
+p.sub{color:#8b949e;margin-bottom:2rem;font-size:0.9rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem}
+.card{background:#161b22;border:1px solid #30363d;border-radius:8px;padding:1.25rem}
+.card h2{font-size:1rem;margin-bottom:0.5rem;color:#58a6ff}
+.card p{font-size:0.85rem;color:#8b949e;margin-bottom:0.75rem}
+.card code{background:#0d1117;padding:2px 6px;border-radius:4px;font-size:0.8rem;color:#79c0ff}
+.files{margin-top:0.5rem;font-size:0.8rem;color:#6e7681}
+</style>
+</head>
+<body>
+<h1>boom-shared</h1>
+<p class="sub">公共组件 CDN — 所有项目共享的 CSS/JS 组件</p>
+<div class="grid">
+
+<div class="card">
+  <h2>engine</h2>
+  <p>Walkthrough 讲解引擎 — 逐步高亮 + 动画 + 旁白</p>
+  <code>engine/engine.css</code><br>
+  <code>engine/engine.js</code>
+  <div class="files">用于：tech-stack 报告、原型讲解、架构图</div>
+</div>
+
+<div class="card">
+  <h2>presenter</h2>
+  <p>演示器 — 幻灯片式内容展示</p>
+  <code>presenter/presenter.css</code><br>
+  <code>presenter/presenter.js</code>
+  <div class="files">用于：PPT、培训、汇报</div>
+</div>
+
+<div class="card">
+  <h2>viewer</h2>
+  <p>查看器 — 关键帧、宪法、版本索引</p>
+  <code>viewer/keyframe-viewer.css</code><br>
+  <code>viewer/keyframe-viewer.js</code><br>
+  <code>viewer/manifesto-viewer.html</code>
+  <div class="files">用于：原型关键帧、项目宪法、版本导航</div>
+</div>
+
+</div>
+</body>
+</html>
