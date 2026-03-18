@@ -155,10 +155,10 @@
       "content": {
         "header": "完整示例",
         "subtitle": "一个最小的 boom-cdn 页面",
-        "filename": "hello-boom.html",
-        "language": "html",
-        "code": "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n  <meta charset=\"UTF-8\">\n  <link rel=\"stylesheet\"\n    href=\"https://boom-cdn.vercel.app/themes/neo-tokyo.css\">\n  <script src=\"https://boom-cdn.vercel.app/themes/motion.js\"\n    defer></script>\n</head>\n<body class=\"boom\">\n  <div class=\"b-container b-section\">\n    <h1 class=\"b-display b-accent\">Hello Boom</h1>\n    <p class=\"b-body b-muted\">这就是全部了。</p>\n    <button class=\"b-btn b-btn-primary\"\n      data-magnetic>点我</button>\n  </div>\n</body>\n</html>",
-        "annotation": "只引了一个主题 CSS 和一个 motion.js，就能用上显示标题、正文排版、主要按钮和磁吸动效。不需要 npm、不需要打包、不需要自定义 CSS。"
+        "filename": "usage.txt",
+        "language": "text",
+        "code": "<!-- head 里引一个主题 CSS -->\nlink rel=stylesheet\n  href=boom-cdn.vercel.app/themes/neo-tokyo.css\n\n<!-- 可选：动效引擎 -->\nscript src=boom-cdn.vercel.app/themes/motion.js\n\n<!-- body 加 boom 类 -->\nbody class=boom\n\n<!-- 用 b- 前缀组件类 -->\ndiv class=b-container b-section\n  h1 class=b-display b-accent  Hello Boom\n  p  class=b-body b-muted      这就是全部了\n  button class=b-btn b-btn-primary  点我",
+        "annotation": "只引一个主题 CSS + 一个 motion.js，就能用上标题排版、按钮组件、磁吸动效。不需要 npm、不需要打包、不需要自定义 CSS。"
       },
       "narration": [
         "我们来看一个完整的最小示例。",

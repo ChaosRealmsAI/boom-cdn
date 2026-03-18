@@ -2161,28 +2161,25 @@ body.reading-mode .slide .rp-target.rp-active {
     <span class="dt-code-dot"></span>
     <span class="dt-code-dot"></span>
     <span class="dt-code-dot"></span>
-    <span class="dt-code-filename">hello-boom.html</span>
+    <span class="dt-code-filename">usage.txt</span>
   </div>
-  <pre class="dt-code-body code-variant-default"><code><!DOCTYPE html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet"
-    href="https://boom-cdn.vercel.app/themes/neo-tokyo.css">
-  <script src="https://boom-cdn.vercel.app/themes/motion.js"
-    defer></script>
-</head>
-<body class="boom">
-  <div class="b-container b-section">
-    <h1 class="b-display b-accent">Hello Boom</h1>
-    <p class="b-body b-muted">这就是全部了。</p>
-    <button class="b-btn b-btn-primary"
-      data-magnetic>点我</button>
-  </div>
-</body>
-</html></code></pre>
+  <pre class="dt-code-body code-variant-default"><code><!-- head 里引一个主题 CSS -->
+link rel=stylesheet
+  href=boom-cdn.vercel.app/themes/neo-tokyo.css
+
+<!-- 可选：动效引擎 -->
+script src=boom-cdn.vercel.app/themes/motion.js
+
+<!-- body 加 boom 类 -->
+body class=boom
+
+<!-- 用 b- 前缀组件类 -->
+div class=b-container b-section
+  h1 class=b-display b-accent  Hello Boom
+  p  class=b-body b-muted      这就是全部了
+  button class=b-btn b-btn-primary  点我</code></pre>
 </div>
-<div class="dt-code-note stagger s3">只引了一个主题 CSS 和一个 motion.js，就能用上显示标题、正文排版、主要按钮和磁吸动效。不需要 npm、不需要打包、不需要自定义 CSS。</div></section>
+<div class="dt-code-note stagger s3">只引一个主题 CSS + 一个 motion.js，就能用上标题排版、按钮组件、磁吸动效。不需要 npm、不需要打包、不需要自定义 CSS。</div></section>
 <section class="slide layout-numbered-stack"><div class="stagger s1 dt-heading-block">
   <span class="dt-eyebrow">实际使用中最容易踩到的问题</span>
   <h2 class="dt-h2">五个必知的坑</h2>
