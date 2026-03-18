@@ -1,0 +1,125 @@
+{
+  "version": 1,
+  "base_url": "https://boom-cdn.vercel.app",
+  "base_css": "https://boom-cdn.vercel.app/themes/base.css",
+  "motion_js": "https://boom-cdn.vercel.app/themes/motion.js",
+  "theme_count": 18,
+  "themes": [
+    {
+      "id": "aurora-gradient",
+      "css": "https://boom-cdn.vercel.app/themes/aurora-gradient.css",
+      "accent": "#8b5cf6",
+      "group": "dark"
+    },
+    {
+      "id": "brutalist",
+      "css": "https://boom-cdn.vercel.app/themes/brutalist.css",
+      "accent": "#ff0000",
+      "group": "light"
+    },
+    {
+      "id": "candy-pop",
+      "css": "https://boom-cdn.vercel.app/themes/candy-pop.css",
+      "accent": "#ff3388",
+      "group": "light"
+    },
+    {
+      "id": "champagne-silk",
+      "css": "https://boom-cdn.vercel.app/themes/champagne-silk.css",
+      "accent": "#c4a265",
+      "group": "light",
+      "demo": "https://boom-cdn.vercel.app/demo/champagne-silk.html"
+    },
+    {
+      "id": "copper-industrial",
+      "css": "https://boom-cdn.vercel.app/themes/copper-industrial.css",
+      "accent": "#c87850",
+      "group": "dark"
+    },
+    {
+      "id": "emerald-dynasty",
+      "css": "https://boom-cdn.vercel.app/themes/emerald-dynasty.css",
+      "accent": "#2d8c5a",
+      "group": "dark"
+    },
+    {
+      "id": "forest-zen",
+      "css": "https://boom-cdn.vercel.app/themes/forest-zen.css",
+      "accent": "#5a7a42",
+      "group": "dark"
+    },
+    {
+      "id": "frost-glass",
+      "css": "https://boom-cdn.vercel.app/themes/frost-glass.css",
+      "accent": "#60a5fa",
+      "group": "dark"
+    },
+    {
+      "id": "golden-luxury",
+      "css": "https://boom-cdn.vercel.app/themes/golden-luxury.css",
+      "accent": "#d4af37",
+      "group": "dark"
+    },
+    {
+      "id": "ink-editorial",
+      "css": "https://boom-cdn.vercel.app/themes/ink-editorial.css",
+      "accent": "#1a1a1a",
+      "group": "dark"
+    },
+    {
+      "id": "matte-carbon",
+      "css": "https://boom-cdn.vercel.app/themes/matte-carbon.css",
+      "accent": "#e85d3a",
+      "group": "dark",
+      "demo": "https://boom-cdn.vercel.app/demo/matte-carbon.html"
+    },
+    {
+      "id": "neo-tokyo",
+      "css": "https://boom-cdn.vercel.app/themes/neo-tokyo.css",
+      "accent": "#ff4444",
+      "group": "dark",
+      "demo": "https://boom-cdn.vercel.app/demo/neo-tokyo.html"
+    },
+    {
+      "id": "obsidian-velvet",
+      "css": "https://boom-cdn.vercel.app/themes/obsidian-velvet.css",
+      "accent": "#8a6fae",
+      "group": "dark",
+      "demo": "https://boom-cdn.vercel.app/demo/obsidian-velvet.html"
+    },
+    {
+      "id": "ocean-depth",
+      "css": "https://boom-cdn.vercel.app/themes/ocean-depth.css",
+      "accent": "#3d8bfd",
+      "group": "dark"
+    },
+    {
+      "id": "soft-pastel",
+      "css": "https://boom-cdn.vercel.app/themes/soft-pastel.css",
+      "accent": "#e8a0bf",
+      "group": "light",
+      "demo": "https://boom-cdn.vercel.app/demo/soft-pastel.html"
+    },
+    {
+      "id": "swiss-minimal",
+      "css": "https://boom-cdn.vercel.app/themes/swiss-minimal.css",
+      "accent": "#e63946",
+      "group": "light",
+      "demo": "https://boom-cdn.vercel.app/demo/swiss-minimal.html"
+    },
+    {
+      "id": "terminal-green",
+      "css": "https://boom-cdn.vercel.app/themes/terminal-green.css",
+      "accent": "#00ff41",
+      "group": "dark",
+      "demo": "https://boom-cdn.vercel.app/demo/terminal-green.html"
+    },
+    {
+      "id": "zen-ink",
+      "css": "https://boom-cdn.vercel.app/themes/zen-ink.css",
+      "accent": "#4a4a4a",
+      "group": "light",
+      "demo": "https://boom-cdn.vercel.app/demo/zen-ink.html"
+    }
+  ]
+}
