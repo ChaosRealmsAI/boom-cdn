@@ -1,0 +1,152 @@
+@import url('./base.css');
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/**
+ * Matte Carbon — Boom CDN Theme
+ *
+ * Motorsport precision. Aerospace hardware. Zero-gloss dominance.
+ * Inspired by carbon fibre weave, anodised aluminium, and track-day adrenaline.
+ */
+
+:root {
+  /* ── Backgrounds ── */
+  --bg:           #121214;
+  --bg-elevated:  #1a1a1d;
+  --bg-card:      #1e1e21;
+  --bg-hover:     #252529;
+  --bg-active:    #2c2c31;
+  --bg-input:     #16161a;
+
+  /* ── Text ── */
+  --text:         #d8d4cc;
+  --text-muted:   #9a9590;
+  --text-subtle:  #6b6762;
+  --text-faint:   #413e3a;
+  --text-ghost:   #252320;
+
+  /* ── Accent: Combustion Orange ── */
+  --accent:       #e85d3a;
+  --accent-hover: #f0724f;
+  --accent-80:    rgba(232, 93, 58, 0.80);
+  --accent-30:    rgba(232, 93, 58, 0.30);
+  --accent-15:    rgba(232, 93, 58, 0.15);
+  --accent-08:    rgba(232, 93, 58, 0.08);
+
+  /* ── Borders ── */
+  --border:        rgba(216, 212, 204, 0.07);
+  --border-mid:    rgba(216, 212, 204, 0.12);
+  --border-strong: rgba(216, 212, 204, 0.22);
+  --border-accent: rgba(232, 93, 58, 0.45);
+
+  /* ── Semantic ── */
+  --success: #4ece82;
+  --warning: #f0b429;
+  --error:   #e85d3a;
+  --info:    #5a9fd4;
+
+  /* ── Typography ── */
+  --font-serif: 'Bebas Neue', 'Impact', sans-serif;
+  --font-sans:  'Inter', system-ui, sans-serif;
+  --font-mono:  'JetBrains Mono', 'Fira Code', monospace;
+
+  /* ── Type Scale (fluid) ── */
+  --text-xs:      clamp(0.70rem, 0.68rem + 0.1vw,  0.75rem);
+  --text-sm:      clamp(0.82rem, 0.80rem + 0.12vw, 0.875rem);
+  --text-base:    clamp(0.95rem, 0.92rem + 0.15vw, 1rem);
+  --text-lg:      clamp(1.10rem, 1.05rem + 0.25vw, 1.125rem);
+  --text-xl:      clamp(1.20rem, 1.15rem + 0.3vw,  1.25rem);
+  --text-2xl:     clamp(1.40rem, 1.30rem + 0.5vw,  1.5rem);
+  --text-3xl:     clamp(1.70rem, 1.55rem + 0.75vw, 1.875rem);
+  --text-4xl:     clamp(2.10rem, 1.90rem + 1.0vw,  2.5rem);
+  --text-display: clamp(3.20rem, 2.60rem + 3.0vw,  6.0rem);
+
+  /* ── Radius — tighter, harder edges for industrial feel ── */
+  --radius-sm:   2px;
+  --radius-md:   4px;
+  --radius-lg:   8px;
+  --radius-xl:   12px;
+  --radius-full: 9999px;
+
+  /* ── Motion — snappy, mechanical ── */
+  --ease:        cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.4, 0.64, 1);
+}
+
+/* ── Carbon fibre weave pattern overlay ── */
+body.boom.b-grain::before {
+  background-image:
+    repeating-linear-gradient(
+      45deg,
+      rgba(255,255,255,0.012) 0px,
+      rgba(255,255,255,0.012) 1px,
+      transparent 1px,
+      transparent 4px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      rgba(255,255,255,0.012) 0px,
+      rgba(255,255,255,0.012) 1px,
+      transparent 1px,
+      transparent 4px
+    ),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.045;
+}
+
+/* ── Display headings use Bebas Neue — all-caps, wide-tracked ── */
+.b-display {
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.b-h1 {
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.b-h2 {
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* ── Accent stripe on cards ── */
+.b-card {
+  border-radius: var(--radius-lg);
+  border-top: 1px solid var(--border-mid);
+}
+
+.b-card-accent {
+  border-left: 2px solid var(--accent);
+}
+
+/* ── Primary button — hard rectangular, orange ignition ── */
+.b-btn-primary {
+  border-radius: var(--radius-md);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+/* ── Navbar brand in Bebas Neue ── */
+.b-navbar-brand {
+  font-family: var(--font-serif);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: var(--text-xl);
+}
+
+/* ── Labels — stark caps ── */
+.b-label {
+  letter-spacing: 0.14em;
+}
+
+/* ── Stat values in display font ── */
+.b-stat-value {
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}

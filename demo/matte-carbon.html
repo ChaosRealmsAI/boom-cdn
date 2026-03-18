@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>APEX DYNAMICS — Matte Carbon Theme</title>
+  <link rel="stylesheet" href="../themes/matte-carbon.css">
+  <style>
+    /* ── Demo-only styles ── */
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 2px;
+      background: var(--accent);
+    }
+    .spec-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .spec-cell {
+      background: var(--bg-card);
+      padding: 28px 24px;
+    }
+    .spec-cell:hover {
+      background: var(--bg-hover);
+    }
+    .stripe-accent {
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent) 0%, transparent 100%);
+      margin-bottom: 40px;
+    }
+    .tech-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      background: var(--accent-08);
+      border: 1px solid var(--accent-15);
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: var(--text-xs);
+      color: var(--accent);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .tech-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse-dot 1.8s ease-in-out infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.4; transform: scale(0.7); }
+    }
+    .feature-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-md);
+      background: var(--accent-08);
+      border: 1px solid var(--accent-15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      margin-bottom: 16px;
+    }
+    .navbar-rule {
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: var(--border-mid);
+    }
+    @media (max-width: 768px) {
+      .spec-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+  </style>
+</head>
+<body class="boom b-grain">
+
+  <!-- NAVBAR -->
+  <nav class="b-navbar">
+    <div style="display:flex; align-items:center; gap:16px;">
+      <span class="b-navbar-brand" style="color:var(--text); font-size:1.2rem; letter-spacing:0.18em;">
+        APEX DYNAMICS
+      </span>
+      <span class="navbar-rule"></span>
+      <span style="font-size:var(--text-xs); color:var(--text-faint); letter-spacing:0.1em; text-transform:uppercase;">
+        Performance Division
+      </span>
+    </div>
+    <ul class="b-navbar-links">
+      <li><a href="#" class="b-navbar-link active">Systems</a></li>
+      <li><a href="#" class="b-navbar-link">Aero</a></li>
+      <li><a href="#" class="b-navbar-link">Powertrain</a></li>
+      <li><a href="#" class="b-navbar-link">Telemetry</a></li>
+    </ul>
+    <div style="display:flex; gap:10px; align-items:center;">
+      <button class="b-btn b-btn-sm">Docs</button>
+      <button class="b-btn b-btn-primary b-btn-sm">Deploy Now</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="b-section" style="padding-top: 80px; padding-bottom: 80px;">
+    <div class="b-container">
+      <div style="max-width: 860px;">
+        <div class="hero-eyebrow">
+          <div class="tech-badge">System Online</div>
+          <span class="b-label" style="color: var(--text-faint);">Gen-4 Platform / 2026 Season</span>
+        </div>
+
+        <div class="stripe-accent"></div>
+
+        <h1 class="b-display b-fade-in" style="margin-bottom: 28px; line-height: 0.95;">
+          Zero Drag.<br>
+          <span style="color: var(--accent);">Total Control.</span><br>
+          Full Send.
+        </h1>
+
+        <p class="b-muted b-fade-in b-stagger-1" style="font-size: var(--text-lg); max-width: 560px; margin-bottom: 40px; line-height: 1.6;">
+          Engineered at the intersection of computational aerodynamics and carbon fibre
+          manufacturing. Every gram accounted for. Every millisecond earned.
+        </p>
+
+        <div style="display:flex; gap:12px; flex-wrap:wrap;" class="b-fade-in b-stagger-2">
+          <button class="b-btn b-btn-primary b-btn-lg">
+            Configure Your Build
+          </button>
+          <button class="b-btn b-btn-lg">
+            View Spec Sheet
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PERFORMANCE STATS -->
+  <section class="b-section-sm">
+    <div class="b-container">
+      <div class="spec-grid">
+        <div class="spec-cell">
+          <div class="b-label" style="margin-bottom: 12px;">Peak Downforce</div>
+          <div class="b-stat-value" style="font-family: var(--font-serif); font-size: var(--text-4xl); color: var(--text); letter-spacing: 0.04em;">
+            840<span style="font-family: var(--font-sans); font-size: var(--text-xl); color: var(--text-subtle); margin-left:4px;">kg</span>
+          </div>
+          <div class="b-label" style="margin-top:8px; color: var(--success);">+ 18% vs Gen-3</div>
+        </div>
+        <div class="spec-cell">
+          <div class="b-label" style="margin-bottom: 12px;">Drag Coefficient</div>
+          <div class="b-stat-value" style="font-family: var(--font-serif); font-size: var(--text-4xl); color: var(--text); letter-spacing: 0.04em;">
+            0.21<span style="font-family: var(--font-sans); font-size: var(--text-xl); color: var(--text-subtle); margin-left:4px;">Cd</span>
+          </div>
+          <div class="b-label" style="margin-top:8px; color: var(--success);">Track optimised</div>
+        </div>
+        <div class="spec-cell">
+          <div class="b-label" style="margin-bottom: 12px;">Chassis Weight</div>
+          <div class="b-stat-value" style="font-family: var(--font-serif); font-size: var(--text-4xl); color: var(--text); letter-spacing: 0.04em;">
+            38<span style="font-family: var(--font-sans); font-size: var(--text-xl); color: var(--text-subtle); margin-left:4px;">kg</span>
+          </div>
+          <div class="b-label" style="margin-top:8px; color: var(--accent);">Full carbon monocoque</div>
+        </div>
+        <div class="spec-cell">
+          <div class="b-label" style="margin-bottom: 12px;">Response Time</div>
+          <div class="b-stat-value" style="font-family: var(--font-serif); font-size: var(--text-4xl); color: var(--text); letter-spacing: 0.04em;">
+            2<span style="font-family: var(--font-sans); font-size: var(--text-xl); color: var(--text-subtle); margin-left:4px;">ms</span>
+          </div>
+          <div class="b-label" style="margin-top:8px; color: var(--success);">Active aero actuation</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SYSTEMS OVERVIEW -->
+  <section class="b-section">
+    <div class="b-container">
+      <div style="display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:48px;">
+        <div>
+          <div class="b-label" style="margin-bottom: 12px; color: var(--accent);">Core Systems</div>
+          <h2 class="b-h1">Built to Win</h2>
+        </div>
+        <a href="#" class="b-btn">Full Spec</a>
+      </div>
+
+      <div class="b-grid b-grid-3">
+
+        <div class="b-card b-card-accent">
+          <div class="b-card-header">
+            <div class="feature-icon">&#9651;</div>
+            <div class="b-card-title" style="font-family: var(--font-serif); letter-spacing: 0.06em; text-transform: uppercase; font-size: var(--text-xl);">
+              Active Aero
+            </div>
+            <div class="b-card-desc">
+              Dual-axis DRS with predictive deployment. Wind-tunnel validated at 300 km/h.
+              Titanium actuators, 2ms latency.
+            </div>
+          </div>
+          <div class="b-card-footer" style="display:flex; gap:8px;">
+            <span class="tech-badge" style="font-size:10px;">CFD v4.2</span>
+            <span class="b-tag">Active</span>
+          </div>
+        </div>
+
+        <div class="b-card">
+          <div class="b-card-header">
+            <div class="feature-icon">&#9650;</div>
+            <div class="b-card-title" style="font-family: var(--font-serif); letter-spacing: 0.06em; text-transform: uppercase; font-size: var(--text-xl);">
+              Carbon Monocoque
+            </div>
+            <div class="b-card-desc">
+              T800 prepreg layup. Autoclave-cured. Integrated roll hoop and impact
+              structures exceed FIA Appendix J compliance.
+            </div>
+          </div>
+          <div class="b-card-footer" style="display:flex; gap:8px;">
+            <span class="b-badge">FIA Certified</span>
+            <span class="b-tag">Structural</span>
+          </div>
+        </div>
+
+        <div class="b-card">
+          <div class="b-card-header">
+            <div class="feature-icon">&#9670;</div>
+            <div class="b-card-title" style="font-family: var(--font-serif); letter-spacing: 0.06em; text-transform: uppercase; font-size: var(--text-xl);">
+              Telemetry Suite
+            </div>
+            <div class="b-card-desc">
+              1,200 data points per second. Predictive tyre model, thermal imaging,
+              live pit-wall feed. Sub-5ms edge latency.
+            </div>
+          </div>
+          <div class="b-card-footer" style="display:flex; gap:8px;">
+            <span class="tech-badge" style="font-size:10px;">Live</span>
+            <span class="b-tag">1.2 kHz</span>
+          </div>
+        </div>
+
+        <div class="b-card">
+          <div class="b-card-header">
+            <div class="feature-icon">&#9632;</div>
+            <div class="b-card-title" style="font-family: var(--font-serif); letter-spacing: 0.06em; text-transform: uppercase; font-size: var(--text-xl);">
+              Brake-by-Wire
+            </div>
+            <div class="b-card-desc">
+              Fully decoupled front/rear bias via fly-by-wire. Integrated regen with
+              KERS harvesting up to 400 kJ per lap.
+            </div>
+          </div>
+          <div class="b-card-footer" style="display:flex; gap:8px;">
+            <span class="b-badge">Regenerative</span>
+            <span class="b-tag">400 kJ/lap</span>
+          </div>
+        </div>
+
+        <div class="b-card b-card-accent">
+          <div class="b-card-header">
+            <div class="feature-icon">&#9654;</div>
+            <div class="b-card-title" style="font-family: var(--font-serif); letter-spacing: 0.06em; text-transform: uppercase; font-size: var(--text-xl);">
+              Powertrain
+            </div>
+            <div class="b-card-desc">
+              Hybrid ICE-MGU system. 1,020 hp combined output. Seamless torque
+              vectoring. 0–200 km/h in 4.8 s.
+            </div>
+          </div>
+          <div class="b-card-footer" style="display:flex; gap:8px;">
+            <span class="b-badge" style="color: var(--accent); border-color: var(--accent-15); background: var(--accent-08);">1,020 HP</span>
+            <span class="b-tag">Hybrid</span>
+          </div>
+        </div>
+
+        <div class="b-card">
+          <div class="b-card-header">
+            <div class="feature-icon">&#9675;</div>
+            <div class="b-card-title" style="font-family: var(--font-serif); letter-spacing: 0.06em; text-transform: uppercase; font-size: var(--text-xl);">
+              Suspension
+            </div>
+            <div class="b-card-desc">
+              Push-rod inboard geometry. Inertia-linked dampers with adaptive
+              valve control. Optimised for Nurburgring and Spa layouts.
+            </div>
+          </div>
+          <div class="b-card-footer" style="display:flex; gap:8px;">
+            <span class="b-tag">Push-rod</span>
+            <span class="b-tag">Adaptive</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- TELEMETRY READOUT (code demo) -->
+  <section class="b-section-sm" style="background: var(--bg-card); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="b-container">
+      <div style="display:flex; gap:48px; align-items:flex-start;" class="b-grid b-grid-2">
+        <div>
+          <div class="b-label" style="margin-bottom:12px; color:var(--accent);">Live Telemetry Feed</div>
+          <h3 class="b-h2" style="margin-bottom:16px;">Race Data.<br>Unfiltered.</h3>
+          <p class="b-muted" style="margin-bottom:24px;">
+            Sub-millisecond sensor fusion from 48 onboard nodes. Every input logged,
+            vectorised, and streamed to engineering in real time.
+          </p>
+          <div style="display:flex; flex-direction:column; gap:12px;">
+            <div style="display:flex; align-items:center; gap:12px;">
+              <div class="b-dot b-dot-success"></div>
+              <span class="b-body">Aero load sensors — nominal</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:12px;">
+              <div class="b-dot b-dot-success"></div>
+              <span class="b-body">Tyre thermal model — active</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:12px;">
+              <div class="b-dot" style="background: var(--accent);"></div>
+              <span class="b-body">DRS actuator — deployed</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:12px;">
+              <div class="b-dot b-dot-success"></div>
+              <span class="b-body">Brake-by-wire — calibrated</span>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <pre class="b-code" style="font-size: var(--text-xs); line-height: 1.9;">
+<span style="color:var(--text-subtle);">// APEX telemetry — lap 24, sector 2</span>
+{
+  <span style="color:var(--text-muted);">"ts"</span>: <span style="color:var(--accent);">"2026-03-18T14:32:07.841Z"</span>,
+  <span style="color:var(--text-muted);">"speed_kph"</span>: <span style="color:var(--success);">287.4</span>,
+  <span style="color:var(--text-muted);">"throttle_pct"</span>: <span style="color:var(--success);">98.2</span>,
+  <span style="color:var(--text-muted);">"brake_pct"</span>: <span style="color:var(--success);">0.0</span>,
+  <span style="color:var(--text-muted);">"drs"</span>: <span style="color:var(--accent);">"OPEN"</span>,
+  <span style="color:var(--text-muted);">"downforce_kg"</span>: <span style="color:var(--success);">836</span>,
+  <span style="color:var(--text-muted);">"fl_tyre_c"</span>: <span style="color:var(--warning);">94.1</span>,
+  <span style="color:var(--text-muted);">"fr_tyre_c"</span>: <span style="color:var(--warning);">96.7</span>,
+  <span style="color:var(--text-muted);">"rl_tyre_c"</span>: <span style="color:var(--success);">88.3</span>,
+  <span style="color:var(--text-muted);">"rr_tyre_c"</span>: <span style="color:var(--success);">89.9</span>,
+  <span style="color:var(--text-muted);">"fuel_kg"</span>: <span style="color:var(--success);">42.7</span>,
+  <span style="color:var(--text-muted);">"delta_s"</span>: <span style="color:var(--accent);">-0.341</span>
+}
+          </pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FORM / CONFIG SECTION -->
+  <section class="b-section">
+    <div class="b-container b-container-sm">
+      <div style="text-align:center; margin-bottom:48px;">
+        <div class="b-label" style="margin-bottom:12px; color: var(--accent);">Build Configurator</div>
+        <h2 class="b-h1">Spec Your Machine</h2>
+      </div>
+
+      <div class="b-card" style="padding:40px;">
+        <div class="b-grid b-grid-2">
+          <div class="b-field">
+            <label class="b-label-text">Chassis Variant</label>
+            <select class="b-input b-select">
+              <option>GT-R Pro — Track Only</option>
+              <option>GT-S Street — Road Legal</option>
+              <option>GT-X Endurance — Long Range</option>
+            </select>
+          </div>
+          <div class="b-field">
+            <label class="b-label-text">Powertrain</label>
+            <select class="b-input b-select">
+              <option>Hybrid V6 — 1,020 hp</option>
+              <option>Full Electric — 840 hp</option>
+              <option>ICE V8 — 900 hp</option>
+            </select>
+          </div>
+          <div class="b-field">
+            <label class="b-label-text">Aero Package</label>
+            <select class="b-input b-select">
+              <option>High Downforce — Circuit</option>
+              <option>Low Drag — Straight-line</option>
+              <option>Balance — Endurance</option>
+            </select>
+          </div>
+          <div class="b-field">
+            <label class="b-label-text">Livery Finish</label>
+            <select class="b-input b-select">
+              <option>Matte Carbon — Raw</option>
+              <option>Stealth Black — Gloss</option>
+              <option>Ember Orange — Satin</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="b-field">
+          <label class="b-label-text">Engineering Notes</label>
+          <textarea class="b-input b-textarea" placeholder="Describe track conditions, target lap time, specific handling preferences..."></textarea>
+        </div>
+
+        <div style="display:flex; gap:12px; justify-content:flex-end; margin-top:8px;">
+          <button class="b-btn">Save Draft</button>
+          <button class="b-btn b-btn-primary b-btn-lg">Submit Build Request</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ALERT DEMO -->
+  <section class="b-section-sm">
+    <div class="b-container b-container-sm">
+      <div class="b-label" style="margin-bottom:20px; color: var(--accent);">System Status</div>
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <div class="b-alert b-alert-success">
+          <span>&#10003;</span>
+          <div>
+            <div class="b-alert-title">All systems nominal</div>
+            <div class="b-alert-desc">Telemetry link active. Data streaming at 1,200 Hz. No faults detected.</div>
+          </div>
+        </div>
+        <div class="b-alert b-alert-warning">
+          <span>&#9651;</span>
+          <div>
+            <div class="b-alert-title">Tyre degradation threshold approaching</div>
+            <div class="b-alert-desc">Front-right compound at 78% wear. Pit window opens in 4 laps.</div>
+          </div>
+        </div>
+        <div class="b-alert" style="background: var(--accent-08); border-color: var(--accent-15);">
+          <span style="color:var(--accent);">&#9654;</span>
+          <div>
+            <div class="b-alert-title" style="color: var(--accent);">DRS activation zone ahead</div>
+            <div class="b-alert-desc">Detection point in 800 m. Current speed delta: +0.34s.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="b-footer">
+    <div class="b-container">
+      <div class="b-footer-grid">
+        <div>
+          <div class="b-footer-brand" style="font-family: var(--font-serif); letter-spacing: 0.14em; text-transform: uppercase; font-size: var(--text-xl);">
+            APEX DYNAMICS
+          </div>
+          <p class="b-footer-copy" style="font-size: var(--text-sm); color: var(--text-muted); max-width: 280px; line-height: 1.6; margin-top: 8px;">
+            Precision engineering for those who measure victory in thousandths of a second.
+          </p>
+          <div style="margin-top:20px; display:flex; gap:8px;">
+            <span class="b-badge">ISO 9001</span>
+            <span class="b-badge">FIA Homologated</span>
+          </div>
+        </div>
+        <div>
+          <div class="b-footer-heading">Platform</div>
+          <ul class="b-footer-links">
+            <li><a href="#" class="b-footer-link">Chassis Systems</a></li>
+            <li><a href="#" class="b-footer-link">Powertrain</a></li>
+            <li><a href="#" class="b-footer-link">Aerodynamics</a></li>
+            <li><a href="#" class="b-footer-link">Electronics</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="b-footer-heading">Engineering</div>
+          <ul class="b-footer-links">
+            <li><a href="#" class="b-footer-link">CFD Analysis</a></li>
+            <li><a href="#" class="b-footer-link">FEA Simulation</a></li>
+            <li><a href="#" class="b-footer-link">Telemetry API</a></li>
+            <li><a href="#" class="b-footer-link">Data SDK</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="b-footer-heading">Company</div>
+          <ul class="b-footer-links">
+            <li><a href="#" class="b-footer-link">Race Division</a></li>
+            <li><a href="#" class="b-footer-link">R&amp;D Lab</a></li>
+            <li><a href="#" class="b-footer-link">Partners</a></li>
+            <li><a href="#" class="b-footer-link">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="b-footer-bottom">
+        <span class="b-footer-copy">&#169; 2026 APEX DYNAMICS. All performance data measured under controlled conditions.</span>
+        <div style="display:flex; gap:8px;">
+          <span class="b-tag" style="font-family: var(--font-mono);">v4.2.0</span>
+          <span class="b-tag">Matte Carbon</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

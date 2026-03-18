@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bloom — Soft Pastel Theme Demo</title>
+  <link rel="stylesheet" href="../themes/soft-pastel.css">
+  <style>
+    /* Demo-only: accent gradient for hero decorations */
+    .bloom-petal {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      opacity: 0.18;
+    }
+    .bloom-petal-1 {
+      width: 320px; height: 320px;
+      background: radial-gradient(circle, #e8a0bf, transparent 70%);
+      top: -80px; right: 10%;
+    }
+    .bloom-petal-2 {
+      width: 220px; height: 220px;
+      background: radial-gradient(circle, #c4b5e8, transparent 70%);
+      top: 40px; left: 5%;
+    }
+    .bloom-petal-3 {
+      width: 160px; height: 160px;
+      background: radial-gradient(circle, #b5d8e8, transparent 70%);
+      bottom: -40px; right: 20%;
+    }
+    .hero-wrap {
+      position: relative;
+      overflow: hidden;
+    }
+    .feature-icon {
+      width: 48px; height: 48px;
+      border-radius: var(--radius-lg);
+      background: var(--accent-08);
+      border: 1px solid var(--accent-15);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      margin-bottom: 16px;
+    }
+    .quote-mark {
+      font-family: var(--font-serif);
+      font-size: 4rem;
+      line-height: 1;
+      color: var(--accent-30);
+      margin-bottom: -8px;
+    }
+    .color-swatch {
+      width: 100%;
+      height: 56px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+    }
+    .palette-label {
+      font-size: var(--text-xs);
+      color: var(--text-subtle);
+      margin-top: 6px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body class="boom">
+
+  <!-- ═══ NAVBAR ═══ -->
+  <nav class="b-navbar">
+    <span class="b-navbar-brand b-accent">Bloom</span>
+    <ul class="b-navbar-links b-hide-mobile">
+      <li><a href="#features" class="b-navbar-link active">Features</a></li>
+      <li><a href="#testimonials" class="b-navbar-link">Stories</a></li>
+      <li><a href="#pricing" class="b-navbar-link">Plans</a></li>
+      <li><a href="#components" class="b-navbar-link">Components</a></li>
+    </ul>
+    <div class="b-flex" style="gap:10px">
+      <button class="b-btn b-btn-sm b-btn-ghost">Sign in</button>
+      <button class="b-btn b-btn-sm b-btn-primary">Start free</button>
+    </div>
+  </nav>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="b-section hero-wrap">
+    <div class="bloom-petal bloom-petal-1"></div>
+    <div class="bloom-petal bloom-petal-2"></div>
+    <div class="bloom-petal bloom-petal-3"></div>
+    <div class="b-container">
+      <div class="b-hero b-fade-in">
+        <span class="b-badge">New — Bloom 2.0 is here</span>
+        <h1 class="b-display">Grow with intention,<br><em class="b-serif">one day at a time.</em></h1>
+        <p class="b-muted">A gentle space for wellness, learning, and self-discovery. Bloom helps you build beautiful habits without the pressure.</p>
+        <div class="b-flex b-wrap" style="justify-content:center; gap:12px">
+          <button class="b-btn b-btn-primary b-btn-lg">Begin your journey</button>
+          <button class="b-btn b-btn-lg">Watch the story</button>
+        </div>
+        <p class="b-subtle b-stagger-4 b-fade-in">Loved by 40,000+ women · No credit card required</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ STATS ═══ -->
+  <section class="b-section-sm" style="background: var(--bg-elevated); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="b-container">
+      <div class="b-grid b-grid-4">
+        <div class="b-stat">
+          <div class="b-stat-value b-accent">40K+</div>
+          <div class="b-stat-label">Active members</div>
+        </div>
+        <div class="b-stat">
+          <div class="b-stat-value b-accent">98%</div>
+          <div class="b-stat-label">Satisfaction rate</div>
+        </div>
+        <div class="b-stat">
+          <div class="b-stat-value b-accent">21</div>
+          <div class="b-stat-label">Day avg. streak</div>
+        </div>
+        <div class="b-stat">
+          <div class="b-stat-value b-accent">4.9</div>
+          <div class="b-stat-label">App store rating</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FEATURES ═══ -->
+  <section class="b-section" id="features">
+    <div class="b-container">
+      <div class="b-text-center b-stack" style="align-items:center; margin-bottom: 56px;">
+        <span class="b-label">Why Bloom</span>
+        <h2 class="b-h1">Everything you need to <em class="b-serif">flourish</em></h2>
+        <p class="b-muted" style="max-width:520px">Thoughtfully designed tools that nurture your mind, body, and spirit — all in one calm corner of the internet.</p>
+      </div>
+      <div class="b-grid b-grid-3">
+        <div class="b-card b-card-accent b-fade-in b-stagger-1">
+          <div class="feature-icon">🌿</div>
+          <div class="b-card-title">Daily Rituals</div>
+          <p class="b-card-desc">Build meaningful morning and evening routines with gentle reminders that honour your pace.</p>
+        </div>
+        <div class="b-card b-card-accent b-fade-in b-stagger-2">
+          <div class="feature-icon">📖</div>
+          <div class="b-card-title">Guided Journals</div>
+          <p class="b-card-desc">Reflect and grow with curated prompts written by wellness coaches and therapists.</p>
+        </div>
+        <div class="b-card b-card-accent b-fade-in b-stagger-3">
+          <div class="feature-icon">🎧</div>
+          <div class="b-card-title">Calm Courses</div>
+          <p class="b-card-desc">Short, beautiful lessons on mindfulness, nutrition, creativity, and emotional wellness.</p>
+        </div>
+        <div class="b-card b-card-accent b-fade-in b-stagger-1">
+          <div class="feature-icon">🌸</div>
+          <div class="b-card-title">Habit Tracker</div>
+          <p class="b-card-desc">Visualise your progress with a soft, encouraging interface that celebrates small wins.</p>
+        </div>
+        <div class="b-card b-card-accent b-fade-in b-stagger-2">
+          <div class="feature-icon">💬</div>
+          <div class="b-card-title">Community Circle</div>
+          <p class="b-card-desc">Connect with a warm, supportive community of women on the same path as you.</p>
+        </div>
+        <div class="b-card b-card-accent b-fade-in b-stagger-3">
+          <div class="feature-icon">✨</div>
+          <div class="b-card-title">Weekly Insights</div>
+          <p class="b-card-desc">Personalised reflections drawn from your entries, habits, and mood check-ins.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TESTIMONIALS ═══ -->
+  <section class="b-section" id="testimonials" style="background: var(--bg-elevated);">
+    <div class="b-container">
+      <div class="b-text-center" style="margin-bottom: 56px;">
+        <span class="b-label">Real Stories</span>
+        <h2 class="b-h2" style="margin-top: 12px;">Words from our <em class="b-serif">community</em></h2>
+      </div>
+      <div class="b-grid b-grid-3">
+        <div class="b-card b-testimonial">
+          <div class="quote-mark">"</div>
+          <p class="b-testimonial-quote">Bloom changed how I start my mornings. It's the first app that felt like it was designed for me — not against me.</p>
+          <div class="b-testimonial-author">
+            <div class="b-avatar">S</div>
+            <div>
+              <div class="b-testimonial-name">Sophie W.</div>
+              <div class="b-testimonial-role">Yoga instructor, London</div>
+            </div>
+          </div>
+        </div>
+        <div class="b-card b-testimonial">
+          <div class="quote-mark">"</div>
+          <p class="b-testimonial-quote">I've tried every journaling app out there. Bloom is the only one I've stuck with for more than a week — it's been six months now.</p>
+          <div class="b-testimonial-author">
+            <div class="b-avatar">M</div>
+            <div>
+              <div class="b-testimonial-name">Mia T.</div>
+              <div class="b-testimonial-role">Educator, Toronto</div>
+            </div>
+          </div>
+        </div>
+        <div class="b-card b-testimonial">
+          <div class="quote-mark">"</div>
+          <p class="b-testimonial-quote">The habit tracker doesn't shame you for missing a day. It just gently asks how you're doing. That's everything.</p>
+          <div class="b-testimonial-author">
+            <div class="b-avatar">A</div>
+            <div>
+              <div class="b-testimonial-name">Aria K.</div>
+              <div class="b-testimonial-role">Therapist, Sydney</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PRICING ═══ -->
+  <section class="b-section" id="pricing">
+    <div class="b-container b-container-sm">
+      <div class="b-text-center" style="margin-bottom: 56px;">
+        <span class="b-label">Simple Pricing</span>
+        <h2 class="b-h2" style="margin-top: 12px;">Invest in yourself</h2>
+        <p class="b-muted" style="margin-top: 8px;">Cancel any time. No hidden fees.</p>
+      </div>
+      <div class="b-grid b-grid-2">
+        <div class="b-card b-pricing">
+          <span class="b-badge">Free</span>
+          <div class="b-pricing-price">
+            <span class="b-pricing-amount">$0</span>
+            <span class="b-pricing-period"> / forever</span>
+          </div>
+          <p class="b-muted" style="font-size: var(--text-sm)">For curious beginners taking their first gentle steps.</p>
+          <ul class="b-pricing-features">
+            <li>✓ 3 daily rituals</li>
+            <li>✓ Basic journal prompts</li>
+            <li>✓ 1 calm course</li>
+            <li>✓ Community access</li>
+          </ul>
+          <button class="b-btn b-btn-outline b-btn-full">Get started free</button>
+        </div>
+        <div class="b-card b-pricing b-pricing-popular">
+          <span class="b-badge">Bloom+</span>
+          <div class="b-pricing-price">
+            <span class="b-pricing-amount b-accent">$9</span>
+            <span class="b-pricing-period"> / month</span>
+          </div>
+          <p class="b-muted" style="font-size: var(--text-sm)">For women ready to bloom fully, on their own terms.</p>
+          <ul class="b-pricing-features">
+            <li>✓ Unlimited rituals &amp; habits</li>
+            <li>✓ All 80+ journal prompts</li>
+            <li>✓ Full course library</li>
+            <li>✓ Weekly insights &amp; analytics</li>
+            <li>✓ Priority support</li>
+          </ul>
+          <button class="b-btn b-btn-primary b-btn-full">Start 14-day trial</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ COMPONENT SHOWCASE ═══ -->
+  <section class="b-section" id="components" style="background: var(--bg-elevated);">
+    <div class="b-container">
+      <div class="b-text-center" style="margin-bottom: 56px;">
+        <span class="b-label">Theme Palette</span>
+        <h2 class="b-h2" style="margin-top: 12px;">Components &amp; Colors</h2>
+      </div>
+
+      <!-- Colour palette -->
+      <div class="b-card b-mb-8">
+        <div class="b-card-header">
+          <div class="b-card-title">Colour Palette</div>
+          <div class="b-card-desc">柔雾粉彩 — Low-saturation warmth</div>
+        </div>
+        <div class="b-grid b-grid-4" style="margin-top: 8px;">
+          <div>
+            <div class="color-swatch" style="background:#fef7f4"></div>
+            <div class="palette-label">--bg #fef7f4</div>
+          </div>
+          <div>
+            <div class="color-swatch" style="background:#4a3f47"></div>
+            <div class="palette-label">--text #4a3f47</div>
+          </div>
+          <div>
+            <div class="color-swatch" style="background:#e8a0bf"></div>
+            <div class="palette-label">--accent #e8a0bf</div>
+          </div>
+          <div>
+            <div class="color-swatch" style="background:rgba(232,160,191,0.15)"></div>
+            <div class="palette-label">--accent-15</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Buttons -->
+      <div class="b-card b-mb-8">
+        <div class="b-card-title b-mb-4">Buttons</div>
+        <div class="b-flex b-wrap">
+          <button class="b-btn b-btn-primary">Primary</button>
+          <button class="b-btn b-btn-outline">Outline</button>
+          <button class="b-btn b-btn-ghost">Ghost</button>
+          <button class="b-btn b-btn-primary b-btn-sm">Small</button>
+          <button class="b-btn b-btn-primary b-btn-lg">Large</button>
+          <button class="b-btn b-btn-danger">Danger</button>
+        </div>
+      </div>
+
+      <!-- Badges & Tags -->
+      <div class="b-card b-mb-8">
+        <div class="b-card-title b-mb-4">Badges &amp; Tags</div>
+        <div class="b-flex b-wrap">
+          <span class="b-badge">Bloom+</span>
+          <span class="b-badge-success b-badge">Completed</span>
+          <span class="b-badge-warning b-badge">Pending</span>
+          <span class="b-badge-error b-badge">Overdue</span>
+          <span class="b-badge-info b-badge">New</span>
+          <span class="b-tag">wellness</span>
+          <span class="b-tag">mindfulness</span>
+          <span class="b-tag">gratitude</span>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="b-card b-mb-8">
+        <div class="b-card-title b-mb-4">Form Elements</div>
+        <div class="b-grid b-grid-2">
+          <div>
+            <div class="b-field">
+              <label class="b-label-text">Your name</label>
+              <input class="b-input" type="text" placeholder="Sofia...">
+            </div>
+            <div class="b-field">
+              <label class="b-label-text">Email address</label>
+              <input class="b-input" type="email" placeholder="sofia@bloom.app">
+              <span class="b-helper">We'll send your welcome letter here.</span>
+            </div>
+            <div class="b-field">
+              <label class="b-label-text">Your intention</label>
+              <textarea class="b-input b-textarea" placeholder="This season I want to..."></textarea>
+            </div>
+          </div>
+          <div>
+            <div class="b-field">
+              <label class="b-label-text">Focus area</label>
+              <select class="b-input b-select">
+                <option>Mindfulness</option>
+                <option>Nutrition</option>
+                <option>Movement</option>
+                <option>Creativity</option>
+              </select>
+            </div>
+            <div class="b-field" style="display: flex; align-items: center; gap: 12px;">
+              <input class="b-toggle" type="checkbox" checked id="notifs">
+              <label for="notifs" class="b-label-text" style="margin: 0; text-transform: none; letter-spacing: 0;">Daily gentle reminders</label>
+            </div>
+            <div class="b-field" style="display: flex; align-items: center; gap: 12px;">
+              <input class="b-checkbox" type="checkbox" id="terms">
+              <label for="terms" class="b-label-text" style="margin: 0; text-transform: none; letter-spacing: 0;">I agree to Bloom's kind terms</label>
+            </div>
+            <div class="b-input-group b-mt-4">
+              <input class="b-input" type="email" placeholder="your@email.com">
+              <button class="b-btn b-btn-primary">Join</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Progress -->
+      <div class="b-card b-mb-8">
+        <div class="b-card-title b-mb-4">Progress</div>
+        <div class="b-stack" style="gap: 16px;">
+          <div>
+            <div class="b-between b-mb-2"><span class="b-subtle">Mindfulness</span><span class="b-subtle">72%</span></div>
+            <div class="b-progress"><div class="b-progress-bar" style="width:72%"></div></div>
+          </div>
+          <div>
+            <div class="b-between b-mb-2"><span class="b-subtle">Movement</span><span class="b-subtle">45%</span></div>
+            <div class="b-progress"><div class="b-progress-bar" style="width:45%"></div></div>
+          </div>
+          <div>
+            <div class="b-between b-mb-2"><span class="b-subtle">Nutrition</span><span class="b-subtle">89%</span></div>
+            <div class="b-progress b-progress-lg"><div class="b-progress-bar" style="width:89%"></div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Alerts -->
+      <div class="b-card b-mb-8">
+        <div class="b-card-title b-mb-4">Alerts</div>
+        <div class="b-stack">
+          <div class="b-alert b-alert-success">
+            <div>
+              <div class="b-alert-title">Streak unlocked!</div>
+              <div class="b-alert-desc">You've completed 7 days in a row. Keep blooming.</div>
+            </div>
+          </div>
+          <div class="b-alert b-alert-info">
+            <div>
+              <div class="b-alert-title">New course available</div>
+              <div class="b-alert-desc">"Gentle Mornings" is now live in your library.</div>
+            </div>
+          </div>
+          <div class="b-alert b-alert-warning">
+            <div>
+              <div class="b-alert-title">Gentle reminder</div>
+              <div class="b-alert-desc">You haven't journaled in 3 days. No pressure — just checking in.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Typography -->
+      <div class="b-card b-mb-8">
+        <div class="b-card-title b-mb-4">Typography</div>
+        <div class="b-stack" style="gap: 12px;">
+          <p class="b-display" style="font-size: clamp(1.8rem, 4vw, 2.8rem)">Display — <em>Lora Italic</em></p>
+          <p class="b-h1" style="font-size: clamp(1.6rem, 3vw, 2.2rem)">Heading 1 — Lora Regular</p>
+          <p class="b-h2">Heading 2 — Lora Medium</p>
+          <p class="b-h3">Heading 3 — Poppins SemiBold</p>
+          <p class="b-h4">Heading 4 — Poppins Medium</p>
+          <p class="b-body">Body text — Poppins Regular. Gentle words for a gentle mind. Every sentence has room to breathe.</p>
+          <p class="b-muted">Muted text — supporting copy, captions, and secondary information.</p>
+          <p class="b-subtle">Subtle — tertiary labels, timestamps, metadata.</p>
+          <p class="b-label">Label / Overline — Section headings</p>
+          <code class="b-mono">mono — bloom.track({ habit: 'morning-pages', streak: 21 })</code>
+        </div>
+      </div>
+
+      <!-- Code block -->
+      <div class="b-card">
+        <div class="b-card-title b-mb-4">Code</div>
+        <div class="b-code">// Bloom daily ritual tracker
+const bloom = new Bloom({
+  theme: 'soft-pastel',
+  accent: '#e8a0bf',
+  fontSans: 'Poppins',
+  fontSerif: 'Lora',
+});
+
+bloom.track('morning-ritual', {
+  meditation: true,
+  journaling: true,
+  movement: false,
+});</div>
+        <p class="b-mt-4 b-body">Inline code looks like <code class="b-code-inline">bloom.track()</code> inside flowing text.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ STEPS ═══ -->
+  <section class="b-section">
+    <div class="b-container b-container-sm">
+      <div class="b-text-center" style="margin-bottom: 48px;">
+        <h2 class="b-h2">Your path to <em class="b-serif">blooming</em></h2>
+      </div>
+      <div class="b-steps">
+        <div class="b-step active">
+          <div class="b-step-title">Discover</div>
+          <div class="b-step-desc">Take the gentle quiz</div>
+        </div>
+        <div class="b-step active">
+          <div class="b-step-title">Customise</div>
+          <div class="b-step-desc">Build your ritual space</div>
+        </div>
+        <div class="b-step">
+          <div class="b-step-title">Practice</div>
+          <div class="b-step-desc">Show up daily</div>
+        </div>
+        <div class="b-step">
+          <div class="b-step-title">Flourish</div>
+          <div class="b-step-desc">Watch yourself grow</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA ═══ -->
+  <section class="b-section" style="background: var(--accent-08); border-top: 1px solid var(--border-accent);">
+    <div class="b-container">
+      <div class="b-hero" style="padding: 48px 0;">
+        <h2 class="b-h1">Ready to begin?</h2>
+        <p class="b-muted" style="max-width:440px">Your journey starts with one small, beautiful step. Bloom is here whenever you are.</p>
+        <button class="b-btn b-btn-primary b-btn-xl">Start blooming today</button>
+        <p class="b-subtle">Free forever · No credit card · Cancel any time</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="b-footer">
+    <div class="b-container">
+      <div class="b-footer-grid">
+        <div>
+          <div class="b-footer-brand b-accent">Bloom</div>
+          <p class="b-muted" style="font-size: var(--text-sm); max-width: 260px; line-height: 1.8;">A gentle space for women who want to grow with intention, one beautiful day at a time.</p>
+        </div>
+        <div>
+          <div class="b-footer-heading">Product</div>
+          <ul class="b-footer-links">
+            <li><a href="#" class="b-footer-link">Features</a></li>
+            <li><a href="#" class="b-footer-link">Pricing</a></li>
+            <li><a href="#" class="b-footer-link">Courses</a></li>
+            <li><a href="#" class="b-footer-link">Community</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="b-footer-heading">Support</div>
+          <ul class="b-footer-links">
+            <li><a href="#" class="b-footer-link">Help centre</a></li>
+            <li><a href="#" class="b-footer-link">Contact us</a></li>
+            <li><a href="#" class="b-footer-link">Accessibility</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="b-footer-heading">Company</div>
+          <ul class="b-footer-links">
+            <li><a href="#" class="b-footer-link">About</a></li>
+            <li><a href="#" class="b-footer-link">Blog</a></li>
+            <li><a href="#" class="b-footer-link">Careers</a></li>
+            <li><a href="#" class="b-footer-link">Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="b-footer-bottom">
+        <span class="b-footer-copy">© 2026 Bloom. Made with love for every woman who is becoming.</span>
+        <div class="b-flex" style="gap: 8px;">
+          <span class="b-tag">soft-pastel theme</span>
+          <span class="b-tag">boom-cdn</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

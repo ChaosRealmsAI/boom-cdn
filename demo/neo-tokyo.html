@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SYNTH//WAVE — Neo Tokyo Theme Demo</title>
+  <link rel="stylesheet" href="../themes/neo-tokyo.css">
+  <style>
+    /* ── Demo-only overrides ── */
+    .nt-glow { text-shadow: 0 0 20px rgba(255,68,68,0.6), 0 0 40px rgba(255,68,68,0.3); }
+    .nt-glow-border { box-shadow: 0 0 0 1px rgba(255,68,68,0.4), 0 0 20px rgba(255,68,68,0.15); }
+    .nt-scanline {
+      position: relative;
+      overflow: hidden;
+    }
+    .nt-scanline::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,0,0,0.08) 2px,
+        rgba(0,0,0,0.08) 4px
+      );
+      pointer-events: none;
+      z-index: 1;
+    }
+    .nt-slash { color: var(--accent); font-weight: 900; }
+    .nt-hero-bg {
+      background:
+        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(255,68,68,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 40% at 80% 80%, rgba(255,68,68,0.06) 0%, transparent 60%);
+    }
+    .nt-tag-live {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 12px;
+      font-size: 0.7rem;
+      font-family: var(--font-mono);
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      background: rgba(255,68,68,0.1);
+      border: 1px solid rgba(255,68,68,0.35);
+      border-radius: 2px;
+      color: var(--accent);
+    }
+    .nt-tag-live::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      box-shadow: 0 0 6px var(--accent);
+      animation: nt-pulse 1.2s ease-in-out infinite;
+    }
+    @keyframes nt-pulse {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0.3; }
+    }
+    .nt-grid-line {
+      background-image:
+        linear-gradient(rgba(255,68,68,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,68,68,0.04) 1px, transparent 1px);
+      background-size: 48px 48px;
+    }
+    .nt-number {
+      font-family: var(--font-mono);
+      font-size: 0.65rem;
+      color: var(--text-subtle);
+      letter-spacing: 0.05em;
+      user-select: none;
+    }
+    .nt-card-cyber {
+      position: relative;
+      border: 1px solid rgba(255,68,68,0.2);
+      border-radius: var(--radius-lg);
+    }
+    .nt-card-cyber::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      background: linear-gradient(135deg, rgba(255,68,68,0.25), transparent 40%, transparent 60%, rgba(255,68,68,0.1));
+      pointer-events: none;
+    }
+    .nt-stat-num {
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--accent);
+      line-height: 1;
+      letter-spacing: -0.02em;
+    }
+    .b-navbar-brand .nt-slash {
+      font-size: 1em;
+    }
+    code.b-mono {
+      display: block;
+      padding: 2px 0;
+    }
+  </style>
+</head>
+<body class="boom b-grain nt-grid-line">
+
+  <!-- ── NAVBAR ── -->
+  <nav class="b-navbar" style="background: rgba(13,13,18,0.85); backdrop-filter: blur(16px);">
+    <div class="b-navbar-brand" style="font-family: var(--font-serif); font-size: 1.1rem; letter-spacing: 0.08em;">
+      SYNTH<span class="nt-slash">//</span>WAVE
+    </div>
+    <ul class="b-navbar-links">
+      <li><a href="#" class="b-navbar-link active">SYSTEMS</a></li>
+      <li><a href="#" class="b-navbar-link">GRID</a></li>
+      <li><a href="#" class="b-navbar-link">ARCHIVE</a></li>
+      <li><a href="#" class="b-navbar-link">UPLINK</a></li>
+    </ul>
+    <div class="b-flex b-gap-2">
+      <button class="b-btn b-btn-sm">LOG IN</button>
+      <button class="b-btn b-btn-sm b-btn-primary">CONNECT</button>
+    </div>
+  </nav>
+
+  <!-- ── HERO ── -->
+  <section class="b-section nt-hero-bg nt-scanline" style="padding: 120px 0 96px;">
+    <div class="b-container b-text-center b-stack" style="align-items: center;">
+      <span class="nt-tag-live">LIVE TRANSMISSION</span>
+
+      <h1 class="b-display nt-glow" style="font-family: var(--font-serif); font-weight: 900; letter-spacing: 0.06em; text-transform: uppercase;">
+        SYNTH<span class="nt-slash">//</span>WAVE
+      </h1>
+
+      <p class="b-muted" style="font-size: var(--text-lg); letter-spacing: 0.04em; max-width: 560px;">
+        Neural uplink established. Broadcast from sector <span class="b-accent b-mono">NX-77</span>.
+        The system is online. Are you ready to dive into the grid?
+      </p>
+
+      <div class="b-flex b-wrap" style="justify-content: center; gap: 12px; margin-top: 8px;">
+        <button class="b-btn b-btn-xl b-btn-primary nt-glow-border" style="font-family: var(--font-serif); letter-spacing: 0.12em; text-transform: uppercase;">
+          JACK IN
+        </button>
+        <button class="b-btn b-btn-xl b-btn-outline" style="font-family: var(--font-serif); letter-spacing: 0.12em; text-transform: uppercase;">
+          VIEW ARCHIVE
+        </button>
+      </div>
+
+      <div class="b-flex b-gap-4" style="margin-top: 16px; justify-content: center;">
+        <span class="b-badge">CYBERPUNK</span>
+        <span class="b-badge">NEURAL NET</span>
+        <span class="b-badge">SECTOR 7</span>
+        <span class="b-badge b-badge-success">ONLINE</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── STATS BAR ── -->
+  <section style="border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); background: var(--bg-elevated);">
+    <div class="b-container">
+      <div class="b-grid b-grid-4" style="padding: 40px 0;">
+        <div class="b-stat">
+          <div class="nt-stat-num">4.2B</div>
+          <div class="b-stat-label">Nodes Active</div>
+        </div>
+        <div class="b-stat">
+          <div class="nt-stat-num">99.97<span style="font-size: 0.5em;">%</span></div>
+          <div class="b-stat-label">Uptime</div>
+        </div>
+        <div class="b-stat">
+          <div class="nt-stat-num">&lt;1ms</div>
+          <div class="b-stat-label">Latency</div>
+        </div>
+        <div class="b-stat">
+          <div class="nt-stat-num">∞</div>
+          <div class="b-stat-label">Bandwidth</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── CONTENT GRID ── -->
+  <section class="b-section">
+    <div class="b-container b-stack" style="gap: 64px;">
+
+      <!-- Cards row -->
+      <div>
+        <div class="b-label b-mb-6">// ACTIVE MODULES</div>
+        <div class="b-grid b-grid-3">
+
+          <div class="b-card nt-card-cyber">
+            <div class="b-card-header b-between">
+              <span class="b-label">MODULE 01</span>
+              <span class="b-badge b-badge-success">ACTIVE</span>
+            </div>
+            <div class="b-card-title" style="font-family: var(--font-serif); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 12px;">
+              Ghost Protocol
+            </div>
+            <div class="b-card-desc b-mt-2">
+              Autonomous deep-scan unit. Infiltrates legacy networks with zero trace vector.
+            </div>
+            <div class="b-card-footer b-between">
+              <span class="b-muted b-mono">v2.3.1</span>
+              <button class="b-btn b-btn-sm b-btn-outline">EXECUTE</button>
+            </div>
+          </div>
+
+          <div class="b-card nt-card-cyber">
+            <div class="b-card-header b-between">
+              <span class="b-label">MODULE 02</span>
+              <span class="b-badge b-badge-warning">STANDBY</span>
+            </div>
+            <div class="b-card-title" style="font-family: var(--font-serif); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 12px;">
+              Neon Cipher
+            </div>
+            <div class="b-card-desc b-mt-2">
+              High-frequency encryption lattice. 4096-bit quantum-resistant key exchange.
+            </div>
+            <div class="b-card-footer b-between">
+              <span class="b-muted b-mono">v1.9.0</span>
+              <button class="b-btn b-btn-sm b-btn-outline">LOAD</button>
+            </div>
+          </div>
+
+          <div class="b-card nt-card-cyber">
+            <div class="b-card-header b-between">
+              <span class="b-label">MODULE 03</span>
+              <span class="b-badge b-badge-error">LOCKED</span>
+            </div>
+            <div class="b-card-title" style="font-family: var(--font-serif); letter-spacing: 0.06em; text-transform: uppercase; margin-top: 12px;">
+              Black Ice
+            </div>
+            <div class="b-card-desc b-mt-2">
+              Countermeasure swarm. Deploys on unauthorized intrusion. Tier-4 clearance required.
+            </div>
+            <div class="b-card-footer b-between">
+              <span class="b-muted b-mono">v4.0.0</span>
+              <button class="b-btn b-btn-sm b-btn-danger">RESTRICTED</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Two-column: code + form -->
+      <div class="b-grid b-grid-2">
+
+        <!-- Code block -->
+        <div class="b-stack">
+          <div class="b-label">// SYSTEM OUTPUT</div>
+          <div class="b-code nt-glow-border" style="font-size: 0.75rem; line-height: 1.9;">
+<code class="b-mono">&gt; SYNTH//WAVE OS v7.7.0</code>
+<code class="b-mono">&gt; boot sequence initiated</code>
+<code class="b-mono" style="color: var(--text-subtle);">  loading neural modules ......... OK</code>
+<code class="b-mono" style="color: var(--text-subtle);">  calibrating uplink array ........ OK</code>
+<code class="b-mono" style="color: var(--text-subtle);">  scanning sector NX-77 ........... OK</code>
+<code class="b-mono">&gt; <span style="color: var(--accent);">all systems nominal</span></code>
+<code class="b-mono">&gt; <span style="color: var(--success);">uplink established [127.0.0.1]</span></code>
+<code class="b-mono" style="color: var(--text-faint);">  ──────────────────────────────</code>
+<code class="b-mono">&gt; <span style="color: var(--accent);">_</span></code>
+          </div>
+
+          <div class="b-progress-lg b-rounded" style="height: 6px; background: var(--bg-hover);">
+            <div class="b-progress-bar" style="width: 74%; background: linear-gradient(90deg, var(--accent), rgba(255,68,68,0.5));"></div>
+          </div>
+          <div class="b-between">
+            <span class="b-muted b-mono" style="font-size: 0.72rem;">SECTOR SCAN: 74%</span>
+            <span class="b-muted b-mono" style="font-size: 0.72rem;">ETA: 00:02:14</span>
+          </div>
+        </div>
+
+        <!-- Form -->
+        <div class="b-stack">
+          <div class="b-label">// NEURAL UPLINK</div>
+          <div class="b-card nt-card-cyber">
+            <div class="b-stack" style="gap: 16px;">
+              <div class="b-field">
+                <label class="b-label-text">OPERATOR ID</label>
+                <input class="b-input b-mono" type="text" placeholder="USR-XXXX-NX77" />
+              </div>
+              <div class="b-field">
+                <label class="b-label-text">ACCESS TOKEN</label>
+                <input class="b-input b-mono" type="password" placeholder="●●●●●●●●●●●●" />
+                <div class="b-helper">Tier-3 clearance or higher required</div>
+              </div>
+              <div class="b-field">
+                <label class="b-label-text">TARGET SECTOR</label>
+                <select class="b-input b-select b-mono">
+                  <option>NX-77 :: Downtown Core</option>
+                  <option>SX-12 :: Industrial Zone</option>
+                  <option>TX-04 :: Black Market</option>
+                </select>
+              </div>
+              <div class="b-between">
+                <div class="b-flex" style="gap: 8px; align-items: center;">
+                  <input class="b-toggle" type="checkbox" checked />
+                  <span class="b-label">STEALTH MODE</span>
+                </div>
+                <button class="b-btn b-btn-primary" style="font-family: var(--font-serif); letter-spacing: 0.1em;">
+                  CONNECT
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Table -->
+      <div>
+        <div class="b-label b-mb-6">// TRANSACTION LOG</div>
+        <div class="b-table-wrap">
+          <table class="b-table">
+            <thead>
+              <tr>
+                <th>TX ID</th>
+                <th>OPERATOR</th>
+                <th>SECTOR</th>
+                <th>TIMESTAMP</th>
+                <th>STATUS</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="b-mono" style="color: var(--accent);">0x4A2F...C9E1</td>
+                <td>Ghost_77</td>
+                <td><span class="b-tag b-mono">NX-77</span></td>
+                <td class="b-mono b-muted">2077-03-18 04:21:09</td>
+                <td><span class="b-badge b-badge-success">CONFIRMED</span></td>
+              </tr>
+              <tr>
+                <td class="b-mono" style="color: var(--accent);">0x8B1A...3D7C</td>
+                <td>Neon_Ryoko</td>
+                <td><span class="b-tag b-mono">SX-12</span></td>
+                <td class="b-mono b-muted">2077-03-18 03:55:44</td>
+                <td><span class="b-badge b-badge-warning">PENDING</span></td>
+              </tr>
+              <tr>
+                <td class="b-mono" style="color: var(--accent);">0xF39D...A02B</td>
+                <td>Cipher_Kai</td>
+                <td><span class="b-tag b-mono">TX-04</span></td>
+                <td class="b-mono b-muted">2077-03-18 02:10:17</td>
+                <td><span class="b-badge b-badge-error">REJECTED</span></td>
+              </tr>
+              <tr>
+                <td class="b-mono" style="color: var(--accent);">0x1C70...88FF</td>
+                <td>Ghost_77</td>
+                <td><span class="b-tag b-mono">NX-77</span></td>
+                <td class="b-mono b-muted">2077-03-18 01:04:33</td>
+                <td><span class="b-badge b-badge-success">CONFIRMED</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Tabs + Accordion row -->
+      <div class="b-grid b-grid-2">
+
+        <div class="b-stack">
+          <div class="b-label">// SECTOR STATUS</div>
+          <div class="b-tabs">
+            <button class="b-tab active">UPLINK</button>
+            <button class="b-tab">DEFENSE</button>
+            <button class="b-tab">COMMS</button>
+          </div>
+          <div class="b-stack" style="gap: 12px; padding-top: 4px;">
+            <div class="b-between">
+              <span class="b-muted">Neural Bandwidth</span>
+              <span class="b-mono" style="color: var(--success);">4.2 Tb/s</span>
+            </div>
+            <div class="b-progress"><div class="b-progress-bar" style="width: 88%;"></div></div>
+            <div class="b-between">
+              <span class="b-muted">ICE Layer</span>
+              <span class="b-mono" style="color: var(--warning);">62%</span>
+            </div>
+            <div class="b-progress"><div class="b-progress-bar" style="width: 62%; background: var(--warning);"></div></div>
+            <div class="b-between">
+              <span class="b-muted">Ghost Nodes</span>
+              <span class="b-mono" style="color: var(--error);">19%</span>
+            </div>
+            <div class="b-progress"><div class="b-progress-bar" style="width: 19%; background: var(--error);"></div></div>
+          </div>
+        </div>
+
+        <div class="b-stack">
+          <div class="b-label">// INTEL DATABASE</div>
+          <div class="b-accordion">
+            <div class="b-accordion-item">
+              <button class="b-accordion-trigger">
+                <span>What is SYNTH//WAVE?</span>
+                <span class="b-accent b-mono" style="font-size: 1rem;">+</span>
+              </button>
+              <div class="b-accordion-content">
+                A decentralized neural-mesh operating on the remnants of the old internet.
+                Access is earned, not granted.
+              </div>
+            </div>
+            <div class="b-accordion-item">
+              <button class="b-accordion-trigger">
+                <span>How do I get Tier-4 clearance?</span>
+                <span class="b-accent b-mono" style="font-size: 1rem;">+</span>
+              </button>
+              <div class="b-accordion-content">
+                Complete 50 verified uplinks and pass the Black Ice assessment.
+                No exceptions. No shortcuts.
+              </div>
+            </div>
+            <div class="b-accordion-item">
+              <button class="b-accordion-trigger">
+                <span>Can my trace be cleaned?</span>
+                <span class="b-accent b-mono" style="font-size: 1rem;">+</span>
+              </button>
+              <div class="b-accordion-content">
+                Ghost Protocol v2.3.1+ handles trace erasure automatically.
+                Older versions require manual sector wipe.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Testimonials -->
+      <div>
+        <div class="b-label b-mb-6">// OPERATOR TESTIMONIALS</div>
+        <div class="b-grid b-grid-3">
+          <div class="b-card b-testimonial">
+            <div class="b-testimonial-quote">
+              "Jacked in at 0300 and the grid was flawless. Zero latency. Zero trace. This is the real net."
+            </div>
+            <div class="b-testimonial-author">
+              <div class="b-avatar" style="font-family: var(--font-serif);">GH</div>
+              <div>
+                <div class="b-testimonial-name">Ghost_77</div>
+                <div class="b-testimonial-role">Sector NX-77 — Tier 4</div>
+              </div>
+            </div>
+          </div>
+          <div class="b-card b-testimonial">
+            <div class="b-testimonial-quote">
+              "Neon Cipher hasn't been cracked in three years. Whatever they're running, it's not human-built."
+            </div>
+            <div class="b-testimonial-author">
+              <div class="b-avatar" style="font-family: var(--font-serif);">NR</div>
+              <div>
+                <div class="b-testimonial-name">Neon_Ryoko</div>
+                <div class="b-testimonial-role">Sector SX-12 — Tier 3</div>
+              </div>
+            </div>
+          </div>
+          <div class="b-card b-testimonial">
+            <div class="b-testimonial-quote">
+              "Black Ice saved my node three times last month. I don't leave the grid without it running."
+            </div>
+            <div class="b-testimonial-author">
+              <div class="b-avatar" style="font-family: var(--font-serif);">CK</div>
+              <div>
+                <div class="b-testimonial-name">Cipher_Kai</div>
+                <div class="b-testimonial-role">Sector TX-04 — Tier 4</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer class="b-footer">
+    <div class="b-container">
+      <div class="b-footer-grid">
+        <div>
+          <div class="b-footer-brand" style="font-family: var(--font-serif); letter-spacing: 0.08em; color: var(--accent);">
+            SYNTH<span class="nt-slash">//</span>WAVE
+          </div>
+          <p class="b-muted" style="font-size: var(--text-sm); margin-top: 8px; max-width: 240px; line-height: 1.6;">
+            Broadcasting from sector NX-77 since 2071.
+            The grid never sleeps.
+          </p>
+        </div>
+        <div>
+          <div class="b-footer-heading">SYSTEMS</div>
+          <ul class="b-footer-links">
+            <li><a href="#" class="b-footer-link">Ghost Protocol</a></li>
+            <li><a href="#" class="b-footer-link">Neon Cipher</a></li>
+            <li><a href="#" class="b-footer-link">Black Ice</a></li>
+            <li><a href="#" class="b-footer-link">Neural Mesh</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="b-footer-heading">SECTORS</div>
+          <ul class="b-footer-links">
+            <li><a href="#" class="b-footer-link">NX-77 Core</a></li>
+            <li><a href="#" class="b-footer-link">SX-12 Zone</a></li>
+            <li><a href="#" class="b-footer-link">TX-04 Black Market</a></li>
+            <li><a href="#" class="b-footer-link">RX-99 Archive</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="b-footer-heading">UPLINK</div>
+          <ul class="b-footer-links">
+            <li><a href="#" class="b-footer-link">Documentation</a></li>
+            <li><a href="#" class="b-footer-link">Status Page</a></li>
+            <li><a href="#" class="b-footer-link">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="b-footer-bottom">
+        <span class="b-footer-copy b-mono">// SYNTH//WAVE OS v7.7.0 — SECTOR NX-77</span>
+        <span class="b-footer-copy b-mono">2077 ALL RIGHTS RESERVED</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

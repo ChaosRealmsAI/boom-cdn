@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CIPHERNODE — Terminal Green</title>
+  <link rel="stylesheet" href="../themes/terminal-green.css">
+  <style>
+    /* Demo-only: scanline + cursor blink */
+    body.boom { min-height: 100vh; }
+
+    .b-grain::before { opacity: 0.04; }
+
+    /* CRT scanlines */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: 9998;
+      pointer-events: none;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.08) 2px,
+        rgba(0, 0, 0, 0.08) 4px
+      );
+    }
+
+    /* blinking cursor */
+    .cursor::after {
+      content: '_';
+      animation: blink 1s step-end infinite;
+      color: var(--accent);
+    }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+    /* accent glow on headings */
+    .b-display, .b-h1 {
+      text-shadow: 0 0 20px rgba(0, 255, 65, 0.35), 0 0 60px rgba(0, 255, 65, 0.12);
+    }
+
+    /* terminal prompt prefix */
+    .prompt::before {
+      content: '> ';
+      color: var(--accent);
+    }
+
+    /* override navbar brand to mono bold */
+    .b-navbar-brand {
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      text-shadow: 0 0 12px rgba(0, 255, 65, 0.5);
+    }
+
+    /* override card hover glow */
+    .b-card:hover {
+      box-shadow: 0 0 0 1px var(--accent-30), 0 0 20px rgba(0, 255, 65, 0.06);
+    }
+
+    /* accent btn glow */
+    .b-btn-primary {
+      box-shadow: 0 0 16px rgba(0, 255, 65, 0.25);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .b-btn-primary:hover {
+      box-shadow: 0 0 24px rgba(0, 255, 65, 0.4);
+      opacity: 1;
+    }
+
+    /* code block green tint */
+    .b-code {
+      border-color: var(--border-mid);
+      color: var(--text-muted);
+    }
+
+    /* stat value glow */
+    .b-stat-value {
+      color: var(--accent);
+      text-shadow: 0 0 16px rgba(0, 255, 65, 0.4);
+    }
+  </style>
+</head>
+<body class="boom b-grain">
+
+  <!-- ═══ NAVBAR ═══ -->
+  <nav class="b-navbar">
+    <span class="b-navbar-brand">CIPHERNODE</span>
+    <ul class="b-navbar-links">
+      <li><a href="#" class="b-navbar-link active">_SYS</a></li>
+      <li><a href="#" class="b-navbar-link">_OPS</a></li>
+      <li><a href="#" class="b-navbar-link">_INTEL</a></li>
+      <li><a href="#" class="b-navbar-link">_VAULT</a></li>
+    </ul>
+    <div class="b-flex b-gap-2">
+      <button class="b-btn b-btn-sm b-btn-outline">SSH</button>
+      <button class="b-btn b-btn-sm b-btn-primary">CONNECT</button>
+    </div>
+  </nav>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="b-hero b-container">
+    <span class="b-badge">// CLASSIFIED SYSTEM</span>
+    <h1 class="b-display cursor">INFILTRATE.<br>ENUMERATE.<br>EXFILTRATE.</h1>
+    <p class="b-muted prompt">Secure node infrastructure for offensive security operations. Zero-trust architecture. End-to-end encrypted.</p>
+    <div class="b-flex b-gap-4 b-wrap b-center">
+      <button class="b-btn b-btn-xl b-btn-primary">INITIALIZE SESSION</button>
+      <button class="b-btn b-btn-xl b-btn-outline">VIEW DOCS</button>
+    </div>
+  </section>
+
+  <!-- ═══ STATS ═══ -->
+  <section class="b-section-sm">
+    <div class="b-container">
+      <div class="b-grid b-grid-4">
+        <div class="b-stat b-card b-card-flat">
+          <div class="b-stat-value">99.9%</div>
+          <div class="b-stat-label">UPTIME</div>
+        </div>
+        <div class="b-stat b-card b-card-flat">
+          <div class="b-stat-value">256-BIT</div>
+          <div class="b-stat-label">ENCRYPTION</div>
+        </div>
+        <div class="b-stat b-card b-card-flat">
+          <div class="b-stat-value">0-LOG</div>
+          <div class="b-stat-label">POLICY</div>
+        </div>
+        <div class="b-stat b-card b-card-flat">
+          <div class="b-stat-value">&lt;4ms</div>
+          <div class="b-stat-label">LATENCY</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FEATURES ═══ -->
+  <section class="b-section">
+    <div class="b-container">
+      <div class="b-text-center b-stack" style="align-items:center;margin-bottom:48px;">
+        <span class="b-label">// CAPABILITIES</span>
+        <h2 class="b-h2">CORE MODULES</h2>
+      </div>
+      <div class="b-grid b-grid-3">
+        <div class="b-card b-card-accent">
+          <div class="b-card-header">
+            <span class="b-label">MODULE_01</span>
+            <div class="b-card-title">RECON ENGINE</div>
+            <div class="b-card-desc">Passive and active intelligence gathering. OSINT pipelines. DNS enumeration. Port scanning with stealth profiles.</div>
+          </div>
+          <div class="b-card-footer b-flex b-gap-2">
+            <span class="b-tag">PASSIVE</span>
+            <span class="b-tag">ACTIVE</span>
+            <span class="b-tag">OSINT</span>
+          </div>
+        </div>
+        <div class="b-card b-card-accent">
+          <div class="b-card-header">
+            <span class="b-label">MODULE_02</span>
+            <div class="b-card-title">EXPLOIT CHAIN</div>
+            <div class="b-card-desc">Automated vulnerability chaining. CVE correlation. Payload delivery. Post-exploitation framework integration.</div>
+          </div>
+          <div class="b-card-footer b-flex b-gap-2">
+            <span class="b-tag">CVE</span>
+            <span class="b-tag">PAYLOAD</span>
+            <span class="b-tag">POST-EX</span>
+          </div>
+        </div>
+        <div class="b-card b-card-accent">
+          <div class="b-card-header">
+            <span class="b-label">MODULE_03</span>
+            <div class="b-card-title">C2 FABRIC</div>
+            <div class="b-card-desc">Distributed command-and-control infrastructure. Domain fronting. Traffic obfuscation. Malleable C2 profiles.</div>
+          </div>
+          <div class="b-card-footer b-flex b-gap-2">
+            <span class="b-tag">C2</span>
+            <span class="b-tag">OBFUSCATION</span>
+            <span class="b-tag">TLS</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CODE BLOCK ═══ -->
+  <section class="b-section-sm">
+    <div class="b-container b-container-sm">
+      <span class="b-label b-mb-4" style="display:block;">// QUICK START</span>
+      <pre class="b-code">$ ciphernode init --target 10.0.0.0/8 --profile stealth
+[*] Initializing node fabric...
+[*] Generating ephemeral keypair (ed25519)
+[+] Session established: a3f9b2c1-dead-beef-cafe-000000000001
+[*] Loading recon modules: dns, http, tls, smb
+[*] Starting passive sweep... done (47 hosts)
+[+] 12 potential attack vectors identified
+[>] Run 'ciphernode exploit --auto' to proceed</pre>
+      <div class="b-flex b-gap-2 b-mt-4">
+        <button class="b-btn b-btn-sm b-btn-primary">COPY</button>
+        <button class="b-btn b-btn-sm">VIEW FULL DOCS</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ PRICING ═══ -->
+  <section class="b-section">
+    <div class="b-container">
+      <div class="b-text-center b-stack" style="align-items:center;margin-bottom:48px;">
+        <span class="b-label">// ACCESS TIERS</span>
+        <h2 class="b-h2">CLEARANCE LEVELS</h2>
+      </div>
+      <div class="b-grid b-grid-3">
+        <div class="b-card b-pricing">
+          <span class="b-label">TIER_0</span>
+          <h3 class="b-card-title b-mt-4">GHOST</h3>
+          <div class="b-pricing-price">
+            <span class="b-pricing-amount">FREE</span>
+          </div>
+          <ul class="b-pricing-features">
+            <li>Basic recon tools</li>
+            <li>Public CVE database</li>
+            <li>Community C2 nodes</li>
+            <li>2 concurrent sessions</li>
+          </ul>
+          <button class="b-btn b-btn-outline b-btn-full">ACCESS GHOST</button>
+        </div>
+        <div class="b-card b-pricing b-pricing-popular">
+          <span class="b-label">TIER_1</span>
+          <span class="b-badge" style="position:absolute;top:16px;right:16px;">RECOMMENDED</span>
+          <h3 class="b-card-title b-mt-4">PHANTOM</h3>
+          <div class="b-pricing-price">
+            <span class="b-pricing-amount">$99</span>
+            <span class="b-pricing-period"> / mo</span>
+          </div>
+          <ul class="b-pricing-features">
+            <li>Full exploit chain access</li>
+            <li>Private C2 infrastructure</li>
+            <li>Traffic obfuscation layer</li>
+            <li>Unlimited sessions</li>
+            <li>0-day feed integration</li>
+          </ul>
+          <button class="b-btn b-btn-primary b-btn-full">ACCESS PHANTOM</button>
+        </div>
+        <div class="b-card b-pricing">
+          <span class="b-label">TIER_2</span>
+          <h3 class="b-card-title b-mt-4">SPECTER</h3>
+          <div class="b-pricing-price">
+            <span class="b-pricing-amount">$499</span>
+            <span class="b-pricing-period"> / mo</span>
+          </div>
+          <ul class="b-pricing-features">
+            <li>Air-gapped node clusters</li>
+            <li>Custom implant development</li>
+            <li>Red team ops support</li>
+            <li>Dedicated C2 fabric</li>
+            <li>Priority threat intel</li>
+          </ul>
+          <button class="b-btn b-btn-outline b-btn-full">ACCESS SPECTER</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ALERT EXAMPLES ═══ -->
+  <section class="b-section-sm">
+    <div class="b-container b-container-sm b-stack">
+      <span class="b-label">// SYSTEM ALERTS</span>
+      <div class="b-alert b-alert-success">
+        <div>
+          <div class="b-alert-title">[+] SESSION ACTIVE</div>
+          <div class="b-alert-desc">Node a3f9b2c1 is live. All channels encrypted. 0 anomalies detected.</div>
+        </div>
+      </div>
+      <div class="b-alert b-alert-warning">
+        <div>
+          <div class="b-alert-title">[!] ANOMALY DETECTED</div>
+          <div class="b-alert-desc">Unusual traffic pattern on eth0. Possible IDS evasion required.</div>
+        </div>
+      </div>
+      <div class="b-alert b-alert-error">
+        <div>
+          <div class="b-alert-title">[x] CONNECTION LOST</div>
+          <div class="b-alert-desc">C2 beacon failed after 3 retries. Switching to fallback channel.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="b-footer">
+    <div class="b-container">
+      <div class="b-footer-grid">
+        <div>
+          <div class="b-footer-brand">CIPHERNODE</div>
+          <p class="b-muted" style="font-size:var(--text-sm);max-width:260px;">Offensive security infrastructure. For authorized use only.</p>
+        </div>
+        <div>
+          <div class="b-footer-heading">SYSTEM</div>
+          <ul class="b-footer-links">
+            <li><a href="#" class="b-footer-link">Dashboard</a></li>
+            <li><a href="#" class="b-footer-link">Node Status</a></li>
+            <li><a href="#" class="b-footer-link">Session Logs</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="b-footer-heading">MODULES</div>
+          <ul class="b-footer-links">
+            <li><a href="#" class="b-footer-link">Recon Engine</a></li>
+            <li><a href="#" class="b-footer-link">Exploit Chain</a></li>
+            <li><a href="#" class="b-footer-link">C2 Fabric</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="b-footer-heading">LEGAL</div>
+          <ul class="b-footer-links">
+            <li><a href="#" class="b-footer-link">Terms</a></li>
+            <li><a href="#" class="b-footer-link">Privacy</a></li>
+            <li><a href="#" class="b-footer-link">Responsible Use</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="b-footer-bottom">
+        <span class="b-footer-copy">© 2026 CIPHERNODE. All operations logged.</span>
+        <span class="b-footer-copy">NODE: <span style="color:var(--accent);">ONLINE</span> &nbsp;|&nbsp; ENC: AES-256-GCM &nbsp;|&nbsp; v4.1.0</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

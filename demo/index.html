@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Boom CDN — Theme Switcher</title>
+  <link id="theme-css" rel="stylesheet" href="../themes/obsidian-velvet.css">
+  <style>
+    .theme-switcher {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+      background: rgba(0,0,0,0.85); backdrop-filter: blur(12px);
+      padding: 12px 24px; display: flex; align-items: center; gap: 8px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      overflow-x: auto; white-space: nowrap;
+    }
+    .theme-switcher span {
+      color: rgba(255,255,255,0.5); font-size: 12px; font-family: system-ui;
+      margin-right: 8px; flex-shrink: 0;
+    }
+    .theme-btn {
+      padding: 6px 14px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.15);
+      background: transparent; color: #fff; font-size: 12px; font-family: system-ui;
+      cursor: pointer; transition: all 0.2s; flex-shrink: 0;
+    }
+    .theme-btn:hover { background: rgba(255,255,255,0.1); }
+    .theme-btn.active { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.4); }
+    .theme-dot {
+      display: inline-block; width: 8px; height: 8px; border-radius: 50%;
+      margin-right: 6px; vertical-align: middle;
+    }
+    .page-content { padding-top: 56px; }
+  </style>
+</head>
+<body class="boom b-grain">
+
+  <!-- Theme Switcher Bar -->
+  <div class="theme-switcher">
+    <span>THEME</span>
+    <button class="theme-btn active" onclick="switchTheme('obsidian-velvet', this)">
+      <i class="theme-dot" style="background:#8a6fae"></i>Obsidian Velvet
+    </button>
+    <button class="theme-btn" onclick="switchTheme('swiss-minimal', this)">
+      <i class="theme-dot" style="background:#e63946"></i>Swiss Minimal
+    </button>
+    <button class="theme-btn" onclick="switchTheme('zen-ink', this)">
+      <i class="theme-dot" style="background:#4a4a4a"></i>Zen Ink
+    </button>
+    <button class="theme-btn" onclick="switchTheme('neo-tokyo', this)">
+      <i class="theme-dot" style="background:#ff4444"></i>Neo Tokyo
+    </button>
+    <button class="theme-btn" onclick="switchTheme('champagne-silk', this)">
+      <i class="theme-dot" style="background:#c4a265"></i>Champagne Silk
+    </button>
+    <button class="theme-btn" onclick="switchTheme('terminal-green', this)">
+      <i class="theme-dot" style="background:#00ff41"></i>Terminal Green
+    </button>
+    <button class="theme-btn" onclick="switchTheme('soft-pastel', this)">
+      <i class="theme-dot" style="background:#e8a0bf"></i>Soft Pastel
+    </button>
+    <button class="theme-btn" onclick="switchTheme('matte-carbon', this)">
+      <i class="theme-dot" style="background:#e85d3a"></i>Matte Carbon
+    </button>
+  </div>
+
+  <div class="page-content">
+
+    <!-- NAVBAR -->
+    <nav class="b-navbar">
+      <div class="b-navbar-brand">Acme Studio</div>
+      <ul class="b-navbar-links b-hide-mobile">
+        <li><a href="#" class="b-navbar-link active">Home</a></li>
+        <li><a href="#" class="b-navbar-link">Features</a></li>
+        <li><a href="#" class="b-navbar-link">Pricing</a></li>
+        <li><a href="#" class="b-navbar-link">Blog</a></li>
+        <li><a href="#" class="b-navbar-link">Contact</a></li>
+      </ul>
+      <div class="b-flex" style="gap:8px;">
+        <button class="b-btn b-btn-ghost b-btn-sm">Sign In</button>
+        <button class="b-btn b-btn-primary b-btn-sm">Get Started</button>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="b-hero b-container">
+      <span class="b-badge">New Release v4.0</span>
+      <h1 class="b-display">Design at the<br><em class="b-serif">Speed of Thought</em></h1>
+      <p class="b-muted" style="max-width:520px;font-size:var(--text-lg);">8 themes. 40+ components. One CSS file. Switch themes instantly — the same HTML, completely different vibes.</p>
+      <div class="b-flex" style="gap:12px;">
+        <button class="b-btn b-btn-primary b-btn-lg">Start Building →</button>
+        <button class="b-btn b-btn-lg">View on GitHub</button>
+      </div>
+    </section>
+
+    <div class="b-container"><hr class="b-separator"></div>
+
+    <!-- STATS -->
+    <section class="b-section-sm b-container">
+      <div class="b-grid b-grid-4">
+        <div class="b-stat">
+          <div class="b-stat-value">8</div>
+          <div class="b-stat-label">Themes</div>
+        </div>
+        <div class="b-stat">
+          <div class="b-stat-value">40+</div>
+          <div class="b-stat-label">Components</div>
+        </div>
+        <div class="b-stat">
+          <div class="b-stat-value">0</div>
+          <div class="b-stat-label">Dependencies</div>
+        </div>
+        <div class="b-stat">
+          <div class="b-stat-value">&lt;8kb</div>
+          <div class="b-stat-label">Gzipped</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES -->
+    <section class="b-section b-container">
+      <div class="b-text-center b-mb-8">
+        <p class="b-label">Features</p>
+        <h2 class="b-h2 b-mt-2">Everything You Need</h2>
+      </div>
+      <div class="b-grid b-grid-3">
+        <div class="b-card b-fade-in">
+          <div class="b-avatar b-mb-4">⚡</div>
+          <h3 class="b-card-title">Zero Build Step</h3>
+          <p class="b-card-desc">One CSS link tag. No bundler, no config, no npm install. Just works.</p>
+        </div>
+        <div class="b-card b-fade-in b-stagger-1">
+          <div class="b-avatar b-mb-4">🎨</div>
+          <h3 class="b-card-title">8 Curated Themes</h3>
+          <p class="b-card-desc">From luxury dark to Swiss minimal. Each theme is a complete design system.</p>
+        </div>
+        <div class="b-card b-fade-in b-stagger-2">
+          <div class="b-avatar b-mb-4">🔄</div>
+          <h3 class="b-card-title">Instant Switching</h3>
+          <p class="b-card-desc">Change one CSS import — entire page transforms. Same HTML, different vibe.</p>
+        </div>
+        <div class="b-card b-fade-in b-stagger-1">
+          <div class="b-avatar b-mb-4">📱</div>
+          <h3 class="b-card-title">Fully Responsive</h3>
+          <p class="b-card-desc">Every component adapts from mobile to 4K. Fluid typography with clamp().</p>
+        </div>
+        <div class="b-card b-fade-in b-stagger-2">
+          <div class="b-avatar b-mb-4">🤖</div>
+          <h3 class="b-card-title">AI-Native</h3>
+          <p class="b-card-desc">Built-in llms.txt. AI reads your theme and generates matching pages.</p>
+        </div>
+        <div class="b-card b-fade-in b-stagger-3">
+          <div class="b-avatar b-mb-4">✨</div>
+          <h3 class="b-card-title">Award Quality</h3>
+          <p class="b-card-desc">Film grain, custom easing, 5-level opacity system. Awwwards-ready.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPONENTS SHOWCASE -->
+    <section class="b-section b-container">
+      <p class="b-label">Components</p>
+      <h2 class="b-h2 b-mt-2 b-mb-8">Built-in Primitives</h2>
+
+      <!-- Buttons -->
+      <div class="b-mb-8">
+        <h3 class="b-h5 b-mb-4">Buttons</h3>
+        <div class="b-flex b-wrap">
+          <button class="b-btn b-btn-primary">Primary</button>
+          <button class="b-btn">Default</button>
+          <button class="b-btn b-btn-outline">Outline</button>
+          <button class="b-btn b-btn-ghost">Ghost</button>
+          <button class="b-btn b-btn-danger">Danger</button>
+          <button class="b-btn b-btn-sm">Small</button>
+          <button class="b-btn b-btn-lg">Large</button>
+          <button class="b-btn b-btn-icon">✦</button>
+        </div>
+        <div class="b-flex b-mt-4">
+          <div class="b-btn-group">
+            <button class="b-btn b-btn-sm">Day</button>
+            <button class="b-btn b-btn-sm b-btn-primary">Week</button>
+            <button class="b-btn b-btn-sm">Month</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Badges -->
+      <div class="b-mb-8">
+        <h3 class="b-h5 b-mb-4">Badges & Tags</h3>
+        <div class="b-flex b-wrap">
+          <span class="b-badge">Default</span>
+          <span class="b-badge b-badge-success"><i class="b-dot b-dot-success"></i> Success</span>
+          <span class="b-badge b-badge-warning">Warning</span>
+          <span class="b-badge b-badge-error">Error</span>
+          <span class="b-badge b-badge-info">Info</span>
+          <span class="b-tag">typescript</span>
+          <span class="b-tag">css</span>
+          <span class="b-tag">open-source</span>
+        </div>
+      </div>
+
+      <!-- Avatars -->
+      <div class="b-mb-8">
+        <h3 class="b-h5 b-mb-4">Avatars</h3>
+        <div class="b-flex" style="align-items:center;">
+          <div class="b-avatar b-avatar-xs">A</div>
+          <div class="b-avatar b-avatar-sm">B</div>
+          <div class="b-avatar">C</div>
+          <div class="b-avatar b-avatar-lg">D</div>
+          <div class="b-avatar b-avatar-xl">E</div>
+          <div style="margin-left:24px;">
+            <div class="b-avatar-group">
+              <div class="b-avatar">A</div>
+              <div class="b-avatar">B</div>
+              <div class="b-avatar">C</div>
+              <div class="b-avatar">+3</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Form -->
+      <div class="b-mb-8">
+        <h3 class="b-h5 b-mb-4">Form Elements</h3>
+        <div class="b-grid b-grid-2" style="max-width:600px;">
+          <div class="b-field">
+            <label class="b-label-text">Email</label>
+            <input class="b-input" type="email" placeholder="you@example.com">
+          </div>
+          <div class="b-field">
+            <label class="b-label-text">Password</label>
+            <input class="b-input" type="password" placeholder="••••••••">
+          </div>
+          <div class="b-field" style="grid-column:1/-1;">
+            <label class="b-label-text">Bio</label>
+            <textarea class="b-input b-textarea" placeholder="Tell us about yourself..."></textarea>
+            <p class="b-helper">Max 280 characters</p>
+          </div>
+          <div class="b-flex" style="align-items:center;gap:12px;">
+            <input type="checkbox" class="b-checkbox" id="agree" checked>
+            <label for="agree" class="b-muted">I agree to terms</label>
+          </div>
+          <div class="b-flex" style="align-items:center;gap:12px;">
+            <span class="b-muted">Dark mode</span>
+            <input type="checkbox" class="b-toggle" checked>
+          </div>
+          <div class="b-field" style="grid-column:1/-1;">
+            <label class="b-label-text">Search</label>
+            <div class="b-input-group">
+              <input class="b-input" placeholder="Search components...">
+              <button class="b-btn b-btn-primary">Go</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Alerts -->
+      <div class="b-mb-8">
+        <h3 class="b-h5 b-mb-4">Alerts</h3>
+        <div class="b-stack" style="max-width:600px;">
+          <div class="b-alert b-alert-success"><div><div class="b-alert-title">Success</div><div class="b-alert-desc">Your changes have been saved.</div></div></div>
+          <div class="b-alert b-alert-warning"><div><div class="b-alert-title">Warning</div><div class="b-alert-desc">Your trial expires in 3 days.</div></div></div>
+          <div class="b-alert b-alert-error"><div><div class="b-alert-title">Error</div><div class="b-alert-desc">Payment failed. Please try again.</div></div></div>
+          <div class="b-alert b-alert-info"><div><div class="b-alert-title">Info</div><div class="b-alert-desc">New version available. Update now.</div></div></div>
+        </div>
+      </div>
+
+      <!-- Progress -->
+      <div class="b-mb-8">
+        <h3 class="b-h5 b-mb-4">Progress</h3>
+        <div class="b-stack" style="max-width:400px;gap:12px;">
+          <div><div class="b-between b-mb-2"><span class="b-muted">Storage</span><span class="b-muted">73%</span></div><div class="b-progress"><div class="b-progress-bar" style="width:73%"></div></div></div>
+          <div><div class="b-between b-mb-2"><span class="b-muted">Bandwidth</span><span class="b-muted">45%</span></div><div class="b-progress"><div class="b-progress-bar" style="width:45%"></div></div></div>
+          <div><div class="b-between b-mb-2"><span class="b-muted">CPU</span><span class="b-muted">12%</span></div><div class="b-progress b-progress-lg"><div class="b-progress-bar" style="width:12%"></div></div></div>
+        </div>
+      </div>
+
+      <!-- Tabs -->
+      <div class="b-mb-8">
+        <h3 class="b-h5 b-mb-4">Tabs</h3>
+        <div class="b-tabs">
+          <button class="b-tab active">Overview</button>
+          <button class="b-tab">Analytics</button>
+          <button class="b-tab">Settings</button>
+          <button class="b-tab">Billing</button>
+        </div>
+        <div class="b-card b-card-flat" style="border-top:none;border-radius:0 0 var(--radius-lg) var(--radius-lg);">
+          <p class="b-muted">Tab content goes here. Click tabs to see the visual style.</p>
+        </div>
+        <div class="b-mt-4">
+          <div class="b-tabs b-tab-pills">
+            <button class="b-tab active">All</button>
+            <button class="b-tab">Active</button>
+            <button class="b-tab">Draft</button>
+            <button class="b-tab">Archived</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Steps -->
+      <div class="b-mb-8">
+        <h3 class="b-h5 b-mb-4">Steps</h3>
+        <div class="b-steps" style="max-width:500px;">
+          <div class="b-step done"><div class="b-step-title">Account</div></div>
+          <div class="b-step done"><div class="b-step-title">Profile</div></div>
+          <div class="b-step active"><div class="b-step-title">Payment</div></div>
+          <div class="b-step"><div class="b-step-title">Confirm</div></div>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="b-mb-8">
+        <h3 class="b-h5 b-mb-4">Table</h3>
+        <div class="b-table-wrap">
+          <table class="b-table">
+            <thead><tr><th>Name</th><th>Plan</th><th>Status</th><th class="b-text-right">MRR</th></tr></thead>
+            <tbody>
+              <tr><td>Acme Corp</td><td>Enterprise</td><td><span class="b-badge b-badge-success">Active</span></td><td class="b-text-right">$12,400</td></tr>
+              <tr><td>Globex Inc</td><td>Pro</td><td><span class="b-badge">Trial</span></td><td class="b-text-right">$3,200</td></tr>
+              <tr><td>Initech</td><td>Starter</td><td><span class="b-badge b-badge-warning">Pending</span></td><td class="b-text-right">$890</td></tr>
+              <tr><td>Umbrella</td><td>Enterprise</td><td><span class="b-badge b-badge-error">Overdue</span></td><td class="b-text-right">$8,700</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- List -->
+      <div class="b-mb-8">
+        <h3 class="b-h5 b-mb-4">List</h3>
+        <div class="b-list b-list-bordered" style="max-width:500px;">
+          <div class="b-list-item"><div class="b-avatar b-avatar-sm">JD</div><div style="flex:1;"><div style="font-size:var(--text-sm);font-weight:500;">Jane Doe</div><div class="b-subtle">jane@example.com</div></div><span class="b-badge b-badge-success">Admin</span></div>
+          <div class="b-list-item"><div class="b-avatar b-avatar-sm">AS</div><div style="flex:1;"><div style="font-size:var(--text-sm);font-weight:500;">Alex Smith</div><div class="b-subtle">alex@example.com</div></div><span class="b-badge">Member</span></div>
+          <div class="b-list-item"><div class="b-avatar b-avatar-sm">MK</div><div style="flex:1;"><div style="font-size:var(--text-sm);font-weight:500;">Mia Kim</div><div class="b-subtle">mia@example.com</div></div><span class="b-badge b-badge-warning">Invited</span></div>
+        </div>
+      </div>
+
+      <!-- Breadcrumb + Pagination -->
+      <div class="b-mb-8">
+        <h3 class="b-h5 b-mb-4">Breadcrumb & Pagination</h3>
+        <nav class="b-breadcrumb b-mb-4">
+          <a href="#" class="b-breadcrumb-item">Home</a>
+          <span class="b-breadcrumb-sep">/</span>
+          <a href="#" class="b-breadcrumb-item">Products</a>
+          <span class="b-breadcrumb-sep">/</span>
+          <span class="b-breadcrumb-item active">Details</span>
+        </nav>
+        <div class="b-pagination">
+          <button class="b-page">←</button>
+          <button class="b-page">1</button>
+          <button class="b-page active">2</button>
+          <button class="b-page">3</button>
+          <button class="b-page">4</button>
+          <button class="b-page">→</button>
+        </div>
+      </div>
+
+      <!-- Accordion -->
+      <div class="b-mb-8">
+        <h3 class="b-h5 b-mb-4">Accordion</h3>
+        <div class="b-accordion" style="max-width:600px;">
+          <div class="b-accordion-item">
+            <button class="b-accordion-trigger">What is Boom CDN? <span>▾</span></button>
+            <div class="b-accordion-content">A CSS component library with 8 curated themes. One link tag, use class-based components, switch themes by changing the CSS import.</div>
+          </div>
+          <div class="b-accordion-item">
+            <button class="b-accordion-trigger">How do I switch themes? <span>▾</span></button>
+            <div class="b-accordion-content">Change the CSS file in your link tag. From obsidian-velvet.css to swiss-minimal.css — same HTML, completely different look.</div>
+          </div>
+          <div class="b-accordion-item">
+            <button class="b-accordion-trigger">Can I customize variables? <span>▾</span></button>
+            <div class="b-accordion-content">Yes. Override any CSS variable in your own stylesheet. All colors, fonts, spacing, and radii are controlled by CSS custom properties.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Code -->
+      <div class="b-mb-8">
+        <h3 class="b-h5 b-mb-4">Code</h3>
+        <pre class="b-code">&lt;!-- That's literally it --&gt;
+&lt;link rel="stylesheet" href="obsidian-velvet.css"&gt;
+
+&lt;body class="boom"&gt;
+  &lt;button class="b-btn b-btn-primary"&gt;
+    Ship It
+  &lt;/button&gt;
+&lt;/body&gt;</pre>
+        <p class="b-mt-2">Use <code class="b-code-inline">b-code-inline</code> for inline code.</p>
+      </div>
+
+      <!-- Skeleton -->
+      <div class="b-mb-8">
+        <h3 class="b-h5 b-mb-4">Skeleton Loading</h3>
+        <div class="b-card b-card-flat" style="max-width:400px;">
+          <div class="b-flex" style="gap:16px;margin-bottom:16px;">
+            <div class="b-skeleton b-skeleton-avatar"></div>
+            <div style="flex:1;"><div class="b-skeleton b-skeleton-title"></div><div class="b-skeleton b-skeleton-text" style="width:40%;"></div></div>
+          </div>
+          <div class="b-skeleton b-skeleton-card" style="height:100px;"></div>
+          <div class="b-flex b-mt-4"><div class="b-skeleton b-skeleton-btn"></div><div class="b-skeleton b-skeleton-btn" style="width:80px;"></div></div>
+        </div>
+      </div>
+
+      <!-- Testimonial -->
+      <div class="b-mb-8">
+        <h3 class="b-h5 b-mb-4">Testimonial</h3>
+        <div class="b-card" style="max-width:500px;">
+          <div class="b-testimonial">
+            <p class="b-testimonial-quote">"Switched our entire dashboard from Tailwind to Boom CDN in one afternoon. The obsidian velvet theme made our clients think we hired a design agency."</p>
+            <div class="b-testimonial-author">
+              <div class="b-avatar">SR</div>
+              <div><div class="b-testimonial-name">Sarah Reynolds</div><div class="b-testimonial-role">CTO, Nexus Labs</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Empty State -->
+      <div class="b-mb-8">
+        <h3 class="b-h5 b-mb-4">Empty State</h3>
+        <div class="b-card b-card-flat" style="max-width:500px;">
+          <div class="b-empty">
+            <div class="b-empty-icon">📭</div>
+            <div class="b-empty-title">No messages yet</div>
+            <div class="b-empty-desc">When you receive messages, they'll appear here. Start a conversation to get going.</div>
+            <button class="b-btn b-btn-primary">New Message</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tooltip -->
+      <div class="b-mb-8">
+        <h3 class="b-h5 b-mb-4">Tooltips</h3>
+        <div class="b-flex" style="gap:24px;">
+          <span class="b-tooltip" data-tip="Hello from tooltip!">Hover me</span>
+          <button class="b-btn b-btn-sm b-tooltip" data-tip="Copied!">Copy Code</button>
+          <span class="b-badge b-tooltip" data-tip="99.9% uptime">Status: Operational</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="b-section b-container b-text-center">
+      <p class="b-label">Pricing</p>
+      <h2 class="b-h2 b-mt-2 b-mb-8">Simple & Transparent</h2>
+      <div class="b-grid b-grid-3" style="max-width:900px;margin:0 auto;">
+        <div class="b-card b-pricing">
+          <p class="b-label">Starter</p>
+          <div class="b-pricing-price"><span class="b-pricing-amount">$0</span><span class="b-pricing-period"> /mo</span></div>
+          <ul class="b-pricing-features">
+            <li>✓ 3 themes</li><li>✓ All components</li><li>✓ Community support</li><li style="color:var(--text-faint);">✗ Priority updates</li>
+          </ul>
+          <button class="b-btn b-btn-full">Get Started</button>
+        </div>
+        <div class="b-card b-pricing b-pricing-popular">
+          <div class="b-between"><p class="b-label">Pro</p><span class="b-badge">Popular</span></div>
+          <div class="b-pricing-price"><span class="b-pricing-amount">$29</span><span class="b-pricing-period"> /mo</span></div>
+          <ul class="b-pricing-features">
+            <li>✓ All 8 themes</li><li>✓ All components</li><li>✓ Priority support</li><li>✓ Custom variables</li>
+          </ul>
+          <button class="b-btn b-btn-primary b-btn-full">Upgrade</button>
+        </div>
+        <div class="b-card b-pricing">
+          <p class="b-label">Enterprise</p>
+          <div class="b-pricing-price"><span class="b-pricing-amount">Custom</span></div>
+          <ul class="b-pricing-features">
+            <li>✓ Custom themes</li><li>✓ White-label</li><li>✓ SLA support</li><li>✓ On-premise</li>
+          </ul>
+          <button class="b-btn b-btn-full">Contact Sales</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="b-section b-container b-text-center">
+      <div class="b-card" style="padding:64px;border-color:var(--border-accent);">
+        <h2 class="b-h2">Ready to Ship?</h2>
+        <p class="b-muted b-mt-2" style="max-width:400px;margin-left:auto;margin-right:auto;">One CSS file. Eight themes. Forty components. Zero excuses.</p>
+        <div class="b-flex b-center b-mt-6">
+          <button class="b-btn b-btn-primary b-btn-xl">Start Building →</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="b-footer b-container">
+      <div class="b-footer-grid">
+        <div>
+          <div class="b-footer-brand">Boom CDN</div>
+          <p class="b-subtle" style="max-width:240px;">The themeable CSS component library for people who ship.</p>
+        </div>
+        <div>
+          <p class="b-footer-heading">Product</p>
+          <ul class="b-footer-links">
+            <li><a href="#" class="b-footer-link">Themes</a></li>
+            <li><a href="#" class="b-footer-link">Components</a></li>
+            <li><a href="#" class="b-footer-link">Pricing</a></li>
+            <li><a href="#" class="b-footer-link">Changelog</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="b-footer-heading">Resources</p>
+          <ul class="b-footer-links">
+            <li><a href="#" class="b-footer-link">Documentation</a></li>
+            <li><a href="#" class="b-footer-link">Examples</a></li>
+            <li><a href="#" class="b-footer-link">GitHub</a></li>
+            <li><a href="#" class="b-footer-link">Discord</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="b-footer-heading">Legal</p>
+          <ul class="b-footer-links">
+            <li><a href="#" class="b-footer-link">Privacy</a></li>
+            <li><a href="#" class="b-footer-link">Terms</a></li>
+            <li><a href="#" class="b-footer-link">License</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="b-footer-bottom">
+        <span class="b-footer-copy">© 2026 Boom CDN. All rights reserved.</span>
+        <div class="b-flex" style="gap:16px;">
+          <a href="#" class="b-footer-link">Twitter</a>
+          <a href="#" class="b-footer-link">GitHub</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    function switchTheme(name, btn) {
+      document.getElementById('theme-css').href = '../themes/' + name + '.css';
+      document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+    }
+  </script>
+</body>
+</html>

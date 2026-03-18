@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formwerk — Swiss Minimal Theme Demo</title>
+  <link rel="stylesheet" href="../themes/swiss-minimal.css">
+  <style>
+    /* Demo-only: section label strips */
+    .demo-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #b4b1ba;
+      border-bottom: 1px solid #eeebe6;
+      padding-bottom: 10px;
+      margin-bottom: 40px;
+    }
+    .demo-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 24px;
+    }
+    .demo-col {
+      flex: 1;
+      min-width: 280px;
+    }
+    /* Red rule accent — Swiss typographic device */
+    .rule-accent {
+      width: 48px;
+      height: 4px;
+      background: #e63946;
+      margin-bottom: 24px;
+    }
+  </style>
+</head>
+<body class="boom">
+
+  <!-- ═══ NAVBAR ═══ -->
+  <nav class="b-navbar">
+    <span class="b-navbar-brand">Formwerk</span>
+    <ul class="b-navbar-links">
+      <li><a href="#" class="b-navbar-link active">Product</a></li>
+      <li><a href="#" class="b-navbar-link">Docs</a></li>
+      <li><a href="#" class="b-navbar-link">Pricing</a></li>
+      <li><a href="#" class="b-navbar-link">Blog</a></li>
+    </ul>
+    <div class="b-flex b-gap-2">
+      <button class="b-btn b-btn-sm">Sign in</button>
+      <button class="b-btn b-btn-sm b-btn-primary">Get started</button>
+    </div>
+  </nav>
+
+  <!-- ═══ HERO ═══ -->
+  <section class="b-section" style="padding-bottom: 80px;">
+    <div class="b-container">
+      <div class="rule-accent"></div>
+      <div class="b-hero" style="padding: 0;">
+        <div>
+          <span class="b-label" style="color: #e63946; margin-bottom: 20px; display: block;">Professional Form Infrastructure</span>
+          <h1 class="b-display">Forms that<br>mean business.</h1>
+          <p class="b-muted b-mt-6" style="font-size: 1.125rem; color: #5a5760; max-width: 520px;">
+            Formwerk gives engineering teams the primitives to build
+            accessible, validated, production-grade forms without compromise.
+          </p>
+        </div>
+        <div class="b-flex b-wrap b-mt-8" style="gap: 12px;">
+          <button class="b-btn b-btn-lg b-btn-primary">Start for free</button>
+          <button class="b-btn b-btn-lg">Read the docs</button>
+        </div>
+      </div>
+
+      <!-- Stat bar -->
+      <div class="b-grid b-grid-4 b-mt-8" style="padding-top: 48px; border-top: 1px solid rgba(34,32,37,0.12);">
+        <div class="b-stat">
+          <div class="b-stat-value">12k+</div>
+          <div class="b-stat-label">Active teams</div>
+        </div>
+        <div class="b-stat">
+          <div class="b-stat-value">99.9%</div>
+          <div class="b-stat-label">Uptime SLA</div>
+        </div>
+        <div class="b-stat">
+          <div class="b-stat-value">4.2M</div>
+          <div class="b-stat-label">Submissions / day</div>
+        </div>
+        <div class="b-stat">
+          <div class="b-stat-value">&lt; 2kb</div>
+          <div class="b-stat-label">Core bundle</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="b-container">
+    <hr class="b-separator" style="border-top: 2px solid #222025;">
+  </div>
+
+  <!-- ═══ TYPOGRAPHY ═══ -->
+  <section class="b-section-sm">
+    <div class="b-container">
+      <div class="demo-label">01 / Typography</div>
+      <div class="demo-row">
+        <div class="demo-col">
+          <p class="b-label b-mb-4" style="color: #e63946;">Display</p>
+          <h1 class="b-display" style="font-size: 3.5rem;">The Form OS</h1>
+          <h1 class="b-h1 b-mt-4">Enterprise-grade controls</h1>
+          <h2 class="b-h2 b-mt-4">Accessible by default</h2>
+          <h3 class="b-h3 b-mt-4">Schema-validated inputs</h3>
+          <h4 class="b-h4 b-mt-4">Real-time collaboration</h4>
+          <h5 class="b-h5 b-mt-4">Version history</h5>
+        </div>
+        <div class="demo-col">
+          <p class="b-label b-mb-4" style="color: #e63946;">Body copy</p>
+          <p class="b-body">Formwerk is opinionated where it matters and flexible where you need it. Each primitive maps to a WCAG 2.2 AA pattern so you ship right by default.</p>
+          <p class="b-muted b-mt-4">Supporting copy sits at 14px with reduced contrast — readable without competing with primary content.</p>
+          <p class="b-subtle b-mt-4">Metadata and captions use the subtle colour token.</p>
+          <p class="b-label b-mt-4">Section label / overline</p>
+          <p class="b-mono b-mt-4">const form = new Formwerk({ schema })</p>
+          <p class="b-mt-4">Inline <code class="b-code-inline">b-code-inline</code> for technical references.</p>
+          <p class="b-serif b-mt-4">"Good design is as little design as possible."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ BUTTONS ═══ -->
+  <section class="b-section-sm" style="background: #f5f2ee;">
+    <div class="b-container">
+      <div class="demo-label">02 / Buttons</div>
+      <div class="demo-row b-mb-6">
+        <button class="b-btn b-btn-xl b-btn-primary">Primary XL</button>
+        <button class="b-btn b-btn-lg b-btn-primary">Primary LG</button>
+        <button class="b-btn b-btn-primary">Primary</button>
+        <button class="b-btn b-btn-sm b-btn-primary">Primary SM</button>
+      </div>
+      <div class="demo-row b-mb-6">
+        <button class="b-btn b-btn-xl">Default XL</button>
+        <button class="b-btn b-btn-lg">Default LG</button>
+        <button class="b-btn">Default</button>
+        <button class="b-btn b-btn-sm">Default SM</button>
+      </div>
+      <div class="demo-row b-mb-6">
+        <button class="b-btn b-btn-outline">Outline</button>
+        <button class="b-btn b-btn-ghost">Ghost</button>
+        <button class="b-btn b-btn-danger">Danger</button>
+        <button class="b-btn" disabled style="opacity:0.38; cursor:not-allowed;">Disabled</button>
+      </div>
+      <div class="demo-row">
+        <div class="b-btn-group">
+          <button class="b-btn">List</button>
+          <button class="b-btn">Board</button>
+          <button class="b-btn b-btn-primary">Gantt</button>
+        </div>
+        <div class="b-input-group" style="max-width: 360px;">
+          <input class="b-input" type="email" placeholder="you@company.com">
+          <button class="b-btn b-btn-primary">Subscribe</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CARDS ═══ -->
+  <section class="b-section-sm">
+    <div class="b-container">
+      <div class="demo-label">03 / Cards</div>
+      <div class="b-grid b-grid-3">
+
+        <div class="b-card">
+          <div class="b-card-header">
+            <div class="b-between">
+              <span class="b-label">Text Input</span>
+              <span class="b-badge">Stable</span>
+            </div>
+            <h3 class="b-card-title b-mt-2">b-input</h3>
+            <p class="b-card-desc">Single-line text primitive with full validation lifecycle support.</p>
+          </div>
+          <div class="b-card-footer">
+            <div class="b-flex b-gap-2">
+              <button class="b-btn b-btn-sm b-btn-primary">Install</button>
+              <button class="b-btn b-btn-sm">Docs</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="b-card b-card-accent">
+          <div class="b-card-header">
+            <div class="b-between">
+              <span class="b-label">Select</span>
+              <span class="b-badge b-badge-warning">Beta</span>
+            </div>
+            <h3 class="b-card-title b-mt-2">b-combobox</h3>
+            <p class="b-card-desc">Searchable, multi-select combo with virtual scroll for large datasets.</p>
+          </div>
+          <div class="b-card-footer">
+            <div class="b-flex b-gap-2">
+              <button class="b-btn b-btn-sm b-btn-primary">Install</button>
+              <button class="b-btn b-btn-sm">Docs</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="b-card">
+          <div class="b-card-header">
+            <div class="b-between">
+              <span class="b-label">Upload</span>
+              <span class="b-badge b-badge-success">v2.0</span>
+            </div>
+            <h3 class="b-card-title b-mt-2">b-file-upload</h3>
+            <p class="b-card-desc">Drag-and-drop file upload with previews, progress, and type validation.</p>
+          </div>
+          <div class="b-card-footer">
+            <div class="b-flex b-gap-2">
+              <button class="b-btn b-btn-sm b-btn-primary">Install</button>
+              <button class="b-btn b-btn-sm">Docs</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FORMS ═══ -->
+  <section class="b-section-sm" style="background: #f5f2ee;">
+    <div class="b-container">
+      <div class="demo-label">04 / Form Controls</div>
+      <div class="b-grid b-grid-2">
+
+        <div>
+          <div class="b-field">
+            <label class="b-label-text">Organisation name</label>
+            <input class="b-input" type="text" placeholder="Acme Corporation">
+          </div>
+          <div class="b-field">
+            <label class="b-label-text">Work email</label>
+            <input class="b-input b-input-error" type="email" value="invalid-email">
+            <span class="b-helper b-helper-error">Enter a valid work email address.</span>
+          </div>
+          <div class="b-field">
+            <label class="b-label-text">Role</label>
+            <select class="b-input b-select">
+              <option>Engineering</option>
+              <option>Product</option>
+              <option>Design</option>
+              <option>Operations</option>
+            </select>
+          </div>
+          <div class="b-field">
+            <label class="b-label-text">Notes</label>
+            <textarea class="b-input b-textarea" placeholder="Tell us about your use case…"></textarea>
+            <span class="b-helper">Max 500 characters.</span>
+          </div>
+          <div class="b-flex" style="gap: 24px; margin-top: 8px;">
+            <label class="b-flex" style="align-items: center; gap: 8px; cursor: pointer; font-size: 0.875rem;">
+              <input class="b-checkbox" type="checkbox" checked> Email updates
+            </label>
+            <label class="b-flex" style="align-items: center; gap: 8px; cursor: pointer; font-size: 0.875rem;">
+              <input class="b-radio" type="radio" name="plan" checked> Annual
+            </label>
+            <label class="b-flex" style="align-items: center; gap: 8px; cursor: pointer; font-size: 0.875rem;">
+              <input class="b-radio" type="radio" name="plan"> Monthly
+            </label>
+          </div>
+          <div class="b-mt-6">
+            <button class="b-btn b-btn-primary">Submit application</button>
+          </div>
+        </div>
+
+        <div>
+          <div class="b-field">
+            <div class="b-between b-mb-4">
+              <label class="b-label-text" style="margin: 0;">Notifications</label>
+              <input class="b-toggle" type="checkbox" checked>
+            </div>
+            <div class="b-between b-mb-4">
+              <label class="b-label-text" style="margin: 0;">Two-factor auth</label>
+              <input class="b-toggle" type="checkbox">
+            </div>
+            <div class="b-between">
+              <label class="b-label-text" style="margin: 0;">Audit log export</label>
+              <input class="b-toggle" type="checkbox" checked>
+            </div>
+          </div>
+
+          <div style="margin-top: 32px;">
+            <label class="b-label-text">Completion</label>
+            <div class="b-flex-col" style="gap: 10px; margin-top: 8px;">
+              <div>
+                <div class="b-between b-mb-2"><span style="font-size: 0.75rem;">Profile</span><span style="font-size: 0.75rem; color: #e63946;">100%</span></div>
+                <div class="b-progress"><div class="b-progress-bar" style="width: 100%;"></div></div>
+              </div>
+              <div>
+                <div class="b-between b-mb-2"><span style="font-size: 0.75rem;">Integrations</span><span style="font-size: 0.75rem;">67%</span></div>
+                <div class="b-progress"><div class="b-progress-bar" style="width: 67%;"></div></div>
+              </div>
+              <div>
+                <div class="b-between b-mb-2"><span style="font-size: 0.75rem;">Team setup</span><span style="font-size: 0.75rem;">32%</span></div>
+                <div class="b-progress b-progress-lg"><div class="b-progress-bar" style="width: 32%;"></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ BADGES, TAGS, AVATARS ═══ -->
+  <section class="b-section-sm">
+    <div class="b-container">
+      <div class="demo-label">05 / Badges, Tags & Avatars</div>
+      <div class="demo-row b-mb-6">
+        <span class="b-badge">Default</span>
+        <span class="b-badge b-badge-success">
+          <span class="b-dot b-dot-success"></span> Active
+        </span>
+        <span class="b-badge b-badge-warning">
+          <span class="b-dot b-dot-warning"></span> Review
+        </span>
+        <span class="b-badge b-badge-error">
+          <span class="b-dot b-dot-error"></span> Critical
+        </span>
+        <span class="b-badge b-badge-info">Scheduled</span>
+      </div>
+      <div class="demo-row b-mb-6">
+        <span class="b-tag">react</span>
+        <span class="b-tag">typescript</span>
+        <span class="b-tag">accessibility</span>
+        <span class="b-tag">validation</span>
+        <span class="b-tag">open-source</span>
+      </div>
+      <div class="demo-row">
+        <div class="b-flex" style="align-items: center; gap: 16px;">
+          <div class="b-avatar b-avatar-xs">FW</div>
+          <div class="b-avatar b-avatar-sm">FW</div>
+          <div class="b-avatar">FW</div>
+          <div class="b-avatar b-avatar-lg">FW</div>
+          <div class="b-avatar b-avatar-xl">FW</div>
+        </div>
+        <div class="b-avatar-group">
+          <div class="b-avatar" style="background: #fde8ea;">AK</div>
+          <div class="b-avatar" style="background: #e8f0fe;">BL</div>
+          <div class="b-avatar" style="background: #e8fef3;">CM</div>
+          <div class="b-avatar" style="background: #fff8e1;">DN</div>
+          <div class="b-avatar" style="background: #f0ede8; color: #5a5760; font-size: 0.75rem;">+8</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TABLE ═══ -->
+  <section class="b-section-sm" style="background: #f5f2ee;">
+    <div class="b-container">
+      <div class="demo-label">06 / Table</div>
+      <div class="b-table-wrap">
+        <table class="b-table">
+          <thead>
+            <tr>
+              <th>Component</th>
+              <th>Version</th>
+              <th>Status</th>
+              <th>Coverage</th>
+              <th>Bundle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="b-mono">b-text-input</span></td>
+              <td>3.1.0</td>
+              <td><span class="b-badge b-badge-success"><span class="b-dot b-dot-success"></span> Stable</span></td>
+              <td>98%</td>
+              <td>1.2 kb</td>
+            </tr>
+            <tr>
+              <td><span class="b-mono">b-combobox</span></td>
+              <td>2.0.4</td>
+              <td><span class="b-badge b-badge-warning">Beta</span></td>
+              <td>84%</td>
+              <td>4.7 kb</td>
+            </tr>
+            <tr>
+              <td><span class="b-mono">b-date-picker</span></td>
+              <td>1.9.2</td>
+              <td><span class="b-badge b-badge-success"><span class="b-dot b-dot-success"></span> Stable</span></td>
+              <td>92%</td>
+              <td>6.1 kb</td>
+            </tr>
+            <tr>
+              <td><span class="b-mono">b-file-upload</span></td>
+              <td>2.0.0</td>
+              <td><span class="b-badge">New</span></td>
+              <td>76%</td>
+              <td>3.4 kb</td>
+            </tr>
+            <tr>
+              <td><span class="b-mono">b-rich-text</span></td>
+              <td>0.8.1</td>
+              <td><span class="b-badge b-badge-error">Alpha</span></td>
+              <td>51%</td>
+              <td>18.2 kb</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TABS + ACCORDION ═══ -->
+  <section class="b-section-sm">
+    <div class="b-container">
+      <div class="demo-label">07 / Tabs & Accordion</div>
+      <div class="demo-row">
+
+        <div class="demo-col">
+          <div class="b-tabs b-mb-6">
+            <button class="b-tab active">Overview</button>
+            <button class="b-tab">API</button>
+            <button class="b-tab">Changelog</button>
+            <button class="b-tab">Examples</button>
+          </div>
+          <div class="b-tab-pills b-tabs">
+            <button class="b-tab active">React</button>
+            <button class="b-tab">Vue</button>
+            <button class="b-tab">Angular</button>
+            <button class="b-tab">Svelte</button>
+          </div>
+        </div>
+
+        <div class="demo-col">
+          <div class="b-accordion">
+            <div class="b-accordion-item">
+              <button class="b-accordion-trigger">
+                What frameworks are supported?
+                <span style="font-size: 18px; color: #e63946;">+</span>
+              </button>
+              <div class="b-accordion-content">
+                Formwerk ships first-class adapters for React, Vue 3, Angular 16+, and Svelte 4. A vanilla JS core is available for custom integrations.
+              </div>
+            </div>
+            <div class="b-accordion-item">
+              <button class="b-accordion-trigger">
+                Is it accessible by default?
+                <span style="font-size: 18px; color: #e63946;">+</span>
+              </button>
+              <div class="b-accordion-content">
+                Yes. Every primitive is built against WCAG 2.2 AA. Screen reader testing is part of the CI pipeline.
+              </div>
+            </div>
+            <div class="b-accordion-item">
+              <button class="b-accordion-trigger">
+                How does schema validation work?
+                <span style="font-size: 18px; color: #e63946;">+</span>
+              </button>
+              <div class="b-accordion-content">
+                Formwerk integrates with Zod, Yup, and Valibot out of the box. Pass a schema and the library wires up all error states automatically.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ALERTS + LIST ═══ -->
+  <section class="b-section-sm" style="background: #f5f2ee;">
+    <div class="b-container">
+      <div class="demo-label">08 / Alerts & Lists</div>
+      <div class="demo-row">
+
+        <div class="demo-col">
+          <div class="b-stack">
+            <div class="b-alert b-alert-success">
+              <span>✓</span>
+              <div>
+                <div class="b-alert-title">Deployment complete</div>
+                <div class="b-alert-desc">v3.1.0 is live across all regions. Zero downtime.</div>
+              </div>
+            </div>
+            <div class="b-alert b-alert-warning">
+              <span>!</span>
+              <div>
+                <div class="b-alert-title">Deprecation notice</div>
+                <div class="b-alert-desc">The <code class="b-code-inline">onSubmit</code> API is deprecated in v4. Migrate to <code class="b-code-inline">handleSubmit</code>.</div>
+              </div>
+            </div>
+            <div class="b-alert b-alert-error">
+              <span>✕</span>
+              <div>
+                <div class="b-alert-title">Validation failed</div>
+                <div class="b-alert-desc">3 fields require attention before proceeding.</div>
+              </div>
+            </div>
+            <div class="b-alert b-alert-info">
+              <span>i</span>
+              <div>
+                <div class="b-alert-title">Scheduled maintenance</div>
+                <div class="b-alert-desc">2026-03-20 02:00–04:00 UTC. No action required.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-col">
+          <ul class="b-list b-list-bordered">
+            <li class="b-list-item">
+              <div class="b-avatar b-avatar-sm" style="background: #fde8ea;">AK</div>
+              <div style="flex: 1;">
+                <div style="font-size: 0.875rem; font-weight: 500;">Anna Kovacs</div>
+                <div class="b-subtle">Engineering Lead</div>
+              </div>
+              <span class="b-badge b-badge-success">Admin</span>
+            </li>
+            <li class="b-list-item">
+              <div class="b-avatar b-avatar-sm" style="background: #e8f0fe;">BL</div>
+              <div style="flex: 1;">
+                <div style="font-size: 0.875rem; font-weight: 500;">Ben Liu</div>
+                <div class="b-subtle">Product Manager</div>
+              </div>
+              <span class="b-badge">Member</span>
+            </li>
+            <li class="b-list-item">
+              <div class="b-avatar b-avatar-sm" style="background: #e8fef3;">CM</div>
+              <div style="flex: 1;">
+                <div style="font-size: 0.875rem; font-weight: 500;">Clara Meier</div>
+                <div class="b-subtle">Design Systems</div>
+              </div>
+              <span class="b-badge">Member</span>
+            </li>
+            <li class="b-list-item">
+              <div class="b-avatar b-avatar-sm" style="background: #f5f2ee;">DN</div>
+              <div style="flex: 1;">
+                <div style="font-size: 0.875rem; font-weight: 500;">David Nguyen</div>
+                <div class="b-subtle">DevOps</div>
+              </div>
+              <span class="b-badge b-badge-warning">Invited</span>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ BREADCRUMB + PAGINATION + STEPS ═══ -->
+  <section class="b-section-sm">
+    <div class="b-container">
+      <div class="demo-label">09 / Navigation</div>
+
+      <div class="b-stack">
+        <div>
+          <p class="b-label b-mb-4">Breadcrumb</p>
+          <nav class="b-breadcrumb">
+            <a href="#" class="b-breadcrumb-item">Formwerk</a>
+            <span class="b-breadcrumb-sep">/</span>
+            <a href="#" class="b-breadcrumb-item">Components</a>
+            <span class="b-breadcrumb-sep">/</span>
+            <span class="b-breadcrumb-item active">Text Input</span>
+          </nav>
+        </div>
+
+        <div>
+          <p class="b-label b-mb-4">Pagination</p>
+          <div class="b-pagination">
+            <button class="b-page">‹</button>
+            <button class="b-page">1</button>
+            <button class="b-page active">2</button>
+            <button class="b-page">3</button>
+            <button class="b-page">4</button>
+            <button class="b-page">›</button>
+          </div>
+        </div>
+
+        <div>
+          <p class="b-label b-mb-4">Steps</p>
+          <div class="b-steps">
+            <div class="b-step done">
+              <div class="b-step-title">Account</div>
+              <div class="b-step-desc">Created</div>
+            </div>
+            <div class="b-step done">
+              <div class="b-step-title">Organisation</div>
+              <div class="b-step-desc">Configured</div>
+            </div>
+            <div class="b-step active">
+              <div class="b-step-title">Team</div>
+              <div class="b-step-desc">In progress</div>
+            </div>
+            <div class="b-step">
+              <div class="b-step-title">Billing</div>
+              <div class="b-step-desc">Pending</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CODE BLOCK ═══ -->
+  <section class="b-section-sm" style="background: #f5f2ee;">
+    <div class="b-container">
+      <div class="demo-label">10 / Code</div>
+      <pre class="b-code">import { useForm } from '@formwerk/core'
+import { z } from 'zod'
+
+const schema = z.object({
+  email:    z.string().email(),
+  password: z.string().min(8),
+})
+
+function LoginForm() {
+  const { handleSubmit, field } = useForm({ schema })
+
+  return (
+    &lt;form onSubmit={handleSubmit(console.log)}&gt;
+      &lt;input {...field('email')} /&gt;
+      &lt;input {...field('password')} type="password" /&gt;
+      &lt;button type="submit"&gt;Sign in&lt;/button&gt;
+    &lt;/form&gt;
+  )
+}</pre>
+    </div>
+  </section>
+
+  <!-- ═══ PRICING ═══ -->
+  <section class="b-section-sm">
+    <div class="b-container">
+      <div class="demo-label">11 / Pricing</div>
+      <div class="b-grid b-grid-3">
+
+        <div class="b-card b-pricing">
+          <span class="b-label">Starter</span>
+          <div class="b-pricing-price">
+            <span class="b-pricing-amount">$0</span>
+            <span class="b-pricing-period"> / month</span>
+          </div>
+          <ul class="b-pricing-features">
+            <li>✓ 5 components</li>
+            <li>✓ Community support</li>
+            <li>✓ MIT licence</li>
+            <li style="color: #b4b1ba;">— Analytics</li>
+            <li style="color: #b4b1ba;">— Team seats</li>
+          </ul>
+          <button class="b-btn b-btn-full">Get started</button>
+        </div>
+
+        <div class="b-card b-pricing b-pricing-popular" style="border-top: 3px solid #e63946;">
+          <div class="b-between b-mb-4">
+            <span class="b-label">Professional</span>
+            <span class="b-badge">Popular</span>
+          </div>
+          <div class="b-pricing-price">
+            <span class="b-pricing-amount">$49</span>
+            <span class="b-pricing-period"> / month</span>
+          </div>
+          <ul class="b-pricing-features">
+            <li>✓ All components</li>
+            <li>✓ Priority support</li>
+            <li>✓ Analytics dashboard</li>
+            <li>✓ 10 team seats</li>
+            <li style="color: #b4b1ba;">— SSO</li>
+          </ul>
+          <button class="b-btn b-btn-primary b-btn-full">Start free trial</button>
+        </div>
+
+        <div class="b-card b-pricing">
+          <span class="b-label">Enterprise</span>
+          <div class="b-pricing-price">
+            <span class="b-pricing-amount">Custom</span>
+          </div>
+          <ul class="b-pricing-features">
+            <li>✓ Unlimited seats</li>
+            <li>✓ Dedicated SLA</li>
+            <li>✓ SSO / SAML</li>
+            <li>✓ Audit logs</li>
+            <li>✓ On-premise option</li>
+          </ul>
+          <button class="b-btn b-btn-outline b-btn-full">Contact sales</button>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ TESTIMONIAL + SKELETON ═══ -->
+  <section class="b-section-sm" style="background: #f5f2ee;">
+    <div class="b-container">
+      <div class="demo-label">12 / Testimonial & Skeleton</div>
+      <div class="demo-row">
+
+        <div class="demo-col">
+          <div class="b-card b-testimonial b-card-flat">
+            <div class="rule-accent" style="margin-bottom: 20px;"></div>
+            <p class="b-testimonial-quote">"Formwerk cut our form-related bug count by 70% in the first sprint. The accessibility primitives alone were worth the switch."</p>
+            <div class="b-testimonial-author">
+              <div class="b-avatar" style="background: #fde8ea;">AK</div>
+              <div>
+                <div class="b-testimonial-name">Anna Kovacs</div>
+                <div class="b-testimonial-role">Engineering Lead, Meridian</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="demo-col">
+          <div class="b-card b-card-flat">
+            <div class="b-flex b-mb-4" style="gap: 12px; align-items: center;">
+              <div class="b-skeleton b-skeleton-avatar"></div>
+              <div style="flex: 1;">
+                <div class="b-skeleton b-skeleton-title"></div>
+                <div class="b-skeleton b-skeleton-text"></div>
+              </div>
+            </div>
+            <div class="b-skeleton b-skeleton-text"></div>
+            <div class="b-skeleton b-skeleton-text" style="width: 65%;"></div>
+            <div class="b-skeleton b-skeleton-text" style="width: 80%;"></div>
+            <div class="b-flex b-mt-4" style="gap: 8px;">
+              <div class="b-skeleton b-skeleton-btn"></div>
+              <div class="b-skeleton b-skeleton-btn" style="width: 80px;"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ EMPTY STATE ═══ -->
+  <section class="b-section-sm">
+    <div class="b-container">
+      <div class="demo-label">13 / Empty State</div>
+      <div class="b-card b-card-flat" style="border: 2px dashed rgba(34,32,37,0.15);">
+        <div class="b-empty">
+          <div class="b-empty-icon" style="font-size: 40px; opacity: 0.2; font-family: 'IBM Plex Mono', monospace; letter-spacing: -2px;">{ }</div>
+          <div class="b-empty-title">No components yet</div>
+          <div class="b-empty-desc">Import your first component from the registry or start from a template to get going.</div>
+          <button class="b-btn b-btn-primary">Browse registry</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="b-footer">
+    <div class="b-container">
+      <div class="b-footer-grid">
+        <div>
+          <div class="b-footer-brand">Formwerk</div>
+          <p style="font-size: 0.875rem; color: #5a5760; max-width: 260px; line-height: 1.7;">
+            Professional form infrastructure for modern engineering teams. Built in the open.
+          </p>
+          <div class="b-flex b-mt-6" style="gap: 12px;">
+            <span class="b-badge b-badge-success"><span class="b-dot b-dot-success"></span> All systems operational</span>
+          </div>
+        </div>
+        <div>
+          <div class="b-footer-heading">Product</div>
+          <ul class="b-footer-links">
+            <li><a href="#" class="b-footer-link">Components</a></li>
+            <li><a href="#" class="b-footer-link">Playground</a></li>
+            <li><a href="#" class="b-footer-link">Changelog</a></li>
+            <li><a href="#" class="b-footer-link">Roadmap</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="b-footer-heading">Developers</div>
+          <ul class="b-footer-links">
+            <li><a href="#" class="b-footer-link">Documentation</a></li>
+            <li><a href="#" class="b-footer-link">API reference</a></li>
+            <li><a href="#" class="b-footer-link">GitHub</a></li>
+            <li><a href="#" class="b-footer-link">Discord</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="b-footer-heading">Company</div>
+          <ul class="b-footer-links">
+            <li><a href="#" class="b-footer-link">About</a></li>
+            <li><a href="#" class="b-footer-link">Blog</a></li>
+            <li><a href="#" class="b-footer-link">Careers</a></li>
+            <li><a href="#" class="b-footer-link">Security</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="b-footer-bottom">
+        <span class="b-footer-copy">© 2026 Formwerk, Inc. All rights reserved.</span>
+        <div class="b-flex" style="gap: 16px;">
+          <a href="#" class="b-footer-copy" style="text-decoration: none;">Privacy</a>
+          <a href="#" class="b-footer-copy" style="text-decoration: none;">Terms</a>
+          <a href="#" class="b-footer-copy" style="text-decoration: none;">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+@import url('./base.css');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;900&family=Inter:wght@300;400;500;600&family=Fira+Code:wght@400;500&display=swap');
+
+/**
+ * Neo Tokyo — Boom CDN Theme
+ *
+ * Game / Creative / Youth.
+ * Cyberpunk anime red-black. Neon on void.
+ * Inspired by Akira, Ghost in the Shell, late-night arcades.
+ */
+
+:root {
+  /* ── Backgrounds ── */
+  --bg:           #0d0d12;
+  --bg-elevated:  #12121a;
+  --bg-card:      #16161f;
+  --bg-hover:     #1c1c2a;
+  --bg-active:    #222233;
+  --bg-input:     #0f0f18;
+
+  /* ── Text ── */
+  --text:         #f0e6e6;
+  --text-muted:   #b8a8a8;
+  --text-subtle:  #7a6868;
+  --text-faint:   #4a3c3c;
+  --text-ghost:   #2a2020;
+
+  /* ── Accent: Crimson Voltage ── */
+  --accent:       #ff4444;
+  --accent-hover: #ff6666;
+  --accent-80:    rgba(255, 68, 68, 0.80);
+  --accent-30:    rgba(255, 68, 68, 0.30);
+  --accent-15:    rgba(255, 68, 68, 0.15);
+  --accent-08:    rgba(255, 68, 68, 0.08);
+
+  /* ── Borders ── */
+  --border:        rgba(255, 68, 68, 0.10);
+  --border-mid:    rgba(255, 68, 68, 0.20);
+  --border-strong: rgba(255, 68, 68, 0.40);
+  --border-accent: rgba(255, 68, 68, 0.60);
+
+  /* ── Semantic ── */
+  --success: #39ff88;
+  --warning: #ffcc00;
+  --error:   #ff2222;
+  --info:    #00cfff;
+
+  /* ── Typography ── */
+  --font-serif: 'Orbitron', 'Courier New', monospace;
+  --font-sans:  'Inter', system-ui, sans-serif;
+  --font-mono:  'Fira Code', 'Consolas', monospace;
+
+  /* ── Type Scale (fluid) ── */
+  --text-xs:      clamp(0.70rem, 0.68rem + 0.1vw,  0.75rem);
+  --text-sm:      clamp(0.82rem, 0.80rem + 0.12vw, 0.875rem);
+  --text-base:    clamp(0.95rem, 0.92rem + 0.15vw, 1rem);
+  --text-lg:      clamp(1.10rem, 1.05rem + 0.25vw, 1.125rem);
+  --text-xl:      clamp(1.20rem, 1.15rem + 0.3vw,  1.25rem);
+  --text-2xl:     clamp(1.40rem, 1.30rem + 0.5vw,  1.5rem);
+  --text-3xl:     clamp(1.70rem, 1.55rem + 0.75vw, 1.875rem);
+  --text-4xl:     clamp(2.10rem, 1.90rem + 1.0vw,  2.5rem);
+  --text-display: clamp(2.80rem, 2.40rem + 2.0vw,  4.0rem);
+
+  /* ── Radius ── */
+  --radius-sm:   2px;
+  --radius-md:   4px;
+  --radius-lg:   8px;
+  --radius-xl:   12px;
+  --radius-full: 9999px;
+
+  /* ── Motion ── */
+  --ease:        cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+}

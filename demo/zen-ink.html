@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>墨韵 MoYun — Zen Ink Theme Demo</title>
+  <link rel="stylesheet" href="../themes/zen-ink.css">
+  <style>
+    /* Demo-only ink wash decorations */
+    .ink-wash-hero {
+      position: relative;
+      overflow: hidden;
+    }
+    .ink-wash-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 40% at 80% 50%, rgba(180, 160, 130, 0.10) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 10% 80%, rgba(140, 130, 110, 0.07) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .ink-stroke {
+      display: block;
+      width: 48px;
+      height: 2px;
+      background: var(--accent);
+      margin: 0 auto 32px;
+      opacity: 0.4;
+    }
+    .ink-stroke-left {
+      margin: 0 0 24px;
+    }
+    .chinese-quote {
+      font-family: var(--font-serif);
+      font-size: var(--text-2xl);
+      font-weight: 300;
+      color: var(--text-subtle);
+      letter-spacing: 0.15em;
+      line-height: 2;
+    }
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 64px 0 48px;
+      color: var(--text-faint);
+      font-size: var(--text-xs);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    .section-divider::before,
+    .section-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+    .feature-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+    }
+    .feature-cell {
+      background: var(--bg-card);
+      padding: 32px 24px;
+    }
+    .ink-number {
+      font-family: var(--font-serif);
+      font-size: var(--text-4xl);
+      font-weight: 300;
+      color: var(--border-mid);
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .article-meta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      font-size: var(--text-xs);
+      color: var(--text-faint);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .article-meta span { color: var(--text-subtle); }
+    .pull-quote {
+      border-left: 2px solid var(--accent);
+      padding: 16px 24px;
+      margin: 32px 0;
+      background: linear-gradient(to right, rgba(74,74,74,0.03), transparent);
+    }
+    .pull-quote p {
+      font-family: var(--font-serif);
+      font-size: var(--text-xl);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1.8;
+      color: var(--text-muted);
+    }
+    @media (max-width: 768px) {
+      .feature-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body class="boom">
+
+  <!-- ══════════════════════════════════════
+       NAVBAR
+  ══════════════════════════════════════ -->
+  <nav class="b-navbar">
+    <div class="b-navbar-brand">墨韵 MoYun</div>
+    <ul class="b-navbar-links b-hide-mobile">
+      <li><a href="#" class="b-navbar-link active">首页</a></li>
+      <li><a href="#" class="b-navbar-link">专栏</a></li>
+      <li><a href="#" class="b-navbar-link">文库</a></li>
+      <li><a href="#" class="b-navbar-link">关于</a></li>
+    </ul>
+    <div class="b-flex b-gap-2">
+      <button class="b-btn b-btn-sm">登录</button>
+      <button class="b-btn b-btn-primary b-btn-sm">订阅</button>
+    </div>
+  </nav>
+
+  <!-- ══════════════════════════════════════
+       HERO
+  ══════════════════════════════════════ -->
+  <section class="b-section ink-wash-hero">
+    <div class="b-container b-container-sm">
+      <div class="b-hero">
+        <span class="ink-stroke"></span>
+        <p class="b-label b-stagger-1 b-fade-in">文字的重量</p>
+        <h1 class="b-display b-stagger-2 b-fade-in">墨韵 MoYun</h1>
+        <p class="b-muted b-stagger-3 b-fade-in" style="font-family: var(--font-serif); font-style: italic; font-size: var(--text-xl);">
+          落墨有声，余韵无穷。<br>
+          <span style="font-family: var(--font-sans); font-size: var(--text-base); font-style: normal; color: var(--text-faint);">
+            Where ink meets meaning, silence speaks.
+          </span>
+        </p>
+        <div class="b-flex b-gap-4 b-stagger-4 b-fade-in">
+          <button class="b-btn b-btn-primary b-btn-lg">开始阅读</button>
+          <button class="b-btn b-btn-lg">了解更多</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       FEATURE ROW — Three virtues
+  ══════════════════════════════════════ -->
+  <div class="b-container b-container-sm">
+    <div class="feature-row">
+      <div class="feature-cell">
+        <div class="ink-number">一</div>
+        <h3 class="b-h4">深度</h3>
+        <p class="b-muted b-mt-2">每篇文章经过细心雕琢，如墨入纸，渗透而持久。</p>
+      </div>
+      <div class="feature-cell">
+        <div class="ink-number">二</div>
+        <h3 class="b-h4">留白</h3>
+        <p class="b-muted b-mt-2">信息不是越多越好，留白是另一种表达，是阅读的呼吸。</p>
+      </div>
+      <div class="feature-cell">
+        <div class="ink-number">三</div>
+        <h3 class="b-h4">意境</h3>
+        <p class="b-muted b-mt-2">文字背后是思想的轮廓，读者在字里行间完成最后的创作。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       FEATURED ARTICLE
+  ══════════════════════════════════════ -->
+  <section class="b-section-sm">
+    <div class="b-container b-container-sm">
+
+      <div class="section-divider">精选长文</div>
+
+      <div class="b-stack">
+        <div class="article-meta">
+          <span>2026 · 春分</span>
+          <span>·</span>
+          <span>约 12 分钟</span>
+          <span>·</span>
+          <span>文化漫谈</span>
+        </div>
+        <h2 class="b-h1">虚实之间：中国画的空间哲学</h2>
+        <p class="b-body b-muted">
+          中国画不以真实再现为目的，而以意境传递为旨归。画家在绢或纸上的每一笔，
+          既是形迹，也是留白——那些未着墨的空白，恰恰是画面呼吸的地方，
+          是观者想象力的邀请函。
+        </p>
+
+        <div class="pull-quote">
+          <p>
+            「计白当黑，知白守黑」——空白与实笔同等重要，
+            虚与实的辩证，是中国美学最核心的张力所在。
+          </p>
+        </div>
+
+        <p class="b-body b-muted">
+          宋代山水以"三远"构图——高远、深远、平远——引领视线在画面中游走，
+          仿佛置身其中，而非从外旁观。这种沉浸感不依赖焦点透视，
+          而来自空间节奏的把握：密处如涌，疏处如息。
+        </p>
+      </div>
+
+      <div class="b-mt-8">
+        <button class="b-btn b-btn-outline">继续阅读 →</button>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       ARTICLE CARDS
+  ══════════════════════════════════════ -->
+  <section class="b-section-sm" style="background: var(--bg-card);">
+    <div class="b-container">
+
+      <div class="section-divider">近期文章</div>
+
+      <div class="b-grid b-grid-3">
+
+        <article class="b-card">
+          <div class="b-card-header">
+            <div class="article-meta b-mb-2">
+              <span>散文</span><span>·</span><span>8 min</span>
+            </div>
+            <h3 class="b-card-title b-h4">寂静的重量</h3>
+            <p class="b-card-desc">论沉默在写作中的功能——不是空洞，而是承载意义的容器。</p>
+          </div>
+          <div class="b-card-footer">
+            <div class="b-between">
+              <div class="b-flex b-gap-2" style="align-items:center">
+                <div class="b-avatar b-avatar-sm">云</div>
+                <span class="b-subtle">云笔</span>
+              </div>
+              <span class="b-tag">散文</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="b-card b-card-accent">
+          <div class="b-card-header">
+            <div class="article-meta b-mb-2">
+              <span>书评</span><span>·</span><span>6 min</span>
+            </div>
+            <h3 class="b-card-title b-h4">读《苦雨斋》：周作人的隐</h3>
+            <p class="b-card-desc">周作人以"苦雨"命名书斋，是自怜，亦是自省，更是一种世界观的宣言。</p>
+          </div>
+          <div class="b-card-footer">
+            <div class="b-between">
+              <div class="b-flex b-gap-2" style="align-items:center">
+                <div class="b-avatar b-avatar-sm">砚</div>
+                <span class="b-subtle">砚台君</span>
+              </div>
+              <span class="b-badge">精选</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="b-card">
+          <div class="b-card-header">
+            <div class="article-meta b-mb-2">
+              <span>随笔</span><span>·</span><span>4 min</span>
+            </div>
+            <h3 class="b-card-title b-h4">二月的茶</h3>
+            <p class="b-card-desc">早春的茶带着一种尚未完全醒来的青涩，像是一篇未竟的稿子，停在最好处。</p>
+          </div>
+          <div class="b-card-footer">
+            <div class="b-between">
+              <div class="b-flex b-gap-2" style="align-items:center">
+                <div class="b-avatar b-avatar-sm">白</div>
+                <span class="b-subtle">白石道人</span>
+              </div>
+              <span class="b-tag">随笔</span>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       SUBSCRIPTION / CTA
+  ══════════════════════════════════════ -->
+  <section class="b-section">
+    <div class="b-container b-container-sm">
+      <div class="b-text-center b-stack" style="align-items:center; gap: 20px;">
+        <p class="chinese-quote">笔耕不辍，墨香常在</p>
+        <span class="ink-stroke"></span>
+        <h2 class="b-h2">订阅墨韵</h2>
+        <p class="b-muted" style="max-width: 400px; font-family: var(--font-serif); font-style: italic;">
+          每周一篇，不多不少。文字是礼物，不是洪水。
+        </p>
+        <div class="b-input-group" style="max-width: 380px; width: 100%;">
+          <input class="b-input" type="email" placeholder="your@email.com">
+          <button class="b-btn b-btn-primary">订阅</button>
+        </div>
+        <p class="b-subtle">已有 2,341 位读者 · 随时退订</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       STATS ROW
+  ══════════════════════════════════════ -->
+  <div class="b-container b-mb-8">
+    <div class="b-grid b-grid-4">
+      <div class="b-stat b-card b-card-flat">
+        <div class="b-stat-value">三年</div>
+        <div class="b-stat-label">笔耕不辍</div>
+      </div>
+      <div class="b-stat b-card b-card-flat">
+        <div class="b-stat-value">286</div>
+        <div class="b-stat-label">已发文章</div>
+      </div>
+      <div class="b-stat b-card b-card-flat">
+        <div class="b-stat-value">2.3k</div>
+        <div class="b-stat-label">订阅读者</div>
+      </div>
+      <div class="b-stat b-card b-card-flat">
+        <div class="b-stat-value">12</div>
+        <div class="b-stat-label">驻站作者</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════
+       COMPONENT SHOWCASE
+  ══════════════════════════════════════ -->
+  <section class="b-section-sm" style="background: var(--bg-card);">
+    <div class="b-container b-container-sm">
+      <div class="section-divider">组件示例</div>
+      <div class="b-stack">
+
+        <!-- Badges -->
+        <div>
+          <p class="b-label b-mb-4">标签 Badges</p>
+          <div class="b-flex b-wrap b-gap-2">
+            <span class="b-badge">推荐</span>
+            <span class="b-badge-success b-badge">已发布</span>
+            <span class="b-badge-warning b-badge">草稿</span>
+            <span class="b-badge-info b-badge">系列</span>
+            <span class="b-tag">散文</span>
+            <span class="b-tag">诗歌</span>
+            <span class="b-tag">评论</span>
+          </div>
+        </div>
+
+        <hr class="b-separator">
+
+        <!-- Buttons -->
+        <div>
+          <p class="b-label b-mb-4">按钮 Buttons</p>
+          <div class="b-flex b-wrap b-gap-2">
+            <button class="b-btn b-btn-primary">主要操作</button>
+            <button class="b-btn">次要操作</button>
+            <button class="b-btn b-btn-outline">轮廓按钮</button>
+            <button class="b-btn b-btn-ghost">幽灵按钮</button>
+            <button class="b-btn b-btn-sm">小按钮</button>
+          </div>
+        </div>
+
+        <hr class="b-separator">
+
+        <!-- Alert -->
+        <div>
+          <p class="b-label b-mb-4">提示 Alerts</p>
+          <div class="b-stack">
+            <div class="b-alert">
+              <div>
+                <div class="b-alert-title">笔记提示</div>
+                <div class="b-alert-desc">这是一条普通信息，用于传递一般性说明或提示。</div>
+              </div>
+            </div>
+            <div class="b-alert b-alert-success">
+              <div>
+                <div class="b-alert-title">发布成功</div>
+                <div class="b-alert-desc">文章已成功发布，读者将在下次推送时收到通知。</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <hr class="b-separator">
+
+        <!-- Code block -->
+        <div>
+          <p class="b-label b-mb-4">代码块 Code</p>
+          <pre class="b-code">// 墨韵 API — 获取文章列表
+const articles = await moyun.fetch('/api/articles', {
+  filter: { tag: '散文', published: true },
+  sort:   { date: 'desc' },
+  limit:  10,
+});</pre>
+        </div>
+
+        <hr class="b-separator">
+
+        <!-- Testimonial -->
+        <div>
+          <p class="b-label b-mb-4">读者评语</p>
+          <div class="b-card b-card-flat b-testimonial">
+            <p class="b-testimonial-quote">
+              "墨韵的文字有一种独特的分量——不沉重，却落地有声。
+               每次读完，都觉得思绪被轻轻整理过一遍。"
+            </p>
+            <div class="b-testimonial-author">
+              <div class="b-avatar">林</div>
+              <div>
+                <div class="b-testimonial-name">林晚舟</div>
+                <div class="b-testimonial-role">文学编辑 · 上海</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════════════════════════════════
+       FOOTER
+  ══════════════════════════════════════ -->
+  <footer class="b-footer">
+    <div class="b-container">
+      <div class="b-footer-grid">
+        <div>
+          <div class="b-footer-brand">墨韵 MoYun</div>
+          <p class="b-muted" style="font-size: var(--text-sm); max-width: 260px; font-family: var(--font-serif); font-style: italic;">
+            落墨有声，余韵无穷。<br>文字是最慢的媒介，也是最深的媒介。
+          </p>
+        </div>
+        <div>
+          <div class="b-footer-heading">内容</div>
+          <ul class="b-footer-links">
+            <li><a href="#" class="b-footer-link">散文专栏</a></li>
+            <li><a href="#" class="b-footer-link">诗歌</a></li>
+            <li><a href="#" class="b-footer-link">书评</a></li>
+            <li><a href="#" class="b-footer-link">随笔</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="b-footer-heading">作者</div>
+          <ul class="b-footer-links">
+            <li><a href="#" class="b-footer-link">驻站作者</a></li>
+            <li><a href="#" class="b-footer-link">投稿指南</a></li>
+            <li><a href="#" class="b-footer-link">编辑委员会</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="b-footer-heading">关于</div>
+          <ul class="b-footer-links">
+            <li><a href="#" class="b-footer-link">我们是谁</a></li>
+            <li><a href="#" class="b-footer-link">联系方式</a></li>
+            <li><a href="#" class="b-footer-link">隐私政策</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="b-footer-bottom">
+        <span class="b-footer-copy">© 2026 墨韵 MoYun · 以文会友，以墨传情</span>
+        <span class="b-footer-copy">Powered by <a href="#" style="color: var(--text-subtle); text-decoration: none;">Boom CDN</a></span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

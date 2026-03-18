@@ -1,0 +1,207 @@
+/**
+ * Boom CDN — Swiss Minimal Theme
+ *
+ * Positioning: Enterprise / Tool / Serious
+ * Aesthetic:   Helvetica-era Swiss design — rigid grid, strong red accent,
+ *              generous whitespace, zero decoration.
+ *
+ * Usage:
+ *   <link rel="stylesheet" href="https://cdn.boom.dev/themes/swiss-minimal.css">
+ *   <body class="boom">
+ */
+
+/* ═══ GOOGLE FONTS ═══ */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Serif+Text:ital@0;1&family=IBM+Plex+Mono:wght@400;500&display=swap');
+
+/* ═══ BASE ═══ */
+@import url('./base.css');
+
+/* ═══ VARIABLES — SWISS MINIMAL (LIGHT) ═══ */
+:root {
+
+  /* --- Fonts --- */
+  --font-sans:  'Inter', system-ui, -apple-system, sans-serif;
+  --font-serif: 'DM Serif Text', Georgia, serif;
+  --font-mono:  'IBM Plex Mono', 'Fira Code', monospace;
+
+  /* --- Type scale --- */
+  --text-display: clamp(3rem, 8vw, 6rem);
+  --text-4xl:     2.5rem;
+  --text-3xl:     2rem;
+  --text-2xl:     1.5rem;
+  --text-xl:      1.25rem;
+  --text-lg:      1.125rem;
+  --text-base:    1rem;
+  --text-sm:      0.875rem;
+  --text-xs:      0.75rem;
+
+  /* --- Backgrounds --- */
+  --bg:           #faf8f5;
+  --bg-card:      #f5f2ee;
+  --bg-elevated:  #ffffff;
+  --bg-input:     #ffffff;
+  --bg-hover:     #eeebe6;
+  --bg-active:    #e5e1db;
+
+  /* --- Text --- */
+  --text:         #222025;
+  --text-muted:   #5a5760;
+  --text-subtle:  #8a8791;
+  --text-faint:   #b4b1ba;
+
+  /* --- Accent — Pantone-185 red --- */
+  --accent:       #e63946;
+  --accent-80:    rgba(230, 57, 70, 0.80);
+  --accent-15:    rgba(230, 57, 70, 0.15);
+  --accent-08:    rgba(230, 57, 70, 0.08);
+
+  /* --- Border --- */
+  --border:        rgba(34, 32, 37, 0.12);
+  --border-mid:    rgba(34, 32, 37, 0.22);
+  --border-accent: rgba(230, 57, 70, 0.35);
+
+  /* --- Semantic colours --- */
+  --success: #2d9e5b;
+  --warning: #c47f17;
+  --error:   #e63946;
+  --info:    #2563eb;
+
+  /* --- Border radius — square, precise --- */
+  --radius-sm: 2px;
+  --radius-md: 3px;
+  --radius-lg: 4px;
+  --radius-xl: 6px;
+
+  /* --- Easing — crisp, mechanical --- */
+  --ease: cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+/* ═══ SWISS OVERRIDES — sharper, more editorial ═══ */
+
+/* Navbar: thicker border, no blur bleed */
+.b-navbar {
+  background: var(--bg);
+  border-bottom: 2px solid var(--text);
+}
+
+/* Brand: all-caps, tracked, no serif */
+.b-navbar-brand {
+  font-family: var(--font-sans);
+  font-size: var(--text-sm);
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+/* Cards: flat — no lift, hard border */
+.b-card {
+  border-radius: var(--radius-md);
+  border-color: var(--border-mid);
+}
+.b-card:hover {
+  transform: none;
+  border-color: var(--accent);
+}
+.b-card-accent {
+  border-left: 4px solid var(--accent);
+}
+
+/* Buttons: square, uppercase labels */
+.b-btn {
+  border-radius: var(--radius-sm);
+  letter-spacing: 0.04em;
+  font-weight: 600;
+}
+.b-btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #ffffff;
+}
+.b-btn-primary:hover {
+  background: #c62c38;
+  border-color: #c62c38;
+  opacity: 1;
+}
+
+/* Inputs: flat, square */
+.b-input {
+  border-radius: var(--radius-sm);
+  background: var(--bg-elevated);
+  border-color: var(--border-mid);
+}
+.b-input:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-15);
+}
+
+/* Hero: left-aligned for Swiss feel */
+.b-hero {
+  align-items: flex-start;
+  text-align: left;
+  padding: 120px 0;
+}
+.b-hero .b-display {
+  letter-spacing: -0.03em;
+}
+.b-hero .b-muted {
+  max-width: 560px;
+}
+
+/* Stat: left-align, bolder hierarchy */
+.b-stat {
+  text-align: left;
+}
+
+/* Tables: strict lines */
+.b-table th {
+  border-bottom: 2px solid var(--text);
+  color: var(--text);
+}
+.b-table-wrap {
+  border-radius: var(--radius-md);
+}
+
+/* Accordion: square */
+.b-accordion {
+  border-radius: var(--radius-md);
+}
+
+/* Badges: square pill → rectangle */
+.b-badge {
+  border-radius: var(--radius-sm);
+}
+.b-tag {
+  border-radius: var(--radius-sm);
+}
+
+/* Code block: stark contrast */
+.b-code {
+  border-radius: var(--radius-sm);
+  border-color: var(--border-mid);
+  background: #f0ede8;
+  color: var(--text);
+}
+.b-code-inline {
+  border-radius: 2px;
+}
+
+/* Dialog: square corners */
+.b-dialog {
+  border-radius: var(--radius-lg);
+}
+
+/* Tabs: thicker active indicator */
+.b-tab.active {
+  border-bottom-width: 3px;
+}
+
+/* Footer: editorial rule */
+.b-footer {
+  border-top: 2px solid var(--text);
+}
+.b-footer-brand {
+  font-family: var(--font-sans);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
