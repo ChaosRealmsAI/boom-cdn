@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>boom-cdn docs — 组件文档</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:system-ui,-apple-system,sans-serif;background:#0d1117;color:#e6edf3;padding:2rem 2rem 4rem;max-width:900px;margin:0 auto;line-height:1.6}
+h1{font-size:1.6rem;margin-bottom:0.3rem}
+h2{font-size:1.2rem;margin:2rem 0 0.8rem;padding-top:1.5rem;border-top:1px solid #21262d;color:#58a6ff}
+h3{font-size:1rem;margin:1.2rem 0 0.5rem;color:#79c0ff}
+p{color:#8b949e;margin-bottom:0.8rem;font-size:0.9rem}
+a{color:#58a6ff;text-decoration:none}
+a:hover{text-decoration:underline}
+table{width:100%;border-collapse:collapse;margin:1rem 0}
+th,td{text-align:left;padding:8px 12px;border:1px solid #21262d;font-size:0.85rem}
+th{background:#161b22;color:#8b949e;font-weight:600}
+td{color:#c9d1d9}
+pre{background:#161b22;border:1px solid #30363d;border-radius:6px;padding:12px 16px;overflow-x:auto;margin:0.8rem 0;font-size:0.82rem;line-height:1.5}
+code{font-family:'SF Mono',Consolas,monospace;color:#79c0ff;font-size:0.82rem}
+pre code{color:#e6edf3}
+.badge{display:inline-block;background:#1f6feb22;color:#58a6ff;font-size:0.7rem;padding:2px 8px;border-radius:3px;margin-left:6px}
+.sub{color:#6e7681;font-size:0.85rem;margin-bottom:2rem}
+.api-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:4px;margin:0.5rem 0}
+.api-list code{display:block;background:#161b22;padding:4px 8px;border-radius:4px;font-size:0.78rem}
+.note{background:#161b2280;border-left:3px solid #f0883e;padding:8px 12px;margin:0.8rem 0;font-size:0.82rem;color:#d29922}
+</style>
+</head>
+<body>
+
+<h1>boom-cdn</h1>
+<p class="sub">公共组件 CDN — <code>https://boom-cdn.vercel.app</code></p>
+
+<table>
+<tr><th>组件</th><th>用途</th><th>文件</th></tr>
+<tr><td><a href="#engine">engine</a></td><td>Walkthrough 讲解引擎（逐步高亮 + 动画 + 旁白）</td><td><a href="https://boom-cdn.vercel.app/engine/engine.css">CSS</a> · <a href="https://boom-cdn.vercel.app/engine/engine.js">JS</a></td></tr>
+<tr><td><a href="#viewer">viewer</a></td><td>关键帧查看器 + 宪法渲染器 + 版本索引</td><td><a href="https://boom-cdn.vercel.app/viewer/keyframe-viewer.css">CSS</a> · <a href="https://boom-cdn.vercel.app/viewer/keyframe-viewer.js">JS</a> · <a href="https://boom-cdn.vercel.app/viewer/keyframe-viewer.html">骨架</a></td></tr>
+<tr><td><a href="#presenter">presenter</a></td><td>幻灯片演示器 + 评论系统</td><td><a href="https://boom-cdn.vercel.app/presenter/presenter.css">CSS</a> · <a href="https://boom-cdn.vercel.app/presenter/presenter.js">JS</a></td></tr>
+<tr><td><a href="#themes">themes</a></td><td>PPT 主题样式（8 套）</td><td><a href="https://boom-cdn.vercel.app/themes/base.css">base</a> · <a href="#themes">列表</a></td></tr>
+</table>
+
+<!-- ==================== ENGINE ==================== -->
+<h2 id="engine">engine — Walkthrough 讲解引擎</h2>
+<p>逐步高亮 + 动画 + 语音旁白 + 键盘控制。用于技术选型报告、原型讲解、架构图等。</p>
+
+<h3>引用</h3>
+<pre><code>&lt;link rel="stylesheet" href="https://boom-cdn.vercel.app/engine/engine.css"&gt;
+&lt;script src="https://boom-cdn.vercel.app/engine/engine.js"&gt;&lt;/script&gt;</code></pre>
+
+<h3>初始化</h3>
+<pre><code>SR.init({
+  steps: [
+    {label: '标题', sub: '副标题', audio: 's1'},
+    {label: '第二步', sub: '说明'}
+  ],
+  animations: [
+    async () =&gt; { SR.showScreen('s-page1'); await SR.wait(500); },
+    async () =&gt; { SR.glow(SR.$('elem-id')); await SR.playAudio('s2'); SR.unglow(SR.$('elem-id')); }
+  ],
+  audioDir: 'audio/demo-name/',
+  title: 'Demo Title',
+  meta: '10 steps · description',
+  device: 'presentation'
+});</code></pre>
+
+<h3>HTML 结构</h3>
+<pre><code>&lt;div class="page"&gt;
+  &lt;div class="sr-screen active" id="s-page1"&gt;...&lt;/div&gt;
+  &lt;div class="sr-screen" id="s-page2"&gt;...&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+<p>每个 <code>.sr-screen</code> 是一页。引擎通过 <code>SR.showScreen(id)</code> 切换。</p>
+
+<h3>API</h3>
+<div class="api-list">
+<code>SR.$(id) — getElementById</code>
+<code>SR.wait(ms) — 可中断等待</code>
+<code>SR.showSub(text) — 显示字幕</code>
+<code>SR.hideSub() — 隐藏字幕</code>
+<code>SR.playAudio(id) — 播放音频</code>
+<code>SR.glow(el) — 蓝色高亮</code>
+<code>SR.unglow(el) — 取消高亮</code>
+<code>SR.showScreen(id) — 切换页面</code>
+<code>SR.highlight(el, ms?) — 框选高亮</code>
+<code>SR.center(el) — 返回中心坐标</code>
+</div>
+
+<h3>键盘</h3>
+<table>
+<tr><td><code>Space</code></td><td>播放/暂停</td></tr>
+<tr><td><code>← →</code></td><td>上一步/下一步</td></tr>
+<tr><td><code>M</code></td><td>静音</td></tr>
+<tr><td><code>R</code></td><td>阅读模式（全页纵向浏览）</td></tr>
+<tr><td><code>Esc</code></td><td>退出阅读模式</td></tr>
+</table>
+
+<!-- ==================== VIEWER ==================== -->
+<h2 id="viewer">viewer — 查看器</h2>
+
+<h3>keyframe-viewer（关键帧查看器）</h3>
+<p>用于原型图和流程图的逐帧讲解。左侧画面 + 右侧讲解面板 + 高亮标注。</p>
+<pre><code>&lt;link rel="stylesheet" href="https://boom-cdn.vercel.app/viewer/keyframe-viewer.css"&gt;
+&lt;script src="https://boom-cdn.vercel.app/viewer/keyframe-viewer.js"&gt;&lt;/script&gt;</code></pre>
+<p>前置：定义全局 <code>frames</code> 数组，DOM 中需要 <code>#hlRing</code> <code>#hlLabel</code> <code>.view-panel</code> 等元素。</p>
+<p>HTML 骨架参考：<a href="https://boom-cdn.vercel.app/viewer/keyframe-viewer.html">keyframe-viewer.html</a></p>
+
+<h3>manifesto-viewer（宪法渲染器）</h3>
+<p>从 <code>manifesto.json</code> 自动生成项目宪法页面。</p>
+<pre><code># 下载渲染器到项目
+curl -o spec/v{X}/final/manifesto/index.html \
+  https://boom-cdn.vercel.app/viewer/manifesto-viewer.html
+
+# 同目录放 manifesto.json，打开 index.html 自动渲染</code></pre>
+<p>查看模板：<a href="https://boom-cdn.vercel.app/viewer/manifesto-viewer.html">manifesto-viewer.html</a></p>
+
+<h3>version-index（版本索引）</h3>
+<p>版本导航首页，列出原型/流程图/BDD/宪法等产出物。</p>
+<pre><code>curl -o spec/v{X}/final/index.html \
+  https://boom-cdn.vercel.app/viewer/version-index.html</code></pre>
+<p>查看模板：<a href="https://boom-cdn.vercel.app/viewer/version-index.html">version-index.html</a></p>
+
+<!-- ==================== PRESENTER ==================== -->
+<h2 id="presenter">presenter — 幻灯片演示器</h2>
+<p>PPT 风格的翻页演示 + 可选评论系统。</p>
+<pre><code>&lt;link rel="stylesheet" href="https://boom-cdn.vercel.app/presenter/presenter.css"&gt;
+&lt;script src="https://boom-cdn.vercel.app/presenter/presenter.js"&gt;&lt;/script&gt;
+
+&lt;!-- 评论（可选） --&gt;
+&lt;link rel="stylesheet" href="https://boom-cdn.vercel.app/presenter/comments.css"&gt;
+&lt;script src="https://boom-cdn.vercel.app/presenter/comments.js"&gt;&lt;/script&gt;</code></pre>
+
+<!-- ==================== THEMES ==================== -->
+<h2 id="themes">themes — PPT 主题</h2>
+<p>8 套主题样式，每套包含颜色、字体、布局 CSS 变量。</p>
+<pre><code>&lt;!-- 基础样式（必须） --&gt;
+&lt;link rel="stylesheet" href="https://boom-cdn.vercel.app/themes/base.css"&gt;
+&lt;!-- 选一个主题 --&gt;
+&lt;link rel="stylesheet" href="https://boom-cdn.vercel.app/themes/neo-tokyo.css"&gt;</code></pre>
+
+<table>
+<tr><th>主题</th><th>风格</th><th>预览</th></tr>
+<tr><td>champagne-silk</td><td>香槟丝绸</td><td><a href="https://boom-cdn.vercel.app/demo/champagne-silk.html">预览</a></td></tr>
+<tr><td>matte-carbon</td><td>哑光碳黑</td><td><a href="https://boom-cdn.vercel.app/demo/matte-carbon.html">预览</a></td></tr>
+<tr><td>neo-tokyo</td><td>赛博东京</td><td><a href="https://boom-cdn.vercel.app/demo/neo-tokyo.html">预览</a></td></tr>
+<tr><td>obsidian-velvet</td><td>黑曜丝绒</td><td><a href="https://boom-cdn.vercel.app/demo/obsidian-velvet.html">预览</a></td></tr>
+<tr><td>soft-pastel</td><td>柔和粉彩</td><td><a href="https://boom-cdn.vercel.app/demo/soft-pastel.html">预览</a></td></tr>
+<tr><td>swiss-minimal</td><td>瑞士极简</td><td><a href="https://boom-cdn.vercel.app/demo/swiss-minimal.html">预览</a></td></tr>
+<tr><td>terminal-green</td><td>终端绿</td><td><a href="https://boom-cdn.vercel.app/demo/terminal-green.html">预览</a></td></tr>
+<tr><td>zen-ink</td><td>禅意水墨</td><td><a href="https://boom-cdn.vercel.app/demo/zen-ink.html">预览</a></td></tr>
+</table>
+
+<div class="note">CORS 已开启，任何域名可访问。Cache-Control: immutable。更新组件：改 boom-cdn 仓库 → push → Vercel 自动部署。</div>
+
+</body>
+</html>
