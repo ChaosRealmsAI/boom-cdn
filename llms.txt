@@ -88,6 +88,14 @@ Complete API documentation: https://boom-cdn.vercel.app/docs.md
 Theme catalog (JSON): https://boom-cdn.vercel.app/themes/catalog.json
 Component source: https://boom-cdn.vercel.app/themes/base.css
 
+## Common Pitfalls
+
+- **Grid requires base class**: `b-grid-2`, `b-grid-3`, `b-grid-4` only set columns. You MUST also add `b-grid` for `display: grid`. Correct: `class="b-grid b-grid-3"`. Wrong: `class="b-grid-3"`.
+- **b-center overrides flex-direction**: `b-center` sets `display: flex` (row). Do NOT combine with `b-hero` or `b-stack` (which need column). Use `b-stack` with `style="align-items:center;text-align:center"` instead.
+- **data-reveal hides content**: Elements with `data-reveal` start at `opacity: 0` and only appear when scrolled into view via IntersectionObserver. Do NOT put data-reveal on every section — content below the fold will be invisible until the user scrolls. Use sparingly, only on elements you want to animate in.
+- **data-count target is literal**: `data-target="347"` with `data-suffix="%"` shows "347%", not "3.47%". For decimals, use `data-target="3.47"`.
+- **b-stat is text-align:center**: `b-stat-value` and `b-stat-label` are centered by default. No need to add `b-center` on stat containers.
+
 ## Rules
 
 - Reference via CDN only — do not copy files locally
