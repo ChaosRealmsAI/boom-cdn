@@ -55,27 +55,12 @@
   --font-serif: 'Crimson Pro', 'Georgia', serif;
   --font-mono:  'Fira Code', 'Courier New', monospace;
 
-  /* ── Type Scale (fluid) ── */
-  --text-xs:      clamp(0.70rem, 0.68rem + 0.1vw,  0.75rem);
-  --text-sm:      clamp(0.82rem, 0.80rem + 0.12vw, 0.875rem);
-  --text-base:    clamp(0.95rem, 0.92rem + 0.15vw, 1rem);
-  --text-lg:      clamp(1.10rem, 1.05rem + 0.25vw, 1.125rem);
-  --text-xl:      clamp(1.20rem, 1.15rem + 0.3vw,  1.25rem);
-  --text-2xl:     clamp(1.40rem, 1.30rem + 0.5vw,  1.5rem);
-  --text-3xl:     clamp(1.70rem, 1.55rem + 0.75vw, 1.875rem);
-  --text-4xl:     clamp(2.10rem, 1.90rem + 1.0vw,  2.5rem);
-  --text-display: clamp(2.80rem, 2.40rem + 2.0vw,  4.0rem);
-
   /* ── Radius ── */
   --radius-sm:   4px;
   --radius-md:   8px;
   --radius-lg:   14px;
   --radius-xl:   20px;
   --radius-full: 9999px;
-
-  /* ── Motion ── */
-  --ease:        cubic-bezier(0.25, 0.1, 0.25, 1);
-  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
 
   /* ── Aurora Gradients ── */
   --gradient-aurora:  linear-gradient(135deg, #8b5cf6 0%, #2dd4bf 50%, #ec4899 100%);
