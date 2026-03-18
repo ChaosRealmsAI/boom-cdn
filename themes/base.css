@@ -5,7 +5,7 @@
  * Theme files only override CSS variables (colors, fonts).
  *
  * Usage:
- *   <link rel="stylesheet" href="https://cdn.boom.dev/themes/obsidian-velvet.css">
+ *   <link rel="stylesheet" href="https://boom-cdn.vercel.app/themes/obsidian-velvet.css">
  *   (each theme file @imports base.css automatically)
  */
 

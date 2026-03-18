@@ -7,7 +7,7 @@
 | 组件 | 用途 | 文件 |
 |------|------|------|
 | [engine](#engine) | Walkthrough 讲解引擎 | [CSS](https://boom-cdn.vercel.app/engine/engine.css) · [JS](https://boom-cdn.vercel.app/engine/engine.js) |
-| [themes](#themes) | UI 组件框架 + 17 套主题 | [base.css](https://boom-cdn.vercel.app/themes/base.css) |
+| [themes](#themes) | UI 组件框架 + 18 套主题 | [base.css](https://boom-cdn.vercel.app/themes/base.css) |
 | [viewer](#viewer) | 关键帧 / 宪法 / 版本索引 | [CSS](https://boom-cdn.vercel.app/viewer/keyframe-viewer.css) · [JS](https://boom-cdn.vercel.app/viewer/keyframe-viewer.js) |
 | [presenter](#presenter) | 幻灯片演示器 | [CSS](https://boom-cdn.vercel.app/presenter/presenter.css) · [JS](https://boom-cdn.vercel.app/presenter/presenter.js) |
 
@@ -84,7 +84,7 @@ Space 播放 · ← → 翻页 · M 静音 · R 阅读模式 · Esc 退出
 <body class="boom">
 ```
 
-### 17 套主题
+### 18 套主题
 
 | 主题 | 风格 | CSS | 预览 |
 |------|------|-----|------|
@@ -104,6 +104,7 @@ Space 播放 · ← → 翻页 · M 静音 · R 阅读模式 · Esc 退出
 | frost-glass | 霜冻玻璃 | [CSS](https://boom-cdn.vercel.app/themes/frost-glass.css) | — |
 | golden-luxury | 黄金奢华 | [CSS](https://boom-cdn.vercel.app/themes/golden-luxury.css) | — |
 | ink-editorial | 墨水社论 | [CSS](https://boom-cdn.vercel.app/themes/ink-editorial.css) | — |
+| brutalist | 粗野主义 | [CSS](https://boom-cdn.vercel.app/themes/brutalist.css) | — |
 | ocean-depth | 深海蓝 | [CSS](https://boom-cdn.vercel.app/themes/ocean-depth.css) | — |
 
 ### 组件类（base.css 提供，所有主题共享）
