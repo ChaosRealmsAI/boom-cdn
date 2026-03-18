@@ -6,90 +6,65 @@
   <title>Boom CDN — Theme Switcher</title>
   <link id="theme-css" rel="stylesheet" href="../themes/obsidian-velvet.css">
   <style>
-    .theme-switcher {
+    .theme-bar {
       position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
       background: rgba(0,0,0,0.85); backdrop-filter: blur(12px);
-      padding: 12px 24px; display: flex; align-items: center; gap: 8px;
+      padding: 10px 24px; display: flex; align-items: center; gap: 12px;
       border-bottom: 1px solid rgba(255,255,255,0.1);
-      overflow-x: auto; white-space: nowrap;
     }
-    .theme-switcher span {
-      color: rgba(255,255,255,0.5); font-size: 12px; font-family: system-ui;
-      margin-right: 8px; flex-shrink: 0;
+    .theme-bar label {
+      color: rgba(255,255,255,0.5); font-size: 11px; font-family: system-ui;
+      text-transform: uppercase; letter-spacing: 0.08em;
     }
-    .theme-btn {
-      padding: 6px 14px; border-radius: 6px; border: 1px solid rgba(255,255,255,0.15);
-      background: transparent; color: #fff; font-size: 12px; font-family: system-ui;
-      cursor: pointer; transition: all 0.2s; flex-shrink: 0;
+    .theme-select {
+      padding: 6px 32px 6px 12px; border-radius: 6px;
+      border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.08);
+      color: #fff; font-size: 13px; font-family: system-ui; cursor: pointer;
+      appearance: none; outline: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' fill='white' viewBox='0 0 16 16'%3E%3Cpath d='M8 11L3 6h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 10px center;
     }
-    .theme-btn:hover { background: rgba(255,255,255,0.1); }
-    .theme-btn.active { background: rgba(255,255,255,0.2); border-color: rgba(255,255,255,0.4); }
-    .theme-dot {
-      display: inline-block; width: 8px; height: 8px; border-radius: 50%;
-      margin-right: 6px; vertical-align: middle;
+    .theme-select:hover { border-color: rgba(255,255,255,0.4); }
+    .theme-select option { background: #1a1a1a; color: #fff; }
+    .theme-preview {
+      width: 12px; height: 12px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2);
+      transition: background 0.3s;
     }
-    .page-content { padding-top: 56px; }
+    .theme-count { color: rgba(255,255,255,0.3); font-size: 11px; font-family: system-ui; margin-left: auto; }
+    .page-content { padding-top: 48px; }
   </style>
 </head>
 <body class="boom b-grain">
 
   <!-- Theme Switcher Bar -->
-  <div class="theme-switcher">
-    <span>THEME</span>
-    <button class="theme-btn active" onclick="switchTheme('obsidian-velvet', this)">
-      <i class="theme-dot" style="background:#8a6fae"></i>Obsidian Velvet
-    </button>
-    <button class="theme-btn" onclick="switchTheme('swiss-minimal', this)">
-      <i class="theme-dot" style="background:#e63946"></i>Swiss Minimal
-    </button>
-    <button class="theme-btn" onclick="switchTheme('zen-ink', this)">
-      <i class="theme-dot" style="background:#4a4a4a"></i>Zen Ink
-    </button>
-    <button class="theme-btn" onclick="switchTheme('neo-tokyo', this)">
-      <i class="theme-dot" style="background:#ff4444"></i>Neo Tokyo
-    </button>
-    <button class="theme-btn" onclick="switchTheme('champagne-silk', this)">
-      <i class="theme-dot" style="background:#c4a265"></i>Champagne Silk
-    </button>
-    <button class="theme-btn" onclick="switchTheme('terminal-green', this)">
-      <i class="theme-dot" style="background:#00ff41"></i>Terminal Green
-    </button>
-    <button class="theme-btn" onclick="switchTheme('soft-pastel', this)">
-      <i class="theme-dot" style="background:#e8a0bf"></i>Soft Pastel
-    </button>
-    <button class="theme-btn" onclick="switchTheme('matte-carbon', this)">
-      <i class="theme-dot" style="background:#e85d3a"></i>Matte Carbon
-    </button>
-    <button class="theme-btn" onclick="switchTheme('aurora-gradient', this)">
-      <i class="theme-dot" style="background:#8b5cf6"></i>Aurora Gradient
-    </button>
-    <button class="theme-btn" onclick="switchTheme('golden-luxury', this)">
-      <i class="theme-dot" style="background:#d4af37"></i>Golden Luxury
-    </button>
-    <button class="theme-btn" onclick="switchTheme('forest-zen', this)">
-      <i class="theme-dot" style="background:#5a7a42"></i>Forest Zen
-    </button>
-    <button class="theme-btn" onclick="switchTheme('frost-glass', this)">
-      <i class="theme-dot" style="background:#60a5fa"></i>Frost Glass
-    </button>
-    <button class="theme-btn" onclick="switchTheme('brutalist', this)">
-      <i class="theme-dot" style="background:#ff0000"></i>Brutalist
-    </button>
-    <button class="theme-btn" onclick="switchTheme('candy-pop', this)">
-      <i class="theme-dot" style="background:#ff3388"></i>Candy Pop
-    </button>
-    <button class="theme-btn" onclick="switchTheme('ocean-depth', this)">
-      <i class="theme-dot" style="background:#3d8bfd"></i>Ocean Depth
-    </button>
-    <button class="theme-btn" onclick="switchTheme('ink-editorial', this)">
-      <i class="theme-dot" style="background:#1a1a1a"></i>Ink Editorial
-    </button>
-    <button class="theme-btn" onclick="switchTheme('copper-industrial', this)">
-      <i class="theme-dot" style="background:#c87850"></i>Copper Industrial
-    </button>
-    <button class="theme-btn" onclick="switchTheme('emerald-dynasty', this)">
-      <i class="theme-dot" style="background:#2d8c5a"></i>Emerald Dynasty
-    </button>
+  <div class="theme-bar">
+    <label for="theme-picker">Theme</label>
+    <div class="theme-preview" id="theme-dot"></div>
+    <select class="theme-select" id="theme-picker" onchange="switchTheme(this.value)">
+      <optgroup label="Dark">
+        <option value="obsidian-velvet" selected>Obsidian Velvet</option>
+        <option value="neo-tokyo">Neo Tokyo</option>
+        <option value="terminal-green">Terminal Green</option>
+        <option value="matte-carbon">Matte Carbon</option>
+        <option value="aurora-gradient">Aurora Gradient</option>
+        <option value="golden-luxury">Golden Luxury</option>
+        <option value="frost-glass">Frost Glass</option>
+        <option value="ocean-depth">Ocean Depth</option>
+        <option value="copper-industrial">Copper Industrial</option>
+        <option value="emerald-dynasty">Emerald Dynasty</option>
+      </optgroup>
+      <optgroup label="Light">
+        <option value="swiss-minimal">Swiss Minimal</option>
+        <option value="zen-ink">Zen Ink</option>
+        <option value="champagne-silk">Champagne Silk</option>
+        <option value="soft-pastel">Soft Pastel</option>
+        <option value="forest-zen">Forest Zen</option>
+        <option value="brutalist">Brutalist</option>
+        <option value="candy-pop">Candy Pop</option>
+        <option value="ink-editorial">Ink Editorial</option>
+      </optgroup>
+    </select>
+    <span class="theme-count">18 themes · 45 components</span>
   </div>
 
   <div class="page-content">
@@ -839,10 +814,28 @@
   </div>
 
   <script>
-    function switchTheme(name, btn) {
+    const THEME_COLORS = {
+      'obsidian-velvet': '#8a6fae', 'swiss-minimal': '#e63946', 'zen-ink': '#4a4a4a',
+      'neo-tokyo': '#ff4444', 'champagne-silk': '#c4a265', 'terminal-green': '#00ff41',
+      'soft-pastel': '#e8a0bf', 'matte-carbon': '#e85d3a', 'aurora-gradient': '#8b5cf6',
+      'golden-luxury': '#d4af37', 'forest-zen': '#5a7a42', 'frost-glass': '#60a5fa',
+      'brutalist': '#ff0000', 'candy-pop': '#ff3388', 'ocean-depth': '#3d8bfd',
+      'ink-editorial': '#1a1a1a', 'copper-industrial': '#c87850', 'emerald-dynasty': '#2d8c5a',
+    };
+
+    function switchTheme(name) {
       document.getElementById('theme-css').href = '../themes/' + name + '.css';
-      document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+      document.getElementById('theme-dot').style.background = THEME_COLORS[name] || '#888';
+      localStorage.setItem('boom-theme', name);
+    }
+
+    // Restore saved theme
+    const saved = localStorage.getItem('boom-theme');
+    if (saved) {
+      document.getElementById('theme-picker').value = saved;
+      switchTheme(saved);
+    } else {
+      document.getElementById('theme-dot').style.background = THEME_COLORS['obsidian-velvet'];
     }
   </script>
 </body>
