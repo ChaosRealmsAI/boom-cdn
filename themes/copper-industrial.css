@@ -1,0 +1,188 @@
+@import url('./base.css');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300;400;600;700&family=Roboto:wght@300;400;500;700&family=Roboto+Mono:wght@400;500&display=swap');
+
+/**
+ * Copper Industrial — Boom CDN Theme
+ *
+ * Steam pipes. Riveted plate. Patinated copper. Boiler-room glow.
+ * Inspired by Victorian ironworks, exposed ductwork, and oxidised metal.
+ */
+
+:root {
+  /* ── Backgrounds ── */
+  --bg:           #1a1a1e;
+  --bg-elevated:  #202026;
+  --bg-card:      #252528;
+  --bg-hover:     #2c2c31;
+  --bg-active:    #333338;
+  --bg-input:     #16161a;
+
+  /* ── Text ── */
+  --text:         #c8c0b8;
+  --text-muted:   #8a8078;
+  --text-subtle:  #5e5650;
+  --text-faint:   #3a3530;
+  --text-ghost:   #222018;
+
+  /* ── Accent: Patinated Copper ── */
+  --accent:       #c87850;
+  --accent-hover: #d98e64;
+  --accent-80:    rgba(200, 120, 80, 0.80);
+  --accent-30:    rgba(200, 120, 80, 0.30);
+  --accent-15:    rgba(200, 120, 80, 0.15);
+  --accent-08:    rgba(200, 120, 80, 0.08);
+
+  /* ── Verdigris tones — copper oxidation highlights ── */
+  --accent-alt:        #5a8a78;
+  --accent-alt-hover:  #6a9e8a;
+  --accent-alt-30:     rgba(90, 138, 120, 0.30);
+  --accent-alt-15:     rgba(90, 138, 120, 0.15);
+
+  /* ── Borders — aged iron seams ── */
+  --border:        rgba(200, 192, 184, 0.07);
+  --border-mid:    rgba(200, 192, 184, 0.12);
+  --border-strong: rgba(200, 192, 184, 0.22);
+  --border-accent: rgba(200, 120, 80, 0.45);
+
+  /* ── Semantic ── */
+  --success: #5a8a78;
+  --warning: #c8a050;
+  --error:   #b05040;
+  --info:    #6890a8;
+
+  /* ── Typography ── */
+  --font-serif: 'Roboto Slab', 'Georgia', serif;
+  --font-sans:  'Roboto', system-ui, sans-serif;
+  --font-mono:  'Roboto Mono', 'Courier New', monospace;
+
+  /* ── Type Scale (fluid) ── */
+  --text-xs:      clamp(0.70rem, 0.68rem + 0.1vw,  0.75rem);
+  --text-sm:      clamp(0.82rem, 0.80rem + 0.12vw, 0.875rem);
+  --text-base:    clamp(0.95rem, 0.92rem + 0.15vw, 1rem);
+  --text-lg:      clamp(1.10rem, 1.05rem + 0.25vw, 1.125rem);
+  --text-xl:      clamp(1.20rem, 1.15rem + 0.3vw,  1.25rem);
+  --text-2xl:     clamp(1.40rem, 1.30rem + 0.5vw,  1.5rem);
+  --text-3xl:     clamp(1.70rem, 1.55rem + 0.75vw, 1.875rem);
+  --text-4xl:     clamp(2.10rem, 1.90rem + 1.0vw,  2.5rem);
+  --text-display: clamp(3.20rem, 2.60rem + 3.0vw,  6.0rem);
+
+  /* ── Radius — heavy-plate chamfered edges ── */
+  --radius-sm:   2px;
+  --radius-md:   3px;
+  --radius-lg:   6px;
+  --radius-xl:   10px;
+  --radius-full: 9999px;
+
+  /* ── Motion — deliberate, weighted, mechanical ── */
+  --ease:        cubic-bezier(0.25, 0.8, 0.35, 1);
+  --ease-bounce: cubic-bezier(0.30, 1.3, 0.60, 1);
+}
+
+/* ── Riveted boiler-plate texture overlay ── */
+body.boom.b-grain::before {
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      rgba(200, 120, 80, 0.018) 0px,
+      rgba(200, 120, 80, 0.018) 1px,
+      transparent 1px,
+      transparent 6px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      rgba(200, 120, 80, 0.010) 0px,
+      rgba(200, 120, 80, 0.010) 1px,
+      transparent 1px,
+      transparent 6px
+    ),
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity: 0.055;
+}
+
+/* ── Display headings — Roboto Slab, heavy slab-serif authority ── */
+.b-display {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.b-h1 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  letter-spacing: 0.015em;
+  text-transform: uppercase;
+}
+
+.b-h2 {
+  font-family: var(--font-serif);
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+/* ── Rivet detail — repeating dot border for pipe-flange effect ── */
+.b-card {
+  border-radius: var(--radius-lg);
+  border-top: 1px solid var(--border-mid);
+  box-shadow: inset 0 1px 0 rgba(200, 120, 80, 0.06);
+}
+
+.b-card-accent {
+  border-left: 3px solid var(--accent);
+  background: linear-gradient(
+    90deg,
+    rgba(200, 120, 80, 0.06) 0%,
+    transparent 40%
+  );
+}
+
+/* ── Primary button — bolted-plate, copper glow ── */
+.b-btn-primary {
+  border-radius: var(--radius-md);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+  font-weight: 700;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(200, 120, 80, 0.2);
+}
+
+/* ── Navbar brand in Roboto Slab ── */
+.b-navbar-brand {
+  font-family: var(--font-serif);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: var(--text-xl);
+  font-weight: 700;
+}
+
+/* ── Labels — tight, stenciled ── */
+.b-label {
+  font-family: var(--font-sans);
+  letter-spacing: 0.12em;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+/* ── Stat values — mono for gauge readout feel ── */
+.b-stat-value {
+  font-family: var(--font-mono);
+  letter-spacing: 0.03em;
+}
+
+/* ── Verdigris highlight — oxidised copper accent variant ── */
+.b-accent-alt {
+  color: var(--accent-alt);
+}
+
+.b-badge-alt {
+  background-color: var(--accent-alt-15);
+  color: var(--accent-alt-hover);
+  border: 1px solid var(--accent-alt-30);
+}
+
+/* ── Divider — pipe seam ── */
+.b-divider {
+  border-color: var(--border-mid);
+  position: relative;
+}

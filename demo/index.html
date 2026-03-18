@@ -60,6 +60,36 @@
     <button class="theme-btn" onclick="switchTheme('matte-carbon', this)">
       <i class="theme-dot" style="background:#e85d3a"></i>Matte Carbon
     </button>
+    <button class="theme-btn" onclick="switchTheme('aurora-gradient', this)">
+      <i class="theme-dot" style="background:#8b5cf6"></i>Aurora Gradient
+    </button>
+    <button class="theme-btn" onclick="switchTheme('golden-luxury', this)">
+      <i class="theme-dot" style="background:#d4af37"></i>Golden Luxury
+    </button>
+    <button class="theme-btn" onclick="switchTheme('forest-zen', this)">
+      <i class="theme-dot" style="background:#5a7a42"></i>Forest Zen
+    </button>
+    <button class="theme-btn" onclick="switchTheme('frost-glass', this)">
+      <i class="theme-dot" style="background:#60a5fa"></i>Frost Glass
+    </button>
+    <button class="theme-btn" onclick="switchTheme('brutalist', this)">
+      <i class="theme-dot" style="background:#ff0000"></i>Brutalist
+    </button>
+    <button class="theme-btn" onclick="switchTheme('candy-pop', this)">
+      <i class="theme-dot" style="background:#ff3388"></i>Candy Pop
+    </button>
+    <button class="theme-btn" onclick="switchTheme('ocean-depth', this)">
+      <i class="theme-dot" style="background:#3d8bfd"></i>Ocean Depth
+    </button>
+    <button class="theme-btn" onclick="switchTheme('ink-editorial', this)">
+      <i class="theme-dot" style="background:#1a1a1a"></i>Ink Editorial
+    </button>
+    <button class="theme-btn" onclick="switchTheme('copper-industrial', this)">
+      <i class="theme-dot" style="background:#c87850"></i>Copper Industrial
+    </button>
+    <button class="theme-btn" onclick="switchTheme('emerald-dynasty', this)">
+      <i class="theme-dot" style="background:#2d8c5a"></i>Emerald Dynasty
+    </button>
   </div>
 
   <div class="page-content">
@@ -434,6 +464,290 @@
           <span class="b-badge b-tooltip" data-tip="99.9% uptime">Status: Operational</span>
         </div>
       </div>
+      <!-- Sidebar / Drawer -->
+      <div class="b-mb-8">
+        <h3 class="b-h5 b-mb-4">Sidebar / Drawer</h3>
+        <div style="position:relative;height:220px;overflow:hidden;border:1px solid var(--border);border-radius:var(--radius-lg);">
+          <div class="b-sidebar" style="position:absolute;height:100%;border-right:1px solid var(--border);">
+            <div class="b-sidebar-header"><span style="font-size:var(--text-sm);font-weight:500;">Acme Studio</span></div>
+            <nav class="b-sidebar-nav">
+              <a class="b-sidebar-item active" href="#">⊞ Dashboard</a>
+              <a class="b-sidebar-item" href="#">⊙ Analytics</a>
+              <a class="b-sidebar-item" href="#">◫ Projects</a>
+              <a class="b-sidebar-item" href="#">⚙ Settings</a>
+            </nav>
+            <div class="b-sidebar-footer"><span class="b-muted" style="font-size:var(--text-xs);">v4.0.0</span></div>
+          </div>
+          <div style="margin-left:280px;padding:20px;">
+            <p class="b-muted" style="font-size:var(--text-sm);">Main content area. Sidebar is 280px wide on desktop and collapses to 64px.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Switch / Radio Group -->
+      <div class="b-mb-8">
+        <h3 class="b-h5 b-mb-4">Switch / Radio Group</h3>
+        <div class="b-flex b-wrap" style="gap:16px;">
+          <div class="b-switch-group">
+            <button class="b-switch-option active">Day</button>
+            <button class="b-switch-option">Week</button>
+            <button class="b-switch-option">Month</button>
+            <button class="b-switch-option">Year</button>
+          </div>
+          <div class="b-switch-group">
+            <button class="b-switch-option">List</button>
+            <button class="b-switch-option active">Grid</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Slider / Range -->
+      <div class="b-mb-8">
+        <h3 class="b-h5 b-mb-4">Slider / Range</h3>
+        <div style="max-width:400px;" class="b-stack" style="gap:20px;">
+          <div class="b-slider-wrap">
+            <div class="b-between"><span class="b-label-text">Volume</span><span class="b-muted">72</span></div>
+            <input type="range" class="b-slider" min="0" max="100" value="72">
+            <div class="b-slider-labels"><span class="b-slider-label">0</span><span class="b-slider-label">100</span></div>
+          </div>
+          <div class="b-slider-wrap">
+            <div class="b-between"><span class="b-label-text">Opacity</span><span class="b-muted">40%</span></div>
+            <input type="range" class="b-slider" min="0" max="100" value="40">
+          </div>
+        </div>
+      </div>
+
+      <!-- Popover / Sheet -->
+      <div class="b-mb-8">
+        <h3 class="b-h5 b-mb-4">Popover / Sheet</h3>
+        <div class="b-flex b-wrap" style="gap:16px;align-items:flex-start;">
+          <div style="position:relative;display:inline-block;">
+            <button class="b-btn b-btn-sm" onclick="this.nextElementSibling.classList.toggle('open')">Open Popover ▾</button>
+            <div class="b-popover" style="top:calc(100% + 8px);left:0;">
+              <div class="b-popover-title">Quick Info</div>
+              <div class="b-popover-desc">Popovers can contain rich content — text, actions, links, or any component.</div>
+              <div class="b-mt-4"><button class="b-btn b-btn-sm b-btn-primary">Learn more</button></div>
+            </div>
+          </div>
+          <div class="b-card b-card-flat" style="max-width:320px;padding:16px;">
+            <div class="b-sheet-handle"></div>
+            <div class="b-sheet-title">Bottom Sheet</div>
+            <p class="b-muted" style="font-size:var(--text-sm);">This is a static preview. On mobile, add <code class="b-code-inline">.open</code> to animate up from the bottom.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Timeline -->
+      <div class="b-mb-8">
+        <h3 class="b-h5 b-mb-4">Timeline</h3>
+        <div class="b-timeline" style="max-width:480px;">
+          <div class="b-timeline-item">
+            <div class="b-timeline-dot done"></div>
+            <div class="b-timeline-content">
+              <div class="b-timeline-title">Project kickoff</div>
+              <div class="b-timeline-time">Jan 5, 2026</div>
+              <div class="b-timeline-body">Initial requirements gathered and team assembled.</div>
+            </div>
+          </div>
+          <div class="b-timeline-item">
+            <div class="b-timeline-dot done"></div>
+            <div class="b-timeline-content">
+              <div class="b-timeline-title">Design system complete</div>
+              <div class="b-timeline-time">Feb 12, 2026</div>
+              <div class="b-timeline-body">All 8 themes finalized and approved by stakeholders.</div>
+            </div>
+          </div>
+          <div class="b-timeline-item">
+            <div class="b-timeline-dot active"></div>
+            <div class="b-timeline-content">
+              <div class="b-timeline-title">Public beta launch</div>
+              <div class="b-timeline-time">Mar 18, 2026 — Now</div>
+              <div class="b-timeline-body">CDN goes live. Collecting early user feedback.</div>
+            </div>
+          </div>
+          <div class="b-timeline-item">
+            <div class="b-timeline-dot"></div>
+            <div class="b-timeline-content">
+              <div class="b-timeline-title">v1.0 stable release</div>
+              <div class="b-timeline-time">Apr 2026</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Chip / Multi-Select -->
+      <div class="b-mb-8">
+        <h3 class="b-h5 b-mb-4">Chip / Multi-Select</h3>
+        <div class="b-stack" style="gap:16px;max-width:500px;">
+          <div class="b-chip-group">
+            <span class="b-chip">Design <button class="b-chip-close" onclick="this.closest('.b-chip').remove()" aria-label="remove">×</button></span>
+            <span class="b-chip">Frontend <button class="b-chip-close" onclick="this.closest('.b-chip').remove()" aria-label="remove">×</button></span>
+            <span class="b-chip">CSS <button class="b-chip-close" onclick="this.closest('.b-chip').remove()" aria-label="remove">×</button></span>
+            <span class="b-chip">Open Source <button class="b-chip-close" onclick="this.closest('.b-chip').remove()" aria-label="remove">×</button></span>
+          </div>
+          <div class="b-chip-input">
+            <span class="b-chip">React <button class="b-chip-close" onclick="this.closest('.b-chip').remove()" aria-label="remove">×</button></span>
+            <span class="b-chip">TypeScript <button class="b-chip-close" onclick="this.closest('.b-chip').remove()" aria-label="remove">×</button></span>
+            <input placeholder="Add tag...">
+          </div>
+        </div>
+      </div>
+
+      <!-- Image / Gallery -->
+      <div class="b-mb-8">
+        <h3 class="b-h5 b-mb-4">Image / Gallery</h3>
+        <div class="b-gallery" style="max-width:480px;">
+          <div class="b-gallery-item" style="background:var(--accent-08);display:flex;align-items:center;justify-content:center;"><span style="font-size:32px;opacity:0.4;">🖼</span></div>
+          <div class="b-gallery-item" style="background:var(--bg-hover);display:flex;align-items:center;justify-content:center;"><span style="font-size:32px;opacity:0.4;">🖼</span></div>
+          <div class="b-gallery-item" style="background:var(--accent-15);display:flex;align-items:center;justify-content:center;"><span style="font-size:32px;opacity:0.4;">🖼</span></div>
+          <div class="b-gallery-item" style="background:var(--bg-hover);display:flex;align-items:center;justify-content:center;"><span style="font-size:32px;opacity:0.4;">🖼</span></div>
+          <div class="b-gallery-item" style="background:var(--accent-08);display:flex;align-items:center;justify-content:center;"><span style="font-size:32px;opacity:0.4;">🖼</span></div>
+          <div class="b-gallery-item" style="background:var(--bg-card);display:flex;align-items:center;justify-content:center;"><span style="font-size:32px;opacity:0.4;">🖼</span></div>
+        </div>
+        <p class="b-mt-2 b-muted" style="font-size:var(--text-xs);">Hover each cell to see the scale effect.</p>
+      </div>
+
+      <!-- Banner / Announcement -->
+      <div class="b-mb-8">
+        <h3 class="b-h5 b-mb-4">Banner / Announcement</h3>
+        <div class="b-stack" style="gap:8px;">
+          <div class="b-banner b-banner-info">
+            <div class="b-banner-content">ℹ New version 4.1 available — <strong style="margin-left:4px;">What's new →</strong></div>
+            <button class="b-banner-dismiss" onclick="this.closest('.b-banner').remove()">×</button>
+          </div>
+          <div class="b-banner b-banner-success">
+            <div class="b-banner-content">✓ Deployment successful — all systems operational.</div>
+            <button class="b-banner-dismiss" onclick="this.closest('.b-banner').remove()">×</button>
+          </div>
+          <div class="b-banner b-banner-warning">
+            <div class="b-banner-content">⚠ Your trial expires in 3 days. Upgrade to keep access.</div>
+            <button class="b-banner-dismiss" onclick="this.closest('.b-banner').remove()">×</button>
+          </div>
+          <div class="b-banner b-banner-error">
+            <div class="b-banner-content">✗ Scheduled maintenance on Mar 20 from 02:00–04:00 UTC.</div>
+            <button class="b-banner-dismiss" onclick="this.closest('.b-banner').remove()">×</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Spinner / Loading -->
+      <div class="b-mb-8">
+        <h3 class="b-h5 b-mb-4">Spinner / Loading</h3>
+        <div class="b-flex b-wrap" style="align-items:center;gap:24px;">
+          <div class="b-spinner b-spinner-sm"></div>
+          <div class="b-spinner"></div>
+          <div class="b-spinner b-spinner-lg"></div>
+          <button class="b-btn b-btn-primary" disabled style="opacity:0.7;cursor:not-allowed;">
+            <span class="b-spinner"></span> Saving…
+          </button>
+          <button class="b-btn" disabled style="opacity:0.7;cursor:not-allowed;">
+            <span class="b-spinner"></span> Loading
+          </button>
+        </div>
+      </div>
+
+      <!-- Divider with Text -->
+      <div class="b-mb-8">
+        <h3 class="b-h5 b-mb-4">Divider with Text</h3>
+        <div style="max-width:400px;">
+          <div class="b-divider-text"><span>OR</span></div>
+          <div class="b-divider-text"><span>Continue with</span></div>
+          <div class="b-divider-text"><span>Section Break</span></div>
+        </div>
+      </div>
+
+      <!-- KBD / Shortcut -->
+      <div class="b-mb-8">
+        <h3 class="b-h5 b-mb-4">KBD / Shortcuts</h3>
+        <div class="b-flex b-wrap" style="align-items:center;gap:16px;">
+          <span class="b-kbd">⌘K</span>
+          <span class="b-kbd">⌘⇧P</span>
+          <span class="b-kbd">Ctrl+Z</span>
+          <span class="b-kbd">Esc</span>
+          <span class="b-kbd">Tab</span>
+          <span class="b-muted">Press <span class="b-kbd">⌘K</span> to open command palette</span>
+        </div>
+      </div>
+
+      <!-- Meter / Gauge -->
+      <div class="b-mb-8">
+        <h3 class="b-h5 b-mb-4">Meter / Gauge</h3>
+        <div class="b-flex b-wrap" style="gap:32px;align-items:center;">
+          <!-- 72% gauge: circumference ≈ 201, offset = 201*(1-0.72) ≈ 56 -->
+          <div class="b-meter-wrap">
+            <svg class="b-meter" viewBox="0 0 80 80">
+              <circle class="b-meter-track" cx="40" cy="40" r="32"/>
+              <circle class="b-meter-bar" cx="40" cy="40" r="32" stroke-dasharray="201" stroke-dashoffset="56"/>
+            </svg>
+            <div class="b-meter-label">72%<div class="b-meter-sub">CPU</div></div>
+          </div>
+          <!-- 45% gauge: offset = 201*(1-0.45) ≈ 111 -->
+          <div class="b-meter-wrap">
+            <svg class="b-meter" viewBox="0 0 80 80">
+              <circle class="b-meter-track" cx="40" cy="40" r="32"/>
+              <circle class="b-meter-bar" cx="40" cy="40" r="32" stroke-dasharray="201" stroke-dashoffset="111"/>
+            </svg>
+            <div class="b-meter-label">45%<div class="b-meter-sub">RAM</div></div>
+          </div>
+          <!-- 90% gauge: offset = 201*(1-0.90) ≈ 20 -->
+          <div class="b-meter-wrap">
+            <svg class="b-meter" viewBox="0 0 80 80">
+              <circle class="b-meter-track" cx="40" cy="40" r="32"/>
+              <circle class="b-meter-bar" cx="40" cy="40" r="32" stroke-dasharray="201" stroke-dashoffset="20"/>
+            </svg>
+            <div class="b-meter-label">90%<div class="b-meter-sub">Disk</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Collapsible -->
+      <div class="b-mb-8">
+        <h3 class="b-h5 b-mb-4">Collapsible</h3>
+        <div style="max-width:600px;">
+          <details class="b-details" open>
+            <summary>What is Boom CDN?</summary>
+            <div class="b-details-body">A themeable CSS component library. One link tag, 40+ class-based components, 8 curated themes. No build step, no dependencies.</div>
+          </details>
+          <details class="b-details">
+            <summary>How do I add a custom theme?</summary>
+            <div class="b-details-body">Create a CSS file that imports base.css and overrides the CSS custom properties. All design tokens are controlled by variables.</div>
+          </details>
+          <details class="b-details">
+            <summary>Is it accessible?</summary>
+            <div class="b-details-body">The collapsible uses native HTML <code class="b-code-inline">&lt;details&gt;</code> / <code class="b-code-inline">&lt;summary&gt;</code> — keyboard accessible by default in all browsers.</div>
+          </details>
+        </div>
+      </div>
+
+      <!-- Aspect Ratio -->
+      <div class="b-mb-8">
+        <h3 class="b-h5 b-mb-4">Aspect Ratio</h3>
+        <div class="b-grid b-grid-4" style="max-width:600px;gap:12px;">
+          <div class="b-aspect-16-9 b-img-wrap" style="background:var(--accent-08);display:flex;align-items:center;justify-content:center;"><span class="b-muted" style="font-size:var(--text-xs);">16:9</span></div>
+          <div class="b-aspect-4-3 b-img-wrap" style="background:var(--bg-hover);display:flex;align-items:center;justify-content:center;"><span class="b-muted" style="font-size:var(--text-xs);">4:3</span></div>
+          <div class="b-aspect-1-1 b-img-wrap" style="background:var(--accent-15);display:flex;align-items:center;justify-content:center;"><span class="b-muted" style="font-size:var(--text-xs);">1:1</span></div>
+          <div class="b-aspect-video b-img-wrap" style="background:var(--bg-card);display:flex;align-items:center;justify-content:center;border:1px solid var(--border);"><span class="b-muted" style="font-size:var(--text-xs);">video</span></div>
+        </div>
+      </div>
+
+      <!-- Scroll Area -->
+      <div class="b-mb-8">
+        <h3 class="b-h5 b-mb-4">Scroll Area</h3>
+        <div class="b-flex b-wrap" style="gap:24px;align-items:flex-start;">
+          <div class="b-scroll" style="max-height:140px;width:260px;border:1px solid var(--border);border-radius:var(--radius-lg);padding:12px;">
+            <p class="b-muted" style="font-size:var(--text-sm);">Vertical scroll with custom thin accent-colored scrollbar. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque vehicula urna vitae magna cursus, in tristique libero pharetra. Proin ultricies nunc nec arcu volutpat, vel commodo ligula posuere. Sed euismod diam vel velit fermentum, ac dignissim lorem tincidunt.</p>
+          </div>
+          <div class="b-scroll-x" style="width:260px;border:1px solid var(--border);border-radius:var(--radius-lg);padding:12px;">
+            <div style="display:flex;gap:8px;width:max-content;">
+              <div class="b-card b-card-flat" style="width:120px;flex-shrink:0;padding:12px;"><span class="b-muted" style="font-size:var(--text-xs);">Item 1</span></div>
+              <div class="b-card b-card-flat" style="width:120px;flex-shrink:0;padding:12px;"><span class="b-muted" style="font-size:var(--text-xs);">Item 2</span></div>
+              <div class="b-card b-card-flat" style="width:120px;flex-shrink:0;padding:12px;"><span class="b-muted" style="font-size:var(--text-xs);">Item 3</span></div>
+              <div class="b-card b-card-flat" style="width:120px;flex-shrink:0;padding:12px;"><span class="b-muted" style="font-size:var(--text-xs);">Item 4</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </section>
 
     <!-- PRICING -->

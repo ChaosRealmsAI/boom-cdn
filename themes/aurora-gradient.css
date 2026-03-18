@@ -1,0 +1,139 @@
+@import url('./base.css');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Fira+Code:wght@400;500&display=swap');
+
+/**
+ * Aurora Gradient — Boom CDN Theme
+ *
+ * Fluid dreamscape. Northern lights bleeding through a midnight sky.
+ * Deep indigo base, violet accent, with spectral gradient luminance.
+ */
+
+:root {
+  /* ── Backgrounds ── */
+  --bg:           #0c0c1d;
+  --bg-elevated:  #111128;
+  --bg-card:      #141430;
+  --bg-hover:     #1a1a3a;
+  --bg-active:    #1f1f45;
+  --bg-input:     #0f0f25;
+
+  /* ── Text ── */
+  --text:         #e2e0f0;
+  --text-muted:   #a09dbe;
+  --text-subtle:  #706d8e;
+  --text-faint:   #45435c;
+  --text-ghost:   #2a2840;
+
+  /* ── Accent: Aurora Violet ── */
+  --accent:       #8b5cf6;
+  --accent-hover: #a78bfa;
+  --accent-80:    rgba(139, 92, 246, 0.80);
+  --accent-30:    rgba(139, 92, 246, 0.30);
+  --accent-15:    rgba(139, 92, 246, 0.15);
+  --accent-08:    rgba(139, 92, 246, 0.08);
+
+  /* ── Aurora secondary colors (used for gradients & glow) ── */
+  --aurora-teal:  #2dd4bf;
+  --aurora-pink:  #ec4899;
+  --aurora-blue:  #60a5fa;
+  --aurora-green: #34d399;
+
+  /* ── Borders ── */
+  --border:        rgba(226, 224, 240, 0.07);
+  --border-mid:    rgba(226, 224, 240, 0.13);
+  --border-strong: rgba(226, 224, 240, 0.22);
+  --border-accent: rgba(139, 92, 246, 0.45);
+
+  /* ── Semantic ── */
+  --success: #34d399;
+  --warning: #fbbf24;
+  --error:   #f87171;
+  --info:    #60a5fa;
+
+  /* ── Typography ── */
+  --font-sans:  'Space Grotesk', system-ui, sans-serif;
+  --font-serif: 'Crimson Pro', 'Georgia', serif;
+  --font-mono:  'Fira Code', 'Courier New', monospace;
+
+  /* ── Type Scale (fluid) ── */
+  --text-xs:      clamp(0.70rem, 0.68rem + 0.1vw,  0.75rem);
+  --text-sm:      clamp(0.82rem, 0.80rem + 0.12vw, 0.875rem);
+  --text-base:    clamp(0.95rem, 0.92rem + 0.15vw, 1rem);
+  --text-lg:      clamp(1.10rem, 1.05rem + 0.25vw, 1.125rem);
+  --text-xl:      clamp(1.20rem, 1.15rem + 0.3vw,  1.25rem);
+  --text-2xl:     clamp(1.40rem, 1.30rem + 0.5vw,  1.5rem);
+  --text-3xl:     clamp(1.70rem, 1.55rem + 0.75vw, 1.875rem);
+  --text-4xl:     clamp(2.10rem, 1.90rem + 1.0vw,  2.5rem);
+  --text-display: clamp(2.80rem, 2.40rem + 2.0vw,  4.0rem);
+
+  /* ── Radius ── */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   14px;
+  --radius-xl:   20px;
+  --radius-full: 9999px;
+
+  /* ── Motion ── */
+  --ease:        cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ── Aurora Gradients ── */
+  --gradient-aurora:  linear-gradient(135deg, #8b5cf6 0%, #2dd4bf 50%, #ec4899 100%);
+  --gradient-sky:     linear-gradient(180deg, #0c0c1d 0%, #1a0a3a 50%, #0c1a2e 100%);
+  --gradient-shimmer: linear-gradient(90deg, transparent 0%, rgba(139,92,246,0.15) 50%, transparent 100%);
+  --gradient-glow:    radial-gradient(ellipse at 50% 0%, rgba(139,92,246,0.25) 0%, transparent 70%);
+}
+
+/* ── Aurora ambient glow on body ── */
+body.boom {
+  background: var(--bg);
+  background-image: var(--gradient-glow);
+  background-attachment: fixed;
+}
+
+/* ── Aurora text gradient utility ── */
+.b-aurora-text {
+  background: var(--gradient-aurora);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ── Aurora card with gradient border shimmer ── */
+.b-card-aurora {
+  position: relative;
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+}
+.b-card-aurora::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(139,92,246,0.5), rgba(45,212,191,0.3), rgba(236,72,153,0.4));
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: destination-out;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ── Aurora glow button variant ── */
+.b-btn-aurora {
+  background: var(--gradient-aurora);
+  border-color: transparent;
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 0 24px rgba(139,92,246,0.35), 0 0 48px rgba(45,212,191,0.15);
+}
+.b-btn-aurora:hover {
+  opacity: 0.88;
+  box-shadow: 0 0 32px rgba(139,92,246,0.5), 0 0 64px rgba(45,212,191,0.22);
+}
+
+/* ── Aurora scrollbar ── */
+.b-scroll::-webkit-scrollbar-thumb,
+.b-scroll-x::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, rgba(139,92,246,0.5), rgba(45,212,191,0.4));
+}

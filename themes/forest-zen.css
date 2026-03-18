@@ -1,0 +1,150 @@
+/**
+ * Boom CDN — Forest Zen Theme (森林禅)
+ *
+ * Positioning: Natural / Calm / Editorial
+ * Mood: Green bamboo & timber, serene forest light
+ * Fonts: Libre Baskerville (serif) · Source Sans 3 (sans) · JetBrains Mono (mono)
+ *
+ * Usage:
+ *   <link rel="stylesheet" href="https://cdn.boom.dev/themes/forest-zen.css">
+ */
+
+@import url('./base.css');
+
+@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+:root {
+  /* ── Fonts ── */
+  --font-serif: 'Libre Baskerville', Georgia, 'Times New Roman', serif;
+  --font-sans:  'Source Sans 3', 'Helvetica Neue', system-ui, sans-serif;
+  --font-mono:  'JetBrains Mono', 'Fira Code', 'Cascadia Code', monospace;
+
+  /* ── Type Scale ── */
+  --text-xs:      0.75rem;
+  --text-sm:      0.875rem;
+  --text-base:    1rem;
+  --text-lg:      1.125rem;
+  --text-xl:      1.25rem;
+  --text-2xl:     1.5rem;
+  --text-3xl:     2rem;
+  --text-4xl:     2.75rem;
+  --text-display: 4rem;
+
+  /* ── Color Palette — Forest Light ── */
+  --bg:           #f4f7f2;   /* pale morning moss */
+  --bg-card:      #eef2eb;   /* soft leaf surface */
+  --bg-elevated:  #ffffff;   /* modal / dialog lift */
+  --bg-input:     #f9fbf8;   /* form field */
+  --bg-hover:     #e6ece2;   /* hover state */
+  --bg-active:    #dce4d6;   /* active / pressed */
+
+  /* ── Text ── */
+  --text:         #2d3828;   /* deep forest ink */
+  --text-muted:   #4a5843;   /* shadowed canopy */
+  --text-subtle:  #728068;   /* mid-grove grey-green */
+  --text-faint:   #a0ad96;   /* lichen / placeholder */
+
+  /* ── Accent — bamboo green ── */
+  --accent:       #5a7a42;
+  --accent-80:    rgba(90, 122, 66, 0.80);
+  --accent-15:    rgba(90, 122, 66, 0.15);
+  --accent-08:    rgba(90, 122, 66, 0.08);
+
+  /* ── Borders ── */
+  --border:       rgba(45, 56, 40, 0.10);
+  --border-mid:   rgba(45, 56, 40, 0.20);
+  --border-accent: rgba(90, 122, 66, 0.38);
+
+  /* ── Semantic Colors ── */
+  --success:  #4a7c59;   /* deep fern */
+  --warning:  #8a7235;   /* dried bamboo amber */
+  --error:    #8b3a3a;   /* autumn maple */
+  --info:     #3a5f6e;   /* still water blue */
+
+  /* ── Radius — organic, not angular ── */
+  --radius-sm:  3px;
+  --radius-md:  6px;
+  --radius-lg:  10px;
+  --radius-xl:  14px;
+
+  /* ── Motion ── */
+  --ease: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* ── Body: dappled forest light wash ── */
+body.boom {
+  background-color: var(--bg);
+  background-image:
+    radial-gradient(ellipse at 20% 15%, rgba(90, 122, 66, 0.05) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 85%, rgba(74, 92, 52, 0.04) 0%, transparent 55%);
+  letter-spacing: 0.01em;
+}
+
+/* ── Navbar: mossy glass ── */
+.b-navbar {
+  background: rgba(244, 247, 242, 0.93);
+  border-bottom-color: var(--border);
+}
+
+/* ── Display & headings: grounded serif weight ── */
+.b-display {
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.b-h1 { font-weight: 700; }
+.b-h2 { font-weight: 400; }
+
+/* ── Card: leaf-surface with gentle grove shadow ── */
+.b-card {
+  background: var(--bg-card);
+  box-shadow: 0 1px 3px rgba(45, 56, 40, 0.05), 0 1px 2px rgba(45, 56, 40, 0.07);
+}
+.b-card:hover {
+  box-shadow: 0 4px 18px rgba(45, 56, 40, 0.09);
+}
+
+/* ── Primary button: bamboo fill ── */
+.b-btn-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #ffffff;
+  letter-spacing: 0.02em;
+}
+
+/* ── Code block: pale lichen tint ── */
+.b-code {
+  background: #e8eee4;
+  border-color: rgba(45, 56, 40, 0.09);
+}
+
+/* ── Separator: wood-grain thinness ── */
+.b-separator {
+  border-top-width: 1px;
+  border-top-style: solid;
+  border-color: var(--border);
+}
+
+/* ── Blockquote-style accent card: bamboo spine ── */
+.b-card-accent {
+  border-left: 3px solid var(--accent);
+  background: linear-gradient(to right, rgba(90, 122, 66, 0.04) 0%, transparent 80%);
+}
+
+/* ── Badge: muted grove tones ── */
+.b-badge {
+  font-weight: 400;
+  letter-spacing: 0.03em;
+}
+
+/* ── Scrollbar: moss-veined minimal ── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(90, 122, 66, 0.22); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(90, 122, 66, 0.40); }
+
+/* ── Selection: forest canopy highlight ── */
+::selection {
+  background: rgba(90, 122, 66, 0.16);
+  color: var(--text);
+}
