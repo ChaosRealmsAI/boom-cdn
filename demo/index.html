@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Boom CDN — Theme Switcher</title>
   <link id="theme-css" rel="stylesheet" href="../themes/obsidian-velvet.css">
+  <script src="../themes/boom.js" defer></script>
   <style>
     .theme-bar {
       position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
@@ -720,6 +721,136 @@
               <div class="b-card b-card-flat" style="width:120px;flex-shrink:0;padding:12px;"><span class="b-muted" style="font-size:var(--text-xs);">Item 4</span></div>
             </div>
           </div>
+        </div>
+      </div>
+
+      <!-- Motion & Animation -->
+      <div class="b-mb-8">
+        <h3 class="b-h5 b-mb-4">Motion &amp; Animation</h3>
+
+        <!-- Scroll Reveal -->
+        <p class="b-label b-mb-4">Scroll Reveal</p>
+        <div class="b-grid b-grid-3 b-mb-8">
+          <div class="b-card" data-reveal="fade"       data-delay="0">
+            <div class="b-card-title">Fade</div>
+            <div class="b-card-desc">data-reveal="fade"</div>
+          </div>
+          <div class="b-card" data-reveal="slide-up"   data-delay="100">
+            <div class="b-card-title">Slide Up</div>
+            <div class="b-card-desc">data-reveal="slide-up"</div>
+          </div>
+          <div class="b-card" data-reveal="slide-left" data-delay="200">
+            <div class="b-card-title">Slide Left</div>
+            <div class="b-card-desc">data-reveal="slide-left"</div>
+          </div>
+          <div class="b-card" data-reveal="zoom"       data-delay="300">
+            <div class="b-card-title">Zoom</div>
+            <div class="b-card-desc">data-reveal="zoom"</div>
+          </div>
+          <div class="b-card" data-reveal="rotate"     data-delay="400">
+            <div class="b-card-title">Rotate</div>
+            <div class="b-card-desc">data-reveal="rotate"</div>
+          </div>
+          <div class="b-card" data-reveal="fade"       data-delay="500">
+            <div class="b-card-title">Stagger #6</div>
+            <div class="b-card-desc">data-delay="500"</div>
+          </div>
+        </div>
+
+        <!-- Typewriter -->
+        <p class="b-label b-mb-4">Typewriter</p>
+        <div class="b-card b-mb-8" style="max-width:520px;">
+          <p class="b-h4" data-typewriter="Building great products at the speed of thought." data-speed="40" data-cursor="true"></p>
+        </div>
+
+        <!-- Counter -->
+        <p class="b-label b-mb-4">Counter</p>
+        <div class="b-grid b-grid-3 b-mb-8" style="max-width:600px;">
+          <div class="b-card b-text-center">
+            <div class="b-stat-value" data-count data-target="12400" data-duration="2000" data-suffix="">0</div>
+            <div class="b-stat-label">Monthly Users</div>
+          </div>
+          <div class="b-card b-text-center">
+            <div class="b-stat-value" data-count data-target="99.9" data-duration="2200" data-suffix="%">0%</div>
+            <div class="b-stat-label">Uptime</div>
+          </div>
+          <div class="b-card b-text-center">
+            <div class="b-stat-value" data-count data-target="48" data-duration="1800" data-suffix="">0</div>
+            <div class="b-stat-label">Components</div>
+          </div>
+        </div>
+
+        <!-- Marquee -->
+        <p class="b-label b-mb-4">Marquee</p>
+        <div class="b-marquee b-mb-8" data-speed="40" data-direction="left" style="padding:16px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+          <div class="b-marquee-inner">
+            <span class="b-badge">React</span>
+            <span class="b-badge">Vue</span>
+            <span class="b-badge">Svelte</span>
+            <span class="b-badge">Astro</span>
+            <span class="b-badge">Next.js</span>
+            <span class="b-badge">Nuxt</span>
+            <span class="b-badge">Remix</span>
+            <span class="b-badge">SvelteKit</span>
+            <span class="b-badge">Qwik</span>
+            <span class="b-badge">Solid</span>
+          </div>
+        </div>
+
+        <!-- Parallax -->
+        <p class="b-label b-mb-4">Parallax</p>
+        <div class="b-mb-8" style="position:relative;height:180px;overflow:hidden;border:1px solid var(--border);border-radius:var(--radius-lg);background:var(--bg-card);">
+          <div data-parallax data-speed="0.2" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
+            <span class="b-h3 b-accent" style="opacity:0.15;font-size:clamp(40px,8vw,80px);white-space:nowrap;">BOOM CDN</span>
+          </div>
+          <div style="position:relative;z-index:1;display:flex;align-items:center;justify-content:center;height:100%;">
+            <p class="b-muted">Scroll the page — the background text moves at a different speed.</p>
+          </div>
+        </div>
+
+        <!-- Glow / Underline / Gradient Text -->
+        <p class="b-label b-mb-4">Glow · Underline Reveal · Gradient Text</p>
+        <div class="b-flex b-wrap b-mb-8" style="gap:20px;align-items:center;">
+          <button class="b-btn b-btn-primary b-glow">Glow Button</button>
+          <div class="b-card b-glow" style="padding:12px 20px;display:inline-block;">Glow Card</div>
+          <a href="#" class="b-underline-reveal b-h4" style="color:var(--text);">Hover for underline reveal</a>
+          <span class="b-h3 b-gradient-text">Gradient Animated Text</span>
+        </div>
+
+        <!-- Bounce / Pulse / Float -->
+        <p class="b-label b-mb-4">Bounce · Pulse · Float</p>
+        <div class="b-flex b-wrap b-mb-8" style="gap:32px;align-items:flex-end;">
+          <div class="b-center b-flex-col" style="gap:8px;">
+            <div class="b-avatar b-bounce">B</div>
+            <span class="b-subtle">bounce</span>
+          </div>
+          <div class="b-center b-flex-col" style="gap:8px;">
+            <span class="b-badge b-badge-success b-pulse">Live</span>
+            <span class="b-subtle">pulse</span>
+          </div>
+          <div class="b-center b-flex-col" style="gap:8px;">
+            <div class="b-avatar b-float">F</div>
+            <span class="b-subtle">float</span>
+          </div>
+          <div class="b-center b-flex-col" style="gap:8px;">
+            <button class="b-btn b-btn-danger b-btn-sm b-shake" onclick="this.classList.remove('b-shake');void this.offsetWidth;this.classList.add('b-shake')">Shake (click)</button>
+            <span class="b-subtle">shake</span>
+          </div>
+          <div class="b-center b-flex-col" style="gap:8px;">
+            <span class="b-h4 b-blur-in">Blur In</span>
+            <span class="b-subtle">blur-in</span>
+          </div>
+        </div>
+
+        <!-- Tilt -->
+        <p class="b-label b-mb-4">3D Tilt</p>
+        <div class="b-card" data-tilt data-tilt-max="12" style="max-width:280px;">
+          <div class="b-card-header">
+            <div class="b-avatar b-mb-4">3D</div>
+            <div class="b-card-title">Tilt Card</div>
+            <div class="b-card-desc">Move your mouse over this card to see the 3D perspective tilt effect.</div>
+          </div>
+          <button class="b-btn b-btn-primary b-btn-sm b-mt-4" data-magnetic>Magnetic Button</button>
         </div>
       </div>
 
