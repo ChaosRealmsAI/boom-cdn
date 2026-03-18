@@ -1,0 +1,3636 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>boom-cdn 组件库入门</title>
+<style>
+/* theme:deep-teal/base.css */
+/* base.css — PPT Presenter Template: variables, reset, atmosphere, UI, animation, typography */
+/* Theme: Deep Teal — Academic / Scientific */
+
+/* ============================================================
+   CSS VARIABLES — DEEP TEAL & WARM PAPER PALETTE
+   ============================================================ */
+:root {
+  /* 1. Background System — Warm Paper */
+  --bg: #f6f5f2;
+  --bg-warm: #f0eee9;
+  --bg-card: #fcfbf9;
+  --bg-inverted: #1c1917;
+  --bg-dim: rgba(246, 245, 242, 0.5);
+  --bg-overlay: rgba(252, 251, 249, 0.85);
+
+  /* 2. Accent — Deep Teal (5-level scale) */
+  --accent-base: 15, 118, 110; /* #0f766e - Teal 700 */
+  --accent: rgba(var(--accent-base), 1);
+  --accent-light: #14b8a6;
+  --accent-dark: #0d5f58;
+  --accent-heavy: rgba(var(--accent-base), 1);
+  --accent-mid: rgba(var(--accent-base), 0.55);
+  --accent-dim: rgba(var(--accent-base), 0.25);
+  --accent-ghost: rgba(var(--accent-base), 0.08);
+  --accent-faint: rgba(var(--accent-base), 0.03);
+  /* Numeric aliases used by shared engine */
+  --accent-40: rgba(var(--accent-base), 0.40);
+  --accent-25: rgba(var(--accent-base), 0.25);
+  --accent-15: rgba(var(--accent-base), 0.15);
+  --accent-06: rgba(var(--accent-base), 0.06);
+  --accent-03: rgba(var(--accent-base), 0.03);
+
+  /* 3. Ink Hierarchy — Warm Dark Ink (5-level scale) */
+  --ink-base: 28, 25, 23; /* #1c1917 */
+  --ink: rgba(var(--ink-base), 1.0);
+  --ink-heavy: rgba(var(--ink-base), 1.0);
+  --ink-mid: rgba(var(--ink-base), 0.55);
+  --ink-dim: rgba(var(--ink-base), 0.25);
+  --ink-ghost: rgba(var(--ink-base), 0.08);
+  --ink-faint: rgba(var(--ink-base), 0.03);
+  --ink-inverted: #f6f5f2;
+
+  /* 4. Typography — CJK-first Dual Stack */
+  --font-serif: 'Noto Serif SC', 'Source Han Serif SC', 'STZhongsong', 'Georgia', serif;
+  --font-sans: 'Noto Sans SC', 'Source Han Sans SC', 'PingFang SC', 'Helvetica Neue', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+
+  /* 5. Font Sizes — Fluid Clamp */
+  --fs-display: clamp(3.5rem, 6.5vw + 0.5rem, 6.5rem);
+  --fs-h1: clamp(2.2rem, 3.8vw, 3.5rem);
+  --fs-h2: clamp(1.4rem, 2.2vw, 2rem);
+  --fs-h3: clamp(1.1rem, 1.5vw, 1.35rem);
+  --fs-body: clamp(0.9rem, 1.1vw, 1.1rem);
+  --fs-caption: clamp(0.75rem, 0.85vw, 0.85rem);
+  --fs-quote: clamp(1.6rem, 2.8vw, 2.5rem);
+  --fs-micro: clamp(0.6rem, 0.7vw, 0.7rem);
+
+  /* 6. Line Heights */
+  --lh-display: 1.05;
+  --lh-heading: 1.25;
+  --lh-body: 1.75;
+  --lh-quote: 1.45;
+  --lh-tight: 1.1;
+  --lh-loose: 2.0;
+
+  /* 7. Letter Spacing */
+  --ls-display: -0.035em;
+  --ls-heading: -0.02em;
+  --ls-body: 0.015em;
+  --ls-wide: 0.08em;
+  --ls-ultra: 0.2em;
+  --ls-mono: 0.05em;
+
+  /* 8. Layout */
+  --pad-x: max(100px, 8vw);
+  --pad-y: max(80px, 12vh);
+  --gap-xs: clamp(8px, 1vw, 12px);
+  --gap-sm: clamp(16px, 2vw, 24px);
+  --gap-md: clamp(24px, 3vw, 40px);
+  --gap-lg: clamp(48px, 6vw, 80px);
+  --gap-xl: clamp(64px, 8vw, 120px);
+
+  /* 9. Borders & Radii — Zero shadow, line-based separation */
+  --border-width: 1px;
+  --border-style: solid;
+  --border-color: var(--ink-ghost);
+  --border: var(--border-width) var(--border-style) var(--border-color);
+  --border-accent: var(--border-width) var(--border-style) var(--accent-25);
+  --border-thick: 2px solid var(--ink);
+
+  --radius-xs: 2px;
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+
+  /* 10. Animation */
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.4, 0, 1, 1);
+  --ease-out: cubic-bezier(0, 0, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
+
+  --dur-fast: 0.3s;
+  --dur-med: 0.6s;
+  --dur: 0.9s;
+  --dur-slow: 1.2s;
+
+  --stagger: 120ms;
+}
+
+/* ============================================================
+   RESET & BASE CONFIGURATION
+   ============================================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+*::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+  -moz-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100vw;
+  height: 100vh;
+  width: 100dvw;
+  height: 100dvh;
+  overflow: hidden;
+  font-family: var(--font-sans);
+  background-color: var(--bg);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  position: relative;
+}
+
+/* ============================================================
+   ATMOSPHERE LAYER: FILM GRAIN & VIGNETTE
+   Texture per source HTML: SVG feTurbulence + radial vignette
+   ============================================================ */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  z-index: 10001;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  mix-blend-mode: multiply;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  z-index: 10000;
+  background: radial-gradient(
+    circle at center,
+    transparent 0%,
+    rgba(0, 0, 0, 0.04) 100%
+  );
+  mix-blend-mode: multiply;
+}
+
+/* ============================================================
+   BOTTOM DOCK — hover to reveal, glassmorphic pill
+   ============================================================ */
+#dock-hitbox {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  height: 72px;
+  z-index: 9997;
+}
+#bottom-dock {
+  position: fixed;
+  left: 50%;
+  bottom: 16px;
+  transform: translate(-50%, calc(100% + 32px));
+  opacity: 0;
+  pointer-events: none;
+  padding: 6px 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--bg-overlay, rgba(253,252,251,0.92));
+  border: 1px solid var(--ink-ghost);
+  border-radius: var(--radius-full, 999px);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  z-index: 9998;
+  box-shadow: 0 16px 36px rgba(0,0,0,0.10), 0 1px 3px rgba(0,0,0,0.04);
+  transition: transform 0.28s cubic-bezier(0.22,1,0.36,1), opacity 0.28s ease;
+}
+body.dock-visible #bottom-dock,
+#dock-hitbox:hover + #bottom-dock,
+#bottom-dock:hover {
+  transform: translate(-50%, 0);
+  opacity: 1;
+  pointer-events: auto;
+}
+#bottom-dock .dock-label { display: none; }
+.dock-divider {
+  width: 1px;
+  height: 20px;
+  background: var(--ink-ghost);
+  flex-shrink: 0;
+}
+
+/* ---- Slide Nav inside Dock ---- */
+#slide-nav {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+}
+#slide-nav .sn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--ink-dim);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+#slide-nav .sn:hover {
+  background: var(--accent-06);
+  color: var(--ink);
+}
+#slide-nav .sn.active {
+  background: var(--accent);
+  color: var(--ink-inverted);
+  box-shadow: 0 2px 8px var(--accent-25);
+}
+#slide-nav .sn.visited {
+  color: var(--ink-mid);
+}
+
+/* ---- Step Dots inside Dock ---- */
+#step-dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+#step-dots .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--ink-ghost);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+}
+#step-dots .dot:hover {
+  transform: scale(1.3);
+  background: var(--accent-light, var(--accent));
+}
+#step-dots .dot.done {
+  background: var(--accent-25);
+}
+#step-dots .dot.current {
+  background: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-15);
+  transform: scale(1.2);
+}
+
+/* ---- Dock Buttons ---- */
+.dock-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--ink-mid);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+.dock-btn:hover {
+  background: var(--accent-06);
+  color: var(--ink);
+}
+.dock-btn.active {
+  background: var(--accent-15);
+  color: var(--accent);
+}
+.dock-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Audio indicator inside dock */
+#audio-indicator {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-size: 9px;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+#audio-indicator.playing { opacity: 1; }
+#audio-indicator .pulse {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: pulse-anim 1s infinite;
+}
+@keyframes pulse-anim {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.7); }
+}
+
+/* ---- TOC Sidebar ---- */
+#toc-toggle.open { background: var(--accent); color: var(--ink-inverted); border-color: var(--accent); }
+
+#toc-panel {
+  position: fixed;
+  top: 0; right: 0;
+  width: 280px;
+  height: 100vh;
+  background: var(--bg-overlay);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-left: var(--border);
+  z-index: 10002;
+  transform: translateX(100%);
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  padding: 72px 0 24px;
+  overflow-y: auto;
+}
+#toc-panel.open { transform: translateX(0); }
+
+#toc-panel .toc-header {
+  padding: 0 20px 16px;
+  border-bottom: var(--border);
+  margin-bottom: 8px;
+}
+#toc-panel .toc-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+  margin-bottom: 4px;
+}
+#toc-panel .toc-title {
+  font-family: var(--font-serif);
+  font-size: 18px;
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.3;
+}
+
+#toc-panel .toc-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border-left: 3px solid transparent;
+  text-decoration: none;
+  color: inherit;
+}
+#toc-panel .toc-item:hover {
+  background: var(--accent-03);
+}
+#toc-panel .toc-item.active {
+  background: var(--accent-06);
+  border-left-color: var(--accent);
+}
+#toc-panel .toc-item.visited .toc-num {
+  color: var(--accent);
+}
+#toc-panel .toc-num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--ink-dim);
+  min-width: 22px;
+  padding-top: 2px;
+  transition: color 0.2s ease;
+}
+#toc-panel .toc-item.active .toc-num {
+  color: var(--accent);
+  font-weight: 700;
+}
+#toc-panel .toc-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+#toc-panel .toc-item-title {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.4;
+  margin: 0;
+}
+#toc-panel .toc-item.active .toc-item-title {
+  color: var(--accent-dark);
+}
+#toc-panel .toc-item-sub {
+  font-family: var(--font-sans);
+  font-size: 11px;
+  color: var(--ink-dim);
+  line-height: 1.4;
+  margin: 0;
+}
+#toc-panel .toc-progress {
+  margin-top: auto;
+  padding: 16px 20px 0;
+  border-top: var(--border);
+}
+#toc-panel .toc-progress-bar {
+  height: 3px;
+  background: var(--ink-ghost);
+  border-radius: 2px;
+  overflow: hidden;
+}
+#toc-panel .toc-progress-fill {
+  height: 100%;
+  background: var(--accent);
+  border-radius: 2px;
+  transition: width 0.4s ease;
+}
+#toc-panel .toc-progress-text {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ink-dim);
+  margin-top: 6px;
+  letter-spacing: 0.1em;
+}
+
+/* ============================================================
+   SLIDE ARCHITECTURE
+   ============================================================ */
+#slides-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  display: block;
+}
+
+.slide {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease);
+  pointer-events: none;
+  padding-top: var(--pad-y);
+  padding-bottom: var(--pad-y);
+  padding-left: var(--pad-x);
+  padding-right: var(--pad-x);
+  contain: layout style paint;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.slide.active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+  z-index: 10;
+}
+
+.slide.exit {
+  opacity: 0;
+  transform: translateY(-20px);
+  z-index: 5;
+}
+
+/* ============================================================
+   STAGGER ANIMATION SYSTEM (1-20)
+   ============================================================ */
+.slide .stagger {
+  opacity: 0;
+  transform: translateY(24px);
+  transition-property: opacity, transform;
+  transition-duration: var(--dur);
+  transition-timing-function: var(--ease);
+  will-change: opacity, transform;
+}
+
+/* Step-based reveal: staggers only appear when JS adds .revealed */
+.slide .stagger.revealed {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0ms;
+}
+/* When multiple elements reveal in same step, stagger them slightly */
+.slide .stagger.revealed.sub-1 { transition-delay: 0ms; }
+.slide .stagger.revealed.sub-2 { transition-delay: 80ms; }
+.slide .stagger.revealed.sub-3 { transition-delay: 160ms; }
+/* Instant reveal when going backward (no animation needed) */
+.slide .stagger.revealed-instant {
+  opacity: 1;
+  transform: translateY(0);
+  transition-duration: 0ms;
+}
+
+/* ============================================================
+   SHARED TYPOGRAPHY & UTILITY CLASSES
+   ============================================================ */
+.display-text {
+  font-family: var(--font-serif);
+  font-size: var(--fs-display);
+  font-weight: 400;
+  line-height: var(--lh-display);
+  letter-spacing: var(--ls-display);
+  color: var(--ink);
+  margin: 0;
+}
+
+.section-title {
+  font-family: var(--font-serif);
+  font-size: var(--fs-h1);
+  font-weight: 400;
+  line-height: var(--lh-heading);
+  letter-spacing: var(--ls-heading);
+  color: var(--ink);
+  margin: 0;
+}
+
+.section-subtitle {
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  font-weight: 500;
+  letter-spacing: var(--ls-ultra);
+  text-transform: uppercase;
+  color: var(--accent);
+  display: block;
+}
+
+.body-text {
+  font-family: var(--font-sans);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  letter-spacing: var(--ls-body);
+  color: var(--ink-mid);
+  margin: 0;
+}
+
+.quote-text {
+  font-family: var(--font-serif);
+  font-size: var(--fs-quote);
+  font-style: italic;
+  line-height: var(--lh-quote);
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 0;
+}
+
+.accent-line {
+  width: 48px;
+  height: 2px;
+  background-color: var(--accent);
+  flex-shrink: 0;
+  display: block;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: var(--gap-sm);
+  margin-bottom: var(--gap-lg);
+  width: 100%;
+}
+
+.section-header.center {
+  justify-content: center;
+  text-align: center;
+}
+
+.text-highlight {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+/* ============================================================
+   READING MODE — all slides visible, scrollable, no animation
+   ============================================================ */
+body.reading-mode { overflow: auto; height: auto; }
+body.reading-mode #slides-container {
+  position: relative;
+  height: auto;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+body.reading-mode .slide {
+  position: relative;
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+  min-height: 100vh;
+  contain: none;
+  transition: none;
+}
+body.reading-mode .slide .stagger {
+  opacity: 1;
+  transform: none;
+  transition: none;
+}
+/* Hide presentation-only UI in reading mode */
+body.reading-mode #toc-panel { display: none !important; }
+/* Dock in reading mode: hide all except mode-toggle */
+body.reading-mode #btn-autoplay,
+body.reading-mode #btn-mute,
+body.reading-mode #toc-toggle,
+body.reading-mode #audio-indicator,
+body.reading-mode #slide-nav,
+body.reading-mode #step-dots { display: none !important; }
+body.reading-mode .dock-divider { display: none !important; }
+/* mode-toggle: inside #bottom-dock, inherits .dock-btn styles */
+body.reading-mode #mode-toggle { display: none !important; }
+/* Slide divider line in reading mode */
+body.reading-mode .slide + .slide { border-top: 1px solid var(--ink-ghost); }
+
+/* ---- Reading Mode: Per-slide Audio Player ---- */
+.reading-player {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  max-width: 520px;
+  margin: var(--gap-md) auto 0;
+  padding: 8px 12px;
+  background: var(--bg-card, rgba(0,0,0,0.03));
+  border: 1px solid var(--ink-ghost);
+  border-radius: var(--radius-full);
+  user-select: none;
+}
+.reading-player .rp-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: none;
+  background: var(--accent);
+  color: var(--bg);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: opacity 0.2s ease;
+}
+.reading-player .rp-btn:hover { opacity: 0.8; }
+.reading-player .rp-btn svg { width: 12px; height: 12px; fill: currentColor; stroke: none; }
+.reading-player .rp-dots {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 28px;
+}
+.reading-player .rp-dot {
+  flex: 1;
+  height: 4px;
+  border-radius: 2px;
+  background: var(--ink-ghost);
+  cursor: pointer;
+  position: relative;
+  transition: background 0.2s ease, height 0.15s ease;
+}
+.reading-player .rp-dot:hover {
+  height: 6px;
+  background: var(--accent-25, rgba(0,0,0,0.15));
+}
+.reading-player .rp-dot.done {
+  background: var(--accent);
+}
+.reading-player .rp-dot.active {
+  background: var(--accent);
+  height: 6px;
+}
+.reading-player .rp-dot.active::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  height: 100%;
+  width: var(--rp-progress, 0%);
+  background: var(--accent);
+  border-radius: 2px;
+  opacity: 0.5;
+}
+.reading-player .rp-dot.active {
+  background: var(--accent-25, rgba(0,0,0,0.15));
+}
+.reading-player .rp-dot.active::after {
+  background: var(--accent);
+  opacity: 1;
+}
+.reading-player .rp-counter {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: var(--ink-dim);
+  flex-shrink: 0;
+  min-width: 30px;
+  text-align: right;
+}
+
+body.reading-mode .slide .rp-target {
+  cursor: pointer;
+}
+
+body.reading-mode .slide .rp-target:hover {
+  box-shadow: 0 0 0 1px var(--accent-25, rgba(61, 179, 201, 0.25));
+}
+
+body.reading-mode .slide .rp-target.rp-active {
+  box-shadow: 0 0 0 2px var(--accent-25, rgba(61, 179, 201, 0.25));
+}
+
+/* theme:deep-teal/layouts.css */
+/* layouts.css — Deep Teal Theme: Academic / Scientific
+ *
+ * Visual identity: ghost borders, zero shadows, left accent bars,
+ * h2 with border-bottom, diagram-box containers, vertical timeline,
+ * info-panel key-value, math-block code, tag pills.
+ *
+ * All internal classes use dt- prefix (deep-teal namespace).
+ */
+
+/* ============================================================
+   SHARED: dt-heading-block (replaces sectionHeader)
+   Academic style: h2 with ghost border-bottom, optional eyebrow
+   ============================================================ */
+.dt-heading-block {
+  width: 100%;
+  margin-bottom: var(--gap-lg);
+}
+
+.dt-eyebrow {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--ls-ultra);
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: var(--gap-xs);
+}
+
+.dt-h2 {
+  font-family: var(--font-serif);
+  font-size: var(--fs-h1);
+  font-weight: 400;
+  line-height: var(--lh-heading);
+  letter-spacing: var(--ls-heading);
+  color: var(--ink);
+  margin: 0;
+  padding-bottom: var(--gap-sm);
+  border-bottom: 1px solid var(--ink-ghost);
+}
+
+/* Shared tag pill */
+.dt-tag {
+  display: inline-block;
+  padding: 0.3em 0.8em;
+  border: 1px solid var(--accent-dim);
+  color: var(--accent);
+  font-size: 0.85rem;
+  border-radius: var(--radius-full);
+  font-family: var(--font-mono);
+  letter-spacing: var(--ls-mono);
+}
+
+/* Shared highlight */
+.dt-highlight {
+  color: var(--accent);
+  font-weight: 500;
+}
+
+/* Shared label */
+.dt-item-label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--ls-ultra);
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 600;
+}
+
+/* ============================================================
+   LAYOUT: COVER — Tag pills + centered title + rule + sub
+   ============================================================ */
+.layout-cover {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.layout-cover .dt-cover-tags {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: var(--gap-md);
+}
+
+.layout-cover .dt-cover-title {
+  font-family: var(--font-serif);
+  font-size: var(--fs-display);
+  font-weight: 400;
+  line-height: var(--lh-tight);
+  letter-spacing: var(--ls-display);
+  color: var(--ink);
+  margin: 0;
+  max-width: 900px;
+}
+
+.layout-cover .dt-cover-rule {
+  width: 80px;
+  height: 1px;
+  background-color: var(--accent-mid);
+  margin: var(--gap-md) auto;
+}
+
+.layout-cover .dt-cover-sub {
+  font-family: var(--font-mono);
+  font-size: var(--fs-h3);
+  letter-spacing: var(--ls-wide);
+  color: var(--ink-mid);
+  text-transform: uppercase;
+  font-weight: 300;
+  margin: 0;
+}
+
+.layout-cover .dt-cover-en {
+  font-family: var(--font-serif);
+  font-size: var(--fs-h2);
+  font-style: italic;
+  color: var(--ink-dim);
+  margin: 0;
+  font-weight: 400;
+  max-width: 800px;
+}
+
+/* ============================================================
+   LAYOUT: QUOTE — Left accent bar + blockquote
+   ============================================================ */
+.layout-quote {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.layout-quote .dt-quote-block {
+  max-width: 850px;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-sm);
+  padding-left: var(--gap-md);
+  position: relative;
+}
+
+.layout-quote .dt-quote-bar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: var(--accent);
+}
+
+.layout-quote .dt-quote-text {
+  font-family: var(--font-serif);
+  font-size: clamp(1.4rem, 2.8vw, 2.4rem);
+  font-weight: 400;
+  line-height: var(--lh-quote);
+  letter-spacing: -0.01em;
+  color: var(--ink);
+  margin: 0;
+}
+
+.layout-quote .dt-quote-cite {
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  letter-spacing: var(--ls-wide);
+  color: var(--ink-mid);
+  font-style: normal;
+}
+
+/* ============================================================
+   LAYOUT: NUMBERED STACK — Rows with left accent border
+   ============================================================ */
+.layout-numbered-stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  overflow-y: auto;
+}
+
+.layout-numbered-stack .dt-list-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+  max-width: 1100px;
+}
+
+.layout-numbered-stack .dt-list-row {
+  display: grid;
+  grid-template-columns: clamp(48px, 6vw, 72px) 1fr;
+  gap: clamp(12px, 2vw, 24px);
+  align-items: flex-start;
+  padding: clamp(14px, 2vw, 24px) 0;
+  border-left: 3px solid var(--accent-dim);
+  padding-left: clamp(16px, 2vw, 24px);
+  margin-left: 0;
+  border-bottom: 1px solid var(--ink-ghost);
+}
+
+.layout-numbered-stack .dt-list-row:last-child {
+  border-bottom: none;
+}
+
+.layout-numbered-stack .dt-list-row:hover {
+  border-left-color: var(--accent);
+}
+
+.layout-numbered-stack .dt-list-num {
+  font-family: var(--font-mono);
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
+  line-height: 0.9;
+  color: var(--accent-dim);
+  font-weight: 400;
+  letter-spacing: var(--ls-mono);
+}
+
+.layout-numbered-stack .dt-list-body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.layout-numbered-stack .dt-list-title {
+  font-family: var(--font-serif);
+  font-size: var(--fs-h3);
+  color: var(--ink);
+  margin: 0;
+}
+
+.layout-numbered-stack .dt-list-desc {
+  font-family: var(--font-sans);
+  font-size: var(--fs-caption);
+  line-height: 1.7;
+  color: var(--ink-mid);
+  margin: 0;
+}
+
+/* ============================================================
+   LAYOUT: CARDS — grid-item boxes with h3 border-bottom
+   ============================================================ */
+.layout-cards-2col,
+.layout-cards-3col,
+.layout-grid-2x2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.dt-grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--gap-md);
+  width: 100%;
+  max-width: 1100px;
+}
+
+.dt-grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--gap-sm);
+  width: 100%;
+  max-width: 1200px;
+}
+
+.dt-grid-2x2 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--gap-sm);
+  width: 100%;
+  max-width: 1100px;
+}
+
+.dt-grid-item {
+  background-color: var(--bg-warm);
+  border: 1px solid var(--ink-ghost);
+  padding: clamp(24px, 3.5vw, 40px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 1vw, 14px);
+}
+
+.dt-item-h3 {
+  font-family: var(--font-serif);
+  font-size: var(--fs-h3);
+  color: var(--accent);
+  margin: 0;
+  padding-bottom: clamp(10px, 1.2vw, 16px);
+  border-bottom: 1px solid var(--ink-ghost);
+}
+
+.dt-item-desc {
+  font-family: var(--font-sans);
+  font-size: var(--fs-caption);
+  line-height: 1.65;
+  color: var(--ink-mid);
+  margin: 0;
+}
+
+.dt-item-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(6px, 0.8vw, 10px);
+  margin: 0;
+  padding: 0;
+}
+
+.dt-item-list li {
+  font-family: var(--font-sans);
+  font-size: clamp(0.72rem, 0.82vw, 0.82rem);
+  color: var(--ink-mid);
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  line-height: 1.55;
+}
+
+.dt-item-list li::before {
+  content: '';
+  display: inline-block;
+  width: 4px;
+  height: 4px;
+  background-color: var(--accent);
+  flex-shrink: 0;
+  margin-top: 7px;
+}
+
+/* ============================================================
+   LAYOUT: SPLIT — col-left text + col-right diagram-box
+   ============================================================ */
+.layout-split {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.layout-split .dt-split-row {
+  display: flex;
+  gap: clamp(32px, 5vw, 80px);
+  width: 100%;
+  max-width: 1100px;
+  align-items: stretch;
+}
+
+.layout-split .dt-col-left,
+.layout-split .dt-col-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.layout-split .dt-col-label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  letter-spacing: var(--ls-ultra);
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--ink-dim);
+  margin: 0;
+}
+
+.layout-split .dt-col-title {
+  font-family: var(--font-serif);
+  font-size: var(--fs-h3);
+  color: var(--ink);
+  margin: var(--gap-xs) 0;
+  line-height: 1.3;
+}
+
+.layout-split .dt-col-points {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(6px, 0.8vw, 10px);
+  margin: 0;
+  padding: 0;
+}
+
+.layout-split .dt-col-points li {
+  font-family: var(--font-sans);
+  font-size: clamp(0.75rem, 0.88vw, 0.88rem);
+  color: var(--ink-mid);
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  line-height: 1.55;
+}
+
+.layout-split .dt-col-points li::before {
+  content: '';
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  background-color: var(--accent);
+  border-radius: 50%;
+  flex-shrink: 0;
+  margin-top: 7px;
+}
+
+/* Diagram-box: the signature deep-teal container */
+.dt-diagram-box {
+  border: 1px solid var(--ink-ghost);
+  background: var(--bg-warm);
+  padding: clamp(24px, 3.5vw, 40px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 1.2vw, 16px);
+  height: 100%;
+  justify-content: center;
+}
+
+/* ============================================================
+   LAYOUT: BIG NUMBER / STATS — info-panel with left accent bar
+   ============================================================ */
+.layout-big-number {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.layout-big-number .dt-stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--gap-md);
+  width: 100%;
+  max-width: 1100px;
+}
+
+.layout-big-number .dt-stats-row.dt-stats-2 { grid-template-columns: repeat(2, 1fr); }
+.layout-big-number .dt-stats-row.dt-stats-4 { grid-template-columns: repeat(4, 1fr); }
+
+.layout-big-number .dt-info-panel {
+  border-left: 3px solid var(--accent);
+  padding-left: clamp(16px, 2vw, 24px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(6px, 0.8vw, 10px);
+}
+
+.layout-big-number .dt-info-label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-micro);
+  color: var(--ink-dim);
+  text-transform: uppercase;
+  letter-spacing: var(--ls-ultra);
+}
+
+.layout-big-number .dt-info-value {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.layout-big-number .dt-huge-text {
+  font-family: var(--font-serif);
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 400;
+  line-height: 1;
+  color: var(--accent);
+  letter-spacing: -0.02em;
+}
+
+.layout-big-number .dt-info-unit {
+  font-family: var(--font-mono);
+  font-size: var(--fs-h3);
+  color: var(--accent-mid);
+  letter-spacing: var(--ls-wide);
+}
+
+.layout-big-number .dt-info-desc {
+  font-family: var(--font-sans);
+  font-size: var(--fs-caption);
+  line-height: 1.6;
+  color: var(--ink-mid);
+  margin: 0;
+}
+
+.layout-big-number .dt-stats-footer {
+  margin-top: var(--gap-sm);
+  width: 100%;
+  max-width: 1100px;
+  font-family: var(--font-sans);
+  font-size: var(--fs-caption);
+  color: var(--ink-dim);
+  text-align: left;
+  font-style: italic;
+  padding-top: var(--gap-sm);
+  border-top: 1px solid var(--ink-ghost);
+}
+
+/* ============================================================
+   LAYOUT: TIMELINE — VERTICAL left border + circle dots
+   ============================================================ */
+.layout-timeline {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.layout-timeline .dt-timeline {
+  position: relative;
+  padding-left: clamp(28px, 3.5vw, 40px);
+  border-left: 1px solid var(--accent-dim);
+  width: 100%;
+  max-width: 900px;
+}
+
+.layout-timeline .dt-timeline-item {
+  position: relative;
+  margin-bottom: clamp(24px, 3.5vw, 48px);
+}
+
+.layout-timeline .dt-timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Circle dot on the vertical line */
+.layout-timeline .dt-timeline-item::before {
+  content: '';
+  position: absolute;
+  left: calc(-1 * clamp(28px, 3.5vw, 40px) - 7px);
+  top: 4px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: var(--bg);
+  border: 2px solid var(--accent);
+}
+
+.layout-timeline .dt-timeline-date {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  color: var(--accent);
+  letter-spacing: var(--ls-wide);
+  margin-bottom: var(--gap-xs);
+  text-transform: uppercase;
+}
+
+.layout-timeline .dt-timeline-title {
+  font-family: var(--font-serif);
+  font-size: var(--fs-h3);
+  color: var(--ink);
+  margin: 0 0 var(--gap-xs);
+  line-height: 1.35;
+}
+
+.layout-timeline .dt-timeline-desc {
+  font-family: var(--font-sans);
+  font-size: var(--fs-caption);
+  line-height: 1.7;
+  color: var(--ink-mid);
+  margin: 0;
+  max-width: 600px;
+}
+
+.layout-timeline .dt-timeline-footer {
+  margin-top: var(--gap-md);
+  width: 100%;
+  max-width: 900px;
+  font-family: var(--font-sans);
+  font-size: var(--fs-caption);
+  color: var(--ink-dim);
+  font-style: italic;
+  padding-top: var(--gap-sm);
+  border-top: 1px solid var(--ink-ghost);
+}
+
+/* ============================================================
+   LAYOUT: END — Minimal rule + serif title
+   ============================================================ */
+.layout-end {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.layout-end .dt-end-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--gap-sm);
+}
+
+.layout-end .dt-end-rule {
+  width: 60px;
+  height: 2px;
+  background: var(--accent);
+}
+
+.layout-end .dt-end-title {
+  font-family: var(--font-serif);
+  font-size: var(--fs-h1);
+  color: var(--ink);
+  margin: 0;
+}
+
+.layout-end .dt-end-sub {
+  font-size: var(--fs-body);
+  color: var(--ink-mid);
+  margin: 0;
+}
+
+.layout-end .dt-end-meta {
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  color: var(--ink-dim);
+  letter-spacing: var(--ls-mono);
+}
+
+/* ============================================================
+   LAYOUT: BENTO 2x2 — grid-item with left accent border
+   ============================================================ */
+.layout-bento-2x2 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.layout-bento-2x2 .dt-bento-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--gap-sm);
+  width: 100%;
+  max-width: 1100px;
+}
+
+.layout-bento-2x2 .dt-bento-cell {
+  background-color: var(--bg-warm);
+  border: 1px solid var(--ink-ghost);
+  border-left: 3px solid var(--accent-dim);
+  padding: clamp(20px, 3vw, 36px);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(8px, 1vw, 14px);
+  transition: border-left-color 0.3s var(--ease);
+}
+
+.layout-bento-2x2 .dt-bento-cell:hover {
+  border-left-color: var(--accent);
+}
+
+.layout-bento-2x2 .dt-bento-name {
+  font-family: var(--font-serif);
+  font-size: clamp(1rem, 1.4vw, 1.3rem);
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.layout-bento-2x2 .dt-bento-desc {
+  font-family: var(--font-sans);
+  font-size: clamp(0.75rem, 0.88vw, 0.88rem);
+  line-height: 1.65;
+  color: var(--ink-mid);
+  margin: 0;
+}
+
+/* ============================================================
+   LAYOUT: VERTICAL STACK — math-block style rows
+   ============================================================ */
+.layout-vertical-stack {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.layout-vertical-stack .dt-stack {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 1.5vw, 16px);
+  width: 100%;
+  max-width: 1100px;
+}
+
+.layout-vertical-stack .dt-math-block {
+  background: var(--bg);
+  padding: clamp(16px, 2.5vw, 28px);
+  border-left: 4px solid var(--accent-mid);
+  border-right: 1px solid var(--ink-ghost);
+  border-top: 1px solid var(--ink-ghost);
+  border-bottom: 1px solid var(--ink-ghost);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.layout-vertical-stack .dt-math-title {
+  font-family: var(--font-serif);
+  font-size: var(--fs-h3);
+  color: var(--ink);
+  margin: 0;
+}
+
+.layout-vertical-stack .dt-math-desc {
+  font-family: var(--font-sans);
+  font-size: var(--fs-caption);
+  line-height: 1.7;
+  color: var(--ink-mid);
+  margin: 0;
+}
+
+/* ============================================================
+   LAYOUT: COMPACT GRID — 2-col with mono index
+   ============================================================ */
+.layout-compact-grid {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.layout-compact-grid .dt-compact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(8px, 1.2vw, 14px);
+  width: 100%;
+  max-width: 1100px;
+}
+
+.layout-compact-grid .dt-compact-item {
+  display: grid;
+  grid-template-columns: 48px 1fr;
+  gap: clamp(8px, 1.2vw, 14px);
+  align-items: flex-start;
+  padding: clamp(12px, 1.8vw, 20px);
+  border-left: 2px solid var(--accent-dim);
+  border-bottom: 1px solid var(--ink-ghost);
+}
+
+.layout-compact-grid .dt-compact-item.dt-span-full {
+  grid-column: 1 / -1;
+}
+
+.layout-compact-grid .dt-compact-idx {
+  font-family: var(--font-mono);
+  font-size: clamp(1.2rem, 1.8vw, 1.6rem);
+  color: var(--accent-dim);
+  font-weight: 400;
+  letter-spacing: var(--ls-mono);
+}
+
+.layout-compact-grid .dt-compact-body {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.layout-compact-grid .dt-compact-title {
+  font-family: var(--font-serif);
+  font-size: clamp(0.88rem, 1.1vw, 1.05rem);
+  color: var(--ink);
+  margin: 0;
+  line-height: 1.3;
+}
+
+.layout-compact-grid .dt-compact-desc {
+  font-family: var(--font-sans);
+  font-size: clamp(0.7rem, 0.78vw, 0.78rem);
+  line-height: 1.6;
+  color: var(--ink-mid);
+  margin: 0;
+}
+
+/* ============================================================
+   LAYOUT: CODE — math-block style with left accent
+   ============================================================ */
+.layout-code {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.layout-code .dt-code-block {
+  width: 100%;
+  max-width: 1100px;
+  background-color: var(--bg-inverted);
+  color: var(--ink-inverted);
+  overflow: hidden;
+  font-family: var(--font-mono);
+  font-size: clamp(0.72rem, 0.9vw, 0.9rem);
+  line-height: 1.7;
+  border-left: 4px solid var(--accent);
+}
+
+.layout-code .dt-code-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 20px;
+  background-color: rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.layout-code .dt-code-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.layout-code .dt-code-dot:first-child { background-color: #ef4444; }
+.layout-code .dt-code-dot:nth-child(2) { background-color: #f59e0b; }
+.layout-code .dt-code-dot:nth-child(3) { background-color: #22c55e; }
+
+.layout-code .dt-code-filename {
+  margin-left: auto;
+  font-size: var(--fs-micro);
+  color: rgba(255, 255, 255, 0.5);
+  letter-spacing: var(--ls-mono);
+}
+
+.layout-code .dt-code-body {
+  padding: 20px 24px;
+  overflow-x: auto;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  tab-size: 2;
+  margin: 0;
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+.layout-code .dt-code-body code {
+  display: block;
+  font: inherit;
+}
+
+.layout-code .dt-code-body.code-variant-config {
+  line-height: 1.92;
+  background: linear-gradient(90deg, rgba(255,255,255,0.03), transparent 22%);
+}
+
+/* Syntax highlighting */
+.layout-code .dt-code-body .kw { color: #c084fc; }
+.layout-code .dt-code-body .fn { color: #60a5fa; }
+.layout-code .dt-code-body .str { color: #86efac; }
+.layout-code .dt-code-body .cm { color: rgba(255,255,255,0.35); }
+.layout-code .dt-code-body .num { color: #fbbf24; }
+.layout-code .dt-code-body .op { color: #f472b6; }
+
+.layout-code .dt-code-note {
+  margin-top: var(--gap-sm);
+  font-family: var(--font-sans);
+  font-size: var(--fs-caption);
+  color: var(--ink-mid);
+  line-height: 1.7;
+  max-width: 1100px;
+  width: 100%;
+  border-left: 2px solid var(--accent-dim);
+  padding-left: var(--gap-sm);
+}
+
+.layout-code .dt-code-note code {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+  background-color: var(--accent-06);
+  padding: 2px 6px;
+  border-radius: 4px;
+  color: var(--accent);
+}
+
+/* ============================================================
+   LAYOUT: DIAGRAM — diagram-box container
+   ============================================================ */
+.layout-diagram {
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  align-items: start;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  row-gap: var(--gap-sm);
+}
+
+.layout-diagram .dt-diagram-canvas {
+  width: 100%;
+  max-width: 1100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+  padding: var(--gap-md);
+  align-self: stretch;
+}
+
+.layout-diagram .dt-diagram-canvas svg {
+  width: 100%;
+  height: auto;
+  max-height: 60vh;
+}
+
+.layout-diagram .dt-diagram-canvas.mermaid-diagram {
+  width: min(1120px, 100%);
+  min-height: 0;
+  max-height: none;
+  padding: clamp(18px, 2vw, 28px);
+  border: 1px solid var(--accent-15);
+  background:
+    linear-gradient(180deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01)),
+    var(--bg-card);
+  overflow: hidden;
+}
+
+.layout-diagram .dt-diagram-canvas .diagram-svg,
+.layout-diagram .dt-diagram-canvas .mermaid-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-height: min(68vh, 760px);
+}
+
+.layout-diagram .dt-diagram-canvas .mermaid-diagram-image {
+  display: block;
+  width: 100%;
+  height: auto;
+  max-width: 100%;
+  max-height: min(68vh, 760px);
+  object-fit: contain;
+  margin: 0 auto;
+}
+
+.layout-diagram .dt-diagram-canvas .mermaid-asset {
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* SVG diagram styling defaults */
+.layout-diagram .dt-diagram-canvas .node rect,
+.layout-diagram .dt-diagram-canvas .node-box {
+  fill: var(--bg-card);
+  stroke: var(--ink-ghost);
+  stroke-width: 1.5;
+  rx: 0;
+}
+
+.layout-diagram .dt-diagram-canvas .node-active rect,
+.layout-diagram .dt-diagram-canvas .node-active .node-box {
+  stroke: var(--accent);
+  stroke-width: 2;
+  fill: var(--accent-06);
+}
+
+.layout-diagram .dt-diagram-canvas .node text,
+.layout-diagram .dt-diagram-canvas .node-label {
+  font-family: var(--font-sans);
+  font-size: 13px;
+  fill: var(--ink);
+  text-anchor: middle;
+  dominant-baseline: central;
+}
+
+.layout-diagram .dt-diagram-canvas .edge,
+.layout-diagram .dt-diagram-canvas .arrow-line {
+  stroke: var(--ink-dim);
+  stroke-width: 1.5;
+  fill: none;
+  marker-end: url(#arrowhead);
+}
+
+.layout-diagram .dt-diagram-canvas .edge-active,
+.layout-diagram .dt-diagram-canvas .arrow-active {
+  stroke: var(--accent);
+  stroke-width: 2;
+}
+
+.layout-diagram .dt-diagram-canvas .group-box {
+  fill: var(--accent-03);
+  stroke: var(--accent-15);
+  stroke-width: 1;
+  stroke-dasharray: 6 3;
+}
+
+.layout-diagram .dt-diagram-canvas .group-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  fill: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.layout-diagram .dt-diagram-canvas .cluster rect,
+.layout-diagram .dt-diagram-canvas .mermaid-node rect,
+.layout-diagram .dt-diagram-canvas .mermaid-node polygon,
+.layout-diagram .dt-diagram-canvas .mermaid-node path {
+  fill: var(--bg-card);
+  stroke: var(--ink-ghost);
+  stroke-width: 1.5;
+}
+
+.layout-diagram .dt-diagram-canvas .flowchart-link,
+.layout-diagram .dt-diagram-canvas .edgePath path,
+.layout-diagram .dt-diagram-canvas .relationshipLine {
+  stroke: var(--ink-dim);
+  stroke-width: 1.5;
+  fill: none;
+}
+
+.layout-diagram .dt-diagram-canvas marker path,
+.layout-diagram .dt-diagram-canvas marker polygon {
+  fill: var(--ink-dim);
+}
+
+.layout-diagram .dt-diagram-canvas .edgeLabel rect,
+.layout-diagram .dt-diagram-canvas .labelBkg {
+  fill: rgba(246, 245, 242, 0.98);
+  opacity: 1;
+}
+
+.layout-diagram .dt-diagram-canvas .label text,
+.layout-diagram .dt-diagram-canvas .label,
+.layout-diagram .dt-diagram-canvas .nodeLabel,
+.layout-diagram .dt-diagram-canvas .messageText {
+  fill: var(--ink);
+  font-family: var(--font-sans);
+}
+
+.layout-diagram .dt-diagram-caption {
+  margin-top: var(--gap-sm);
+  font-family: var(--font-sans);
+  font-size: var(--fs-caption);
+  color: var(--ink-dim);
+  text-align: center;
+  font-style: italic;
+  max-width: 800px;
+}
+
+/* ============================================================
+   LAYOUT: MATRIX — Academic table with thick top/bottom
+   ============================================================ */
+.layout-matrix {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.layout-matrix .dt-matrix-wrap {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.layout-matrix .dt-matrix {
+  width: 100%;
+  border-collapse: collapse;
+  border-top: 2px solid var(--ink);
+  border-bottom: 2px solid var(--ink);
+}
+
+.layout-matrix .dt-matrix th,
+.layout-matrix .dt-matrix td {
+  padding: 14px 16px;
+  text-align: left;
+  border-bottom: 1px solid var(--ink-ghost);
+}
+
+.layout-matrix .dt-matrix-corner {
+  width: 160px;
+  background: var(--bg-warm);
+}
+
+.layout-matrix .dt-matrix-th {
+  font-family: var(--font-mono);
+  font-size: var(--fs-caption);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: var(--ls-wide);
+  color: var(--ink-mid);
+  background: var(--bg-warm);
+  border-bottom: 1px solid var(--ink-dim);
+}
+
+.layout-matrix .dt-matrix-label {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  background: var(--bg-warm);
+  font-size: var(--fs-caption);
+  color: var(--ink);
+}
+
+.layout-matrix .dt-matrix-td {
+  font-size: var(--fs-body);
+  color: var(--ink);
+  border-left: 1px solid var(--ink-ghost);
+}
+
+.layout-matrix .dt-cell-hl {
+  background: var(--accent-ghost);
+  font-weight: 600;
+  color: var(--accent);
+}
+
+/* ============================================================
+   RESPONSIVE DESIGN
+   ============================================================ */
+@media (max-width: 1200px) {
+  .layout-split .dt-split-row { flex-direction: column; gap: var(--gap-md); }
+  .dt-grid-3 { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 1024px) {
+  .dt-grid-2 { grid-template-columns: 1fr; }
+  .dt-grid-2x2 { grid-template-columns: 1fr; }
+  .layout-bento-2x2 .dt-bento-grid { grid-template-columns: 1fr; }
+  .layout-compact-grid .dt-compact-grid { grid-template-columns: 1fr; }
+  .layout-compact-grid .dt-compact-item.dt-span-full { grid-column: auto; }
+  .layout-big-number .dt-stats-row,
+  .layout-big-number .dt-stats-row.dt-stats-4 { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --pad-x: 24px;
+    --pad-y: 40px;
+  }
+}
+
+/* Mermaid page-fit overrides */
+.layout-diagram .dt-diagram-canvas.mermaid-diagram {
+  height: 100%;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  overflow: hidden;
+}
+
+.layout-diagram .dt-diagram-canvas.mermaid-diagram .mermaid-asset {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  aspect-ratio: var(--diagram-ar, 16 / 9);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.layout-diagram .dt-diagram-canvas.mermaid-diagram .mermaid-diagram-image {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+
+.layout-diagram .dt-diagram-canvas.mermaid-diagram + .dt-diagram-caption {
+  margin-top: 6px;
+  font-size: var(--fs-micro);
+  line-height: 1.35;
+}
+
+.layout-diagram {
+  position: relative;
+}
+
+.layout-diagram .dt-diagram-canvas.mermaid-diagram {
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  align-self: stretch;
+  justify-self: stretch;
+  padding: 0;
+  border: 0;
+  background: transparent;
+}
+
+.layout-diagram .dt-diagram-canvas.mermaid-diagram .mermaid-asset {
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+}
+
+.layout-diagram .dt-diagram-canvas.mermaid-diagram .mermaid-diagram-image {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.layout-diagram .dt-diagram-canvas.mermaid-diagram + .dt-diagram-caption {
+  position: absolute;
+  left: var(--pad-x);
+  right: var(--pad-x);
+  bottom: calc(var(--pad-y) * 0.5);
+  margin: 0;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Mermaid fullscreen mode: move heading and caption out of flow so the SVG owns the slide. */
+.layout-diagram:has(.dt-diagram-canvas.mermaid-diagram) {
+  display: block;
+  position: relative;
+  overflow: hidden;
+}
+
+.layout-diagram:has(.dt-diagram-canvas.mermaid-diagram) > .dt-heading-block {
+  position: absolute;
+  top: calc(var(--pad-y) * 0.35);
+  left: calc(var(--pad-x) * 0.6);
+  right: calc(var(--pad-x) * 0.6);
+  z-index: 3;
+  margin: 0;
+  pointer-events: none;
+}
+
+.layout-diagram:has(.dt-diagram-canvas.mermaid-diagram) > .dt-heading-block .dt-h2 {
+  max-width: 14ch;
+  background: linear-gradient(180deg, rgba(11, 16, 20, 0.82), rgba(11, 16, 20, 0.15));
+  padding-right: 18px;
+}
+
+.layout-diagram:has(.dt-diagram-canvas.mermaid-diagram) > .dt-diagram-canvas.mermaid-diagram {
+  position: absolute;
+  top: calc(var(--pad-y) * 0.2);
+  right: calc(var(--pad-x) * 0.2);
+  bottom: calc(var(--pad-y) * 0.2);
+  left: calc(var(--pad-x) * 0.2);
+  width: auto;
+  height: auto;
+  margin: 0;
+}
+
+.layout-diagram:has(.dt-diagram-canvas.mermaid-diagram) > .dt-diagram-canvas.mermaid-diagram + .dt-diagram-caption {
+  left: calc(var(--pad-x) * 0.6);
+  right: calc(var(--pad-x) * 0.6);
+  bottom: calc(var(--pad-y) * 0.28);
+}
+
+
+</style>
+</head>
+<body>
+
+<!-- TOC Panel (slides from right) -->
+<div id="toc-panel">
+  <div class="toc-header">
+    <span class="toc-label">Contents</span>
+    <h2 class="toc-title">boom-cdn 组件库入门</h2>
+  </div>
+  <div id="toc-list"></div>
+  <div class="toc-progress">
+    <div class="toc-progress-bar"><div class="toc-progress-fill" id="toc-progress-fill"></div></div>
+    <div class="toc-progress-text" id="toc-progress-text">0 / 0</div>
+  </div>
+</div>
+
+<!-- Bottom Dock: hover to reveal -->
+<div id="dock-hitbox" aria-hidden="true"></div>
+<div id="bottom-dock">
+  <div id="slide-nav"></div>
+  <div class="dock-divider"></div>
+  <div id="step-dots"></div>
+  <div class="dock-divider"></div>
+  <button class="dock-btn" id="btn-autoplay" title="自动播放 (P)">
+    <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+    <span class="dock-label">Auto</span>
+  </button>
+  <button class="dock-btn" id="btn-mute" title="静音 (M)">
+    <svg id="mute-icon-on" viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/></svg>
+    <svg id="mute-icon-off" viewBox="0 0 24 24" style="display:none"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg>
+  </button>
+  <div id="audio-indicator"><span class="pulse"></span><span>VOICE</span></div>
+  <div class="dock-divider"></div>
+  <button class="dock-btn" id="toc-toggle" title="目录 (T)">
+    <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+  </button>
+  <button class="dock-btn" id="mode-toggle" title="切换模式 (R)">
+    <svg id="mode-icon-present" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+    <svg id="mode-icon-read" viewBox="0 0 24 24" style="display:none"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+    <span id="mode-label" class="dock-label">Read</span>
+  </button>
+</div>
+
+<!-- Slides -->
+<div id="slides-container">
+<section class="slide layout-cover"><div class="stagger s1 dt-cover-tags"><span class="dt-tag">2026</span></div><h1 class="stagger s2 dt-cover-title">boom-cdn 组件库</h1><div class="stagger s2 dt-cover-rule"></div><p class="stagger s2 dt-cover-sub">零构建、纯 CDN 的 UI 组件框架</p><p class="stagger s2 dt-cover-en">18 Themes · 50+ Components · Motion Engine</p></section>
+<section class="slide layout-quote"><div class="dt-quote-block"><span class="stagger s1 dt-eyebrow">核心理念</span><div class="stagger s1 dt-quote-bar"></div><blockquote class="stagger s1 dt-quote-text">不需要 npm install，不需要打包，<span class="dt-highlight">引一个链接</span>就能写出好看的页面。</blockquote><cite class="stagger s2 dt-quote-cite">— boom-cdn 设计原则</cite></div></section>
+<section class="slide layout-numbered-stack"><div class="stagger s1 dt-heading-block">
+  <span class="dt-eyebrow">从零到可用只需要三步</span>
+  <h2 class="dt-h2">三步上手</h2>
+</div>
+<div class="dt-list-stack">
+  
+  <div class="dt-list-row stagger s2">
+    <span class="dt-list-num">01</span>
+    <div class="dt-list-body">
+      <h4 class="dt-list-title">选一个主题 CSS</h4>
+      <p class="dt-list-desc">18 套主题各有风格，从赛博朋克到瑞士极简。每个主题是一个 CSS 文件，它会自动引入 base.css 组件框架，所以你只需要链接一个文件。</p>
+    </div>
+  </div>
+  <div class="dt-list-row stagger s3">
+    <span class="dt-list-num">02</span>
+    <div class="dt-list-body">
+      <h4 class="dt-list-title">给 body 加 boom 类</h4>
+      <p class="dt-list-desc">在 HTML 的 body 标签上加 class="boom"，这是主题样式生效的开关。没有这个类名，所有组件样式都不会起作用，就像电器没有插电一样。</p>
+    </div>
+  </div>
+  <div class="dt-list-row stagger s4">
+    <span class="dt-list-num">03</span>
+    <div class="dt-list-body">
+      <h4 class="dt-list-title">用 b- 前缀的类名写组件</h4>
+      <p class="dt-list-desc">所有组件类都以 b- 开头：b-btn 是按钮、b-card 是卡片、b-grid 是网格。像搭积木一样组合 HTML 类名，不需要写任何自定义 CSS。</p>
+    </div>
+  </div>
+</div></section>
+<section class="slide layout-grid-2x2"><div class="stagger s1 dt-heading-block">
+  <span class="dt-eyebrow">按需引入，互不依赖</span>
+  <h2 class="dt-h2">CDN 提供的模块</h2>
+</div>
+<div class="dt-grid-2x2">
+  
+  <div class="dt-grid-item stagger s2">
+    <span class="dt-item-label">UI</span>
+    <h3 class="dt-item-h3">Themes</h3>
+    <p class="dt-item-desc">18 套主题 + 50 多个组件类。覆盖排版、布局、按钮、卡片、表单、导航、弹窗、数据展示等所有常见 UI 需求。</p>
+    <ul class="dt-item-list"><li>base.css 组件框架</li><li>18 个主题 CSS</li></ul>
+  </div>
+  <div class="dt-grid-item stagger s3">
+    <span class="dt-item-label">动效</span>
+    <h3 class="dt-item-h3">Motion</h3>
+    <p class="dt-item-desc">滚动显现、打字机、计数器、跑马灯、视差、倾斜、磁吸。全部通过 data 属性声明，零 JS 代码。</p>
+    <ul class="dt-item-list"><li>motion.js</li><li>7 种效果</li></ul>
+  </div>
+  <div class="dt-grid-item stagger s4">
+    <span class="dt-item-label">讲解</span>
+    <h3 class="dt-item-h3">Engine</h3>
+    <p class="dt-item-desc">Walkthrough 讲解引擎。逐步高亮元素 + 语音旁白 + 键盘控制，适合做技术讲解和产品演示。</p>
+    <ul class="dt-item-list"><li>engine.css + engine.js</li></ul>
+  </div>
+  <div class="dt-grid-item stagger s5">
+    <span class="dt-item-label">演示</span>
+    <h3 class="dt-item-h3">Presenter</h3>
+    <p class="dt-item-desc">幻灯片演示器，支持可选的评论覆盖层。用于 PPT 式翻页展示和培训场景。</p>
+    <ul class="dt-item-list"><li>presenter.css + presenter.js</li></ul>
+  </div>
+</div></section>
+<section class="slide layout-grid-2x2"><div class="stagger s1 dt-heading-block">
+  <span class="dt-eyebrow">根据内容类型选主题，不要随机选</span>
+  <h2 class="dt-h2">场景 × 主题选择</h2>
+</div>
+<div class="dt-grid-2x2">
+  
+  <div class="dt-grid-item stagger s2">
+    <span class="dt-item-label">技术</span>
+    <h3 class="dt-item-h3">terminal-green</h3>
+    <p class="dt-item-desc">终端绿，代码气质。适合开发者向的 demo、技术文档、CLI 工具展示。</p>
+    <ul class="dt-item-list"><li>暗色背景</li><li>等宽字体感</li></ul>
+  </div>
+  <div class="dt-grid-item stagger s3">
+    <span class="dt-item-label">产品</span>
+    <h3 class="dt-item-h3">frost-glass</h3>
+    <p class="dt-item-desc">冰蓝玻璃，现代 SaaS 感。适合产品原型、着陆页、功能介绍。</p>
+    <ul class="dt-item-list"><li>毛玻璃效果</li><li>专业冷色调</li></ul>
+  </div>
+  <div class="dt-grid-item stagger s4">
+    <span class="dt-item-label">汇报</span>
+    <h3 class="dt-item-h3">obsidian-velvet</h3>
+    <p class="dt-item-desc">暗紫奢华，大屏演示感。适合高管汇报、项目展示、数据仪表盘。</p>
+    <ul class="dt-item-list"><li>深色高对比</li><li>优雅紫色调</li></ul>
+  </div>
+  <div class="dt-grid-item stagger s5">
+    <span class="dt-item-label">文档</span>
+    <h3 class="dt-item-h3">swiss-minimal</h3>
+    <p class="dt-item-desc">瑞士极简，干净利落。适合正式文档、企业通信、规范说明。</p>
+    <ul class="dt-item-list"><li>白色背景</li><li>红色强调</li></ul>
+  </div>
+</div></section>
+<section class="slide layout-code"><div class="stagger s1 dt-heading-block">
+  <span class="dt-eyebrow">一个最小的 boom-cdn 页面</span>
+  <h2 class="dt-h2">完整示例</h2>
+</div>
+<div class="dt-code-block stagger s2">
+  <div class="dt-code-header">
+    <span class="dt-code-dot"></span>
+    <span class="dt-code-dot"></span>
+    <span class="dt-code-dot"></span>
+    <span class="dt-code-filename">hello-boom.html</span>
+  </div>
+  <pre class="dt-code-body code-variant-default"><code><!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet"
+    href="https://boom-cdn.vercel.app/themes/neo-tokyo.css">
+  <script src="https://boom-cdn.vercel.app/themes/motion.js"
+    defer></script>
+</head>
+<body class="boom">
+  <div class="b-container b-section">
+    <h1 class="b-display b-accent">Hello Boom</h1>
+    <p class="b-body b-muted">这就是全部了。</p>
+    <button class="b-btn b-btn-primary"
+      data-magnetic>点我</button>
+  </div>
+</body>
+</html></code></pre>
+</div>
+<div class="dt-code-note stagger s3">只引了一个主题 CSS 和一个 motion.js，就能用上显示标题、正文排版、主要按钮和磁吸动效。不需要 npm、不需要打包、不需要自定义 CSS。</div></section>
+<section class="slide layout-numbered-stack"><div class="stagger s1 dt-heading-block">
+  <span class="dt-eyebrow">实际使用中最容易踩到的问题</span>
+  <h2 class="dt-h2">五个必知的坑</h2>
+</div>
+<div class="dt-list-stack">
+  
+  <div class="dt-list-row stagger s2">
+    <span class="dt-list-num">01</span>
+    <div class="dt-list-body">
+      <h4 class="dt-list-title">Grid 必须两个类</h4>
+      <p class="dt-list-desc">b-grid-3 只设列数，不设 display:grid。必须写 class="b-grid b-grid-3"，漏掉 b-grid 的话网格不会生效，内容会垂直堆叠。</p>
+    </div>
+  </div>
+  <div class="dt-list-row stagger s3">
+    <span class="dt-list-num">02</span>
+    <div class="dt-list-body">
+      <h4 class="dt-list-title">b-center 会覆盖方向</h4>
+      <p class="dt-list-desc">b-center 设的是 flex-row，如果和 b-stack 或 b-hero 混用，会把本该垂直排列的内容变成水平的。需要居中 + 垂直排列时用 b-stack 加 style。</p>
+    </div>
+  </div>
+  <div class="dt-list-row stagger s4">
+    <span class="dt-list-num">03</span>
+    <div class="dt-list-body">
+      <h4 class="dt-list-title">data-reveal 别滥用</h4>
+      <p class="dt-list-desc">带 data-reveal 的元素默认透明度为零，只有滚动到视口内才显示。如果每个区块都加，页面初次加载时大片空白。只在 hero 区域少量使用。</p>
+    </div>
+  </div>
+  <div class="dt-list-row stagger s5">
+    <span class="dt-list-num">04</span>
+    <div class="dt-list-body">
+      <h4 class="dt-list-title">data-count 是字面值</h4>
+      <p class="dt-list-desc">data-target="347" 加 data-suffix="%" 会显示 347%，不是 3.47%。想要小数就写 data-target="3.47"。</p>
+    </div>
+  </div>
+  <div class="dt-list-row stagger s6">
+    <span class="dt-list-num">05</span>
+    <div class="dt-list-body">
+      <h4 class="dt-list-title">不要写自定义 CSS</h4>
+      <p class="dt-list-desc">boom 有 50 多个组件类和工具类，大部分需求都能组合解决。先查有没有现成的类，实在没有再用极少量 inline style。</p>
+    </div>
+  </div>
+</div></section>
+<section class="slide layout-end"><div class="stagger s1 dt-end-block">
+  <div class="dt-end-rule"></div>
+  <h1 class="dt-end-title">开始使用 boom-cdn</h1>
+  <p class="dt-end-sub">llms.txt → 选主题 → 写 HTML → 完成</p>
+  <span class="dt-end-meta">文档：boom-cdn.vercel.app/llms.txt</span>
+</div></section>
+</div>
+
+<script>
+/* engine.js — PPT Presenter Template: dual-loop navigation, audio, TOC, autoplay, comments */
+/* Placeholders __SLIDE_STEPS__, __TOC_DATA__, __DECK_NAME__ are injected by build script */
+(function() {
+  'use strict';
+
+  /* ============================================================
+     DUAL-LOOP NAVIGATION ENGINE
+     Outer loop: slides (pages)
+     Inner loop: steps within each slide (progressive reveal + audio)
+     Features: slide-nav jump, autoplay, pause/resume, mute
+     ============================================================ */
+
+  /* ---- Slide-Step Map (mirrors slides.json) ---- */
+  var SLIDE_STEPS = /*__SLIDE_STEPS__*/[{"steps":[["s1"],["s2"]],"audio":["s01-1","s01-2"]},{"steps":[["s1"],["s2"]],"audio":["s02-1","s02-2"]},{"steps":[["s1"],["s2"],["s3"],["s4"]],"audio":["s03-1","s03-2","s03-3","s03-4"]},{"steps":[["s1"],["s2"],["s3"],["s4"],["s5"]],"audio":["s04-1","s04-2","s04-3","s04-4","s04-5"]},{"steps":[["s1"],["s2"],["s3"],["s4"],["s5"]],"audio":["s05-1","s05-2","s05-3","s05-4","s05-5"]},{"steps":[["s1"],["s2"],["s3"]],"audio":["s06-1","s06-2","s06-3"]},{"steps":[["s1"],["s2"],["s3"],["s4"],["s5"],["s6"]],"audio":["s07-1","s07-2","s07-3","s07-4","s07-5","s07-6"]},{"steps":[["s1"]],"audio":["s08-1"]}];
+
+  var TOTAL_SLIDES = SLIDE_STEPS.length;
+  var AUDIO_DIR = /*__AUDIO_DIR__*/'audio/boom-cdn-intro/';
+  var DECK_NAME = /*__DECK_NAME__*/'boom-cdn-intro';
+  var LOCK_MS = 600;
+
+  /* ---- State ---- */
+  var curSlide = 0;
+  var curStep = 0;
+  var locked = false;
+  var audioEnabled = true;
+  var autoPlaying = false;
+  var autoPaused = false;
+
+  /* ---- DOM ---- */
+  var slideDOMs = document.querySelectorAll('.slide');
+  var slidesContainer = document.getElementById('slides-container');
+  var stepDots = document.getElementById('step-dots');
+  var audioIndicator = document.getElementById('audio-indicator');
+  var slideNav = document.getElementById('slide-nav');
+  var btnAutoplay = document.getElementById('btn-autoplay');
+  var btnMute = document.getElementById('btn-mute');
+  var muteIconOn = document.getElementById('mute-icon-on');
+  var muteIconOff = document.getElementById('mute-icon-off');
+
+  /* ---- Dock show/hide ---- */
+  var dockTimeout = null;
+  function showDock() {
+    document.body.classList.add('dock-visible');
+    clearTimeout(dockTimeout);
+    dockTimeout = setTimeout(function() {
+      var dock = document.getElementById('bottom-dock');
+      if (!dock || dock.matches(':hover')) return;
+      document.body.classList.remove('dock-visible');
+    }, 2500);
+  }
+
+  /* ---- Audio Engine ---- */
+  var audioEl = new Audio();
+  audioEl.preload = 'auto';
+
+  function playAudio(id) {
+    if (!audioEnabled || !id) {
+      // If muted but autoplay, still need ended event → set src but volume 0
+      if (autoPlaying && id) {
+        audioEl.volume = 0;
+        audioEl.src = AUDIO_DIR + id + '.mp3';
+        audioEl.play().catch(function() {});
+      }
+      return;
+    }
+    audioEl.volume = 1;
+    audioEl.pause();
+    audioEl.currentTime = 0;
+    audioEl.src = AUDIO_DIR + id + '.mp3';
+    audioEl.play().catch(function() {});
+    audioIndicator.classList.add('playing');
+  }
+
+  function stopAudio() {
+    audioEl.pause();
+    audioEl.currentTime = 0;
+    audioIndicator.classList.remove('playing');
+  }
+
+  audioEl.addEventListener('ended', function() {
+    audioIndicator.classList.remove('playing');
+    // Autoplay: advance after audio ends
+    if (autoPlaying && !autoPaused) {
+      setTimeout(function() {
+        if (autoPlaying && !autoPaused) advanceStep();
+      }, 300);
+    }
+  });
+
+  // Audio error fallback: if file missing/broken, auto-advance after 2s in autoplay
+  audioEl.addEventListener('error', function() {
+    audioIndicator.classList.remove('playing');
+    if (autoPlaying && !autoPaused) {
+      setTimeout(function() {
+        if (autoPlaying && !autoPaused) advanceStep();
+      }, 2000);
+    }
+  });
+
+  /* ---- Reveal Logic ---- */
+  function getSlideEl(idx) { return slideDOMs[idx]; }
+  function getConfig(idx) { return SLIDE_STEPS[idx]; }
+
+  function clearAllReveals(slideEl) {
+    var els = slideEl.querySelectorAll('.stagger');
+    for (var i = 0; i < els.length; i++) {
+      els[i].classList.remove('revealed', 'revealed-instant', 'sub-1', 'sub-2', 'sub-3');
+    }
+  }
+
+  function revealUpToStep(slideEl, config, step, animate) {
+    clearAllReveals(slideEl);
+    for (var s = 0; s < step; s++) {
+      var classes = config.steps[s];
+      for (var c = 0; c < classes.length; c++) {
+        // querySelectorAll: reveal ALL elements with matching stagger class (not just first)
+        var els = slideEl.querySelectorAll('.stagger.' + classes[c]);
+        for (var e = 0; e < els.length; e++) {
+          if (animate && s === step - 1) {
+            els[e].classList.add('revealed');
+            if (classes.length > 1) els[e].classList.add('sub-' + (c + 1));
+          } else {
+            els[e].classList.add('revealed-instant');
+          }
+        }
+      }
+    }
+  }
+
+  /* ---- Slide Nav (top bar) ---- */
+  function buildSlideNav() {
+    var html = '';
+    for (var i = 0; i < TOTAL_SLIDES; i++) {
+      html += '<span class="sn" data-slide="' + i + '">' + String(i + 1).padStart(2, '0') + '</span>';
+    }
+    slideNav.innerHTML = html;
+  }
+
+  function updateSlideNav() {
+    var items = slideNav.querySelectorAll('.sn');
+    for (var i = 0; i < items.length; i++) {
+      items[i].classList.remove('active', 'visited');
+      if (i === curSlide) {
+        items[i].classList.add('active');
+      } else if (i < curSlide) {
+        items[i].classList.add('visited');
+      }
+    }
+  }
+
+  slideNav.addEventListener('click', function(e) {
+    var sn = e.target.closest('.sn');
+    if (!sn) return;
+    e.stopPropagation();
+    var target = parseInt(sn.dataset.slide);
+    if (target === curSlide) return;
+    jumpToSlide(target);
+  });
+
+  /* ---- Step Dots ---- */
+  function renderDots() {
+    var config = getConfig(curSlide);
+    var total = config.steps.length;
+    var html = '';
+    for (var i = 0; i < total; i++) {
+      var cls = 'dot';
+      if (i < curStep - 1) cls += ' done';
+      if (i === curStep - 1) cls += ' current';
+      html += '<span class="' + cls + '" data-step="' + (i + 1) + '"></span>';
+    }
+    stepDots.innerHTML = html;
+  }
+
+  /* ---- UI Update ---- */
+  function updateUI() {
+    renderDots();
+    updateSlideNav();
+    if (typeof updateTOC === 'function') updateTOC();
+  }
+
+  /* ---- Slide Transition ---- */
+  function switchSlide(newSlide, direction) {
+    if (newSlide < 0 || newSlide >= TOTAL_SLIDES) {
+      // End of presentation in autoplay
+      if (autoPlaying) stopAutoplay();
+      return;
+    }
+    if (locked) return;
+
+    locked = true;
+    setTimeout(function() { locked = false; }, LOCK_MS);
+
+    stopAudio();
+
+    var prevEl = slideDOMs[curSlide];
+    prevEl.classList.remove('active');
+    prevEl.classList.add('exit');
+    clearAllReveals(prevEl);
+    setTimeout(function() { prevEl.classList.remove('exit'); }, LOCK_MS);
+
+    curSlide = newSlide;
+    var nextEl = slideDOMs[curSlide];
+    var config = getConfig(curSlide);
+
+    if (direction === 'forward') {
+      curStep = 0;
+      nextEl.classList.add('active');
+      setTimeout(function() { advanceStep(); }, 150);
+    } else {
+      curStep = config.steps.length;
+      revealUpToStep(nextEl, config, curStep, false);
+      nextEl.classList.add('active');
+      updateUI();
+    }
+  }
+
+  function jumpToSlide(target) {
+    if (target === curSlide || locked) return;
+    stopAutoplay();
+    stopAudio();
+
+    var prevEl = slideDOMs[curSlide];
+    prevEl.classList.remove('active');
+    prevEl.classList.add('exit');
+    clearAllReveals(prevEl);
+    setTimeout(function() { prevEl.classList.remove('exit'); }, LOCK_MS);
+
+    locked = true;
+    setTimeout(function() { locked = false; }, LOCK_MS);
+
+    curSlide = target;
+    curStep = 0;
+    var nextEl = slideDOMs[curSlide];
+    nextEl.classList.add('active');
+    setTimeout(function() { advanceStep(); }, 150);
+  }
+
+  /* ---- Step Navigation ---- */
+  function advanceStep() {
+    var config = getConfig(curSlide);
+    var totalSteps = config.steps.length;
+
+    if (curStep < totalSteps) {
+      curStep++;
+      var slideEl = getSlideEl(curSlide);
+      revealUpToStep(slideEl, config, curStep, true);
+      playAudio(config.audio[curStep - 1]);
+      updateUI();
+    } else {
+      switchSlide(curSlide + 1, 'forward');
+    }
+  }
+
+  function retreatStep() {
+    stopAutoplay();
+    if (curStep > 1) {
+      curStep--;
+      stopAudio();
+      var slideEl = getSlideEl(curSlide);
+      var config = getConfig(curSlide);
+      revealUpToStep(slideEl, config, curStep, false);
+      updateUI();
+    } else {
+      switchSlide(curSlide - 1, 'backward');
+    }
+  }
+
+  /* ---- Autoplay Engine ---- */
+  function startAutoplay() {
+    autoPlaying = true;
+    autoPaused = false;
+    btnAutoplay.classList.add('active');
+    btnAutoplay.querySelector('span').textContent = 'Pause';
+    btnAutoplay.querySelector('svg').innerHTML = '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>';
+    // If audio already playing, let it finish and auto-advance via ended event.
+    // If not playing (idle), kick off next step.
+    if (audioEl.paused) {
+      advanceStep();
+    }
+  }
+
+  function pauseAutoplay() {
+    autoPaused = true;
+    audioEl.pause();
+    audioIndicator.classList.remove('playing');
+    btnAutoplay.querySelector('span').textContent = 'Resume';
+    btnAutoplay.querySelector('svg').innerHTML = '<polygon points="5 3 19 12 5 21 5 3"/>';
+  }
+
+  function resumeAutoplay() {
+    autoPaused = false;
+    btnAutoplay.querySelector('span').textContent = 'Pause';
+    btnAutoplay.querySelector('svg').innerHTML = '<rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/>';
+    // Resume audio if it was paused mid-play
+    if (audioEl.src && audioEl.currentTime > 0 && audioEl.paused) {
+      audioEl.play().catch(function() {});
+      if (audioEnabled) audioIndicator.classList.add('playing');
+    } else {
+      advanceStep();
+    }
+  }
+
+  function stopAutoplay() {
+    autoPlaying = false;
+    autoPaused = false;
+    btnAutoplay.classList.remove('active');
+    btnAutoplay.querySelector('span').textContent = 'Auto';
+    btnAutoplay.querySelector('svg').innerHTML = '<polygon points="5 3 19 12 5 21 5 3"/>';
+  }
+
+  btnAutoplay.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (!autoPlaying) {
+      startAutoplay();
+    } else if (!autoPaused) {
+      pauseAutoplay();
+    } else {
+      resumeAutoplay();
+    }
+  });
+
+  /* ---- Mute Toggle ---- */
+  function updateMuteUI() {
+    if (audioEnabled) {
+      muteIconOn.style.display = '';
+      muteIconOff.style.display = 'none';
+    } else {
+      muteIconOn.style.display = 'none';
+      muteIconOff.style.display = '';
+    }
+  }
+
+  btnMute.addEventListener('click', function(e) {
+    e.stopPropagation();
+    audioEnabled = !audioEnabled;
+    if (!audioEnabled) {
+      audioEl.volume = 0;
+      audioIndicator.classList.remove('playing');
+    } else {
+      audioEl.volume = 1;
+      if (!audioEl.paused) audioIndicator.classList.add('playing');
+    }
+    updateMuteUI();
+  });
+
+  /* ---- Input: Keyboard ---- */
+  document.addEventListener('keydown', function(e) {
+    if (readingMode) return;
+    switch (e.key) {
+      case ' ':
+        // Space = pause / resume autoplay
+        e.preventDefault();
+        if (!autoPlaying) { startAutoplay(); }
+        else if (!autoPaused) { pauseAutoplay(); }
+        else { resumeAutoplay(); }
+        break;
+      case 'ArrowRight':
+      case 'ArrowDown':
+        // Right/Down = advance one step
+        e.preventDefault();
+        if (autoPlaying) stopAutoplay();
+        advanceStep();
+        break;
+      case 'ArrowLeft':
+      case 'ArrowUp':
+        // Left/Up = retreat one step
+        e.preventDefault();
+        if (autoPlaying) stopAutoplay();
+        retreatStep();
+        break;
+      case 'PageDown':
+        // PageDown = next slide (skip remaining steps)
+        e.preventDefault();
+        if (autoPlaying) stopAutoplay();
+        stopAudio();
+        switchSlide(curSlide + 1, 'forward');
+        break;
+      case 'PageUp':
+        // PageUp = previous slide
+        e.preventDefault();
+        if (autoPlaying) stopAutoplay();
+        stopAudio();
+        switchSlide(curSlide - 1, 'backward');
+        break;
+      case 'Home':
+        e.preventDefault();
+        stopAutoplay();
+        if (curSlide !== 0 || curStep !== 1) {
+          stopAudio();
+          clearAllReveals(slideDOMs[curSlide]);
+          slideDOMs[curSlide].classList.remove('active');
+          curSlide = 0; curStep = 0;
+          slideDOMs[0].classList.add('active');
+          advanceStep();
+        }
+        break;
+      case 'End':
+        e.preventDefault();
+        stopAutoplay();
+        stopAudio();
+        clearAllReveals(slideDOMs[curSlide]);
+        slideDOMs[curSlide].classList.remove('active');
+        curSlide = TOTAL_SLIDES - 1;
+        curStep = getConfig(curSlide).steps.length;
+        revealUpToStep(slideDOMs[curSlide], getConfig(curSlide), curStep, false);
+        slideDOMs[curSlide].classList.add('active');
+        updateUI();
+        break;
+      case 'p':
+      case 'P':
+        // P = same as space (legacy compat)
+        if (!autoPlaying) { startAutoplay(); }
+        else if (!autoPaused) { pauseAutoplay(); }
+        else { resumeAutoplay(); }
+        break;
+      case 'm':
+      case 'M':
+        audioEnabled = !audioEnabled;
+        if (!audioEnabled) {
+          audioEl.volume = 0;
+          audioIndicator.classList.remove('playing');
+        } else {
+          audioEl.volume = 1;
+          if (!audioEl.paused) audioIndicator.classList.add('playing');
+        }
+        updateMuteUI();
+        break;
+    }
+  });
+
+  /* ---- Input: Mouse Click ---- */
+  document.addEventListener('click', function(e) {
+    if (readingMode) return;
+    if (e.target.closest('button') || e.target.closest('a') || e.target.closest('#bottom-dock') || e.target.closest('#toc-panel')) return;
+
+    var clickX = e.clientX;
+    var w = window.innerWidth;
+
+    if (clickX < w * 0.30) {
+      retreatStep();
+    } else {
+      if (autoPlaying) stopAutoplay();
+      advanceStep();
+    }
+  });
+
+  /* ---- Input: Step Dots Click ---- */
+  stepDots.addEventListener('click', function(e) {
+    var dot = e.target.closest('.dot');
+    if (!dot) return;
+    e.stopPropagation();
+
+    var targetStep = parseInt(dot.dataset.step);
+    if (targetStep === curStep) return;
+
+    if (autoPlaying) stopAutoplay();
+    stopAudio();
+    var slideEl = getSlideEl(curSlide);
+    var config = getConfig(curSlide);
+
+    if (targetStep > curStep) {
+      curStep = targetStep;
+      revealUpToStep(slideEl, config, curStep, true);
+      playAudio(config.audio[curStep - 1]);
+    } else {
+      curStep = targetStep;
+      revealUpToStep(slideEl, config, curStep, false);
+    }
+    updateUI();
+  });
+
+  /* ---- Input: Touch Swipe ---- */
+  var touchStartX = 0;
+  var touchStartY = 0;
+  var touchStartTime = 0;
+
+  document.addEventListener('touchstart', function(e) {
+    touchStartX = e.changedTouches[0].clientX;
+    touchStartY = e.changedTouches[0].clientY;
+    touchStartTime = Date.now();
+  }, { passive: true });
+
+  document.addEventListener('touchend', function(e) {
+    if (readingMode) return;
+    var dx = e.changedTouches[0].clientX - touchStartX;
+    var dy = e.changedTouches[0].clientY - touchStartY;
+    var dt = Date.now() - touchStartTime;
+
+    if (dt > 500 || Math.abs(dx) < 50 || Math.abs(dy) > Math.abs(dx)) return;
+
+    if (dx < 0) {
+      if (autoPlaying) stopAutoplay();
+      advanceStep();
+    } else {
+      retreatStep();
+    }
+  }, { passive: true });
+
+  /* ---- Input: Mouse Wheel ---- */
+  var wheelLocked = false;
+  document.addEventListener('wheel', function(e) {
+    if (readingMode) return;
+    if (wheelLocked) return;
+
+    if (Math.abs(e.deltaY) > 40) {
+      wheelLocked = true;
+      setTimeout(function() { wheelLocked = false; }, LOCK_MS);
+
+      if (e.deltaY > 0) {
+        if (autoPlaying) stopAutoplay();
+        advanceStep();
+      } else {
+        retreatStep();
+      }
+    }
+  }, { passive: true });
+
+  /* ---- TOC Sidebar ---- */
+  var TOC_DATA = /*__TOC_DATA__*/[{"title":"boom-cdn","sub":"Overview"},{"title":"设计理念","sub":"Philosophy"},{"title":"快速开始","sub":"Quick Start"},{"title":"五大模块","sub":"Modules"},{"title":"主题推荐","sub":"Theme Guide"},{"title":"代码示例","sub":"Code Example"},{"title":"常见陷阱","sub":"Pitfalls"},{"title":"总结","sub":"Summary"}];
+
+  var tocToggle = document.getElementById('toc-toggle');
+  var tocPanel = document.getElementById('toc-panel');
+  var tocList = document.getElementById('toc-list');
+  var tocProgressFill = document.getElementById('toc-progress-fill');
+  var tocProgressText = document.getElementById('toc-progress-text');
+  var tocOpen = false;
+
+  function buildTOC() {
+    var html = '';
+    for (var i = 0; i < TOC_DATA.length; i++) {
+      html += '<div class="toc-item" data-slide="' + i + '">';
+      html += '<span class="toc-num">' + String(i + 1).padStart(2, '0') + '</span>';
+      html += '<div class="toc-text">';
+      html += '<p class="toc-item-title">' + TOC_DATA[i].title + '</p>';
+      html += '<p class="toc-item-sub">' + TOC_DATA[i].sub + '</p>';
+      html += '</div></div>';
+    }
+    tocList.innerHTML = html;
+  }
+
+  function updateTOC() {
+    var items = tocList.querySelectorAll('.toc-item');
+    for (var i = 0; i < items.length; i++) {
+      items[i].classList.remove('active', 'visited');
+      if (i === curSlide) items[i].classList.add('active');
+      else if (i < curSlide) items[i].classList.add('visited');
+    }
+    var pct = ((curSlide + 1) / TOTAL_SLIDES * 100);
+    tocProgressFill.style.width = pct + '%';
+    tocProgressText.textContent = (curSlide + 1) + ' / ' + TOTAL_SLIDES;
+  }
+
+  function toggleTOC() {
+    tocOpen = !tocOpen;
+    tocPanel.classList.toggle('open', tocOpen);
+    tocToggle.classList.toggle('open', tocOpen);
+    if (tocOpen) {
+      tocToggle.querySelector('svg').innerHTML = '<line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>';
+    } else {
+      tocToggle.querySelector('svg').innerHTML = '<line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>';
+    }
+  }
+
+  tocToggle.addEventListener('click', function(e) {
+    e.stopPropagation();
+    toggleTOC();
+  });
+
+  tocList.addEventListener('click', function(e) {
+    var item = e.target.closest('.toc-item');
+    if (!item) return;
+    e.stopPropagation();
+    var target = parseInt(item.dataset.slide);
+    if (tocOpen) toggleTOC();
+    if (target !== curSlide) jumpToSlide(target);
+  });
+
+  // Keyboard T to toggle
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 't' || e.key === 'T') {
+      if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+      toggleTOC();
+    }
+  });
+
+  // Close TOC when clicking outside
+  document.addEventListener('click', function(e) {
+    if (tocOpen && !e.target.closest('#toc-panel') && !e.target.closest('#toc-toggle')) {
+      toggleTOC();
+    }
+  }, true);
+
+  /* ---- Reading Mode Toggle ---- */
+  var readingMode = false;
+  var modeToggle = document.getElementById('mode-toggle');
+  var modeIconPresent = document.getElementById('mode-icon-present');
+  var modeIconRead = document.getElementById('mode-icon-read');
+  var modeLabel = document.getElementById('mode-label');
+
+  /* ---- Reading Mode: Per-slide Audio Players ---- */
+  var rpAudio = null;
+  var rpSlide = -1;
+  var rpStep = 0;
+  var rpTimerId = null;
+
+  function getStepIndexFromClassList(classList) {
+    for (var i = 0; i < classList.length; i++) {
+      var match = /^s(\d+)$/.exec(classList[i]);
+      if (match) return parseInt(match[1], 10) - 1;
+    }
+    return -1;
+  }
+
+  function getRPTargets(slideIdx) {
+    return Array.from(slideDOMs[slideIdx].querySelectorAll('[data-rp-step]'));
+  }
+
+  function clearRPTargetState(slideIdx) {
+    getRPTargets(slideIdx).forEach(function(el) {
+      el.classList.remove('rp-target', 'rp-active', 'rp-done');
+      el.removeAttribute('data-rp-step');
+      el.removeAttribute('data-rp-slide');
+    });
+  }
+
+  function decorateRPTargets(slideIdx) {
+    clearRPTargetState(slideIdx);
+    var maxStep = SLIDE_STEPS[slideIdx].steps.length;
+    var els = slideDOMs[slideIdx].querySelectorAll('.stagger');
+    for (var i = 0; i < els.length; i++) {
+      var stepIdx = getStepIndexFromClassList(els[i].classList);
+      if (stepIdx < 0 || stepIdx >= maxStep) continue;
+      els[i].dataset.rpStep = String(stepIdx);
+      els[i].dataset.rpSlide = String(slideIdx);
+      els[i].classList.add('rp-target');
+    }
+  }
+
+  function updateRPTargets(slideIdx) {
+    var targets = getRPTargets(slideIdx);
+    for (var i = 0; i < targets.length; i++) {
+      var stepIdx = parseInt(targets[i].dataset.rpStep, 10);
+      targets[i].classList.remove('rp-active', 'rp-done');
+      if (rpSlide !== slideIdx) continue;
+      if (stepIdx < rpStep) targets[i].classList.add('rp-done');
+      else if (stepIdx === rpStep) targets[i].classList.add('rp-active');
+    }
+  }
+
+  function markAllRPTargetsDone(slideIdx) {
+    getRPTargets(slideIdx).forEach(function(el) {
+      el.classList.remove('rp-active');
+      el.classList.add('rp-done');
+    });
+  }
+
+  function buildReadingPlayers() {
+    for (var i = 0; i < slideDOMs.length; i++) {
+      if (slideDOMs[i].querySelector('.reading-player')) continue;
+      decorateRPTargets(i);
+      var total = SLIDE_STEPS[i].audio.length;
+      var bar = document.createElement('div');
+      bar.className = 'reading-player';
+      bar.dataset.slide = i;
+      var dotsHtml = '';
+      for (var j = 0; j < total; j++) {
+        dotsHtml += '<div class="rp-dot" data-step="' + j + '"></div>';
+      }
+      bar.innerHTML =
+        '<button class="rp-btn rp-play" title="播放">' +
+          '<svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>' +
+        '</button>' +
+        '<div class="rp-dots">' + dotsHtml + '</div>' +
+        '<span class="rp-counter">' + total + '</span>';
+      slideDOMs[i].appendChild(bar);
+    }
+    // Play/pause button
+    document.querySelectorAll('.reading-player .rp-play').forEach(function(btn) {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var idx = parseInt(btn.closest('.reading-player').dataset.slide);
+        if (rpSlide === idx) stopRP();
+        else startRP(idx, 0);
+      });
+    });
+    // Click on dot → jump to that step
+    document.querySelectorAll('.reading-player .rp-dot').forEach(function(dot) {
+      dot.addEventListener('click', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        var idx = parseInt(dot.closest('.reading-player').dataset.slide);
+        var step = parseInt(dot.dataset.step);
+        startRP(idx, step);
+      });
+    });
+  }
+
+  function removeReadingPlayers() {
+    stopRP();
+    for (var i = 0; i < slideDOMs.length; i++) clearRPTargetState(i);
+    document.querySelectorAll('.reading-player').forEach(function(el) { el.remove(); });
+  }
+
+  function startRP(slideIdx, fromStep) {
+    if (rpSlide >= 0) stopRP();
+    rpSlide = slideIdx;
+    rpStep = fromStep;
+    setRPBtn(slideIdx, true);
+    clearRPDots(slideIdx);
+    // Mark previous steps as done
+    var dots = getRPDots(slideIdx);
+    for (var i = 0; i < fromStep; i++) dots[i].classList.add('done');
+    updateRPTargets(slideIdx);
+    playRPCurrent();
+  }
+
+  function stopRP() {
+    if (rpAudio) { rpAudio.pause(); rpAudio.src = ''; rpAudio = null; }
+    if (rpTimerId) { clearInterval(rpTimerId); rpTimerId = null; }
+    if (rpSlide >= 0) {
+      clearRPTargetState(rpSlide);
+      decorateRPTargets(rpSlide);
+      setRPBtn(rpSlide, false);
+      // Clear active dot progress
+      var dots = getRPDots(rpSlide);
+      dots.forEach(function(d) { d.classList.remove('active'); d.style.setProperty('--rp-progress', '0%'); });
+      rpSlide = -1;
+      rpStep = 0;
+    }
+  }
+
+  function playRPCurrent() {
+    if (rpSlide < 0) return;
+    var audios = SLIDE_STEPS[rpSlide].audio;
+    if (rpStep >= audios.length) {
+      var doneSlide = rpSlide;
+      stopRP();
+      markAllDone(doneSlide);
+      return;
+    }
+
+    var dots = getRPDots(rpSlide);
+    // Mark previous as done, current as active
+    for (var i = 0; i < dots.length; i++) {
+      dots[i].classList.remove('active', 'done');
+      dots[i].style.setProperty('--rp-progress', '0%');
+      if (i < rpStep) dots[i].classList.add('done');
+    }
+    dots[rpStep].classList.add('active');
+    updateRPTargets(rpSlide);
+    updateRPCounter(rpSlide);
+
+    rpAudio = new Audio(AUDIO_DIR + audios[rpStep] + '.mp3');
+    rpAudio.volume = audioEnabled ? 1 : 0;
+    if (rpTimerId) clearInterval(rpTimerId);
+    rpTimerId = setInterval(function() {
+      if (!rpAudio || !rpAudio.duration) return;
+      var pct = (rpAudio.currentTime / rpAudio.duration) * 100;
+      var dots = getRPDots(rpSlide);
+      if (dots[rpStep]) dots[rpStep].style.setProperty('--rp-progress', pct + '%');
+    }, 80);
+    rpAudio.addEventListener('ended', function() {
+      if (rpTimerId) { clearInterval(rpTimerId); rpTimerId = null; }
+      var dots = getRPDots(rpSlide);
+      if (dots[rpStep]) {
+        dots[rpStep].classList.remove('active');
+        dots[rpStep].classList.add('done');
+        dots[rpStep].style.setProperty('--rp-progress', '100%');
+      }
+      rpStep++;
+      playRPCurrent();
+    });
+    rpAudio.play().catch(function() {});
+  }
+
+  function getRPDots(slideIdx) {
+    return Array.from(slideDOMs[slideIdx].querySelectorAll('.rp-dot'));
+  }
+  function clearRPDots(slideIdx) {
+    getRPDots(slideIdx).forEach(function(d) {
+      d.classList.remove('active', 'done');
+      d.style.setProperty('--rp-progress', '0%');
+    });
+  }
+  function markAllDone(slideIdx) {
+    getRPDots(slideIdx).forEach(function(d) { d.classList.add('done'); d.style.setProperty('--rp-progress', '100%'); });
+    markAllRPTargetsDone(slideIdx);
+    setRPBtn(slideIdx, false);
+    updateRPCounter(slideIdx);
+  }
+  function setRPBtn(slideIdx, playing) {
+    var btn = slideDOMs[slideIdx].querySelector('.rp-play');
+    if (!btn) return;
+    btn.innerHTML = playing
+      ? '<svg viewBox="0 0 24 24"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>'
+      : '<svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"/></svg>';
+    btn.title = playing ? '暂停' : '播放';
+  }
+  function updateRPCounter(slideIdx) {
+    var el = slideDOMs[slideIdx].querySelector('.rp-counter');
+    if (!el) return;
+    var total = SLIDE_STEPS[slideIdx].audio.length;
+    var cur = Math.min(rpSlide === slideIdx ? rpStep + 1 : 0, total);
+    el.textContent = cur + '/' + total;
+  }
+
+  if (slidesContainer) {
+    slidesContainer.addEventListener('click', function(e) {
+      if (!readingMode) return;
+      if (e.target.closest('.reading-player') || e.target.closest('button') || e.target.closest('a')) return;
+      var target = e.target.closest('[data-rp-step]');
+      if (!target) return;
+      e.preventDefault();
+      e.stopPropagation();
+      // Comment mode intercepts clicks — open popover instead of playing audio
+      if (commentMode) {
+        openPopover(target);
+        return;
+      }
+      startRP(parseInt(target.dataset.rpSlide, 10), parseInt(target.dataset.rpStep, 10));
+    });
+  }
+
+  /* ---- Reading Mode: Scroll Progress Indicator ---- */
+  var rpProgressEl = null;
+  var rpProgressBar = null;
+  var rpProgressText = null;
+  var rpObserver = null;
+  var rpVisibleSlide = 0;
+
+  function createReadingProgress() {
+    if (rpProgressEl) return;
+    rpProgressEl = document.createElement('div');
+    rpProgressEl.id = 'reading-progress';
+    rpProgressEl.innerHTML =
+      '<div id="rp-bar"><div id="rp-fill"></div></div>' +
+      '<span id="rp-text">1 / ' + TOTAL_SLIDES + '</span>';
+    document.body.appendChild(rpProgressEl);
+    rpProgressBar = document.getElementById('rp-fill');
+    rpProgressText = document.getElementById('rp-text');
+
+    // Inject styles once
+    if (!document.getElementById('rp-progress-css')) {
+      var css = document.createElement('style');
+      css.id = 'rp-progress-css';
+      css.textContent =
+        '#reading-progress{position:fixed;bottom:0;left:0;right:0;z-index:999;' +
+        'display:flex;align-items:center;gap:12px;padding:8px 20px;' +
+        'background:rgba(0,0,0,0.75);backdrop-filter:blur(8px);' +
+        'font-family:var(--font-mono,monospace);font-size:0.75rem;color:rgba(255,255,255,0.85);}' +
+        '#rp-bar{flex:1;height:3px;background:rgba(255,255,255,0.15);border-radius:2px;overflow:hidden;}' +
+        '#rp-fill{height:100%;width:0;background:var(--accent,#3db3c9);border-radius:2px;' +
+        'transition:width 0.3s ease;}' +
+        '#rp-text{flex-shrink:0;min-width:50px;text-align:right;}';
+      document.head.appendChild(css);
+    }
+
+    // IntersectionObserver to track visible slide
+    rpObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
+          var idx = Array.prototype.indexOf.call(slideDOMs, entry.target);
+          if (idx >= 0) {
+            rpVisibleSlide = idx;
+            updateReadingProgress();
+          }
+        }
+      });
+    }, { threshold: [0.3, 0.6] });
+
+    for (var i = 0; i < slideDOMs.length; i++) {
+      rpObserver.observe(slideDOMs[i]);
+    }
+  }
+
+  function updateReadingProgress() {
+    if (!rpProgressBar || !rpProgressText) return;
+    var pct = ((rpVisibleSlide + 1) / TOTAL_SLIDES * 100).toFixed(1);
+    rpProgressBar.style.width = pct + '%';
+    rpProgressText.textContent = (rpVisibleSlide + 1) + ' / ' + TOTAL_SLIDES;
+  }
+
+  function removeReadingProgress() {
+    if (rpObserver) {
+      rpObserver.disconnect();
+      rpObserver = null;
+    }
+    if (rpProgressEl) {
+      rpProgressEl.remove();
+      rpProgressEl = null;
+      rpProgressBar = null;
+      rpProgressText = null;
+    }
+  }
+
+  /* ---- Reading Mode: Fixed "Back to Present" Button ---- */
+  var rmBackBtn = null;
+  function buildReadingModeBtn() {
+    if (rmBackBtn) return;
+    if (!document.getElementById('rm-back-css')) {
+      var s = document.createElement('style');
+      s.id = 'rm-back-css';
+      s.textContent =
+        '.rm-back{position:fixed;bottom:60px;right:20px;z-index:910;width:36px;height:36px;' +
+        'border-radius:50%;border:none;cursor:pointer;font-size:15px;' +
+        'background:var(--bg-card,#fff);color:var(--ink-dim,#999);' +
+        'box-shadow:0 2px 8px rgba(0,0,0,0.15);transition:all 0.2s;display:flex;' +
+        'align-items:center;justify-content:center;}' +
+        '.rm-back:hover{color:var(--accent,#3db3c9);box-shadow:0 2px 12px rgba(0,0,0,0.2);}' +
+        'body.reading-mode #mode-toggle{display:none !important;}' +
+        'body.reading-mode #bottom-dock,body.reading-mode #dock-hitbox{display:none !important;}';
+      document.head.appendChild(s);
+    }
+    rmBackBtn = document.createElement('button');
+    rmBackBtn.className = 'rm-back';
+    rmBackBtn.title = '切换到演示模式 (R)';
+    rmBackBtn.innerHTML = '<svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>';
+    rmBackBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      exitReadingMode();
+    });
+    document.body.appendChild(rmBackBtn);
+  }
+  function removeReadingModeBtn() {
+    if (rmBackBtn) { rmBackBtn.remove(); rmBackBtn = null; }
+  }
+
+  function enterReadingMode() {
+    readingMode = true;
+    if (autoPlaying) stopAutoplay();
+    if (audioEl) { audioEl.pause(); audioEl.src = ''; }
+    document.body.classList.add('reading-mode');
+    modeIconPresent.style.display = 'none';
+    modeIconRead.style.display = '';
+    modeLabel.textContent = 'Present';
+    buildReadingPlayers();
+    createReadingProgress();
+    buildReadingModeBtn();
+    if (commentsEnabled) buildCommentsUI();
+  }
+
+  function exitReadingMode() {
+    readingMode = false;
+    removeCommentsUI();
+    removeReadingModeBtn();
+    removeReadingPlayers();
+    removeReadingProgress();
+    document.body.classList.remove('reading-mode');
+    modeIconPresent.style.display = '';
+    modeIconRead.style.display = 'none';
+    modeLabel.textContent = 'Read';
+    // Restore current slide with proper reveal
+    for (var i = 0; i < slideDOMs.length; i++) {
+      slideDOMs[i].classList.remove('active', 'exit');
+    }
+    slideDOMs[curSlide].classList.add('active');
+    revealUpToStep(getSlideEl(curSlide), getConfig(curSlide), curStep, false);
+    updateUI();
+  }
+
+  if (modeToggle) {
+    modeToggle.addEventListener('click', function(e) {
+      e.stopPropagation();
+      if (readingMode) exitReadingMode();
+      else enterReadingMode();
+    });
+  }
+
+  // Keyboard R to toggle reading mode, C to toggle comment mode, Esc to close popover
+  document.addEventListener('keydown', function(e) {
+    // Escape always works, even inside textarea
+    if (e.key === 'Escape' && commentMode) {
+      closePopover();
+      return;
+    }
+    if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
+    if (e.key === 'r' || e.key === 'R') {
+      if (readingMode) exitReadingMode();
+      else enterReadingMode();
+    }
+    if ((e.key === 'c' || e.key === 'C') && readingMode && commentsEnabled) {
+      if (commentMode) exitCommentMode();
+      else enterCommentMode();
+    }
+  });
+
+  /* ---- Comments System — Figma-style inline popover ---- */
+  var commentsEnabled = true;
+  var commentsAll = [];
+  var commentMode = false;
+  var cmPopover = null;
+  var cmToggleBtn = null;
+  var cmSelectedTarget = null;
+
+  function injectCommentCSS() {
+    if (document.getElementById('comment-css')) return;
+    var s = document.createElement('style');
+    s.id = 'comment-css';
+    s.textContent =
+      /* Toggle button — fixed bottom-right, only in reading mode */
+      '.cm-toggle{position:fixed;bottom:60px;right:64px;z-index:910;width:36px;height:36px;' +
+      'border-radius:50%;border:none;cursor:pointer;font-size:16px;' +
+      'background:var(--bg-card,#fff);color:var(--ink-dim,#999);' +
+      'box-shadow:0 2px 8px rgba(0,0,0,0.15);transition:all 0.2s;display:flex;' +
+      'align-items:center;justify-content:center;}' +
+      '.cm-toggle:hover{color:var(--accent,#3db3c9);box-shadow:0 2px 12px rgba(0,0,0,0.2);}' +
+      '.cm-toggle.active{background:var(--accent,#3db3c9);color:#fff;}' +
+      'body:not(.reading-mode) .cm-toggle{display:none !important;}' +
+      /* Comment mode cursor */
+      'body.cm-on .slide{cursor:crosshair;}' +
+      'body.cm-on .slide *{cursor:crosshair;}' +
+      /* Comment dot on elements that have comments */
+      '.cm-dot{position:absolute;top:-3px;right:-3px;width:8px;height:8px;border-radius:50%;' +
+      'background:var(--accent,#3db3c9);pointer-events:none;z-index:5;' +
+      'box-shadow:0 0 0 2px var(--bg-card,#fff);}' +
+      '.rp-target{position:relative;cursor:pointer;transition:outline 0.15s,outline-offset 0.15s;}' +
+      '.rp-target:hover{outline:2px solid var(--accent-mid,rgba(61,179,201,0.45));outline-offset:4px;border-radius:4px;}' +
+      /* Selected element highlight */
+      '.cm-selected{outline:2px solid var(--accent,#3db3c9) !important;outline-offset:3px;border-radius:4px;}' +
+      /* Popover — anchored near the clicked element */
+      '.cm-pop{position:absolute;z-index:920;width:280px;background:var(--bg-card,#fff);' +
+      'border-radius:8px;box-shadow:0 4px 24px rgba(0,0,0,0.15);' +
+      'border:1px solid var(--ink-ghost,#e0e0e0);font-family:var(--font-sans,sans-serif);}' +
+      '.cm-pop-head{display:flex;align-items:center;justify-content:space-between;' +
+      'padding:10px 12px;border-bottom:1px solid var(--ink-ghost,#eee);font-size:0.7rem;' +
+      'color:var(--ink-dim,#888);font-family:var(--font-mono,monospace);}' +
+      '.cm-pop-close{border:none;background:none;cursor:pointer;font-size:16px;color:var(--ink-dim,#999);padding:0 2px;}' +
+      '.cm-pop-close:hover{color:var(--ink,#333);}' +
+      '.cm-pop-body{max-height:200px;overflow-y:auto;padding:0;}' +
+      '.cm-pop-empty{padding:16px 12px;text-align:center;color:var(--ink-dim,#bbb);font-size:0.75rem;}' +
+      '.cm-pop-item{padding:8px 12px;border-bottom:1px solid var(--ink-ghost,#f0f0f0);}' +
+      '.cm-pop-item:last-child{border-bottom:none;}' +
+      '.cm-pop-item-text{font-size:0.8rem;line-height:1.4;color:var(--ink,#333);}' +
+      '.cm-pop-item-time{font-size:0.6rem;color:var(--ink-dim,#999);margin-top:2px;' +
+      'font-family:var(--font-mono,monospace);}' +
+      '.cm-pop-foot{padding:8px 12px;border-top:1px solid var(--ink-ghost,#eee);display:flex;gap:6px;}' +
+      '.cm-pop-input{flex:1;padding:6px 8px;border:1px solid var(--ink-ghost,#ddd);border-radius:6px;' +
+      'font-size:0.8rem;font-family:var(--font-sans,sans-serif);resize:none;min-height:32px;' +
+      'background:#fff;color:var(--ink,#333);outline:none;}' +
+      '.cm-pop-input:focus{border-color:var(--accent,#3db3c9);}' +
+      '.cm-pop-send{padding:6px 10px;border:none;border-radius:6px;background:var(--accent,#3db3c9);' +
+      'color:#fff;font-size:0.7rem;cursor:pointer;align-self:flex-end;white-space:nowrap;}' +
+      '.cm-pop-send:hover{opacity:0.85;}' +
+      /* History panel — right side overlay */
+      '.ch{position:fixed;top:0;right:0;width:320px;height:100vh;z-index:900;' +
+      'background:var(--bg-card,#fff);border-left:1px solid var(--ink-ghost,#e0e0e0);' +
+      'display:flex;flex-direction:column;transform:translateX(100%);' +
+      'transition:transform 0.3s ease;box-shadow:-4px 0 20px rgba(0,0,0,0.06);}' +
+      '.ch.open{transform:translateX(0);}' +
+      '.ch-head{display:flex;align-items:center;justify-content:space-between;' +
+      'padding:14px 16px;border-bottom:1px solid var(--ink-ghost,#e0e0e0);}' +
+      '.ch-head-left{display:flex;align-items:center;gap:8px;}' +
+      '.ch-title{font-size:0.8rem;font-weight:600;font-family:var(--font-sans,sans-serif);}' +
+      '.ch-count{font-size:0.65rem;color:var(--ink-dim,#999);font-family:var(--font-mono,monospace);}' +
+      '.ch-close{border:none;background:none;cursor:pointer;font-size:18px;' +
+      'color:var(--ink-dim,#999);padding:0 4px;}' +
+      '.ch-close:hover{color:var(--ink,#333);}' +
+      '.ch-body{flex:1;overflow-y:auto;padding:8px 0;}' +
+      '.ch-empty{padding:40px 16px;text-align:center;color:var(--ink-dim,#bbb);font-size:0.8rem;}' +
+      '.ch-group{margin-bottom:4px;}' +
+      '.ch-group-head{padding:8px 16px;font-size:0.65rem;font-weight:600;' +
+      'color:var(--ink-dim,#888);font-family:var(--font-mono,monospace);' +
+      'background:var(--bg,#f8f8f8);position:sticky;top:0;z-index:1;}' +
+      '.ch-card{margin:6px 12px;padding:10px 12px;background:var(--bg,#f8f8f8);' +
+      'border-radius:8px;border:1px solid var(--ink-ghost,#eee);cursor:pointer;' +
+      'transition:border-color 0.15s,box-shadow 0.15s;}' +
+      '.ch-card:hover{border-color:var(--accent,#3db3c9);box-shadow:0 1px 6px rgba(0,0,0,0.06);}' +
+      '.ch-card-ref{font-size:0.6rem;color:var(--accent,#3db3c9);margin-bottom:4px;' +
+      'font-family:var(--font-mono,monospace);display:flex;align-items:center;gap:4px;}' +
+      '.ch-card-ref .ch-dot{width:5px;height:5px;border-radius:50%;background:var(--accent,#3db3c9);}' +
+      '.ch-card-text{font-size:0.8rem;line-height:1.45;color:var(--ink,#333);}' +
+      '.ch-card-time{font-size:0.55rem;color:var(--ink-dim,#aaa);margin-top:4px;' +
+      'font-family:var(--font-mono,monospace);}' +
+      /* History toggle button — left of comment button */
+      '.ch-toggle{position:fixed;bottom:60px;right:108px;z-index:910;width:36px;height:36px;' +
+      'border-radius:50%;border:none;cursor:pointer;font-size:15px;' +
+      'background:var(--bg-card,#fff);color:var(--ink-dim,#999);' +
+      'box-shadow:0 2px 8px rgba(0,0,0,0.15);transition:all 0.2s;display:flex;' +
+      'align-items:center;justify-content:center;}' +
+      '.ch-toggle:hover{color:var(--accent,#3db3c9);box-shadow:0 2px 12px rgba(0,0,0,0.2);}' +
+      '.ch-toggle.active{background:var(--accent,#3db3c9);color:#fff;}' +
+      'body:not(.reading-mode) .ch-toggle{display:none !important;}' +
+      'body:not(.reading-mode) .ch{display:none !important;}';
+    document.head.appendChild(s);
+  }
+
+  function getElementText(el) {
+    var title = el.querySelector('h3, h4, .card-title, .list-title, .stack-title, .step-title, .stat-label');
+    if (title) return title.textContent.trim().slice(0, 60);
+    return (el.textContent || '').trim().replace(/\s+/g, ' ').slice(0, 60);
+  }
+
+  function getSlideLayout(slideIdx) {
+    var cls = slideDOMs[slideIdx].className || '';
+    var layouts = ['cover','quote','list','cards','compare','stats','timeline','bento','stack','grid','code','matrix','end'];
+    for (var i = 0; i < layouts.length; i++) {
+      if (cls.indexOf('layout-' + layouts[i]) >= 0) return layouts[i];
+    }
+    return 'unknown';
+  }
+
+  function postComment(data) {
+    return fetch('/comments', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data)
+    }).then(function(r) { return r.json(); });
+  }
+
+  function loadComments(cb) {
+    if (!commentsEnabled || !DECK_NAME) return;
+    fetch('/comments/' + DECK_NAME + '.json')
+      .then(function(r) { return r.json(); })
+      .then(function(arr) { commentsAll = arr; if (cb) cb(); })
+      .catch(function() { commentsAll = []; if (cb) cb(); });
+  }
+
+  function getCommentsForElement(slideIdx, stepIdx) {
+    return commentsAll.filter(function(c) {
+      return c.slide === slideIdx && c.step === stepIdx;
+    });
+  }
+
+  function refreshCommentDots() {
+    // Remove all existing dots
+    document.querySelectorAll('.cm-dot').forEach(function(d) { d.remove(); });
+    if (!commentMode) return;
+    // Add dots to elements that have comments
+    commentsAll.forEach(function(c) {
+      var si = c.slide || 0;
+      var sti = c.step || 0;
+      if (!slideDOMs[si]) return;
+      var el = slideDOMs[si].querySelector('[data-rp-step="' + sti + '"][data-rp-slide="' + si + '"]');
+      if (el && !el.querySelector('.cm-dot')) {
+        var dot = document.createElement('span');
+        dot.className = 'cm-dot';
+        el.appendChild(dot);
+      }
+    });
+  }
+
+  function closePopover() {
+    if (cmPopover) { cmPopover.remove(); cmPopover = null; }
+    if (cmSelectedTarget) { cmSelectedTarget.classList.remove('cm-selected'); cmSelectedTarget = null; }
+  }
+
+  function openPopover(target) {
+    closePopover();
+    cmSelectedTarget = target;
+    target.classList.add('cm-selected');
+
+    var si = parseInt(target.dataset.rpSlide, 10);
+    var sti = parseInt(target.dataset.rpStep, 10);
+    var existing = getCommentsForElement(si, sti);
+
+    var pop = document.createElement('div');
+    pop.className = 'cm-pop';
+
+    var elText = getElementText(target);
+    pop.innerHTML =
+      '<div class="cm-pop-head"><span>S' + (si + 1) + ' · ' + elText.slice(0, 30) + '</span>' +
+      '<button class="cm-pop-close">\u00d7</button></div>' +
+      '<div class="cm-pop-body"></div>' +
+      '<div class="cm-pop-foot">' +
+      '<textarea class="cm-pop-input" placeholder="评论... ⌘Enter" rows="1"></textarea>' +
+      '<button class="cm-pop-send">发送</button></div>';
+
+    // Position: below and to the right of the element
+    var rect = target.getBoundingClientRect();
+    var scrollTop = window.scrollY || document.documentElement.scrollTop;
+    var scrollLeft = window.scrollX || document.documentElement.scrollLeft;
+    pop.style.top = (rect.bottom + scrollTop + 8) + 'px';
+    pop.style.left = Math.min(rect.left + scrollLeft, window.innerWidth - 300) + 'px';
+    document.body.appendChild(pop);
+    cmPopover = pop;
+
+    // Render existing comments
+    var body = pop.querySelector('.cm-pop-body');
+    if (existing.length === 0) {
+      body.innerHTML = '<div class="cm-pop-empty">暂无评论</div>';
+    } else {
+      existing.forEach(function(c) {
+        var item = document.createElement('div');
+        item.className = 'cm-pop-item';
+        item.innerHTML =
+          '<div class="cm-pop-item-text">' + (c.comment || '').replace(/</g, '&lt;').replace(/\n/g, '<br>') + '</div>' +
+          '<div class="cm-pop-item-time">' + (c.timestamp || '').slice(0, 16).replace('T', ' ') + '</div>';
+        body.appendChild(item);
+      });
+    }
+
+    // Close button
+    pop.querySelector('.cm-pop-close').addEventListener('click', function(e) {
+      e.stopPropagation();
+      closePopover();
+    });
+
+    // Send comment
+    var input = pop.querySelector('.cm-pop-input');
+    var sendBtn = pop.querySelector('.cm-pop-send');
+    function doSend() {
+      var text = input.value.trim();
+      if (!text) return;
+      var data = {
+        deck: DECK_NAME, slide: si, step: sti,
+        layout: getSlideLayout(si),
+        elementText: getElementText(target),
+        comment: text
+      };
+      postComment(data).then(function(res) {
+        if (res.ok) {
+          data.id = res.id;
+          data.timestamp = new Date().toISOString();
+          commentsAll.push(data);
+          input.value = '';
+          // Re-render this popover + history panel
+          openPopover(target);
+          refreshCommentDots();
+          if (chPanelEl && chPanelEl.classList.contains('open')) renderHistoryPanel();
+        }
+      });
+    }
+    sendBtn.addEventListener('click', function(e) { e.stopPropagation(); doSend(); });
+    input.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') { closePopover(); return; }
+      e.stopPropagation();
+      if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) { e.preventDefault(); doSend(); }
+    });
+    input.focus();
+  }
+
+  function enterCommentMode() {
+    commentMode = true;
+    document.body.classList.add('cm-on');
+    if (cmToggleBtn) cmToggleBtn.classList.add('active');
+    refreshCommentDots();
+  }
+
+  function exitCommentMode() {
+    commentMode = false;
+    closePopover();
+    document.body.classList.remove('cm-on');
+    if (cmToggleBtn) cmToggleBtn.classList.remove('active');
+    document.querySelectorAll('.cm-dot').forEach(function(d) { d.remove(); });
+  }
+
+  /* ---- History Panel (all comments, right-side overlay) ---- */
+  var chPanelEl = null;
+  var chToggleBtn = null;
+
+  function renderHistoryPanel() {
+    if (!chPanelEl) return;
+    var body = chPanelEl.querySelector('.ch-body');
+    var count = chPanelEl.querySelector('.ch-count');
+    count.textContent = commentsAll.length + ' comments';
+    body.innerHTML = '';
+    if (!commentsAll.length) {
+      body.innerHTML = '<div class="ch-empty">暂无评论</div>';
+      return;
+    }
+    // Group by slide
+    var groups = {};
+    commentsAll.forEach(function(c) {
+      var s = c.slide || 0;
+      if (!groups[s]) groups[s] = [];
+      groups[s].push(c);
+    });
+    var slideKeys = Object.keys(groups).sort(function(a, b) { return a - b; });
+    slideKeys.forEach(function(sk) {
+      var si = parseInt(sk, 10);
+      var grp = document.createElement('div');
+      grp.className = 'ch-group';
+      var title = (TOC_DATA[si] && TOC_DATA[si].title) || ('Slide ' + (si + 1));
+      grp.innerHTML = '<div class="ch-group-head">S' + (si + 1) + ' · ' + title + '</div>';
+      groups[sk].forEach(function(c) {
+        var card = document.createElement('div');
+        card.className = 'ch-card';
+        card.innerHTML =
+          '<div class="ch-card-ref"><span class="ch-dot"></span>' +
+          (c.elementText || 'Step ' + ((c.step || 0) + 1)) + '</div>' +
+          '<div class="ch-card-text">' + (c.comment || '').replace(/</g, '&lt;').replace(/\n/g, '<br>') + '</div>' +
+          '<div class="ch-card-time">' + (c.timestamp || '').slice(0, 16).replace('T', ' ') + '</div>';
+        card.addEventListener('click', function() {
+          // Scroll to that element
+          if (!slideDOMs[si]) return;
+          var targets = slideDOMs[si].querySelectorAll('[data-rp-step="' + (c.step || 0) + '"]');
+          if (targets && targets[0]) {
+            targets[0].scrollIntoView({ behavior: 'smooth', block: 'center' });
+            if (cmSelectedTarget) cmSelectedTarget.classList.remove('cm-selected');
+            cmSelectedTarget = targets[0];
+            targets[0].classList.add('cm-selected');
+            setTimeout(function() { targets[0].classList.remove('cm-selected'); }, 2000);
+          }
+        });
+        grp.appendChild(card);
+      });
+      body.appendChild(grp);
+    });
+  }
+
+  function openHistoryPanel() {
+    if (!chPanelEl) return;
+    chPanelEl.classList.add('open');
+    if (chToggleBtn) chToggleBtn.classList.add('active');
+    renderHistoryPanel();
+  }
+
+  function closeHistoryPanel() {
+    if (!chPanelEl) return;
+    chPanelEl.classList.remove('open');
+    if (chToggleBtn) chToggleBtn.classList.remove('active');
+  }
+
+  function buildCommentsUI() {
+    injectCommentCSS();
+
+    // Comment mode button (💬)
+    var btn = document.createElement('button');
+    btn.className = 'cm-toggle';
+    btn.title = 'Comment mode (C)';
+    btn.innerHTML = '\ud83d\udcac'; // 💬
+    document.body.appendChild(btn);
+    cmToggleBtn = btn;
+
+    btn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      if (commentMode) exitCommentMode();
+      else enterCommentMode();
+    });
+
+    // History panel button (📋) — to the left of 💬
+    var hBtn = document.createElement('button');
+    hBtn.className = 'ch-toggle';
+    hBtn.title = 'All comments';
+    hBtn.innerHTML = '\ud83d\udccb'; // 📋
+    document.body.appendChild(hBtn);
+    chToggleBtn = hBtn;
+
+    // History panel
+    var panel = document.createElement('div');
+    panel.className = 'ch';
+    panel.innerHTML =
+      '<div class="ch-head"><div class="ch-head-left"><span class="ch-title">All Comments</span>' +
+      '<span class="ch-count">0</span></div>' +
+      '<button class="ch-close">\u00d7</button></div>' +
+      '<div class="ch-body"></div>';
+    document.body.appendChild(panel);
+    chPanelEl = panel;
+
+    hBtn.addEventListener('click', function(e) {
+      e.stopPropagation();
+      if (panel.classList.contains('open')) closeHistoryPanel();
+      else openHistoryPanel();
+    });
+    panel.querySelector('.ch-close').addEventListener('click', function(e) {
+      e.stopPropagation();
+      closeHistoryPanel();
+    });
+  }
+
+  function removeCommentsUI() {
+    exitCommentMode();
+    closeHistoryPanel();
+    if (cmToggleBtn) { cmToggleBtn.remove(); cmToggleBtn = null; }
+    if (chToggleBtn) { chToggleBtn.remove(); chToggleBtn = null; }
+    if (chPanelEl) { chPanelEl.remove(); chPanelEl = null; }
+  }
+
+  /* ---- Init ---- */
+  buildSlideNav();
+  buildTOC();
+  updateMuteUI();
+  slideDOMs[0].classList.add('active');
+  curSlide = 0;
+  curStep = 0;
+  updateUI();
+
+  // Dock is hidden by default, hover to reveal
+
+  // Load comments if served via localhost
+  if (commentsEnabled) {
+    setTimeout(loadComments, 500);
+  }
+
+  // Close popover when clicking outside
+  document.addEventListener('click', function(e) {
+    if (!cmPopover) return;
+    if (cmPopover.contains(e.target)) return;
+    if (e.target.closest('[data-rp-step]')) return; // handled by slidesContainer click
+    if (e.target.closest('.cm-toggle') || e.target.closest('.ch-toggle') || e.target.closest('.ch')) return;
+    closePopover();
+  });
+
+})();
+
+</script>
+
+</body>
+</html>

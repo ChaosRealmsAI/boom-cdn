@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Boom 演示合集</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root {
+  --bg: #f4f1ec;
+  --bg-card: #fdfcfb;
+  --accent: #1a6b5a;
+  --accent-light: #228b7a;
+  --accent-15: rgba(26,107,90,0.15);
+  --accent-06: rgba(26,107,90,0.06);
+  --ink: #2b2826;
+  --ink-mid: rgba(43,40,38,0.65);
+  --ink-dim: rgba(43,40,38,0.35);
+  --ink-ghost: rgba(43,40,38,0.08);
+  --font-serif: 'Georgia','Noto Serif SC','Songti SC',serif;
+  --font-sans: 'Helvetica Neue','Inter','PingFang SC',sans-serif;
+  --font-mono: 'SF Mono','Fira Code','Consolas',monospace;
+  --sidebar-w: 280px;
+}
+
+html,body { height:100%; overflow:hidden; background:var(--bg); color:var(--ink); font-family:var(--font-sans); }
+
+.sidebar {
+  position:fixed; top:0; left:0;
+  width:var(--sidebar-w); height:100vh;
+  background:var(--bg-card);
+  border-right:1px solid var(--ink-ghost);
+  display:flex; flex-direction:column;
+  z-index:100;
+  transition:transform 0.35s cubic-bezier(0.16,1,0.3,1);
+}
+.sidebar.collapsed { transform:translateX(calc(-1 * var(--sidebar-w))); }
+
+.sidebar-header {
+  padding:24px 20px 16px;
+  border-bottom:1px solid var(--ink-ghost);
+}
+.sidebar-header .label {
+  font-family:var(--font-mono);
+  font-size:0.65rem;
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--accent);
+  margin-bottom:4px;
+}
+.sidebar-header h1 {
+  font-family:var(--font-serif);
+  font-size:1.15rem;
+  font-weight:600;
+  line-height:1.3;
+}
+.sidebar-header .sub {
+  font-size:0.75rem;
+  color:var(--ink-dim);
+  margin-top:4px;
+}
+
+.nav-list { flex:1; overflow-y:auto; padding:12px 0; }
+
+.nav-group-label {
+  font-family:var(--font-mono);
+  font-size:0.6rem;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--ink-dim);
+  padding:16px 20px 6px;
+}
+.nav-group-label:first-child { padding-top:4px; }
+
+.nav-item {
+  display:flex; align-items:flex-start; gap:12px;
+  padding:10px 20px;
+  cursor:pointer;
+  transition:background 0.2s;
+  border-left:3px solid transparent;
+}
+.nav-item:hover { background:var(--accent-06); }
+.nav-item.active {
+  background:var(--accent-06);
+  border-left-color:var(--accent);
+}
+.nav-num {
+  font-family:var(--font-mono);
+  font-size:0.7rem;
+  color:var(--ink-dim);
+  padding-top:2px;
+  flex-shrink:0;
+  width:20px;
+}
+.nav-item.active .nav-num { color:var(--accent); }
+.nav-title {
+  font-size:0.85rem;
+  font-weight:500;
+  line-height:1.4;
+}
+.nav-item.active .nav-title { color:var(--accent); }
+.nav-meta {
+  font-size:0.65rem;
+  color:var(--ink-dim);
+  margin-top:2px;
+  font-family:var(--font-mono);
+}
+
+.nav-badge {
+  display:inline-block;
+  padding:1px 5px;
+  border-radius:3px;
+  font-size:0.55rem;
+  font-weight:600;
+  letter-spacing:0.5px;
+  text-transform:uppercase;
+  margin-right:4px;
+}
+.nav-badge.recording { background:rgba(59,130,246,0.12); color:#3b82f6; }
+.nav-badge.walkthrough { background:rgba(16,185,129,0.12); color:#10b981; }
+.nav-badge.ppt { background:rgba(168,85,247,0.12); color:#a855f7; }
+
+.sidebar-footer {
+  padding:12px 20px;
+  border-top:1px solid var(--ink-ghost);
+  font-size:0.65rem;
+  color:var(--ink-dim);
+  font-family:var(--font-mono);
+  text-align:center;
+  letter-spacing:0.05em;
+}
+
+.toggle-btn {
+  position:fixed; top:50%; left:0;
+  transform:translateY(-50%);
+  width:20px; height:40px;
+  border:none; border-radius:0 6px 6px 0;
+  background:var(--ink-ghost);
+  cursor:pointer;
+  z-index:200;
+  display:flex; align-items:center; justify-content:center;
+  color:var(--ink-dim);
+  padding:0;
+  transition:all 0.2s;
+}
+.toggle-btn:hover { background:var(--accent-15); color:var(--accent); }
+.toggle-btn svg { width:12px; height:12px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; }
+.sidebar:not(.collapsed) ~ .toggle-btn { left:var(--sidebar-w); }
+
+.main {
+  position:absolute;
+  top:0; right:0; bottom:0;
+  left:var(--sidebar-w);
+  transition:left 0.35s cubic-bezier(0.16,1,0.3,1);
+}
+.sidebar.collapsed ~ .main { left:0; }
+.main iframe { width:100%; height:100%; border:none; }
+
+.empty-state {
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
+  height:100%;
+  color:var(--ink-dim);
+  gap:12px;
+}
+.empty-state .icon { font-size:3rem; opacity:0.3; }
+.empty-state p { font-size:0.85rem; }
+
+@media(max-width:768px) {
+  :root { --sidebar-w:260px; }
+  .sidebar { box-shadow:4px 0 20px rgba(0,0,0,0.1); }
+}
+</style>
+</head>
+<body>
+
+<nav class="sidebar" id="sidebar">
+  <div class="sidebar-header">
+    <div class="label">DEMOS</div>
+    <h1>boom-cdn 演示</h1>
+    <div class="sub">1 demo</div>
+  </div>
+  <div class="nav-list" id="nav-list">
+
+    <div class="nav-item" data-src="boom-cdn-intro.html">
+      <span class="nav-num">01</span>
+      <div>
+        <div class="nav-title">boom-cdn 组件库入门</div>
+        <div class="nav-meta"><span class="nav-badge ppt">ppt</span>8 页 · 快速上手 · 模块介绍 · 常见陷阱</div>
+      </div>
+    </div>
+
+  </div>
+  <div class="sidebar-footer">spec/read-for-human</div>
+</nav>
+
+<button class="toggle-btn" id="toggle-btn" title="收起/展开目录">
+  <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+</button>
+
+<div class="main" id="main">
+  <div class="empty-state" id="empty-state">
+    <div class="icon">&#9654;</div>
+    <p>选择左侧演示开始</p>
+  </div>
+</div>
+
+<script>
+(function() {
+  var sidebar = document.getElementById('sidebar');
+  var toggleBtn = document.getElementById('toggle-btn');
+  var navList = document.getElementById('nav-list');
+  var main = document.getElementById('main');
+  var emptyState = document.getElementById('empty-state');
+  var items = navList.querySelectorAll('.nav-item');
+  var currentSrc = '';
+
+  toggleBtn.addEventListener('click', function() {
+    var collapsed = sidebar.classList.toggle('collapsed');
+    toggleBtn.querySelector('svg').innerHTML = collapsed
+      ? '<polyline points="9 18 15 12 9 6"/>'
+      : '<polyline points="15 18 9 12 15 6"/>';
+  });
+
+  function selectItem(item) {
+    var src = item.dataset.src;
+    if (src === currentSrc) return;
+    currentSrc = src;
+
+    items.forEach(function(i) { i.classList.remove('active'); });
+    item.classList.add('active');
+
+    var id = src.replace('.html', '');
+    history.replaceState(null, '', '#' + id);
+
+    if (emptyState) { emptyState.remove(); emptyState = null; }
+
+    var existing = main.querySelector('iframe');
+    if (existing) existing.remove();
+
+    var iframe = document.createElement('iframe');
+    iframe.src = src;
+    main.appendChild(iframe);
+  }
+
+  navList.addEventListener('click', function(e) {
+    var item = e.target.closest('.nav-item');
+    if (!item) return;
+    selectItem(item);
+  });
+
+  function loadFromHash() {
+    var hash = location.hash.slice(1);
+    if (!hash) return false;
+    for (var i = 0; i < items.length; i++) {
+      var src = items[i].dataset.src;
+      if (src.replace('.html', '') === hash) {
+        selectItem(items[i]);
+        return true;
+      }
+    }
+    return false;
+  }
+
+  if (!loadFromHash() && items.length) items[0].click();
+  window.addEventListener('hashchange', loadFromHash);
+})();
+</script>
+</body>
+</html>

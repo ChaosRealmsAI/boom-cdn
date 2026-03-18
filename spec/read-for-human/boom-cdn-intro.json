@@ -1,0 +1,222 @@
+{
+  "meta": {
+    "title": "boom-cdn 组件库入门",
+    "theme": "deep-teal",
+    "audioDir": "audio/boom-cdn-intro/"
+  },
+  "slides": [
+    {
+      "layout": "cover",
+      "title": "boom-cdn",
+      "sub": "Overview",
+      "content": {
+        "title": "boom-cdn 组件库",
+        "sub": "零构建、纯 CDN 的 UI 组件框架",
+        "en": "18 Themes · 50+ Components · Motion Engine",
+        "badge": "2026"
+      },
+      "narration": [
+        "欢迎了解 boom-cdn，这是我们内部统一的 UI 组件库。",
+        "它的核心理念很简单：不需要任何构建工具，引一个 CSS 文件就能用上 50 多个组件和 18 套主题。"
+      ]
+    },
+    {
+      "layout": "quote",
+      "title": "设计理念",
+      "sub": "Philosophy",
+      "content": {
+        "text": "不需要 npm install，不需要打包，引一个链接就能写出好看的页面。",
+        "source": "boom-cdn 设计原则",
+        "eyebrow": "核心理念",
+        "accent": "引一个链接"
+      },
+      "narration": [
+        "boom-cdn 的设计理念可以用一句话概括。",
+        "不需要安装依赖，不需要打包构建。你只需要在 HTML 里引入一个 CSS 链接，马上就能用上完整的组件系统。这就像在图书馆借书一样简单，不用自己去印刷装订。"
+      ]
+    },
+    {
+      "layout": "list",
+      "title": "快速开始",
+      "sub": "Quick Start",
+      "content": {
+        "header": "三步上手",
+        "subtitle": "从零到可用只需要三步",
+        "items": [
+          {
+            "title": "选一个主题 CSS",
+            "desc": "18 套主题各有风格，从赛博朋克到瑞士极简。每个主题是一个 CSS 文件，它会自动引入 base.css 组件框架，所以你只需要链接一个文件。"
+          },
+          {
+            "title": "给 body 加 boom 类",
+            "desc": "在 HTML 的 body 标签上加 class=\"boom\"，这是主题样式生效的开关。没有这个类名，所有组件样式都不会起作用，就像电器没有插电一样。"
+          },
+          {
+            "title": "用 b- 前缀的类名写组件",
+            "desc": "所有组件类都以 b- 开头：b-btn 是按钮、b-card 是卡片、b-grid 是网格。像搭积木一样组合 HTML 类名，不需要写任何自定义 CSS。"
+          }
+        ]
+      },
+      "narration": [
+        "我们来看怎么快速上手，一共就三步。",
+        "第一步，选一个主题。boom-cdn 有 18 套主题，每个都是一个 CSS 文件。你只需要用 link 标签引入这个 CSS，它会自动把底层的组件框架也带上。",
+        "第二步，给 body 标签加上 boom 这个 class。这是一个开关，没有它，所有样式都不会生效。",
+        "第三步，用 b- 前缀的类名来写组件。比如 b-btn 是按钮，b-card 是卡片，b-grid 是网格布局。像搭积木一样组合就行，不用写一行 CSS。"
+      ]
+    },
+    {
+      "layout": "cards",
+      "title": "五大模块",
+      "sub": "Modules",
+      "content": {
+        "header": "CDN 提供的模块",
+        "subtitle": "按需引入，互不依赖",
+        "items": [
+          {
+            "label": "UI",
+            "title": "Themes",
+            "desc": "18 套主题 + 50 多个组件类。覆盖排版、布局、按钮、卡片、表单、导航、弹窗、数据展示等所有常见 UI 需求。",
+            "points": ["base.css 组件框架", "18 个主题 CSS"]
+          },
+          {
+            "label": "动效",
+            "title": "Motion",
+            "desc": "滚动显现、打字机、计数器、跑马灯、视差、倾斜、磁吸。全部通过 data 属性声明，零 JS 代码。",
+            "points": ["motion.js", "7 种效果"]
+          },
+          {
+            "label": "讲解",
+            "title": "Engine",
+            "desc": "Walkthrough 讲解引擎。逐步高亮元素 + 语音旁白 + 键盘控制，适合做技术讲解和产品演示。",
+            "points": ["engine.css + engine.js"]
+          },
+          {
+            "label": "演示",
+            "title": "Presenter",
+            "desc": "幻灯片演示器，支持可选的评论覆盖层。用于 PPT 式翻页展示和培训场景。",
+            "points": ["presenter.css + presenter.js"]
+          }
+        ]
+      },
+      "narration": [
+        "boom-cdn 一共有五个模块，按需引入，互不依赖。",
+        "第一个是 Themes 模块，这是最核心的。它包含 18 套颜色主题和 50 多个组件类，覆盖了你写页面需要的所有常见 UI 元素。",
+        "第二个是 Motion 动效模块。它提供了 7 种动画效果，比如滚动显现、打字机效果、计数动画。你只需要在 HTML 标签上加 data 属性就能用，完全不用写 JS。",
+        "第三个是 Engine 讲解引擎。它可以逐步高亮页面元素，配上语音旁白，做出像导游一样的逐步讲解。",
+        "第四个是 Presenter 演示器，用来做翻页式的幻灯片展示，还可以加评论覆盖层。"
+      ]
+    },
+    {
+      "layout": "cards",
+      "title": "主题推荐",
+      "sub": "Theme Guide",
+      "content": {
+        "header": "场景 × 主题选择",
+        "subtitle": "根据内容类型选主题，不要随机选",
+        "items": [
+          {
+            "label": "技术",
+            "title": "terminal-green",
+            "desc": "终端绿，代码气质。适合开发者向的 demo、技术文档、CLI 工具展示。",
+            "points": ["暗色背景", "等宽字体感"]
+          },
+          {
+            "label": "产品",
+            "title": "frost-glass",
+            "desc": "冰蓝玻璃，现代 SaaS 感。适合产品原型、着陆页、功能介绍。",
+            "points": ["毛玻璃效果", "专业冷色调"]
+          },
+          {
+            "label": "汇报",
+            "title": "obsidian-velvet",
+            "desc": "暗紫奢华，大屏演示感。适合高管汇报、项目展示、数据仪表盘。",
+            "points": ["深色高对比", "优雅紫色调"]
+          },
+          {
+            "label": "文档",
+            "title": "swiss-minimal",
+            "desc": "瑞士极简，干净利落。适合正式文档、企业通信、规范说明。",
+            "points": ["白色背景", "红色强调"]
+          }
+        ]
+      },
+      "narration": [
+        "主题不是随便选的，应该根据内容类型来选。这里推荐四个最常用的搭配。",
+        "做技术 demo 选 terminal-green，它有终端绿的风格，特别适合展示代码和开发者工具。",
+        "做产品原型选 frost-glass，冰蓝色的毛玻璃效果，有现代 SaaS 的专业感。",
+        "做高管汇报选 obsidian-velvet，暗紫色调搭配高对比度，在大屏幕上非常有冲击力。",
+        "写正式文档选 swiss-minimal，白底红强调的瑞士极简风格，干净专业。"
+      ]
+    },
+    {
+      "layout": "code",
+      "title": "代码示例",
+      "sub": "Code Example",
+      "content": {
+        "header": "完整示例",
+        "subtitle": "一个最小的 boom-cdn 页面",
+        "filename": "hello-boom.html",
+        "language": "html",
+        "code": "<!DOCTYPE html>\n<html lang=\"zh-CN\">\n<head>\n  <meta charset=\"UTF-8\">\n  <link rel=\"stylesheet\"\n    href=\"https://boom-cdn.vercel.app/themes/neo-tokyo.css\">\n  <script src=\"https://boom-cdn.vercel.app/themes/motion.js\"\n    defer></script>\n</head>\n<body class=\"boom\">\n  <div class=\"b-container b-section\">\n    <h1 class=\"b-display b-accent\">Hello Boom</h1>\n    <p class=\"b-body b-muted\">这就是全部了。</p>\n    <button class=\"b-btn b-btn-primary\"\n      data-magnetic>点我</button>\n  </div>\n</body>\n</html>",
+        "annotation": "只引了一个主题 CSS 和一个 motion.js，就能用上显示标题、正文排版、主要按钮和磁吸动效。不需要 npm、不需要打包、不需要自定义 CSS。"
+      },
+      "narration": [
+        "我们来看一个完整的最小示例。",
+        "这个 HTML 文件只引了两个 CDN 资源：一个是 neo-tokyo 主题的 CSS，另一个是 motion.js 动效脚本。",
+        "有了这两个引用，你就能用上排版类、按钮组件、磁吸动效。整个页面不需要安装任何依赖，也不需要写一行自定义 CSS。"
+      ]
+    },
+    {
+      "layout": "list",
+      "title": "常见陷阱",
+      "sub": "Pitfalls",
+      "content": {
+        "header": "五个必知的坑",
+        "subtitle": "实际使用中最容易踩到的问题",
+        "items": [
+          {
+            "title": "Grid 必须两个类",
+            "desc": "b-grid-3 只设列数，不设 display:grid。必须写 class=\"b-grid b-grid-3\"，漏掉 b-grid 的话网格不会生效，内容会垂直堆叠。"
+          },
+          {
+            "title": "b-center 会覆盖方向",
+            "desc": "b-center 设的是 flex-row，如果和 b-stack 或 b-hero 混用，会把本该垂直排列的内容变成水平的。需要居中 + 垂直排列时用 b-stack 加 style。"
+          },
+          {
+            "title": "data-reveal 别滥用",
+            "desc": "带 data-reveal 的元素默认透明度为零，只有滚动到视口内才显示。如果每个区块都加，页面初次加载时大片空白。只在 hero 区域少量使用。"
+          },
+          {
+            "title": "data-count 是字面值",
+            "desc": "data-target=\"347\" 加 data-suffix=\"%\" 会显示 347%，不是 3.47%。想要小数就写 data-target=\"3.47\"。"
+          },
+          {
+            "title": "不要写自定义 CSS",
+            "desc": "boom 有 50 多个组件类和工具类，大部分需求都能组合解决。先查有没有现成的类，实在没有再用极少量 inline style。"
+          }
+        ]
+      },
+      "narration": [
+        "最后提醒五个实际使用中最容易踩到的坑。",
+        "第一个坑，Grid 网格布局必须写两个类。b-grid-3 只定义了三列，但没有设置 display grid。你必须同时加上 b-grid，否则网格完全不生效。",
+        "第二个坑，b-center 这个类会把 flex 方向强制改成横向。如果你把它和 b-stack 或 b-hero 一起用，本来该竖着排的内容就会变成横着排。",
+        "第三个坑，data-reveal 动画别到处加。带这个属性的元素默认是完全透明的，需要滚动才会显示。如果每个区块都加，页面一打开全是空白。",
+        "第四个坑，data-count 计数器的 target 值是字面量。你写 347 加百分号后缀，显示的就是 347%，不会自动变成 3.47%。",
+        "第五个坑，尽量不要写自定义 CSS。boom 提供了大量组件类和工具类，先查有没有现成的再动手写样式。"
+      ]
+    },
+    {
+      "layout": "end",
+      "title": "总结",
+      "sub": "Summary",
+      "content": {
+        "title": "开始使用 boom-cdn",
+        "sub": "llms.txt → 选主题 → 写 HTML → 完成",
+        "meta": "文档：boom-cdn.vercel.app/llms.txt"
+      },
+      "narration": [
+        "以上就是 boom-cdn 的入门介绍。记住：读 llms.txt、选个主题、用 b- 前缀的类名写组件，就这么简单。"
+      ]
+    }
+  ]
+}
