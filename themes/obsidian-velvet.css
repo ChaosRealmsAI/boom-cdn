@@ -1,0 +1,73 @@
+@import url('./base.css');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/**
+ * Obsidian Velvet — Boom CDN Theme
+ *
+ * Low-profile luxury. Couture-dark.
+ * Inspired by aged onyx, velvet drape, and candlelight.
+ */
+
+:root {
+  /* ── Backgrounds ── */
+  --bg:           #0a0a0f;
+  --bg-elevated:  #111118;
+  --bg-card:      #13131c;
+  --bg-hover:     #1a1a26;
+  --bg-active:    #1f1f2e;
+  --bg-input:     #0f0f18;
+
+  /* ── Text ── */
+  --text:         #e8e4dc;
+  --text-muted:   #a89f93;
+  --text-subtle:  #7a7168;
+  --text-faint:   #4d4840;
+  --text-ghost:   #2e2a24;
+
+  /* ── Accent: Amethyst Dusk ── */
+  --accent:       #8a6fae;
+  --accent-hover: #9d82c4;
+  --accent-80:    rgba(138, 111, 174, 0.80);
+  --accent-30:    rgba(138, 111, 174, 0.30);
+  --accent-15:    rgba(138, 111, 174, 0.15);
+  --accent-08:    rgba(138, 111, 174, 0.08);
+
+  /* ── Borders ── */
+  --border:        rgba(232, 228, 220, 0.07);
+  --border-mid:    rgba(232, 228, 220, 0.12);
+  --border-strong: rgba(232, 228, 220, 0.22);
+  --border-accent: rgba(138, 111, 174, 0.40);
+
+  /* ── Semantic ── */
+  --success: #6eca8f;
+  --warning: #d4a843;
+  --error:   #c96a6a;
+  --info:    #6a9dc9;
+
+  /* ── Typography ── */
+  --font-serif: 'Playfair Display', 'Georgia', serif;
+  --font-sans:  'DM Sans', system-ui, sans-serif;
+  --font-mono:  'JetBrains Mono', 'Fira Code', monospace;
+
+  /* ── Type Scale (fluid) ── */
+  --text-xs:      clamp(0.70rem, 0.68rem + 0.1vw,  0.75rem);
+  --text-sm:      clamp(0.82rem, 0.80rem + 0.12vw, 0.875rem);
+  --text-base:    clamp(0.95rem, 0.92rem + 0.15vw, 1rem);
+  --text-lg:      clamp(1.10rem, 1.05rem + 0.25vw, 1.125rem);
+  --text-xl:      clamp(1.20rem, 1.15rem + 0.3vw,  1.25rem);
+  --text-2xl:     clamp(1.40rem, 1.30rem + 0.5vw,  1.5rem);
+  --text-3xl:     clamp(1.70rem, 1.55rem + 0.75vw, 1.875rem);
+  --text-4xl:     clamp(2.10rem, 1.90rem + 1.0vw,  2.5rem);
+  --text-display: clamp(2.80rem, 2.40rem + 2.0vw,  4.0rem);
+
+  /* ── Radius ── */
+  --radius-sm:   4px;
+  --radius-md:   8px;
+  --radius-lg:   14px;
+  --radius-xl:   20px;
+  --radius-full: 9999px;
+
+  /* ── Motion ── */
+  --ease:        cubic-bezier(0.25, 0.1, 0.25, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
