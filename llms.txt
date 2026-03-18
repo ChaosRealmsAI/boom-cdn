@@ -1,0 +1,97 @@
+# boom-cdn
+
+> Public component CDN for the Boom design system. 18 themes, 50+ components, motion engine. Zero build step — just link CSS and go.
+
+Base URL: https://boom-cdn.vercel.app
+
+## Quick Start
+
+Pick a theme. Each theme auto-imports base.css (components + layout + utilities).
+
+```html
+<link rel="stylesheet" href="https://boom-cdn.vercel.app/themes/neo-tokyo.css">
+<body class="boom">
+  <div class="b-container">
+    <h1 class="b-h1">Hello</h1>
+    <button class="b-btn b-btn-primary">Click</button>
+  </div>
+</body>
+```
+
+Optional: add motion effects (scroll reveal, typewriter, counter, parallax, tilt, magnetic).
+
+```html
+<script src="https://boom-cdn.vercel.app/themes/motion.js" defer></script>
+<h1 data-reveal="slide-up">Animates on scroll</h1>
+```
+
+## Modules
+
+| Module | What it does | Files |
+|--------|-------------|-------|
+| themes | UI framework: 18 color themes + 50+ component classes | `themes/{theme-id}.css` (auto-imports `themes/base.css`) |
+| motion | Scroll reveal, typewriter, counter, marquee, parallax, tilt, magnetic | `themes/motion.js` |
+| engine | Walkthrough narrator: step-by-step highlight + audio + keyboard | `engine/engine.css` + `engine/engine.js` |
+| presenter | Slide presenter + optional comment overlay | `presenter/presenter.css` + `presenter/presenter.js` |
+| viewer | Keyframe viewer, manifesto renderer, version index | `viewer/keyframe-viewer.css` + `viewer/keyframe-viewer.js` |
+
+## Themes
+
+Machine-readable catalog: https://boom-cdn.vercel.app/themes/catalog.json
+
+18 themes, each a single CSS file. Usage: `<link rel="stylesheet" href="https://boom-cdn.vercel.app/themes/{id}.css">`
+
+Dark: neo-tokyo, obsidian-velvet, matte-carbon, terminal-green, ocean-depth, copper-industrial, emerald-dynasty, aurora-gradient, frost-glass, golden-luxury, ink-editorial, forest-zen
+Light: champagne-silk, soft-pastel, swiss-minimal, candy-pop, zen-ink, brutalist
+
+## Components (all in base.css, shared by every theme)
+
+Typography: `.b-display` `.b-h1`–`.b-h5` `.b-body` `.b-muted` `.b-subtle` `.b-label` `.b-mono` `.b-serif` `.b-accent`
+Layout: `.b-container` `.b-section` `.b-grid` `.b-grid-2`–`.b-grid-4` `.b-flex` `.b-flex-col` `.b-center` `.b-between` `.b-stack`
+Buttons: `.b-btn` `.b-btn-primary` `.b-btn-ghost` `.b-btn-outline` `.b-btn-danger` `.b-btn-sm` `.b-btn-lg` `.b-btn-group`
+Cards: `.b-card` `.b-card-header` `.b-card-title` `.b-card-desc` `.b-card-footer` `.b-card-image` `.b-card-accent`
+Forms: `.b-input` `.b-textarea` `.b-select` `.b-toggle` `.b-checkbox` `.b-radio` `.b-input-group` `.b-field`
+Tags: `.b-badge` `.b-badge-success/warning/error/info` `.b-tag` `.b-chip` `.b-chip-group`
+Data: `.b-table` `.b-table-wrap` `.b-list` `.b-list-item` `.b-stat` `.b-stat-value`
+Nav: `.b-tabs` `.b-tab` `.b-navbar` `.b-breadcrumb` `.b-pagination` `.b-sidebar` `.b-switch-group`
+Overlay: `.b-overlay` `.b-dialog` `.b-dropdown` `.b-toast` `.b-popover` `.b-sheet`
+Feedback: `.b-alert` `.b-banner` `.b-spinner` `.b-progress` `.b-skeleton`
+Advanced: `.b-avatar` `.b-steps` `.b-timeline` `.b-accordion` `.b-pricing` `.b-testimonial` `.b-hero` `.b-footer` `.b-meter` `.b-gallery` `.b-details` `.b-empty`
+Utility: `.b-separator` `.b-code` `.b-kbd` `.b-truncate` `.b-hidden` `.b-scroll` `.b-grain` `.b-gap-2`–`.b-gap-8` `.b-mt-2`–`.b-mt-8` `.b-p-4`–`.b-p-8`
+
+## Motion (motion.js)
+
+All declarative via `data-` attributes. Auto-initializes on DOMContentLoaded.
+
+| Effect | HTML | Options |
+|--------|------|---------|
+| Scroll reveal | `<div data-reveal="fade">` | Types: `fade`, `slide-up`, `slide-left`, `zoom`, `rotate`. `data-delay="200"` |
+| Typewriter | `<span data-typewriter="Hello">` | `data-speed="50"` `data-cursor="true"` |
+| Counter | `<span data-count data-target="1000">` | `data-duration="2000"` `data-suffix="%"` |
+| Marquee | `<div class="b-marquee"><div class="b-marquee-inner">…</div></div>` | `data-speed="30"` `data-direction="right"` |
+| Parallax | `<div data-parallax data-speed="0.3">` | speed: 0–1 |
+| Tilt | `<div data-tilt data-tilt-max="10">` | max: degrees |
+| Magnetic | `<button data-magnetic>` | — |
+
+## Engine API
+
+```js
+SR.init({ steps, animations, audioDir, title, meta, device });
+```
+
+Methods: `SR.$(id)` `SR.wait(ms)` `SR.showSub(text)` `SR.hideSub()` `SR.playAudio(id)` `SR.glow(el)` `SR.unglow(el)` `SR.showScreen(id)` `SR.highlight(el, ms)` `SR.center(el)`
+Keys: Space=play, ←→=nav, M=mute, R=read-mode, Esc=exit
+
+## Full Docs
+
+Complete API documentation: https://boom-cdn.vercel.app/docs.md
+Theme catalog (JSON): https://boom-cdn.vercel.app/themes/catalog.json
+Component source: https://boom-cdn.vercel.app/themes/base.css
+
+## Rules
+
+- Reference via CDN only — do not copy files locally
+- CORS enabled for all origins
+- Cache-Control: public, max-age=31536000, immutable
+- Every theme file auto-imports base.css — only link one CSS file
+- `<body class="boom">` is required for theme styles to apply
